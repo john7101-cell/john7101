@@ -1,0 +1,19 @@
+[project]
+name = "ugc-agency"
+version = "0.1.0"
+description = "Agencia de UGC con agentes de IA para TikTok Shop USA: historias cotidianas, personajes comunes, guiones y paquetes de producción de video."
+requires-python = ">=3.10"
+dependencies = ["anthropic>=2.4.0", "pydantic>=2.7"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+ugc-agency = "ugc_agency.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["ugc_agency*"]
