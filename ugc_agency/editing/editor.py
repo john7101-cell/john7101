@@ -20,6 +20,9 @@ class EditOptions:
     remove_fillers: bool = True
     remove_retakes: bool = True
     fix_visual_glitches: bool = True
+    repair_motion: bool = True       # quitar tirones (cuadros duplicados) y suavizar saltos entre clips
+    join_fade: float = 0.25          # duración del fundido en cada unión de clips
+    freeze_min: float = 0.2          # congeladas más largas que esto se cortan si no hay voz
     vertical: bool = True            # salida 1080x1920 para TikTok
     captions: bool = True
     loudness_lufs: float = -14.0     # nivel típico de TikTok/Reels
@@ -35,6 +38,7 @@ class EditReport:
     final_duration: float
     cuts: list[dict] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
+    repairs: list[str] = field(default_factory=list)
     transcript: str = ""
 
     def summary_by_reason(self) -> dict[str, float]:
@@ -96,7 +100,7 @@ def plan_cuts(path: Path, info: MediaInfo, opts: EditOptions, log: Callable[[str
                 warnings.append(f"Cuadro negro con voz en {_fmt(s)}-{_fmt(e)}: no se cortó para no perder diálogo.")
             else:
                 cuts.append(Cut(s, e, "cuadro negro"))
-        for s, e in analysis.detect_freezes(path):
+        for s, e in analysis.detect_freezes(path, opts.freeze_min):
             e = min(e, dur)
             if talks((s, e)):
                 warnings.append(f"Imagen congelada con voz en {_fmt(s)}-{_fmt(e)}: conviene regenerar esa escena.")
@@ -230,6 +234,16 @@ def edit_video(src: Path, dst: Path, opts: EditOptions | None = None,
                log: Callable[[str], None] = print) -> EditReport:
     require_ffmpeg()
     opts = opts or EditOptions()
+    original = src
+    repairs: list[str] = []
+    work_dir = dst.parent / f".{dst.stem}_work"
+    if opts.repair_motion:
+        from .repair import repair_motion
+
+        log("Revisando el movimiento cuadro por cuadro (tirones y saltos entre clips)...")
+        src, repairs = repair_motion(src, work_dir, opts.join_fade)
+        for note in repairs:
+            log(f"  · {note}")
     info = probe(src)
     log(f"Video: {info.width}x{info.height}, {info.duration:.1f}s, {info.fps:.0f} fps, "
         f"audio={'sí' if info.has_audio else 'no'}")
@@ -254,12 +268,18 @@ def edit_video(src: Path, dst: Path, opts: EditOptions | None = None,
         if lufs is not None:
             log(f"Volumen final: {lufs:.1f} LUFS")
 
+    if work_dir.exists():
+        import shutil
+
+        shutil.rmtree(work_dir, ignore_errors=True)
+
     report = EditReport(
-        input=str(src), output=str(dst), original_duration=round(info.duration, 2),
+        input=str(original), output=str(dst), original_duration=round(info.duration, 2),
         final_duration=round(final, 2),
         cuts=[{"start": round(c.start, 2), "end": round(c.end, 2), "reason": c.reason} for c in cuts],
         warnings=warnings + [f"Destello tapado con el cuadro anterior en {_fmt(s)}-{_fmt(e)} (había voz)."
                              for s, e in patches],
+        repairs=repairs,
         transcript=" ".join(s.text for s in segments),
     )
     dst.with_suffix(".report.json").write_text(json.dumps(asdict(report), indent=2, ensure_ascii=False),

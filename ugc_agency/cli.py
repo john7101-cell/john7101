@@ -74,11 +74,14 @@ def cmd_edit(args: argparse.Namespace) -> int:
         remove_retakes=not args.keep_retakes, fix_visual_glitches=not args.no_visual_fixes,
         vertical=not args.keep_aspect, captions=not args.no_captions,
         whisper_model=args.whisper_model, language=args.language,
+        repair_motion=not args.no_repair, join_fade=args.join_fade,
     )
     report = edit_video(src_path, out, opts)
     print(f"\n✔ {report.original_duration:.1f}s → {report.final_duration:.1f}s  ({out})")
     for reason, secs in sorted(report.summary_by_reason().items(), key=lambda x: -x[1]):
         print(f"  - {reason}: {secs:.1f}s")
+    for r in report.repairs:
+        print(f"  ✚ {r}")
     for w in report.warnings:
         print(f"  ⚠ {w}")
     return 0
@@ -119,6 +122,9 @@ def main(argv: list[str] | None = None) -> int:
     edit.add_argument("--no-captions", action="store_true", help="No quemar subtítulos")
     edit.add_argument("--whisper-model", default="small", help="tiny, base, small, medium, large-v3")
     edit.add_argument("--language", default=None, help="Idioma del audio (en, es...). Auto si se omite")
+    edit.add_argument("--no-repair", action="store_true",
+                      help="No quitar tirones (cuadros repetidos) ni suavizar saltos entre clips")
+    edit.add_argument("--join-fade", type=float, default=0.25, help="Duración del fundido en uniones (s)")
     edit.add_argument("--download-dir", default="input_videos")
     edit.set_defaults(func=cmd_edit)
 

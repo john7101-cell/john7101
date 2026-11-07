@@ -45,3 +45,36 @@ def test_direct_download_urls():
     assert direct_download_url("https://drive.google.com/file/d/AbC_1-2/view?usp=sharing") == \
         "https://drive.usercontent.google.com/download?id=AbC_1-2&export=download&confirm=t"
     assert direct_download_url("https://www.dropbox.com/s/x/v.mp4?dl=0").endswith("dl=1")
+
+
+# --- reparación de movimiento -------------------------------------------------
+
+import numpy as np
+
+from ugc_agency.editing.repair import Join, detect_joins, detect_pulldown, join_graph
+
+
+def _motion(n=300, seed=0):
+    rng = np.random.default_rng(seed)
+    return rng.uniform(2.0, 4.0, n)
+
+
+def test_detect_pulldown_every_fifth_frame():
+    d = _motion()
+    d[5::5] = 0.05          # 24 -> 30 fps: un duplicado cada 5
+    assert detect_pulldown(d) == 5
+    assert detect_pulldown(_motion()) is None
+
+
+def test_detect_joins_with_intruder_frames():
+    d = _motion()
+    d[100] = 40             # unión limpia
+    d[200], d[203] = 35, 25  # unión con 3 cuadros intrusos (200-202)
+    joins = detect_joins(d, fps=24)
+    assert [(j.end_a, j.start_b) for j in joins] == [(100, 100), (200, 203)]
+
+
+def test_join_graph_keeps_total_duration():
+    graph, out_frames = join_graph(300, 24.0, [Join(100, 100), Join(200, 203)], fade_frames=6)
+    assert out_frames == 300   # el audio no se toca, así que la duración debe ser idéntica
+    assert sum("xfade" in g for g in graph) == 2

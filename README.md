@@ -105,6 +105,9 @@ Si ya tienes un video (grabado o generado con IA), el editor lo pule para que se
 
 | Problema | Cómo lo detecta | Qué hace |
 |---|---|---|
+| Tirones / "paradas" cada fracción de segundo | Patrón de cuadros duplicados (video de 24/25 fps exportado a 30) | Elimina los duplicados y recupera los fps reales: el movimiento vuelve a ser fluido |
+| Saltos de postura entre clips del avatar | Saltos bruscos de imagen cuadro a cuadro | Fundido corto en cada unión, sin cambiar la duración (el audio queda sincronizado) |
+| Cuadros "intrusos" de otra toma en una unión | Dos saltos separados por 1-4 cuadros | Los quita dentro del fundido |
 | Pausas largas e inicio/final muertos | Transcripción palabra por palabra (Whisper) | Las acorta y deja unos 0.12 s de aire |
 | Muletillas ("um", "uh", "hmm") | Transcripción | Las corta |
 | Tomas repetidas (retakes) | Frases consecutivas casi iguales | Conserva solo la última toma |
@@ -120,9 +123,11 @@ python -m ugc_agency edit mi_video.mp4
 python -m ugc_agency edit "https://drive.google.com/file/d/XXXX/view"   # también Dropbox
 ```
 
+> **Imágenes emergentes fuera de tiempo**: si las imágenes o gráficos vienen "quemados" en el video, el editor no puede moverlos automáticamente. Lo mejor es corregir su tiempo en el proyecto original (CapCut, Canva, etc.) usando la transcripción del reporte, que trae el segundo exacto de cada frase.
+
 Se generan `mi_video_editado.mp4`, `mi_video_editado.srt` y `mi_video_editado.report.json` (cada corte con su motivo, avisos y transcripción).
 
-Opciones útiles: `--max-pause 0.6` (más relajado), `--keep-fillers`, `--keep-retakes`, `--no-captions`, `--keep-aspect`, `--language en` y `--whisper-model medium` (más preciso, más lento).
+Opciones útiles: `--no-repair` (no tocar tirones ni uniones), `--join-fade 0.2`, `--max-pause 0.6` (más relajado), `--keep-fillers`, `--keep-retakes`, `--no-captions`, `--keep-aspect`, `--language en` y `--whisper-model medium` (más preciso, más lento).
 
 ## Reglas de la agencia
 
