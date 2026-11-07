@@ -2,6 +2,7 @@
 
     python -m ugc_agency run examples/heatless_curler.json --concepts 5 --out output/curler
     python -m ugc_agency voice output/curler --voice-id <ELEVENLABS_VOICE_ID>
+    python -m ugc_agency edit mi_video.mp4            # o un enlace de Drive/Dropbox
 """
 
 from __future__ import annotations
@@ -57,6 +58,32 @@ def cmd_voice(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_edit(args: argparse.Namespace) -> int:
+    from .editing import EditOptions, edit_video
+    from .editing.media import download
+
+    src = args.input
+    if src.startswith(("http://", "https://")):
+        print("Descargando video...")
+        src_path = download(src, Path(args.download_dir))
+    else:
+        src_path = Path(src)
+    out = Path(args.out) if args.out else src_path.with_name(src_path.stem + "_editado.mp4")
+    opts = EditOptions(
+        max_pause=args.max_pause, remove_fillers=not args.keep_fillers,
+        remove_retakes=not args.keep_retakes, fix_visual_glitches=not args.no_visual_fixes,
+        vertical=not args.keep_aspect, captions=not args.no_captions,
+        whisper_model=args.whisper_model, language=args.language,
+    )
+    report = edit_video(src_path, out, opts)
+    print(f"\n✔ {report.original_duration:.1f}s → {report.final_duration:.1f}s  ({out})")
+    for reason, secs in sorted(report.summary_by_reason().items(), key=lambda x: -x[1]):
+        print(f"  - {reason}: {secs:.1f}s")
+    for w in report.warnings:
+        print(f"  ⚠ {w}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="ugc-agency", description="Agencia UGC con agentes de IA para TikTok Shop USA")
     parser.add_argument("-v", "--verbose", action="store_true")
@@ -80,6 +107,20 @@ def main(argv: list[str] | None = None) -> int:
     voice.add_argument("--persona-voice", action="append", metavar="PERSONA_ID=VOICE_ID",
                        help="Voz específica por personaje, p.ej. p1=abc123 (repetible)")
     voice.set_defaults(func=cmd_voice)
+
+    edit = sub.add_parser("edit", help="Edita un video: quita pausas, muletillas, retakes y fallos visuales")
+    edit.add_argument("input", help="Ruta del video o enlace (Google Drive, Dropbox o descarga directa)")
+    edit.add_argument("--out", default=None)
+    edit.add_argument("--max-pause", type=float, default=0.45, help="Pausa máxima permitida en segundos")
+    edit.add_argument("--keep-fillers", action="store_true", help="No quitar muletillas (um, uh...)")
+    edit.add_argument("--keep-retakes", action="store_true", help="No quitar tomas repetidas")
+    edit.add_argument("--no-visual-fixes", action="store_true", help="No cortar cuadros negros/congelados/destellos")
+    edit.add_argument("--keep-aspect", action="store_true", help="No convertir a 1080x1920")
+    edit.add_argument("--no-captions", action="store_true", help="No quemar subtítulos")
+    edit.add_argument("--whisper-model", default="small", help="tiny, base, small, medium, large-v3")
+    edit.add_argument("--language", default=None, help="Idioma del audio (en, es...). Auto si se omite")
+    edit.add_argument("--download-dir", default="input_videos")
+    edit.set_defaults(func=cmd_edit)
 
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO if args.verbose else logging.WARNING)

@@ -99,6 +99,31 @@ El **Productor de video IA** entrega prompts independientes de la herramienta, c
 
 La integración directa con APIs de generación de video no está incluida. Cada proveedor tiene su propia API y precios, y se puede agregar como un adaptador nuevo en `ugc_agency/production/`.
 
+## Editor automático de video
+
+Si ya tienes un video (grabado o generado con IA), el editor lo pule para que se vea profesional sin perder la naturalidad del UGC:
+
+| Problema | Cómo lo detecta | Qué hace |
+|---|---|---|
+| Pausas largas e inicio/final muertos | Transcripción palabra por palabra (Whisper) | Las acorta y deja unos 0.12 s de aire |
+| Muletillas ("um", "uh", "hmm") | Transcripción | Las corta |
+| Tomas repetidas (retakes) | Frases consecutivas casi iguales | Conserva solo la última toma |
+| Cuadros negros | `blackdetect` | Los corta si no hay voz encima |
+| Imágenes congeladas (típico de video IA) | `freezedetect` | Las corta si no hay voz; si la hay, lo avisa para regenerar esa escena |
+| Destellos y transiciones mal generadas | Detección de escenas (planos de menos de 0.3 s) | Los corta, o los tapa con el cuadro anterior si hay voz |
+| Formato y acabado | — | 1080x1920 (9:16), volumen a -14 LUFS, ligero contraste y nitidez, micro-fundidos de audio en cada corte |
+| Subtítulos | Transcripción | Subtítulos estilo TikTok (2-3 palabras, mayúsculas, con contorno) quemados en el video y además un `.srt` |
+
+```bash
+pip install -e ".[editing]"     # también necesitas ffmpeg instalado
+python -m ugc_agency edit mi_video.mp4
+python -m ugc_agency edit "https://drive.google.com/file/d/XXXX/view"   # también Dropbox
+```
+
+Se generan `mi_video_editado.mp4`, `mi_video_editado.srt` y `mi_video_editado.report.json` (cada corte con su motivo, avisos y transcripción).
+
+Opciones útiles: `--max-pause 0.6` (más relajado), `--keep-fillers`, `--keep-retakes`, `--no-captions`, `--keep-aspect`, `--language en` y `--whisper-model medium` (más preciso, más lento).
+
 ## Reglas de la agencia
 
 Están en `ugc_agency/guidelines.py` y se inyectan en todos los agentes:
