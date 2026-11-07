@@ -87,6 +87,19 @@ def cmd_edit(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_compose(args: argparse.Namespace) -> int:
+    from .editing.compose import compose
+
+    report = compose([Path(c) for c in args.clips], Path(args.graphics), Path(args.out),
+                     whisper_model=args.whisper_model, language=args.language)
+    print(f"\n✔ {report['output']} ({report['duration']:.1f}s, {report['loudness_lufs']:.1f} LUFS)")
+    for r in report["repairs"]:
+        print(f"  ✚ {r}")
+    for g in report["graphics"]:
+        print(f"  ▣ {g['image']}: {g['start']:.2f}s → {g['end']:.2f}s")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="ugc-agency", description="Agencia UGC con agentes de IA para TikTok Shop USA")
     parser.add_argument("-v", "--verbose", action="store_true")
@@ -127,6 +140,14 @@ def main(argv: list[str] | None = None) -> int:
     edit.add_argument("--join-fade", type=float, default=0.25, help="Duración del fundido en uniones (s)")
     edit.add_argument("--download-dir", default="input_videos")
     edit.set_defaults(func=cmd_edit)
+
+    comp = sub.add_parser("compose", help="Arma un reel con clips limpios + gráficos anclados a frases de la voz")
+    comp.add_argument("clips", nargs="+", help="Clips en orden")
+    comp.add_argument("--graphics", required=True, help="JSON con los gráficos (ver examples/graficos_ejemplo.json)")
+    comp.add_argument("--out", required=True)
+    comp.add_argument("--whisper-model", default="small")
+    comp.add_argument("--language", default=None)
+    comp.set_defaults(func=cmd_compose)
 
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO if args.verbose else logging.WARNING)

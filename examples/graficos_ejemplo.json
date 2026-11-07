@@ -1,0 +1,10 @@
+{
+  "graphics": [
+    {"image": "titulo.png", "x": 0, "y": 1700,
+     "start": {"phrase": "okay so", "offset": 0.2}, "end": {"phrase": "my shift", "offset": 0.3}},
+    {"image": "producto.png", "x": 784, "y": 24,
+     "start": {"phrase": "this tumbler", "offset": -0.1}, "end": {"phrase": "the whole day", "offset": 0.4}},
+    {"image": "cta.png", "x": 784, "y": 1422,
+     "start": {"phrase": "orange cart", "offset": -0.2}, "end": "video_end"}
+  ]
+}

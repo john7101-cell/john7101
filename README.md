@@ -129,6 +129,16 @@ Se generan `mi_video_editado.mp4`, `mi_video_editado.srt` y `mi_video_editado.re
 
 Opciones útiles: `--no-repair` (no tocar tirones ni uniones), `--join-fade 0.2`, `--max-pause 0.6` (más relajado), `--keep-fillers`, `--keep-retakes`, `--no-captions`, `--keep-aspect`, `--language en` y `--whisper-model medium` (más preciso, más lento).
 
+### Armar un reel con gráficos sincronizados
+
+Si tienes los clips del avatar **sin gráficos** y las imágenes sueltas, el compositor arma el reel completo: une los clips (1080x1920), repara el movimiento, transcribe y coloca cada gráfico **anclado a la frase que lo menciona**. Así aparece en el momento exacto aunque cambie la edición.
+
+```bash
+python -m ugc_agency compose clip1.mp4 clip2.mp4 clip3.mp4 --graphics graficos.json --out reel.mp4
+```
+
+Cada gráfico define su imagen, su posición en píxeles y en qué frase entra y sale (ver `examples/graficos_ejemplo.json`). Las frases ignoran mayúsculas, acentos y puntuación; `offset` adelanta o atrasa en segundos y `"end": "video_end"` lo deja hasta el final.
+
 ## Reglas de la agencia
 
 Están en `ugc_agency/guidelines.py` y se inyectan en todos los agentes:

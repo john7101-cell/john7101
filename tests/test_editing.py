@@ -78,3 +78,17 @@ def test_join_graph_keeps_total_duration():
     graph, out_frames = join_graph(300, 24.0, [Join(100, 100), Join(200, 203)], fade_frames=6)
     assert out_frames == 300   # el audio no se toca, así que la duración debe ser idéntica
     assert sum("xfade" in g for g in graph) == 2
+
+
+# --- compositor ---------------------------------------------------------------
+
+from ugc_agency.editing.compose import find_phrase, resolve_cue
+
+
+def test_phrase_cues_ignore_accents_and_punctuation():
+    words = [Word(0.0, 0.3, "Escríbenos,"), Word(0.4, 0.6, "FDA"), Word(0.7, 1.1, "2026."),
+             Word(2.0, 2.3, "escribenos")]
+    assert find_phrase(words, "escribenos fda") == (0.0, 0.6)
+    assert find_phrase(words, "Escríbenos", occurrence=2) == (2.0, 2.3)
+    assert resolve_cue({"phrase": "fda 2026", "edge": "end", "offset": 0.2}, words, 10, "start") == 1.3
+    assert resolve_cue("video_end", words, 10, "start") == 10
