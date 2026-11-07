@@ -137,6 +137,8 @@ Si tienes los clips del avatar **sin gráficos** y las imágenes sueltas, el com
 python -m ugc_agency compose clip1.mp4 clip2.mp4 clip3.mp4 --graphics graficos.json --out reel.mp4
 ```
 
+Para quitar frases de la narración agrega `"remove": [{"phrase": "en el horizonte"}]`: se cortan audio y video dejando una pausa natural, y los gráficos se reacomodan solos.
+
 Cada gráfico define su imagen, su posición en píxeles y en qué frase entra y sale (ver `examples/graficos_ejemplo.json`). Las frases ignoran mayúsculas, acentos y puntuación; `offset` adelanta o atrasa en segundos y `"end": "video_end"` lo deja hasta el final.
 
 ## Reglas de la agencia

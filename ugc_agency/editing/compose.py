@@ -19,6 +19,11 @@ Especificación (JSON):
 - "edge": "start" (por defecto en "start") o "end" (por defecto en "end") de la frase.
 - "offset": segundos a sumar (negativo = antes).
 - "occurrence": 1 por defecto; usa 2 para la segunda vez que se dice la frase.
+
+Para quitar partes de la narración, agrega "remove" (se corta audio y video, dejando
+una pausa natural entre las palabras que quedan):
+
+    "remove": [{"phrase": "en el horizonte"}]
 """
 
 from __future__ import annotations
@@ -77,6 +82,25 @@ def resolve_cue(cue, words: list[analysis.Word], duration: float, default_edge: 
     return max(0.0, min(duration, t + float(cue.get("offset", 0.0))))
 
 
+def removal_range(words: list[analysis.Word], phrase: str, occurrence: int = 1,
+                  keep_before: float = 0.06, keep_after: float = 0.12) -> tuple[float, float]:
+    """Tramo a cortar: la frase más los silencios que la rodean, dejando un respiro natural."""
+    start, end = find_phrase(words, phrase, occurrence)
+    prev_end = max((w.end for w in words if w.end <= start + 1e-3), default=0.0)
+    next_start = min((w.start for w in words if w.start >= end - 1e-3), default=end)
+    a = min(start, prev_end + keep_before)
+    b = max(end, next_start - keep_after)
+    return a, b
+
+
+def cut_ranges(src: Path, dst: Path, ranges: list[tuple[float, float]]) -> None:
+    expr = "+".join(f"between(t,{a:.3f},{b:.3f})" for a, b in ranges)
+    run(["ffmpeg", "-hide_banner", "-y", "-i", str(src),
+         "-vf", f"select='not({expr})',setpts=N/FRAME_RATE/TB",
+         "-af", f"aselect='not({expr})',asetpts=N/SR/TB",
+         "-c:v", "libx264", "-crf", "12", "-preset", "fast", "-c:a", "pcm_s16le", str(dst)])
+
+
 def concat_clips(clips: list[Path], dst: Path, width: int = 1080, height: int = 1920, fps: int = 30) -> None:
     parts, labels = [], []
     for i, _ in enumerate(clips):
@@ -105,6 +129,20 @@ def compose(clips: list[Path], spec_path: Path, dst: Path, fade: float = 0.15,
         log(f"Uniendo {len(clips)} clips en 1080x1920...")
         joined = work / "joined.mov"
         concat_clips(clips, joined)
+
+        removed = []
+        if spec.get("remove"):
+            log("Buscando las frases a eliminar...")
+            raw_words = [w for s in analysis.transcribe(joined, whisper_model, language) for w in s.words]
+            ranges = []
+            for r in spec["remove"]:
+                a, b = removal_range(raw_words, r["phrase"], r.get("occurrence", 1))
+                ranges.append((a, b))
+                removed.append({"phrase": r["phrase"], "start": round(a, 2), "end": round(b, 2)})
+                log(f"  ✂ \"{r['phrase']}\": {a:.2f}s → {b:.2f}s")
+            cut = work / "cut.mov"
+            cut_ranges(joined, cut, ranges)
+            joined = cut
 
         log("Reparando movimiento (tirones y saltos entre clips)...")
         base, repairs = repair_motion(joined, work)
@@ -150,7 +188,7 @@ def compose(clips: list[Path], spec_path: Path, dst: Path, fade: float = 0.15,
 
         report = {
             "output": str(dst), "duration": round(duration, 2), "loudness_lufs": lufs,
-            "repairs": repairs,
+            "repairs": repairs, "removed": removed,
             "graphics": [{"image": p.image.name, "start": round(p.start, 2), "end": round(p.end, 2)}
                          for p in placed],
             "transcript": " ".join(s.text for s in segments),

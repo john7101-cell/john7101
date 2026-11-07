@@ -92,3 +92,12 @@ def test_phrase_cues_ignore_accents_and_punctuation():
     assert find_phrase(words, "Escríbenos", occurrence=2) == (2.0, 2.3)
     assert resolve_cue({"phrase": "fda 2026", "edge": "end", "offset": 0.2}, words, 10, "start") == 1.3
     assert resolve_cue("video_end", words, 10, "start") == 10
+
+
+def test_removal_range_includes_surrounding_gaps():
+    from ugc_agency.editing.compose import removal_range
+
+    words = [Word(4.14, 4.60, "clave"), Word(4.72, 4.90, "en"), Word(5.22, 5.36, "el"),
+             Word(5.38, 5.90, "horizonte."), Word(6.24, 6.36, "El")]
+    a, b = removal_range(words, "en el horizonte")
+    assert abs(a - 4.66) < 1e-6 and abs(b - 6.12) < 1e-6
