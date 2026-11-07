@@ -101,3 +101,15 @@ def test_removal_range_includes_surrounding_gaps():
              Word(5.38, 5.90, "horizonte."), Word(6.24, 6.36, "El")]
     a, b = removal_range(words, "en el horizonte")
     assert abs(a - 4.66) < 1e-6 and abs(b - 6.12) < 1e-6
+
+
+def test_punch_crop_stays_inside_frame():
+    from ugc_agency.editing.repair import punch_crop
+
+    crop = punch_crop(1080, 1920, 1.12, (0.5, 0.35))
+    w, h, x, y = (int(v) for v in crop.split(",")[0].removeprefix("crop=").split(":"))
+    assert x + w <= 1080 and y + h <= 1920 and x >= 0 and y >= 0
+    assert abs(1080 / w - 1.12) < 0.01
+    # una cara pegada al borde no saca el recorte del cuadro
+    w, h, x, y = (int(v) for v in punch_crop(1080, 1920, 1.3, (0.98, 0.02)).split(",")[0][5:].split(":"))
+    assert x + w <= 1080 and y >= 0

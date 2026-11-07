@@ -106,7 +106,7 @@ Si ya tienes un video (grabado o generado con IA), el editor lo pule para que se
 | Problema | Cómo lo detecta | Qué hace |
 |---|---|---|
 | Tirones / "paradas" cada fracción de segundo | Patrón de cuadros duplicados (video de 24/25 fps exportado a 30) | Elimina los duplicados y recupera los fps reales: el movimiento vuelve a ser fluido |
-| Saltos de postura entre clips del avatar | Saltos bruscos de imagen cuadro a cuadro | Fundido corto en cada unión, sin cambiar la duración (el audio queda sincronizado) |
+| Saltos de postura entre clips del avatar | Saltos bruscos de imagen cuadro a cuadro | Corte limpio alternando plano abierto / cerrado (punch-in de 12 %), como un cambio de cámara intencional. Con `--transition fade` usa un fundido |
 | Cuadros "intrusos" de otra toma en una unión | Dos saltos separados por 1-4 cuadros | Los quita dentro del fundido |
 | Pausas largas e inicio/final muertos | Transcripción palabra por palabra (Whisper) | Las acorta y deja unos 0.12 s de aire |
 | Muletillas ("um", "uh", "hmm") | Transcripción | Las corta |

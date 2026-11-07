@@ -118,7 +118,7 @@ def concat_clips(clips: list[Path], dst: Path, width: int = 1080, height: int = 
     dst.with_suffix(".mov").replace(dst)
 
 
-def compose(clips: list[Path], spec_path: Path, dst: Path, fade: float = 0.15,
+def compose(clips: list[Path], spec_path: Path, dst: Path, fade: float = 0.15, transition: str = "punch",
             whisper_model: str = "small", language: str | None = None,
             loudness: float = -14.0, log: Callable[[str], None] = print) -> dict:
     require_ffmpeg()
@@ -145,7 +145,7 @@ def compose(clips: list[Path], spec_path: Path, dst: Path, fade: float = 0.15,
             joined = cut
 
         log("Reparando movimiento (tirones y saltos entre clips)...")
-        base, repairs = repair_motion(joined, work)
+        base, repairs = repair_motion(joined, work, transition=transition)
         for r in repairs:
             log(f"  · {r}")
 

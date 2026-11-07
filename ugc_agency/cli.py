@@ -74,7 +74,7 @@ def cmd_edit(args: argparse.Namespace) -> int:
         remove_retakes=not args.keep_retakes, fix_visual_glitches=not args.no_visual_fixes,
         vertical=not args.keep_aspect, captions=not args.no_captions,
         whisper_model=args.whisper_model, language=args.language,
-        repair_motion=not args.no_repair, join_fade=args.join_fade,
+        repair_motion=not args.no_repair, join_fade=args.join_fade, transition=args.transition,
     )
     report = edit_video(src_path, out, opts)
     print(f"\n✔ {report.original_duration:.1f}s → {report.final_duration:.1f}s  ({out})")
@@ -91,7 +91,7 @@ def cmd_compose(args: argparse.Namespace) -> int:
     from .editing.compose import compose
 
     report = compose([Path(c) for c in args.clips], Path(args.graphics), Path(args.out),
-                     whisper_model=args.whisper_model, language=args.language)
+                     whisper_model=args.whisper_model, language=args.language, transition=args.transition)
     print(f"\n✔ {report['output']} ({report['duration']:.1f}s, {report['loudness_lufs']:.1f} LUFS)")
     for r in report["repairs"]:
         print(f"  ✚ {r}")
@@ -137,6 +137,8 @@ def main(argv: list[str] | None = None) -> int:
     edit.add_argument("--language", default=None, help="Idioma del audio (en, es...). Auto si se omite")
     edit.add_argument("--no-repair", action="store_true",
                       help="No quitar tirones (cuadros repetidos) ni suavizar saltos entre clips")
+    edit.add_argument("--transition", choices=["punch", "fade"], default="punch",
+                      help="Uniones entre clips: corte con cambio de encuadre (punch) o fundido (fade)")
     edit.add_argument("--join-fade", type=float, default=0.25, help="Duración del fundido en uniones (s)")
     edit.add_argument("--download-dir", default="input_videos")
     edit.set_defaults(func=cmd_edit)
@@ -145,6 +147,7 @@ def main(argv: list[str] | None = None) -> int:
     comp.add_argument("clips", nargs="+", help="Clips en orden")
     comp.add_argument("--graphics", required=True, help="JSON con los gráficos (ver examples/graficos_ejemplo.json)")
     comp.add_argument("--out", required=True)
+    comp.add_argument("--transition", choices=["punch", "fade"], default="punch")
     comp.add_argument("--whisper-model", default="small")
     comp.add_argument("--language", default=None)
     comp.set_defaults(func=cmd_compose)

@@ -21,7 +21,8 @@ class EditOptions:
     remove_retakes: bool = True
     fix_visual_glitches: bool = True
     repair_motion: bool = True       # quitar tirones (cuadros duplicados) y suavizar saltos entre clips
-    join_fade: float = 0.25          # duración del fundido en cada unión de clips
+    join_fade: float = 0.25          # duración del fundido (solo con transition="fade")
+    transition: str = "punch"        # "punch": corte con cambio de encuadre; "fade": fundido
     freeze_min: float = 0.2          # congeladas más largas que esto se cortan si no hay voz
     vertical: bool = True            # salida 1080x1920 para TikTok
     captions: bool = True
@@ -241,7 +242,7 @@ def edit_video(src: Path, dst: Path, opts: EditOptions | None = None,
         from .repair import repair_motion
 
         log("Revisando el movimiento cuadro por cuadro (tirones y saltos entre clips)...")
-        src, repairs = repair_motion(src, work_dir, opts.join_fade)
+        src, repairs = repair_motion(src, work_dir, opts.join_fade, opts.transition)
         for note in repairs:
             log(f"  · {note}")
     info = probe(src)

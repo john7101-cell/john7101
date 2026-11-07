@@ -184,7 +184,78 @@ def smooth_joins(src: Path, dst: Path, fps: float, frames: int, joins: list[Join
         script.unlink(missing_ok=True)
 
 
-def repair_motion(src: Path, work_dir: Path, fade: float = 0.25) -> tuple[Path, list[str]]:
+def face_anchor(path: Path, frame_index: int) -> tuple[float, float]:
+    """Centro de la cara (0-1) en un cuadro; si no se detecta, un encuadre típico de busto."""
+    import cv2
+
+    cap = cv2.VideoCapture(str(path))
+    cap.set(cv2.CAP_PROP_POS_FRAMES, frame_index)
+    ok, frame = cap.read()
+    cap.release()
+    if not ok:
+        return 0.5, 0.35
+    h, w = frame.shape[:2]
+    gray = cv2.cvtColor(cv2.resize(frame, (w // 2, h // 2)), cv2.COLOR_BGR2GRAY)
+    if not hasattr(cv2, "CascadeClassifier"):  # OpenCV 5 movió el detector clásico a contrib
+        return 0.5, 0.35
+    cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
+    faces = cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=6, minSize=(40, 40))
+    if len(faces) == 0:
+        return 0.5, 0.35
+    x, y, fw, fh = max(faces, key=lambda f: f[2] * f[3])
+    return (x + fw / 2) * 2 / w, (y + fh / 2) * 2 / h
+
+
+def punch_crop(width: int, height: int, zoom: float, anchor: tuple[float, float]) -> str:
+    """Recorte para el plano cerrado: la cara queda a la misma altura relativa que en el abierto."""
+    cw, ch = round(width / zoom / 2) * 2, round(height / zoom / 2) * 2
+    ax, ay = anchor
+    x = min(max(0, round(ax * width - cw / 2)), width - cw)
+    y = min(max(0, round(ay * height - ay * ch)), height - ch)
+    return f"crop={cw}:{ch}:{x}:{y},scale={width}:{height}:flags=lanczos"
+
+
+def punch_cuts(src: Path, dst: Path, fps: float, frames: int, joins: list[Join], zoom: float = 1.12) -> None:
+    """Corte limpio en cada unión, alternando plano abierto / cerrado (punch-in).
+
+    No mezcla imágenes (sin efecto fantasma). Los cuadros intrusos se quitan junto con el
+    mismo tramo de audio, que suele caer en una pausa."""
+    from .media import probe
+
+    info = probe(src)
+    bounds = [0]
+    for j in joins:
+        bounds += [j.end_a, j.start_b]
+    bounds.append(frames)
+    segs = [(bounds[k], bounds[k + 1]) for k in range(0, len(bounds), 2)]
+    g, labels = [], []
+    for k, (a, b) in enumerate(segs):
+        chain = f"[0:v]trim=start_frame={a}:end_frame={b},setpts=PTS-STARTPTS"
+        if k % 2 == 1:
+            chain += "," + punch_crop(info.width, info.height, zoom, face_anchor(src, (a + b) // 2))
+        g.append(chain + f",setsar=1[v{k}]")
+        labels.append(f"[v{k}]")
+    g.append(f"{''.join(labels)}concat=n={len(segs)}:v=1:a=0,format=yuv420p[vout]")
+    gaps = [(j.end_a / fps, j.start_b / fps) for j in joins if j.gap]
+    if info.has_audio and gaps:
+        expr = "+".join(f"between(t,{a:.4f},{b - 0.0005:.4f})" for a, b in gaps)
+        g.append(f"[0:a]aselect='not({expr})',asetpts=N/SR/TB[aout]")
+        amap = ["-map", "[aout]", "-c:a", "pcm_s16le"]
+    else:
+        amap = ["-map", "0:a?", "-c:a", "copy"]
+    script = dst.with_suffix(".punch.txt")
+    script.write_text(";\n".join(g), encoding="utf-8")
+    try:
+        run(["ffmpeg", "-hide_banner", "-y", "-i", str(src), "-filter_complex_script", str(script),
+             "-map", "[vout]", *amap, "-c:v", "libx264", "-crf", "12", "-preset", "fast",
+             str(dst.with_suffix(".mov"))])
+        dst.with_suffix(".mov").replace(dst)
+    finally:
+        script.unlink(missing_ok=True)
+
+
+def repair_motion(src: Path, work_dir: Path, fade: float = 0.25, transition: str = "punch",
+                  zoom: float = 1.12) -> tuple[Path, list[str]]:
     """Devuelve el video reparado (o el original si no hacía falta) y notas para el reporte."""
     notes: list[str] = []
     work_dir.mkdir(parents=True, exist_ok=True)
@@ -200,10 +271,15 @@ def repair_motion(src: Path, work_dir: Path, fade: float = 0.25) -> tuple[Path, 
         plan = plan_repair(current)
     if plan.joins:
         fixed = work_dir / "joins.mp4"
-        smooth_joins(current, fixed, plan.fps, plan.frames, plan.joins, fade)
+        if transition == "fade":
+            smooth_joins(current, fixed, plan.fps, plan.frames, plan.joins, fade)
+            how = "suavizado con fundido"
+        else:
+            punch_cuts(current, fixed, plan.fps, plan.frames, plan.joins, zoom)
+            how = "convertido en corte con cambio de encuadre"
         for j in plan.joins:
             t = j.end_a / plan.fps
             extra = f" (se quitaron {j.gap} cuadros intrusos)" if j.gap else ""
-            notes.append(f"Salto entre clips en {int(t // 60)}:{t % 60:05.2f} suavizado con fundido{extra}.")
+            notes.append(f"Salto entre clips en {int(t // 60)}:{t % 60:05.2f} {how}{extra}.")
         current = fixed
     return current, notes
