@@ -94,3 +94,52 @@ def crear(fondo: Path, lineas: list[str], salida: Path, acento: str = "#F8CB12",
             break
         calidad -= 6
     return salida
+
+
+def crear_con_personaje(pose: Path, lineas: list[str], salida: Path, fondo=(17, 22, 58), fondo2=(30, 40, 100),
+                        acento: str = "#FFC23C", etiqueta: str | None = None, fuente: str | None = None) -> Path:
+    """Miniatura de marca: personaje recortado (PNG con transparencia) a la derecha y texto grande a la izquierda."""
+    if not 1 <= len(lineas) <= 3:
+        raise ValueError("Usa entre 1 y 3 líneas de texto.")
+    img = Image.new("RGB", (ANCHO, ALTO), fondo)
+    d = ImageDraw.Draw(img)
+    for r in range(900, 0, -6):  # halo detrás del personaje para separarlo del fondo
+        t = 1 - r / 900
+        d.ellipse([ANCHO * 0.74 - r, ALTO * 0.55 - r, ANCHO * 0.74 + r, ALTO * 0.55 + r],
+                  fill=tuple(int(fondo[i] + (fondo2[i] - fondo[i]) * t) for i in range(3)))
+    p = Image.open(pose).convert("RGBA")
+    alto = int(ALTO * 1.02)
+    p = p.resize((int(p.width * alto / p.height), alto), Image.LANCZOS)
+    x = ANCHO - p.width + int(p.width * 0.08)
+    borde = Image.new("RGBA", p.size, (255, 255, 255, 0))
+    borde.putalpha(p.split()[3].point(lambda v: 255 if v > 10 else 0).filter(ImageFilter.MaxFilter(13)))
+    blanco = Image.new("RGBA", p.size, (255, 255, 255, 255))
+    blanco.putalpha(borde.split()[3])
+    img.paste(blanco, (x, ALTO - p.height + 10), blanco)          # contorno blanco tipo sticker
+    img.paste(p, (x, ALTO - p.height + 10), p)
+    d = ImageDraw.Draw(img)
+    zona = ANCHO * 0.56
+    y = ALTO // 2 - (len(lineas) * 165) // 2
+    for linea in lineas:
+        destacada = linea.startswith("*") and linea.endswith("*")
+        txt = linea.strip("*").upper()
+        tam = 180
+        while tam > 60 and d.textlength(txt, font=_fuente(tam, fuente)) > zona:
+            tam -= 6
+        f = _fuente(tam, fuente)
+        w = d.textlength(txt, font=f)
+        if destacada:
+            alto_t = f.getbbox(txt)[3]
+            d.rounded_rectangle([46, y - 4, 46 + w + 36, y + alto_t + 20], radius=20, fill=acento)
+            d.text((64, y), txt, font=f, fill=fondo)
+        else:
+            d.text((60, y), txt, font=f, fill="#FFFFFF", stroke_width=max(4, tam // 24), stroke_fill="#000000")
+        y += int(tam * 1.1)
+    if etiqueta:
+        f = _fuente(46, fuente)
+        w = d.textlength(etiqueta.upper(), font=f)
+        d.rounded_rectangle([50, 40, 50 + w + 40, 112], radius=16, fill="#FF3B3B")
+        d.text((70, 50), etiqueta.upper(), font=f, fill="#FFFFFF")
+    salida.parent.mkdir(parents=True, exist_ok=True)
+    img.save(salida, "JPEG", quality=92, optimize=True)
+    return salida
