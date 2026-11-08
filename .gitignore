@@ -6,3 +6,4 @@ output/
 *.egg-info/
 .pytest_cache/
 input_videos/
+.claude/settings.local.json
