@@ -141,6 +141,14 @@ Para quitar frases de la narración agrega `"remove": [{"phrase": "en el horizon
 
 Cada gráfico define su imagen, su posición en píxeles y en qué frase entra y sale (ver `examples/graficos_ejemplo.json`). Las frases ignoran mayúsculas, acentos y puntuación; `offset` adelanta o atrasa en segundos y `"end": "video_end"` lo deja hasta el final.
 
+### Limpiar una voz clonada o TTS
+
+Algunas herramientas de clonación meten fragmentos sueltos sin sentido ("ción", "sión") en las pausas de comas y puntos, y dejan silencios largos. Este comando los detecta con la transcripción y corta por energía, sin comerse sílabas reales:
+
+```bash
+python -m ugc_agency limpiar-voz voz.wav            # genera voz_limpio.wav
+```
+
 ## Reglas de la agencia
 
 Están en `ugc_agency/guidelines.py` y se inyectan en todos los agentes:

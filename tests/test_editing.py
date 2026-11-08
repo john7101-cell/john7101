@@ -113,3 +113,12 @@ def test_punch_crop_stays_inside_frame():
     # una cara pegada al borde no saca el recorte del cuadro
     w, h, x, y = (int(v) for v in punch_crop(1080, 1920, 1.3, (0.98, 0.02)).split(",")[0][5:].split(":"))
     assert x + w <= 1080 and y >= 0
+
+
+def test_detecta_fragmentos_fantasma():
+    from ugc_agency.editing.voiceover import ARTEFACTO, _norm
+
+    for t in ["ción", "¡Susión!", "Sución.", "sion"]:
+        assert ARTEFACTO.match(_norm(t)), t
+    for t in ["acción", "normativa", "Mándanos", "sí", "son"]:
+        assert not ARTEFACTO.match(_norm(t)), t

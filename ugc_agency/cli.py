@@ -100,6 +100,18 @@ def cmd_compose(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_limpiar_voz(args: argparse.Namespace) -> int:
+    from .editing.voiceover import limpiar_voz
+
+    src = Path(args.audio)
+    dst = Path(args.out) if args.out else src.with_name(src.stem + "_limpio.wav")
+    cortes, dur, final = limpiar_voz(src, dst, pausa_max=args.pausa_max, language=args.language)
+    for c in cortes:
+        print(f"  ✂ {c.inicio:6.2f}-{c.fin:6.2f}s  {c.motivo}")
+    print(f"\n✔ {dur:.1f}s → {final:.1f}s  ({dst})")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="ugc-agency", description="Agencia UGC con agentes de IA para TikTok Shop USA")
     parser.add_argument("-v", "--verbose", action="store_true")
@@ -151,6 +163,13 @@ def main(argv: list[str] | None = None) -> int:
     comp.add_argument("--whisper-model", default="small")
     comp.add_argument("--language", default=None)
     comp.set_defaults(func=cmd_compose)
+
+    lv = sub.add_parser("limpiar-voz", help="Quita fragmentos fantasma ('ción') y silencios largos de una voz clonada/TTS")
+    lv.add_argument("audio")
+    lv.add_argument("--out", default=None)
+    lv.add_argument("--pausa-max", type=float, default=0.38, help="Pausas más largas que esto se acortan (s)")
+    lv.add_argument("--language", default="es")
+    lv.set_defaults(func=cmd_limpiar_voz)
 
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO if args.verbose else logging.WARNING)
