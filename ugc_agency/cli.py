@@ -112,6 +112,49 @@ def cmd_limpiar_voz(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_yt_estado(args: argparse.Namespace) -> int:
+    from .youtube.canal import estado
+
+    for k, v in estado().items():
+        print(f"  {k:22s} {v}")
+    return 0
+
+
+def cmd_yt_ideas(args: argparse.Namespace) -> int:
+    from .youtube.ideas import investigar
+
+    for v in investigar(args.tema, dias=args.dias, region=args.region)[: args.n]:
+        print(f"  {v['vistas_dia']:>8}/día  {v['vistas']:>9} vistas  {v['titulo'][:70]}  ({v['canal']})")
+    return 0
+
+
+def cmd_yt_miniatura(args: argparse.Namespace) -> int:
+    from .youtube.miniatura import crear, cuadro_de_video
+
+    fondo = Path(args.fondo)
+    if fondo.suffix.lower() in (".mp4", ".mov", ".webm"):
+        fondo = cuadro_de_video(fondo, args.segundo, Path(args.out).with_suffix(".fondo.png"))
+    out = crear(fondo, args.linea, Path(args.out), acento=args.acento, lado=args.lado, etiqueta=args.etiqueta)
+    print(f"✔ {out} ({out.stat().st_size // 1024} KB)")
+    return 0
+
+
+def cmd_yt_publicar(args: argparse.Namespace) -> int:
+    from datetime import datetime
+
+    from .youtube.publicar import subir
+    from .youtube.seo import Metadatos
+
+    meta = Metadatos.cargar(Path(args.meta))
+    for p in meta.validar():
+        print(f"  ⚠ {p}")
+    cuando = datetime.fromisoformat(args.programar) if args.programar else None
+    r = subir(Path(args.video), meta, Path(args.miniatura) if args.miniatura else None,
+              Path(args.subtitulos) if args.subtitulos else None, publicar_en=cuando, confirmar=args.confirmar)
+    print(json.dumps(r, indent=2, ensure_ascii=False, default=str))
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="ugc-agency", description="Agencia UGC con agentes de IA para TikTok Shop USA")
     parser.add_argument("-v", "--verbose", action="store_true")
@@ -170,6 +213,32 @@ def main(argv: list[str] | None = None) -> int:
     lv.add_argument("--pausa-max", type=float, default=0.38, help="Pausas más largas que esto se acortan (s)")
     lv.add_argument("--language", default="es")
     lv.set_defaults(func=cmd_limpiar_voz)
+
+    ye = sub.add_parser("yt-estado", help="Estado del canal y progreso hacia la monetización")
+    ye.set_defaults(func=cmd_yt_estado)
+    yi = sub.add_parser("yt-ideas", help="Videos del tema que más vistas por día están sumando")
+    yi.add_argument("tema")
+    yi.add_argument("--dias", type=int, default=90)
+    yi.add_argument("--region", default="MX")
+    yi.add_argument("-n", type=int, default=15)
+    yi.set_defaults(func=cmd_yt_ideas)
+    ym = sub.add_parser("yt-miniatura", help="Crea una miniatura 1280x720 (fondo = imagen o video)")
+    ym.add_argument("fondo")
+    ym.add_argument("--linea", action="append", required=True, help="Línea de texto (repetible, máx. 3; *así* = acento)")
+    ym.add_argument("--out", required=True)
+    ym.add_argument("--segundo", type=float, default=1.0, help="Si el fondo es un video, segundo del cuadro")
+    ym.add_argument("--acento", default="#F8CB12")
+    ym.add_argument("--lado", choices=["izquierda", "derecha"], default="izquierda")
+    ym.add_argument("--etiqueta", default=None)
+    ym.set_defaults(func=cmd_yt_miniatura)
+    yp = sub.add_parser("yt-publicar", help="Sube video + miniatura + subtítulos (privado o programado)")
+    yp.add_argument("video")
+    yp.add_argument("--meta", required=True, help="JSON de metadatos (título, descripción, etiquetas…)")
+    yp.add_argument("--miniatura", default=None)
+    yp.add_argument("--subtitulos", default=None)
+    yp.add_argument("--programar", default=None, help="Fecha ISO con zona, p.ej. 2026-11-12T18:00:00-05:00")
+    yp.add_argument("--confirmar", action="store_true", help="Sin esto solo se simula la subida")
+    yp.set_defaults(func=cmd_yt_publicar)
 
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO if args.verbose else logging.WARNING)

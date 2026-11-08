@@ -9,6 +9,7 @@ dependencies = ["anthropic>=2.4.0", "pydantic>=2.7"]
 dev = ["pytest>=8"]
 # Editor de video (requiere además ffmpeg instalado en el sistema)
 editing = ["faster-whisper>=1.0", "scenedetect[opencv-headless]>=0.6"]
+youtube = ["google-api-python-client>=2.100", "google-auth>=2.20", "google-auth-oauthlib>=1.0", "Pillow>=10"]
 
 [project.scripts]
 ugc-agency = "ugc_agency.cli:main"

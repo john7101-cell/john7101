@@ -149,6 +149,21 @@ Algunas herramientas de clonación meten fragmentos sueltos sin sentido ("ción"
 python -m ugc_agency limpiar-voz voz.wav            # genera voz_limpio.wav
 ```
 
+## Canal de YouTube
+
+Gestión del canal con la API oficial de YouTube: estado y progreso hacia la monetización, investigación de ideas, miniaturas, SEO y publicación.
+
+```bash
+python -m ugc_agency yt-estado                                  # suscriptores, horas vistas y % hacia el YPP
+python -m ugc_agency yt-ideas "videos ugc con ia" --region MX   # qué está sumando más vistas por día
+python -m ugc_agency yt-miniatura reel.mp4 --segundo 7 --linea "Esta persona" --linea "*no existe*" --out mini.jpg
+python -m ugc_agency yt-publicar video.mp4 --meta meta.json --miniatura mini.jpg --programar 2026-11-12T18:00:00-05:00 --confirmar
+```
+
+- Sin `--confirmar` la publicación solo se **simula**. Los videos se suben **privados o programados** para revisarlos antes de que sean públicos.
+- Siempre se declara el contenido sintético (`containsSyntheticMedia`) cuando hay voces o caras realistas generadas con IA.
+- Conexión del canal (una vez): `docs/youtube_conexion.md`.
+
 ## Reglas de la agencia
 
 Están en `ugc_agency/guidelines.py` y se inyectan en todos los agentes:
