@@ -1,0 +1,16 @@
+{
+  "tema": "Taller presencial de comunicación en pareja (ejemplo)",
+  "objetivo": "Generar expectativa y que escriban por WhatsApp",
+  "audiencia": "Personas adultas que sienten que cuidan la relación más que a sí mismas",
+  "tono": "cercano, cálido, sin dramatismo",
+  "formato": "teaser",
+  "duracion_s": 30,
+  "n_tomas": 4,
+  "toma_max_s": 8,
+  "voz": "clonada",
+  "genero_neutro": true,
+  "datos_confirmados": ["fecha: 15 de marzo", "modalidad: presencial, 3 horas", "lugar: por confirmar"],
+  "en_pantalla": ["WhatsApp: 300 000 0000"],
+  "prohibido": ["última oportunidad", "garantizado"],
+  "notas": "No prometer resultados. La voz dice la acción ('escríbeme por WhatsApp'); el número va en pantalla."
+}

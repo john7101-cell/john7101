@@ -3,6 +3,7 @@
     python -m ugc_agency run examples/heatless_curler.json --concepts 5 --out output/curler
     python -m ugc_agency voice output/curler --voice-id <ELEVENLABS_VOICE_ID>
     python -m ugc_agency edit mi_video.mp4            # o un enlace de Drive/Dropbox
+    python -m ugc_agency guion taller.docx --duracion 30 --tomas 4 --neutro --dato "fecha: 29 de noviembre"
 """
 
 from __future__ import annotations
@@ -112,6 +113,63 @@ def cmd_limpiar_voz(args: argparse.Namespace) -> int:
     return 0
 
 
+def _brief_desde_args(args: argparse.Namespace):
+    from .guiones import GuionBrief, leer_material
+
+    if args.brief.lower().endswith(".json"):
+        brief = GuionBrief.model_validate(json.loads(Path(args.brief).read_text(encoding="utf-8")))
+    else:
+        material = leer_material(args.brief)
+        brief = GuionBrief(tema=args.tema or Path(args.brief).stem, material=material)
+    for campo in ("objetivo", "audiencia", "tono", "formato", "voz"):
+        if getattr(args, campo, None):
+            setattr(brief, campo, getattr(args, campo))
+    if args.duracion:
+        brief.duracion_s = args.duracion
+    if args.tomas:
+        brief.n_tomas = args.tomas
+    if args.toma_max:
+        brief.toma_max_s = args.toma_max
+    if args.neutro:
+        brief.genero_neutro = True
+    brief.datos_confirmados += args.dato or []
+    brief.en_pantalla += args.pantalla or []
+    brief.prohibido += args.prohibido or []
+    return brief
+
+
+def cmd_guion(args: argparse.Namespace) -> int:
+    from .guiones import EstudioGuiones, exportar, resumen
+    from .llm import ClaudeLLM
+
+    brief = _brief_desde_args(args)
+    res = EstudioGuiones(ClaudeLLM(model=args.model, effort=args.effort), umbral=args.umbral,
+                         max_rondas=args.rondas, on_step=print).run(brief)
+    out = exportar(res, args.out or f"output/guion-{datetime.now():%Y%m%d-%H%M%S}")
+    print(f"\n{'✔ APROBADO' if res.aprobado else '! CON OBSERVACIONES'} en {res.rondas} ronda(s) → {out}/guion.md")
+    print(resumen(res.hallazgos))
+    return 0 if res.aprobado else 1
+
+
+def cmd_guion_revisar(args: argparse.Namespace) -> int:
+    from .guiones import EstudioGuiones, resumen, revisar_tomas
+    from .guiones.estudio import exportar
+
+    brief = _brief_desde_args(args)
+    texto = Path(args.guion).read_text(encoding="utf-8")
+    tomas = [t.strip() for t in texto.split("\n\n") if t.strip()]
+    print(f"{len(tomas)} toma(s) detectadas (una por párrafo).")
+    hallazgos = revisar_tomas(list(enumerate(tomas, 1)), brief)
+    print(resumen(hallazgos))
+    if args.sin_llm:
+        return 1 if any(h.nivel == "error" for h in hallazgos) else 0
+    from .llm import ClaudeLLM
+    res = EstudioGuiones(ClaudeLLM(model=args.model, effort=args.effort)).revisar_existente(brief, tomas)
+    out = exportar(res, args.out or "output/revision-guion")
+    print(f"\nRevisión completa → {out}/guion.md")
+    return 0 if res.aprobado else 1
+
+
 def cmd_yt_estado(args: argparse.Namespace) -> int:
     from .youtube.canal import estado
 
@@ -213,6 +271,36 @@ def main(argv: list[str] | None = None) -> int:
     lv.add_argument("--pausa-max", type=float, default=0.38, help="Pausas más largas que esto se acortan (s)")
     lv.add_argument("--language", default="es")
     lv.set_defaults(func=cmd_limpiar_voz)
+
+    def _opts_brief(sp: argparse.ArgumentParser) -> None:
+        sp.add_argument("brief", help="Brief: .json (GuionBrief) o un documento (.md .txt .docx .pdf .pptx .xlsx)")
+        sp.add_argument("--tema", default=None, help="Nombre del tema si el brief es un documento")
+        sp.add_argument("--objetivo", default=None)
+        sp.add_argument("--audiencia", default=None)
+        sp.add_argument("--tono", default=None)
+        sp.add_argument("--formato", default=None, help="reel, teaser, historia dramática, anuncio, YouTube…")
+        sp.add_argument("--voz", choices=["clonada", "generada", "sin definir"], default=None)
+        sp.add_argument("--duracion", type=int, default=None, help="Segundos totales objetivo")
+        sp.add_argument("--tomas", type=int, default=None, help="Cantidad de tomas/clips")
+        sp.add_argument("--toma-max", type=float, default=None, help="Duración máxima por toma (s)")
+        sp.add_argument("--neutro", action="store_true", help="Sin énfasis ni formas de género")
+        sp.add_argument("--dato", action="append", help="Dato confirmado, p.ej. 'fecha: 29 de noviembre' (repetible)")
+        sp.add_argument("--pantalla", action="append", help="Dato solo para pantalla, p.ej. 'WhatsApp: 315 322 8900'")
+        sp.add_argument("--prohibido", action="append", help="Frase o promesa que no se puede usar")
+        sp.add_argument("--model", default=None)
+        sp.add_argument("--effort", default=None)
+        sp.add_argument("--out", default=None)
+
+    gu = sub.add_parser("guion", help="Estudio de guiones: escribe, mide, revisa y reescribe hasta aprobar")
+    _opts_brief(gu)
+    gu.add_argument("--rondas", type=int, default=3)
+    gu.add_argument("--umbral", type=int, default=7, help="Puntaje mínimo (1-10) en cada criterio")
+    gu.set_defaults(func=cmd_guion)
+    gr = sub.add_parser("guion-revisar", help="Revisa un guion que ya existe (un párrafo por toma): medidas + revisor")
+    _opts_brief(gr)
+    gr.add_argument("guion", help="Archivo de texto con el guion: un párrafo por toma")
+    gr.add_argument("--sin-llm", action="store_true", help="Solo revisión automática (no usa la API)")
+    gr.set_defaults(func=cmd_guion_revisar)
 
     ye = sub.add_parser("yt-estado", help="Estado del canal y progreso hacia la monetización")
     ye.set_defaults(func=cmd_yt_estado)

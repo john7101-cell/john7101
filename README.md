@@ -149,6 +149,35 @@ Algunas herramientas de clonación meten fragmentos sueltos sin sentido ("ción"
 python -m ugc_agency limpiar-voz voz.wav            # genera voz_limpio.wav
 ```
 
+## Estudio de guiones
+
+Un **Guionista** y un **Revisor** especializados en voz hablada en español (reels, teasers, dramas, YouTube). Escriben **por tomas**
+que caben en un clip de video con IA (8 s), con las **emociones marcadas para voz clonada** (ElevenLabs v3), y se corrigen entre sí
+hasta aprobar. Antes de gastar una llamada a la API, un revisor automático mide lo que se puede medir:
+
+| Revisa | Ejemplo de hallazgo |
+|---|---|
+| Duración por toma y total | "Toma 4: ~12 s y el máximo es 8 s (31 palabras)" |
+| Teléfonos y datos de pantalla dichos en voz | "«315…» está marcado como dato de pantalla pero se dice en voz" |
+| Promesas y diagnósticos | "Posible promesa: «cura», «garantizado»" |
+| Datos no confirmados en el brief | "Menciona «diciembre» y ese mes no está en los datos confirmados" |
+| Información repetida entre tomas | "Se repite «te espero el veintinueve…»" |
+| Género marcado (si el brief pide neutralidad) | "«mujeres» y el brief pide neutralidad" |
+
+```bash
+# Escribir: acepta .json, .md, .txt o documentos del cliente (.docx .pdf .pptx .xlsx, con MarkItDown)
+python -m ugc_agency guion taller.docx --tema "Taller Volver a mí" --duracion 30 --tomas 4 --neutro \
+    --dato "fecha: 29 de noviembre" --pantalla "WhatsApp: 315 322 8900" --prohibido "garantizado"
+# Revisar un guion que ya tienes (un párrafo por toma); --sin-llm = solo las medidas automáticas, sin API
+python -m ugc_agency guion-revisar guion.txt --duracion 30 --tomas 4 --neutro --sin-llm
+```
+
+Entrega en la carpeta de salida: `guion.md` (tabla, revisión y pendientes), `voz_con_emociones.txt`, `voz_sin_etiquetas.txt`,
+una `tomaN_voz.txt` por toma y `guion.json`. Hay un ejemplo en `examples/brief_guion_ejemplo.json`.
+
+También están como **subagentes de Claude Code** (`.claude/agents/guionista.md` y `revisor-de-guiones.md`), generados desde la misma
+biblia de reglas (`ugc_agency/guiones/reglas.py`, que es la fuente de verdad: si la cambias, regenera los dos archivos).
+
 ## Canal de YouTube
 
 Gestión del canal con la API oficial de YouTube: estado y progreso hacia la monetización, investigación de ideas, miniaturas, SEO y publicación.
