@@ -149,6 +149,26 @@ Algunas herramientas de clonación meten fragmentos sueltos sin sentido ("ción"
 python -m ugc_agency limpiar-voz voz.wav            # genera voz_limpio.wav
 ```
 
+## Analista de TikTok, TikTok Shop y Meta Ads (EE. UU.)
+
+Un agente de Claude Code especializado en el mercado estadounidense, para gestionar canales, pauta y viralidad con el objetivo de vender: `.claude/agents/analista-tiktok-us.md`.
+
+**Qué hace**
+- Recibe **pantallazos** (TikTok Analytics, Seller Center, Ads Manager de TikTok/Meta, Shopify) o números, transcribe lo que ve y detecta inconsistencias.
+- Diagnostica de arriba hacia abajo (economía → gancho → retención → clic → conversión → distribución → pauta) y señala el **primer cuello de botella**.
+- Devuelve un informe con semáforo de métricas, hallazgos priorizados, plan de 7 días, ideas de contenido con hooks en inglés, estructura de pauta y riesgos de cumplimiento (IA, claims).
+- No inventa cifras: los rangos son referencias de terceros y las políticas cambiantes se marcan "verificar en Seller Center".
+
+**Cómo usarlo** (dentro de Claude Code): pega los pantallazos y pide, por ejemplo, *"analista-tiktok-us: audita estas capturas de la cuenta X y dime qué mejorar esta semana"*. Trabaja con el `guionista` (desarrolla los guiones de las ideas) y el `revisor-de-guiones`.
+
+**Manuales** (`docs/tiktok_us/`): `metricas.md`, `protocolo_pantallazos.md`, `tiktok_shop.md`, `meta_ads.md`, `cumplimiento_ia.md`, `plantilla_informe.md`.
+
+**Calculadora de métricas** (sin API):
+```bash
+python -m ugc_agency metricas examples/metricas_ejemplo.json
+```
+Calcula hook rate, hold rate, CTR, CVR, CPA, ROAS, margen y **ROAS de equilibrio**, y lo pasa por un semáforo; con muestra chica responde "inconcluso" en vez de concluir.
+
 ## Estudio de guiones
 
 Un **Guionista** y un **Revisor** especializados en voz hablada en español (reels, teasers, dramas, YouTube). Escriben **por tomas**

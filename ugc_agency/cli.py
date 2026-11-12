@@ -3,6 +3,7 @@
     python -m ugc_agency run examples/heatless_curler.json --concepts 5 --out output/curler
     python -m ugc_agency voice output/curler --voice-id <ELEVENLABS_VOICE_ID>
     python -m ugc_agency edit mi_video.mp4            # o un enlace de Drive/Dropbox
+    python -m ugc_agency metricas examples/metricas_ejemplo.json   # diagnóstico de métricas (TikTok/Shop/Meta)
     python -m ugc_agency guion taller.docx --duracion 30 --tomas 4 --neutro --dato "fecha: 29 de noviembre"
 """
 
@@ -170,6 +171,29 @@ def cmd_guion_revisar(args: argparse.Namespace) -> int:
     return 0 if res.aprobado else 1
 
 
+def cmd_metricas(args: argparse.Namespace) -> int:
+    from .mercado_us import reporte_desde_dict
+
+    data = json.loads(Path(args.archivo).read_text(encoding="utf-8"))
+    rep = reporte_desde_dict(data)
+    if args.json:
+        print(json.dumps(rep.a_dict(), ensure_ascii=False, indent=2))
+        return 0
+    print(f"Plataforma: {data.get('plataforma', '—')} · Periodo: {data.get('periodo', '—')}")
+    if rep.economia:
+        e = rep.economia
+        print(f"Margen por pedido: ${e['margen_usd']} ({e['margen_pct']:.0%}) · ROAS de equilibrio: {e['roas_equilibrio']} · CPA máximo: ${e['cpa_maximo_usd']}")
+    iconos = {"verde": "🟢", "ámbar": "🟡", "rojo": "🔴", "sin dato": "⚪", "inconcluso": "⚪"}
+    for h in rep.hallazgos:
+        print(f"  {iconos.get(h.semaforo, '·')} {h.metrica:<11} {h.valor if h.valor is not None else '—':<8} {h.mensaje}")
+    if rep.cuello_de_botella:
+        print(f"\nPrimer cuello de botella: {rep.cuello_de_botella} (arréglalo antes de tocar lo que sigue)")
+    for d in rep.datos_pendientes:
+        print(f"  · pendiente: {d}")
+    print("\nRangos orientativos (terceros), ver docs/tiktok_us/metricas.md. Para el análisis completo usa el agente `analista-tiktok-us`.")
+    return 0
+
+
 def cmd_yt_estado(args: argparse.Namespace) -> int:
     from .youtube.canal import estado
 
@@ -301,6 +325,11 @@ def main(argv: list[str] | None = None) -> int:
     gr.add_argument("guion", help="Archivo de texto con el guion: un párrafo por toma")
     gr.add_argument("--sin-llm", action="store_true", help="Solo revisión automática (no usa la API)")
     gr.set_defaults(func=cmd_guion_revisar)
+
+    mt = sub.add_parser("metricas", help="Diagnóstico de métricas (TikTok/Shop/Meta): semáforo, ROAS de equilibrio y cuello de botella")
+    mt.add_argument("archivo", help="JSON con 'metricas' y 'economia' (ver examples/metricas_ejemplo.json)")
+    mt.add_argument("--json", action="store_true", help="Salida en JSON")
+    mt.set_defaults(func=cmd_metricas)
 
     ye = sub.add_parser("yt-estado", help="Estado del canal y progreso hacia la monetización")
     ye.set_defaults(func=cmd_yt_estado)

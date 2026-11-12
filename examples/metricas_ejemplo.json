@@ -1,0 +1,9 @@
+{
+  "plataforma": "meta",
+  "periodo": "últimos 14 días",
+  "economia": {"precio": 29.99, "cogs": 7.5, "envio": 4.0, "comision_plataforma_pct": 6, "comision_afiliado_pct": 0, "devoluciones_pct": 5},
+  "metricas": {
+    "impresiones": 48000, "vistas_3s": 9100, "thruplays": 2300, "clics": 410,
+    "gasto": 520, "visitas_ficha": 380, "compras": 21, "ingresos": 629.79, "frecuencia": 1.9
+  }
+}
