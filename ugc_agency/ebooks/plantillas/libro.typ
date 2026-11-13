@@ -13,7 +13,7 @@
 #set par(justify: true, leading: 0.68em, first-line-indent: (amount: 1.2em, all: false), spacing: 0.68em)
 #set page(
   width: {{ancho}}, height: {{alto}},
-  margin: (inside: 0.85in, outside: 0.6in, top: 0.75in, bottom: 0.8in),
+  margin: {{margen}},
   binding: left,
 )
 
@@ -40,6 +40,7 @@
 
 // ---------- páginas preliminares (sin cabecera ni folio)
 #set page(header: none, footer: none)
+{{portada}}
 #align(center + horizon)[
   #text(size: 2.2em, weight: "bold")[#titulo-libro]
   #v(0.6em)
@@ -53,7 +54,7 @@
   #set par(first-line-indent: 0em, justify: false)
   {{creditos}}
 ]
-#pagebreak(to: "odd")
+#pagebreak(to: {{abrir}})
 #text(font: sans, weight: "bold", size: 1.3em)[Índice]
 #v(1em)
 #outline(title: none, depth: 1, indent: 0em)
@@ -90,11 +91,11 @@
     if calc.even(pag) { counter(page).display() } else { align(right, counter(page).display()) }
   },
 )
-#counter(page).update(0)
+#counter(page).update({{inicio_folio}})
 
 #let capitulo(numero: none, titulo: none) = {
   [#metadata(none) <fin-bloque>]
-  pagebreak(to: "odd", weak: true)
+  pagebreak(to: {{abrir}}, weak: true)
   v(1.4in)
   if numero != none {
     text(font: sans, size: 0.8em, tracking: 0.25em, fill: acento)[CAPÍTULO #numero]

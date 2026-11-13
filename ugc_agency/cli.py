@@ -292,7 +292,8 @@ def cmd_ebook_maquetar(args: argparse.Namespace) -> int:
     contra = Path(args.contraportada).read_text(encoding="utf-8") if args.contraportada else ""
     rep = maquetar(args.manuscrito, args.out or "output/maqueta", portada=args.portada, tamano=args.tamano,
                    paleta=args.paleta, frase=args.frase or "", imagen=args.imagen, contraportada=contra,
-                   formatos=tuple(args.formatos.split(",")), incrustar_fuentes=args.incrustar_fuentes)
+                   formatos=tuple(args.formatos.split(",")), incrustar_fuentes=args.incrustar_fuentes,
+                   pie=args.pie or "")
     print(resumen_maquetacion(rep))
     return 0 if rep.get("epub_valido", True) else 1
 
@@ -461,7 +462,8 @@ def main(argv: list[str] | None = None) -> int:
     em.add_argument("--paleta", default="noche", help="noche, bosque, terracota, papel, vino")
     em.add_argument("--tamano", default="6x9", choices=["6x9", "5.5x8.5", "5x8", "8.5x11"])
     em.add_argument("--contraportada", default=None, help="Archivo de texto para la contraportada")
-    em.add_argument("--formatos", default="epub,pdf")
+    em.add_argument("--formatos", default="epub,pdf", help="epub, pdf (imprenta) y/o digital (un PDF con portada y contraportada)")
+    em.add_argument("--pie", default=None, help="Línea de contacto en la contraportada digital (web, redes)")
     em.add_argument("--incrustar-fuentes", action="store_true", help="Incrusta EB Garamond en el EPUB")
     em.set_defaults(func=cmd_ebook_maquetar)
 

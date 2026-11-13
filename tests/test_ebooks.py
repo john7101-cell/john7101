@@ -123,3 +123,13 @@ def test_arroba_de_redes_no_es_cita(tmp_path):
     md.write_text('---\ntitle: "Prueba"\nauthor: "A"\n---\n\n# Contacto\n\nInstagram: @usuario_ejemplo\n', encoding="utf-8")
     rep = maquetar(md, tmp_path / "out")
     assert rep["epub_valido"] and rep["paginas"] >= 1
+
+
+@pytest.mark.skipif(shutil.which("pandoc") is None, reason="requiere pandoc")
+def test_edicion_digital_un_solo_pdf(tmp_path):
+    pytest.importorskip("typst")
+    rep = maquetar(EJEMPLO, tmp_path, formatos=("digital",), contraportada="Texto de venta.\nSegundo párrafo.")
+    assert "portada" not in rep and Path(rep["pdf_digital"]).read_bytes()[:4] == b"%PDF"
+    imp = maquetar(EJEMPLO, tmp_path / "imp", formatos=("pdf",))
+    # sin páginas en blanco, pero con portada y contraportada
+    assert rep["paginas_digital"] <= imp["paginas"] + 2

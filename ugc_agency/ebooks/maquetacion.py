@@ -76,7 +76,7 @@ def _pagina_creditos(ms: Manuscrito) -> str:
     anio = ms.meta.get("year", date.today().year)
     lineas = [f"© {anio} {ms.autor or '[PENDIENTE: autor]'}. Todos los derechos reservados.", "",
               "Ninguna parte de esta publicación puede reproducirse, almacenarse o transmitirse por ningún medio "
-              "sin el permiso previo y por escrito del autor, salvo citas breves en reseñas.", ""]
+              "sin el permiso previo y por escrito del titular de los derechos, salvo citas breves en reseñas.", ""]
     if ms.meta.get("isbn"):
         lineas += [f"ISBN: {ms.meta['isbn']}", ""]
     lineas += [str(ms.meta.get("disclaimer") or
@@ -146,7 +146,10 @@ def _esc_typst(s: str) -> str:
 
 
 def construir_pdf(ms: Manuscrito, salida: Path, tamano: str = "6x9", fuente: str = "EB Garamond",
-                  cuerpo_pt: float = 11.0, sangrado: bool = False) -> Path:
+                  cuerpo_pt: float = 11.0, sangrado: bool = False, digital: bool = False,
+                  portada: Path | None = None, contraportada: Path | None = None) -> Path:
+    """PDF de interior. Con `digital=True`: sin páginas en blanco, márgenes simétricos y, si se pasan,
+    portada y contraportada a sangre como primera y última página (edición para venta directa)."""
     try:
         import typst
     except ImportError as e:
@@ -169,13 +172,29 @@ def construir_pdf(ms: Manuscrito, salida: Path, tamano: str = "6x9", fuente: str
         "creditos": _pagina_creditos(ms), "ancho": f"{ancho + (0.125 if sangrado else 0)}in",
         "alto": f"{alto + (0.25 if sangrado else 0)}in", "fuente": fuente, "cuerpo": f"{cuerpo_pt}pt",
         "idioma": ms.idioma[:2],
+        "margen": "(x: 0.7in, top: 0.75in, bottom: 0.8in)" if digital
+                  else "(inside: 0.85in, outside: 0.6in, top: 0.75in, bottom: 0.8in)",
+        "abrir": "none" if digital else '"odd"',
+        "inicio_folio": "1" if digital else "0",
+        "portada": _pagina_imagen(portada, salida.parent) if portada else "",
     }
     for k, v in datos.items():
         plantilla = plantilla.replace("{{" + k + "}}", _esc_typst(v) if k in ("titulo", "subtitulo", "autor", "creditos") else v)
     fuente_typ = salida.with_suffix(".typ")
-    fuente_typ.write_text(plantilla + "\n\n" + "\n\n".join(caps) + "\n", encoding="utf-8")
+    final = ("\n\n" + _pagina_imagen(contraportada, salida.parent)) if contraportada else ""
+    fuente_typ.write_text(plantilla + "\n\n" + "\n\n".join(caps) + final + "\n", encoding="utf-8")
     typst.compile(str(fuente_typ), output=str(salida), root=str(salida.parent))
     return salida
+
+
+def _pagina_imagen(img: Path, carpeta: Path) -> str:
+    """Página Typst con una imagen a sangre (portada/contraportada). Copia la imagen junto al .typ."""
+    img = Path(img)
+    destino = carpeta / img.name
+    if img.resolve() != destino.resolve():
+        shutil.copy(img, destino)
+    return (f'#page(margin: 0pt, header: none, footer: none)[#image("{destino.name}", width: 100%, '
+            f'height: 100%, fit: "cover")]')
 
 
 def contar_paginas_pdf(ruta: Path) -> int:
@@ -223,11 +242,11 @@ PALETAS = {
 
 
 def portada_ebook(titulo: str, subtitulo: str, autor: str, salida: Path, paleta: str = "noche",
-                  frase: str = "", imagen: Path | None = None) -> Path:
+                  frase: str = "", imagen: Path | None = None, ancho: int = 1600, alto: int = 2560) -> Path:
     """Portada 1600×2560 (proporción 1:1.6 recomendada por KDP). Legible en miniatura: título grande y alto contraste."""
     from PIL import Image, ImageDraw, ImageFilter
 
-    W, H = 1600, 2560
+    W, H = ancho, alto
     fondo, fondo2, acento, tinta = PALETAS.get(paleta, PALETAS["noche"])
     img = Image.new("RGB", (W, H), fondo)
     if imagen:
@@ -266,6 +285,47 @@ def portada_ebook(titulo: str, subtitulo: str, autor: str, salida: Path, paleta:
         d.text((margen, H - 430), frase, font=fq, fill=acento)
     fa = _fuente("texto", 80)
     d.text((margen, H - 250), (autor or "").upper(), font=fa, fill=tinta)
+    salida.parent.mkdir(parents=True, exist_ok=True)
+    img.save(salida, quality=92)
+    return salida
+
+
+def contraportada_ebook(texto: str, titulo: str, autor: str, salida: Path, paleta: str = "noche",
+                        pie: str = "", ancho: int = 1800, alto: int = 2700) -> Path:
+    """Contraportada para la edición digital: texto de venta, autor y pie (web/redes)."""
+    from PIL import Image, ImageDraw
+
+    W, H = ancho, alto
+    fondo, fondo2, acento, tinta = PALETAS.get(paleta, PALETAS["noche"])
+    grad = Image.linear_gradient("L").resize((W, H)).transpose(Image.Transpose.FLIP_TOP_BOTTOM)
+    img = Image.composite(Image.new("RGB", (W, H), fondo2), Image.new("RGB", (W, H), fondo), grad)
+    d = ImageDraw.Draw(img)
+    m = 170
+    y = 230
+    d.rectangle((m, y, m + 180, y + 18), fill=acento)
+    y += 70
+    ft = _fuente("titulo", 96)
+    d.text((m, y), titulo.upper(), font=ft, fill=tinta)
+    y += 190
+    parrafos = [p.strip() for p in texto.split("\n") if p.strip()]
+    tam = 54
+    while tam > 34:     # reduce la letra hasta que el texto quepa
+        fx = _fuente("texto", tam)
+        alto_txt = sum(len(_envolver(d, p, fx, W - 2 * m)) * int(tam * 1.45) + int(tam * 0.9) for p in parrafos)
+        if y + alto_txt < H - 520:
+            break
+        tam -= 2
+    fx = _fuente("texto", tam)
+    for i, p in enumerate(parrafos):
+        f = _fuente("serif", tam + 6) if i == len(parrafos) - 1 else fx
+        for linea in _envolver(d, p, f, W - 2 * m):
+            d.text((m, y), linea, font=f, fill=acento if f is not fx else tinta)
+            y += int(tam * 1.45)
+        y += int(tam * 0.9)
+    d.line((m, H - 400, W - m, H - 400), fill=acento, width=3)
+    d.text((m, H - 340), autor.upper(), font=_fuente("titulo", 64), fill=tinta)
+    if pie:
+        d.text((m, H - 240), pie, font=_fuente("texto", 46), fill=tinta)
     salida.parent.mkdir(parents=True, exist_ok=True)
     img.save(salida, quality=92)
     return salida
@@ -316,7 +376,7 @@ def portada_tapa_blanda(portada: Path, contraportada: str, titulo: str, autor: s
 # ------------------------------------------------------------------ todo junto
 def maquetar(ruta_md: str | Path, salida: str | Path, portada: str | Path | None = None, tamano: str = "6x9",
              paleta: str = "noche", frase: str = "", imagen: str | Path | None = None, contraportada: str = "",
-             formatos: tuple[str, ...] = ("epub", "pdf"), incrustar_fuentes: bool = False) -> dict:
+             formatos: tuple[str, ...] = ("epub", "pdf"), incrustar_fuentes: bool = False, pie: str = "") -> dict:
     ruta_md = Path(ruta_md)
     out = Path(salida)
     out.mkdir(parents=True, exist_ok=True)
@@ -324,9 +384,11 @@ def maquetar(ruta_md: str | Path, salida: str | Path, portada: str | Path | None
     base = re.sub(r"[^a-z0-9]+", "-", ms.titulo.lower()).strip("-")[:60] or "libro"
     rep: dict = {"titulo": ms.titulo, "capitulos": sum(1 for s in ms.secciones if s.titulo)}
 
-    p_portada = Path(portada) if portada else portada_ebook(ms.titulo, ms.subtitulo, ms.autor, out / "portada.jpg",
-                                                              paleta, frase, Path(imagen) if imagen else None)
-    rep["portada"] = str(p_portada)
+    p_portada = None
+    if {"epub", "pdf"} & set(formatos):
+        p_portada = Path(portada) if portada else portada_ebook(ms.titulo, ms.subtitulo, ms.autor, out / "portada.jpg",
+                                                                  paleta, frase, Path(imagen) if imagen else None)
+        rep["portada"] = str(p_portada)
     if "epub" in formatos:
         epub = construir_epub(ms, ruta_md, out / f"{base}.epub", p_portada, incrustar_fuentes=incrustar_fuentes)
         ok, informe = validar_epub(epub)
@@ -342,12 +404,24 @@ def maquetar(ruta_md: str | Path, salida: str | Path, portada: str | Path | None
             rep.update(cubierta=str(cub), lomo_in=round(lomo, 3))
         else:
             rep["cubierta"] = f"No generada: {paginas} páginas (KDP pide mínimo 24 para tapa blanda)."
+    if "digital" in formatos:     # un solo PDF: portada + libro + contraportada, para venta directa
+        texto = contraportada or ms.meta.get("description", "") or ms.subtitulo
+        frente = (Path(portada) if portada else
+                  portada_ebook(ms.titulo, ms.subtitulo, ms.autor, out / "portada-digital.jpg", paleta, frase,
+                                Path(imagen) if imagen else None, ancho=1800, alto=2700))
+        contra = contraportada_ebook(texto, ms.titulo, ms.autor, out / "contraportada-digital.jpg", paleta,
+                                     pie or str(ms.meta.get("web", "")))
+        dig = construir_pdf(ms, out / f"{base}-edicion-digital.pdf", tamano, digital=True,
+                            portada=frente, contraportada=contra)
+        rep.update(pdf_digital=str(dig), paginas_digital=contar_paginas_pdf(dig))
     (out / "maquetacion.json").write_text(json.dumps(rep, ensure_ascii=False, indent=2), encoding="utf-8")
     return rep
 
 
 def resumen_maquetacion(rep: dict) -> str:
-    l = [f"«{rep['titulo']}» — {rep['capitulos']} capítulos", f"  Portada: {rep['portada']}"]
+    l = [f"«{rep['titulo']}» — {rep['capitulos']} capítulos"]
+    if "portada" in rep:
+        l.append(f"  Portada: {rep['portada']}")
     if "epub" in rep:
         l.append(f"  EPUB:    {rep['epub']}  ({'válido' if rep['epub_valido'] else 'CON ERRORES'})")
         if not rep["epub_valido"]:
@@ -355,4 +429,6 @@ def resumen_maquetacion(rep: dict) -> str:
     if "pdf" in rep:
         l.append(f"  PDF:     {rep['pdf']}  ({rep['paginas']} páginas)")
         l.append(f"  Cubierta: {rep['cubierta']}" + (f"  (lomo {rep['lomo_in']} in)" if "lomo_in" in rep else ""))
+    if "pdf_digital" in rep:
+        l.append(f"  Digital: {rep['pdf_digital']}  ({rep['paginas_digital']} páginas, con portada y contraportada)")
     return "\n".join(l)
