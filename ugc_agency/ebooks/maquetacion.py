@@ -139,7 +139,17 @@ def validar_epub(ruta: Path) -> tuple[bool, str]:
 
 # ------------------------------------------------------------------ PDF (Typst)
 def _a_typst(md: str) -> str:
-    return _pandoc(["-f", "markdown+smart-citations", "-t", "typst", "--wrap=none"], md)
+    # "________" = espacio para escribir. Se marca antes de Pandoc (una línea solo de guiones bajos
+    # sería un separador horizontal) y se convierte en una línea que llena el renglón.
+    md = re.sub(r"_{6,}", MARCA_LINEA, md)
+    typ = _pandoc(["-f", "markdown+smart-citations", "-t", "typst", "--wrap=none"], md)
+    # al final de un renglón: el resto del renglón + un renglón completo debajo
+    typ = re.sub(re.escape(MARCA_LINEA) + r"(?=[ \t]*$)", LINEA_ESCRITURA + " \\\\ " + LINEA_ESCRITURA, typ, flags=re.M)
+    return typ.replace(MARCA_LINEA, LINEA_ESCRITURA)
+
+
+MARCA_LINEA = "LINEAPARAESCRIBIR"
+LINEA_ESCRITURA = '#box(width: 1fr, height: 1.2em, stroke: (bottom: 0.5pt + luma(140)))[]'
 
 
 def _esc_typst(s: str) -> str:

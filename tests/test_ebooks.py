@@ -133,3 +133,12 @@ def test_edicion_digital_un_solo_pdf(tmp_path):
     imp = maquetar(EJEMPLO, tmp_path / "imp", formatos=("pdf",))
     # sin páginas en blanco, pero con portada y contraportada
     assert rep["paginas_digital"] <= imp["paginas"] + 2
+
+
+def test_lineas_para_escribir_llenan_el_renglon():
+    pytest.importorskip("typst")
+    if shutil.which("pandoc") is None:
+        pytest.skip("requiere pandoc")
+    from ugc_agency.ebooks.maquetacion import LINEA_ESCRITURA, _a_typst
+    typ = _a_typst("- Pregunta: ________\n\nFirma: ________ Fecha: ________ hoy\n")
+    assert typ.count(LINEA_ESCRITURA) == 4 and "\\_" not in typ
