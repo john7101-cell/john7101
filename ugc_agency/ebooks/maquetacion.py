@@ -11,6 +11,7 @@ import re
 import shutil
 import subprocess
 import textwrap
+import unicodedata
 from dataclasses import dataclass, field
 from datetime import date
 from pathlib import Path
@@ -147,7 +148,8 @@ def _esc_typst(s: str) -> str:
 
 def construir_pdf(ms: Manuscrito, salida: Path, tamano: str = "6x9", fuente: str = "EB Garamond",
                   cuerpo_pt: float = 11.0, sangrado: bool = False, digital: bool = False,
-                  portada: Path | None = None, contraportada: Path | None = None) -> Path:
+                  portada: Path | None = None, contraportada: Path | None = None, paleta: str = "",
+                  recursos: Path | None = None) -> Path:
     """PDF de interior. Con `digital=True`: sin páginas en blanco, márgenes simétricos y, si se pasan,
     portada y contraportada a sangre como primera y última página (edición para venta directa)."""
     try:
@@ -166,6 +168,14 @@ def construir_pdf(ms: Manuscrito, salida: Path, tamano: str = "6x9", fuente: str
             caps.append(f"#capitulo(numero: {n}, titulo: [{_esc_typst(s.titulo)}])\n\n{cuerpo}")
         else:
             caps.append(f"#capitulo(titulo: [{_esc_typst(s.titulo)}])\n\n{cuerpo}")
+    if recursos:     # imágenes del manuscrito (![](img/foto.jpg)) junto al .typ
+        for sec in ms.secciones:
+            for rel in re.findall(r"!\[[^\]]*\]\(([^)\s]+)", sec.cuerpo):
+                src, dst = Path(recursos) / rel, salida.parent / rel
+                if src.exists() and src.resolve() != dst.resolve():
+                    dst.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.copy(src, dst)
+    tinta, acento, recuadro = COLORES_INTERIOR.get(paleta, COLORES_POR_DEFECTO)
     plantilla = (PLANTILLAS / "libro.typ").read_text(encoding="utf-8")
     datos = {
         "titulo": ms.titulo, "subtitulo": ms.subtitulo, "autor": ms.autor or "[PENDIENTE: autor]",
@@ -176,6 +186,7 @@ def construir_pdf(ms: Manuscrito, salida: Path, tamano: str = "6x9", fuente: str
                   else "(inside: 0.85in, outside: 0.6in, top: 0.75in, bottom: 0.8in)",
         "abrir": "none" if digital else '"odd"',
         "inicio_folio": "1" if digital else "0",
+        "color_tinta": tinta, "color_acento": acento, "color_recuadro": recuadro,
         "portada": _pagina_imagen(portada, salida.parent) if portada else "",
     }
     for k, v in datos.items():
@@ -238,7 +249,16 @@ PALETAS = {
     "terracota": ("#5A2A1B", "#B5562F", "#F6E7CB", "#FFFFFF"),
     "papel": ("#F3EEE4", "#E4DACA", "#C0392B", "#1B1B1B"),
     "vino": ("#3B0D1C", "#6E1B33", "#F2D0A4", "#FFFFFF"),
+    "rosa": ("#FDE7EF", "#F6C3D6", "#B5487E", "#3A1F2B"),
 }
+
+# Colores del interior (tinta, acento, fondo de recuadros) según la paleta de la portada
+COLORES_INTERIOR = {
+    "rosa": ("#2E1A24", "#B5487E", "#FDEEF4"),
+    "bosque": ("#1B1B1B", "#1E5245", "#EEF4F1"),
+    "noche": ("#1B1B1B", "#1F3A5F", "#EEF2F7"),
+}
+COLORES_POR_DEFECTO = ("#1B1B1B", "#8A2B1F", "#F5F1EA")
 
 
 def portada_ebook(titulo: str, subtitulo: str, autor: str, salida: Path, paleta: str = "noche",
@@ -376,12 +396,14 @@ def portada_tapa_blanda(portada: Path, contraportada: str, titulo: str, autor: s
 # ------------------------------------------------------------------ todo junto
 def maquetar(ruta_md: str | Path, salida: str | Path, portada: str | Path | None = None, tamano: str = "6x9",
              paleta: str = "noche", frase: str = "", imagen: str | Path | None = None, contraportada: str = "",
-             formatos: tuple[str, ...] = ("epub", "pdf"), incrustar_fuentes: bool = False, pie: str = "") -> dict:
+             formatos: tuple[str, ...] = ("epub", "pdf"), incrustar_fuentes: bool = False, pie: str = "",
+             contraportada_img: str | Path | None = None) -> dict:
     ruta_md = Path(ruta_md)
     out = Path(salida)
     out.mkdir(parents=True, exist_ok=True)
     ms = leer_manuscrito(ruta_md)
-    base = re.sub(r"[^a-z0-9]+", "-", ms.titulo.lower()).strip("-")[:60] or "libro"
+    sin_tildes = unicodedata.normalize("NFKD", ms.titulo.lower()).encode("ascii", "ignore").decode()
+    base = re.sub(r"[^a-z0-9]+", "-", sin_tildes).strip("-")[:60] or "libro"
     rep: dict = {"titulo": ms.titulo, "capitulos": sum(1 for s in ms.secciones if s.titulo)}
 
     p_portada = None
@@ -394,7 +416,7 @@ def maquetar(ruta_md: str | Path, salida: str | Path, portada: str | Path | None
         ok, informe = validar_epub(epub)
         rep.update(epub=str(epub), epub_valido=ok, epubcheck=informe)
     if "pdf" in formatos:
-        pdf = construir_pdf(ms, out / f"{base}-interior-{tamano}.pdf", tamano)
+        pdf = construir_pdf(ms, out / f"{base}-interior-{tamano}.pdf", tamano, paleta=paleta, recursos=ruta_md.parent)
         paginas = contar_paginas_pdf(pdf)
         rep.update(pdf=str(pdf), paginas=paginas)
         if paginas >= 24:      # mínimo de KDP para tapa blanda
@@ -409,10 +431,11 @@ def maquetar(ruta_md: str | Path, salida: str | Path, portada: str | Path | None
         frente = (Path(portada) if portada else
                   portada_ebook(ms.titulo, ms.subtitulo, ms.autor, out / "portada-digital.jpg", paleta, frase,
                                 Path(imagen) if imagen else None, ancho=1800, alto=2700))
-        contra = contraportada_ebook(texto, ms.titulo, ms.autor, out / "contraportada-digital.jpg", paleta,
-                                     pie or str(ms.meta.get("web", "")))
+        contra = (Path(contraportada_img) if contraportada_img else
+                  contraportada_ebook(texto, ms.titulo, ms.autor, out / "contraportada-digital.jpg", paleta,
+                                      pie or str(ms.meta.get("web", ""))))
         dig = construir_pdf(ms, out / f"{base}-edicion-digital.pdf", tamano, digital=True,
-                            portada=frente, contraportada=contra)
+                            portada=frente, contraportada=contra, paleta=paleta, recursos=ruta_md.parent)
         rep.update(pdf_digital=str(dig), paginas_digital=contar_paginas_pdf(dig))
     (out / "maquetacion.json").write_text(json.dumps(rep, ensure_ascii=False, indent=2), encoding="utf-8")
     return rep

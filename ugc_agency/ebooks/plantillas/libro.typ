@@ -2,9 +2,9 @@
 #let titulo-libro = [{{titulo}}]
 #let subtitulo-libro = [{{subtitulo}}]
 #let autor-libro = [{{autor}}]
-#let tinta = rgb("#1b1b1b")
+#let tinta = rgb("{{color_tinta}}")
 #let gris = rgb("#6b6b6b")
-#let acento = rgb("#8a2b1f")
+#let acento = rgb("{{color_acento}}")
 #let sans = ("Lato", "Inter")
 
 #set document(title: "{{titulo}}", author: "{{autor}}")
@@ -17,11 +17,13 @@
   binding: left,
 )
 
+#show heading: set text(hyphenate: false)
+#show heading: set par(justify: false)
 // ---------- elementos que emite Pandoc
 #let horizontalrule = align(center, block(above: 1.2em, below: 1.2em, text(fill: gris)[#sym.ast.op #h(0.8em) #sym.ast.op #h(0.8em) #sym.ast.op]))
 #let blockquote(cuerpo) = block(
   width: 100%, inset: (left: 1em, right: 0.8em, y: 0.7em), above: 1.1em, below: 1.1em,
-  stroke: (left: 2pt + acento), fill: rgb("#f5f1ea"),
+  stroke: (left: 2pt + acento), fill: rgb("{{color_recuadro}}"),
   { set par(first-line-indent: 0em); set text(size: 0.95em); cuerpo },
 )
 #show heading.where(level: 2): it => block(above: 1.6em, below: 0.8em, sticky: true,
@@ -30,6 +32,8 @@
   text(font: sans, weight: "bold", size: 0.92em, fill: gris, it.body))
 #show heading.where(level: 4): it => block(above: 1em, below: 0.5em, sticky: true, emph(it.body))
 #show list: set block(above: 0.9em, below: 0.9em)
+#show list: set par(justify: false)
+#show enum: set par(justify: false)
 #show enum: set block(above: 0.9em, below: 0.9em)
 #set list(indent: 0.6em, marker: text(fill: acento)[•])
 #set enum(indent: 0.6em)
@@ -106,4 +110,4 @@
   line(length: 2.5em, stroke: 1.2pt + acento)
   v(0.35in)
 }
-#show heading.where(level: 1): it => block(below: 0em, text(size: 1.9em, weight: "regular", it.body))
+#show heading.where(level: 1): it => block(below: 0em, text(size: 1.9em, weight: "regular", hyphenate: false, it.body))
