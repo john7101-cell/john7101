@@ -28,7 +28,7 @@ Ninguno de estos patrones es un pecado en sí mismo. Son estrategias de superviv
 
 ## El triángulo que se repite
 
-Una herramienta muy útil de la terapia cognitivo-conductual ayuda a ver cómo funciona un patrón. Se suele representar como un triángulo con tres vértices: lo que **pienso**, lo que **siento** y lo que **hago**. Los tres se influyen entre sí, y cuando se conectan de la misma manera muchas veces, forman un circuito que se dispara casi solo.
+Una herramienta muy útil de la terapia cognitivo-conductual, el enfoque con el que trabajo en consulta, ayuda a ver cómo funciona un patrón. Se suele representar como un triángulo con tres vértices: lo que **pienso**, lo que **siento** y lo que **hago**. Los tres se influyen entre sí, y cuando se conectan de la misma manera muchas veces, forman un circuito que se dispara casi solo.
 
 Mira un ejemplo:
 

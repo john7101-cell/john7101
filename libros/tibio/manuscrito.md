@@ -1,11 +1,19 @@
 ---
 title: "Tibio"
 subtitle: "Por qué sabes que algo tiene que cambiar y sigues igual"
-author: "Paola Velasquez"
+author: "Paola Velásquez"
 lang: es
 description: "Un manual para descubrir quién crees que eres, romper los patrones que te frenan y empezar una transformación real."
 disclaimer: "Este libro tiene fines formativos y espirituales. No sustituye la terapia psicológica, el tratamiento médico ni el acompañamiento pastoral. Si atraviesas una crisis emocional, busca ayuda profesional. Citas bíblicas de la versión Reina-Valera 1960."
 ---
+
+# Agradecimientos {.unnumbered}
+
+A mi familia, que me sostiene, me espera y me recuerda cada día quién soy cuando nadie más está mirando. Este libro también es suyo. Gracias por su paciencia con las horas de escritura, por su amor sin condiciones y por ser el primer lugar donde aprendí que la fe se vive en lo cotidiano.
+
+A AMAR/ME, por abrirme las puertas del Congreso TIBIOS y permitirme participar con la charla de la que nació este libro. Gracias por la confianza, por el espacio y por creer que la psicología y la fe pueden conversar en el mismo escenario.
+
+Y a cada persona que aquella tarde escribió sus tres palabras, se atrevió a mirar su patrón y salió decidida. Ustedes fueron la razón de este libro.
 
 # Introducción {.unnumbered}
 
@@ -37,7 +45,7 @@ Tal vez has salido encendido de un culto, de un retiro o de un congreso, convenc
 
 Entonces viene la conclusión que casi todos sacamos: "Me falta compromiso. Tengo que esforzarme más". Y lo intentas. Te levantas más temprano, te apuntas a otro ministerio, lees otro plan de lectura. Funciona unos días. Luego vuelves al punto de partida, ahora con un poco más de culpa.
 
-Quiero proponerte otra mirada. Como terapeuta [PENDIENTE: años y tipo de práctica de la autora] he acompañado a personas que viven exactamente esto, y he aprendido algo que cambió mi manera de entender la tibieza: casi nunca es un problema de fuerza de voluntad. La mayoría de las veces es un problema de identidad.
+Quiero proponerte otra mirada. Soy psicóloga y trabajo desde la terapia cognitivo-conductual. En consulta acompaño a personas que viven exactamente esto, y he aprendido algo que cambió mi manera de entender la tibieza: casi nunca es un problema de fuerza de voluntad. La mayoría de las veces es un problema de identidad.
 
 Seguimos tibios porque construimos una idea de quiénes somos sobre bases equivocadas. Porque nuestro cerebro aprendió patrones que alguna vez nos protegieron y ahora nos frenan. Y porque buscamos el calor del momento en lugar de un proceso de cambio. Nada de eso se arregla apretando los dientes. Se arregla viéndolo, entendiéndolo y tomando decisiones pequeñas que se repiten.
 
@@ -570,7 +578,7 @@ Ninguno de estos patrones es un pecado en sí mismo. Son estrategias de superviv
 
 ## El triángulo que se repite
 
-Una herramienta muy útil de la terapia cognitivo-conductual ayuda a ver cómo funciona un patrón. Se suele representar como un triángulo con tres vértices: lo que **pienso**, lo que **siento** y lo que **hago**. Los tres se influyen entre sí, y cuando se conectan de la misma manera muchas veces, forman un circuito que se dispara casi solo.
+Una herramienta muy útil de la terapia cognitivo-conductual, el enfoque con el que trabajo en consulta, ayuda a ver cómo funciona un patrón. Se suele representar como un triángulo con tres vértices: lo que **pienso**, lo que **siento** y lo que **hago**. Los tres se influyen entre sí, y cuando se conectan de la misma manera muchas veces, forman un circuito que se dispara casi solo.
 
 Mira un ejemplo:
 
@@ -1218,7 +1226,7 @@ Y en ese proceso no estás solo. La carta a Laodicea, que empezó con una repren
 
 Si hiciste los ejercicios de este libro, ya tienes una carta, una acción para siete días y un compañero de camino. Ese es tu siguiente paso: cumplir esta semana.
 
-Después de la primera semana, viene la segunda. Y la tercera. Los primeros cuarenta días suelen ser los más difíciles, porque el camino nuevo todavía es débil y la autopista vieja sigue ahí. Para acompañarte en ese tramo estoy preparando *El lunes después*, un cuaderno de cuarenta días con un ejercicio breve para cada jornada, pensado para usar solo o con tu grupo [PENDIENTE: confirmar título y fecha de publicación del segundo libro].
+Después de la primera semana, viene la segunda. Y la tercera. Los primeros cuarenta días suelen ser los más difíciles, porque el camino nuevo todavía es débil y la autopista vieja sigue ahí. Para acompañarte en ese tramo estoy preparando *El lunes después*, un cuaderno de cuarenta días con un ejercicio breve para cada jornada, pensado para usar solo o con tu grupo.
 
 Mientras tanto, vuelve a este libro cuando lo necesites. Repite la ficha del espejo dentro de seis meses y compara tus tres palabras. Vuelve a la autoevaluación de los cuatro rostros. Usa el plan anti-recaída después de cada experiencia espiritual intensa. Las herramientas no se gastan; se afinan con el uso.
 
@@ -1332,8 +1340,16 @@ Gracias por ser parte de este camino.
 
 # Sobre la autora {.unnumbered}
 
-Paola Velasquez es terapeuta [PENDIENTE: formación, universidad, años de práctica y enfoque clínico]. Acompaña a personas en procesos de identidad, dependencia emocional y cambio de patrones, integrando la psicología con la fe cristiana.
+Paola Velásquez es psicóloga, mentora y consejera bíblica. Trabaja desde la terapia cognitivo-conductual con una mirada humana y, cuando la persona lo desea, integra de forma respetuosa su espiritualidad en el proceso.
+
+Desde su consultorio virtual acompaña a mujeres, hombres y parejas en temas de identidad y autoconocimiento, regulación emocional, heridas y experiencias de vida, vínculos y patrones relacionales, límites y asertividad, y crianza. Ha creado programas como *Mujer de Fortaleza*, para fortalecer la identidad de la mujer más allá de sus roles; *Crianza con propósito*, para padres; *Unidos*, para parejas; y *De saber a hacer*, una mentoría para hombres orientada a la acción.
 
 *Tibio* nace de la charla «El Corazón del Congreso», que impartió en el Congreso TIBIOS organizado por AMAR/ME en noviembre de 2026.
 
-[PENDIENTE: redes sociales, web o contacto de la autora]
+## Contacto
+
+Si quieres seguir el proceso acompañado o conocer sus programas:
+
+- **Web:** paolavelasquez.com
+- **Instagram:** @terapeutacristianapaola
+- **WhatsApp y agenda de una primera conversación de 30 minutos:** a través de paolavelasquez.com

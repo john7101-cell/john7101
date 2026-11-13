@@ -34,7 +34,7 @@ Y en ese proceso no estás solo. La carta a Laodicea, que empezó con una repren
 
 Si hiciste los ejercicios de este libro, ya tienes una carta, una acción para siete días y un compañero de camino. Ese es tu siguiente paso: cumplir esta semana.
 
-Después de la primera semana, viene la segunda. Y la tercera. Los primeros cuarenta días suelen ser los más difíciles, porque el camino nuevo todavía es débil y la autopista vieja sigue ahí. Para acompañarte en ese tramo estoy preparando *El lunes después*, un cuaderno de cuarenta días con un ejercicio breve para cada jornada, pensado para usar solo o con tu grupo [PENDIENTE: confirmar título y fecha de publicación del segundo libro].
+Después de la primera semana, viene la segunda. Y la tercera. Los primeros cuarenta días suelen ser los más difíciles, porque el camino nuevo todavía es débil y la autopista vieja sigue ahí. Para acompañarte en ese tramo estoy preparando *El lunes después*, un cuaderno de cuarenta días con un ejercicio breve para cada jornada, pensado para usar solo o con tu grupo.
 
 Mientras tanto, vuelve a este libro cuando lo necesites. Repite la ficha del espejo dentro de seis meses y compara tus tres palabras. Vuelve a la autoevaluación de los cuatro rostros. Usa el plan anti-recaída después de cada experiencia espiritual intensa. Las herramientas no se gastan; se afinan con el uso.
 

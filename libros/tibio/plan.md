@@ -2,7 +2,7 @@
 
 ## Por qué sabes que algo tiene que cambiar y sigues igual. Un manual para descubrir quién crees que eres, romper los patrones que te frenan y empezar una transformación real
 
-**Autora:** Paola Velasquez, terapeuta
+**Autora:** Paola Velásquez, terapeuta
 
 **Promesa:** Que dejes de pelear contra la tibieza a punta de fuerza de voluntad y empieces a cambiarla donde nace: en la identidad que construiste y en los patrones que tu cerebro aprendió a repetir.
 

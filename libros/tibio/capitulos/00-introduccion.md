@@ -26,7 +26,7 @@ Tal vez has salido encendido de un culto, de un retiro o de un congreso, convenc
 
 Entonces viene la conclusión que casi todos sacamos: "Me falta compromiso. Tengo que esforzarme más". Y lo intentas. Te levantas más temprano, te apuntas a otro ministerio, lees otro plan de lectura. Funciona unos días. Luego vuelves al punto de partida, ahora con un poco más de culpa.
 
-Quiero proponerte otra mirada. Como terapeuta [PENDIENTE: años y tipo de práctica de la autora] he acompañado a personas que viven exactamente esto, y he aprendido algo que cambió mi manera de entender la tibieza: casi nunca es un problema de fuerza de voluntad. La mayoría de las veces es un problema de identidad.
+Quiero proponerte otra mirada. Soy psicóloga y trabajo desde la terapia cognitivo-conductual. En consulta acompaño a personas que viven exactamente esto, y he aprendido algo que cambió mi manera de entender la tibieza: casi nunca es un problema de fuerza de voluntad. La mayoría de las veces es un problema de identidad.
 
 Seguimos tibios porque construimos una idea de quiénes somos sobre bases equivocadas. Porque nuestro cerebro aprendió patrones que alguna vez nos protegieron y ahora nos frenan. Y porque buscamos el calor del momento en lugar de un proceso de cambio. Nada de eso se arregla apretando los dientes. Se arregla viéndolo, entendiéndolo y tomando decisiones pequeñas que se repiten.
 

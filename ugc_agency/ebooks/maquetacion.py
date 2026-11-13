@@ -103,12 +103,13 @@ def construir_epub(ms: Manuscrito, ruta_md: Path, salida: Path, portada: Path | 
     meta = {"title": ms.titulo, "subtitle": ms.subtitulo, "author": ms.autor, "lang": ms.idioma,
             "rights": f"© {ms.meta.get('year', date.today().year)} {ms.autor}",
             "date": str(ms.meta.get("date", date.today().isoformat())),
-            "description": ms.meta.get("description", ms.subtitulo)}
+            "description": ms.meta.get("description") or ms.subtitulo}
+    meta = {k: v for k, v in meta.items() if v}      # EPUBCheck rechaza metadatos vacíos
     if ms.meta.get("isbn"):
         meta["identifier"] = [{"scheme": "ISBN", "text": str(ms.meta["isbn"])}]
     tmp = salida.with_suffix(".tmp.md")
     tmp.write_text("---\n" + json.dumps(meta, ensure_ascii=False) + "\n---\n\n" + "\n".join(cuerpo), encoding="utf-8")
-    args = [str(tmp), "-f", "markdown+smart", "-t", "epub3", "-o", str(salida), "--toc", "--toc-depth=1",
+    args = [str(tmp), "-f", "markdown+smart-citations", "-t", "epub3", "-o", str(salida), "--toc", "--toc-depth=1",
             "--split-level=1", f"--css={css}", f"--resource-path={ruta_md.parent}",
             "--metadata", "toc-title=Índice"]
     if portada:
@@ -137,7 +138,7 @@ def validar_epub(ruta: Path) -> tuple[bool, str]:
 
 # ------------------------------------------------------------------ PDF (Typst)
 def _a_typst(md: str) -> str:
-    return _pandoc(["-f", "markdown+smart", "-t", "typst", "--wrap=none"], md)
+    return _pandoc(["-f", "markdown+smart-citations", "-t", "typst", "--wrap=none"], md)
 
 
 def _esc_typst(s: str) -> str:

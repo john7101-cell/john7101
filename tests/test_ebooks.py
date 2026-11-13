@@ -114,3 +114,12 @@ def test_maquetar_epub_y_pdf(tmp_path):
     assert Path(rep["pdf"]).read_bytes()[:4] == b"%PDF" and rep["paginas"] >= 8
     assert Path(rep["portada"]).exists()
     assert json.loads((tmp_path / "maquetacion.json").read_text(encoding="utf-8"))["titulo"] == "Dinero en orden"
+
+
+@pytest.mark.skipif(shutil.which("pandoc") is None, reason="requiere pandoc")
+def test_arroba_de_redes_no_es_cita(tmp_path):
+    pytest.importorskip("typst")
+    md = tmp_path / "m.md"
+    md.write_text('---\ntitle: "Prueba"\nauthor: "A"\n---\n\n# Contacto\n\nInstagram: @usuario_ejemplo\n', encoding="utf-8")
+    rep = maquetar(md, tmp_path / "out")
+    assert rep["epub_valido"] and rep["paginas"] >= 1
