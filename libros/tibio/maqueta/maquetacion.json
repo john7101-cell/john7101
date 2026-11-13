@@ -1,0 +1,12 @@
+{
+  "titulo": "Tibio",
+  "capitulos": 15,
+  "portada": "libros/tibio/maqueta/portada.jpg",
+  "epub": "libros/tibio/maqueta/tibio.epub",
+  "epub_valido": true,
+  "epubcheck": "EPUBCheck: sin errores ni avisos.",
+  "pdf": "libros/tibio/maqueta/tibio-interior-6x9.pdf",
+  "paginas": 83,
+  "cubierta": "libros/tibio/maqueta/tibio-cubierta-6x9.pdf",
+  "lomo_in": 0.187
+}
