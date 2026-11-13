@@ -198,6 +198,52 @@ una `tomaN_voz.txt` por toma y `guion.json`. Hay un ejemplo en `examples/brief_g
 También están como **subagentes de Claude Code** (`.claude/agents/guionista.md` y `revisor-de-guiones.md`), generados desde la misma
 biblia de reglas (`ugc_agency/guiones/reglas.py`, que es la fuente de verdad: si la cambias, regenera los dos archivos).
 
+## Editorial de ebooks
+
+Un equipo editorial que escribe y maqueta **ebooks comerciales de no ficción en español** (guías prácticas,
+negocios, autoayuda, divulgación, recetarios) listos para Amazon KDP, Apple Books, Kobo y Google Play.
+
+| Agente | Qué hace | Entrega |
+|---|---|---|
+| **Estratega editorial** | Posiciona el libro: título, subtítulo con la promesa, ángulo frente a la competencia, guía de voz e índice con objetivo, gancho y herramienta por capítulo | `plan.md` |
+| **Escritor** | Escribe cada capítulo completo con la voz del autor, recordando lo ya contado | `capitulos/NN.md` |
+| **Corrector automático** | Sin API: extensión, frases y párrafos largos, legibilidad Fernández-Huerta, clichés de IA, repeticiones, pasivas, promesas de riesgo, prohibidos y ortografía (Hunspell) | hallazgos |
+| **Editor de desarrollo** | Puntúa 7 criterios (promesa, gancho, claridad, concreción, voz, veracidad, valor comercial) y pide cambios exactos; bucle hasta ≥ 8 | `informe.md` |
+| **Editor comercial** | Descripción HTML de Amazon, 7 palabras clave, categorías, precio, contraportada y petición de reseña | `ficha_venta.json` |
+| **Maquetador** | EPUB 3 validado con EPUBCheck, PDF de imprenta (6×9 y otros) con Typst, portada 1600×2560 y cubierta de tapa blanda con lomo | `maqueta/` |
+
+```
+Brief → Estratega (plan, apruébalo) → por capítulo: Escritor ⇄ Corrector ⇄ Editor → Editor comercial → Maquetador
+```
+
+Instalación (Pandoc, Typst, EPUBCheck, Hunspell español y fuentes EB Garamond/Lato):
+
+```bash
+bash scripts/instalar_ebooks.sh
+```
+
+Uso:
+
+```bash
+# 1) Plan editorial para revisar antes de escribir (puedes editar plan.json)
+python -m ugc_agency ebook examples/ebook_brief.json --out output/dinero --solo-plan
+# 2) Escribir todo el libro y maquetarlo (se puede cortar y relanzar: retoma donde iba)
+python -m ugc_agency ebook examples/ebook_brief.json --out output/dinero --maquetar --paleta bosque
+# Reescribir solo un capítulo (0 = introducción, 99 = conclusión)
+python -m ugc_agency ebook examples/ebook_brief.json --out output/dinero --capitulo 3
+# Maquetar un manuscrito propio (Markdown con front matter; ver examples/manuscrito_muestra.md)
+python -m ugc_agency ebook-maquetar mi_libro.md --out output/maqueta --frase "Sin hojas de cálculo eternas"
+# Corrector automático de cualquier manuscrito (sin API)
+python -m ugc_agency ebook-revisar mi_libro.md --palabras 2500
+```
+
+El brief admite un JSON (`EbookBrief`), un documento con apuntes del autor (.docx/.pdf/.md) o el tema entre comillas.
+`datos_confirmados` es clave: son las **únicas** cifras, estudios y casos que el libro puede usar; lo que falte
+queda marcado como `[PENDIENTE: …]` y aparece en el informe.
+
+En Claude Code también hay tres subagentes que trabajan sin clave de API: **escritor-ebooks**, **editor-ebooks**
+y **maquetador-ebooks** (en `.claude/agents/`).
+
 ## Canal de YouTube
 
 Gestión del canal con la API oficial de YouTube: estado y progreso hacia la monetización, investigación de ideas, miniaturas, SEO y publicación.

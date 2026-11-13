@@ -9,6 +9,8 @@ dependencies = ["anthropic>=2.4.0", "pydantic>=2.7"]
 dev = ["pytest>=8"]
 # Editor de video (requiere además ffmpeg instalado en el sistema)
 editing = ["faster-whisper>=1.0", "scenedetect[opencv-headless]>=0.6"]
+# Editorial de ebooks (además: pandoc, hunspell-es y epubcheck → scripts/instalar_ebooks.sh)
+ebooks = ["typst>=0.13", "Pillow>=10", "PyYAML>=6", "markitdown[docx,pdf]>=0.1"]
 youtube = ["google-api-python-client>=2.100", "google-auth>=2.20", "google-auth-oauthlib>=1.0", "Pillow>=10"]
 
 [project.scripts]
@@ -20,3 +22,6 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 include = ["ugc_agency*"]
+
+[tool.setuptools.package-data]
+"ugc_agency.ebooks" = ["plantillas/*"]

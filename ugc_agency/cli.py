@@ -5,6 +5,9 @@
     python -m ugc_agency edit mi_video.mp4            # o un enlace de Drive/Dropbox
     python -m ugc_agency metricas examples/metricas_ejemplo.json   # diagnóstico de métricas (TikTok/Shop/Meta)
     python -m ugc_agency guion taller.docx --duracion 30 --tomas 4 --neutro --dato "fecha: 29 de noviembre"
+    python -m ugc_agency ebook examples/ebook_brief.json --out output/mi-libro --solo-plan   # índice para aprobar
+    python -m ugc_agency ebook examples/ebook_brief.json --out output/mi-libro --maquetar    # escribe y maqueta
+    python -m ugc_agency ebook-maquetar manuscrito.md --out output/maqueta                  # EPUB + PDF + portadas
 """
 
 from __future__ import annotations
@@ -237,6 +240,77 @@ def cmd_yt_publicar(args: argparse.Namespace) -> int:
     return 0
 
 
+# ------------------------------------------------------------------ ebooks
+def _ebook_brief(args: argparse.Namespace):
+    from .ebooks import EbookBrief
+    from .guiones import leer_material
+
+    if args.brief.lower().endswith(".json"):
+        brief = EbookBrief.model_validate(json.loads(Path(args.brief).read_text(encoding="utf-8")))
+    elif Path(args.brief).exists():
+        brief = EbookBrief(tema=args.tema or Path(args.brief).stem, material=leer_material(args.brief))
+    else:
+        brief = EbookBrief(tema=args.brief)
+    for campo in ("autor", "lector", "tono"):
+        if getattr(args, campo, None):
+            setattr(brief, campo, getattr(args, campo))
+    if args.palabras:
+        brief.palabras_objetivo = args.palabras
+    if args.capitulos:
+        brief.n_capitulos = args.capitulos
+    return brief
+
+
+def cmd_ebook(args: argparse.Namespace) -> int:
+    from .ebooks import EstudioEbook, maquetar, resumen_maquetacion
+    from .llm import ClaudeLLM
+
+    brief = _ebook_brief(args)
+    out = Path(args.out or f"output/ebook-{datetime.now():%Y%m%d-%H%M%S}")
+    # capítulos largos: más margen de salida (por debajo del límite de peticiones no-streaming)
+    llm = ClaudeLLM(model=args.model, effort=args.effort, max_tokens=21000)
+    estudio = EstudioEbook(llm, out, umbral=args.umbral, max_rondas=args.rondas, on_step=print)
+    if args.solo_plan:
+        estudio.planificar(brief, args.notas or "", rehacer=args.replanificar)
+        print(f"\nPlan listo → {out}/plan.md  (revísalo; edita plan.json si quieres y vuelve a lanzar sin --solo-plan)")
+        return 0
+    libro = estudio.run(brief, args.notas or "", replanificar=args.replanificar,
+                        solo=set(args.capitulo) if args.capitulo else None)
+    pendientes = [r for r in libro.capitulos if not r.aprobado]
+    print(f"\n{'✔' if not pendientes else '!'} Manuscrito → {out}/manuscrito.md · informe → {out}/informe.md")
+    if args.maquetar:
+        rep = maquetar(out / "manuscrito.md", out / "maqueta", paleta=args.paleta,
+                       frase=libro.ficha.texto_portada if libro.ficha else "",
+                       contraportada=libro.ficha.contraportada if libro.ficha else "")
+        print(resumen_maquetacion(rep))
+    return 0 if not pendientes else 1
+
+
+def cmd_ebook_maquetar(args: argparse.Namespace) -> int:
+    from .ebooks import maquetar, resumen_maquetacion
+
+    contra = Path(args.contraportada).read_text(encoding="utf-8") if args.contraportada else ""
+    rep = maquetar(args.manuscrito, args.out or "output/maqueta", portada=args.portada, tamano=args.tamano,
+                   paleta=args.paleta, frase=args.frase or "", imagen=args.imagen, contraportada=contra,
+                   formatos=tuple(args.formatos.split(",")), incrustar_fuentes=args.incrustar_fuentes)
+    print(resumen_maquetacion(rep))
+    return 0 if rep.get("epub_valido", True) else 1
+
+
+def cmd_ebook_revisar(args: argparse.Namespace) -> int:
+    from .ebooks import contar_palabras, fernandez_huerta, leer_manuscrito, resumen, revisar_texto
+
+    ms = leer_manuscrito(args.archivo)
+    hs = []
+    for s in ms.secciones:
+        hs += revisar_texto(s.cuerpo, s.titulo or "preliminares", args.palabras, args.prohibido or [],
+                            ortografia=not args.sin_ortografia)
+    texto = "\n\n".join(s.cuerpo for s in ms.secciones)
+    print(f"«{ms.titulo}»: {contar_palabras(texto)} palabras, legibilidad Fernández-Huerta {fernandez_huerta(texto)}\n")
+    print(resumen(hs))
+    return 1 if any(h.nivel == "error" for h in hs) else 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="ugc-agency", description="Agencia UGC con agentes de IA para TikTok Shop USA")
     parser.add_argument("-v", "--verbose", action="store_true")
@@ -356,6 +430,47 @@ def main(argv: list[str] | None = None) -> int:
     yp.add_argument("--programar", default=None, help="Fecha ISO con zona, p.ej. 2026-11-12T18:00:00-05:00")
     yp.add_argument("--confirmar", action="store_true", help="Sin esto solo se simula la subida")
     yp.set_defaults(func=cmd_yt_publicar)
+
+    eb = sub.add_parser("ebook", help="Editorial de ebooks: plan, capítulos revisados, ficha de venta y (opcional) maqueta")
+    eb.add_argument("brief", help="JSON con EbookBrief (ver examples/ebook_brief.json), un documento con apuntes o el tema entre comillas")
+    eb.add_argument("--tema", default=None)
+    eb.add_argument("--autor", default=None)
+    eb.add_argument("--lector", default=None)
+    eb.add_argument("--tono", default=None)
+    eb.add_argument("--palabras", type=int, default=None, help="Extensión total objetivo")
+    eb.add_argument("--capitulos", type=int, default=None)
+    eb.add_argument("--solo-plan", action="store_true", help="Solo el plan editorial (título, índice) para aprobarlo antes")
+    eb.add_argument("--replanificar", action="store_true", help="Rehace el plan aunque ya exista")
+    eb.add_argument("--notas", default=None, help="Indicaciones para el estratega (p. ej. 'más casos prácticos')")
+    eb.add_argument("--capitulo", type=int, action="append", help="Reescribe solo este capítulo (0 = intro, 99 = conclusión)")
+    eb.add_argument("--rondas", type=int, default=3)
+    eb.add_argument("--umbral", type=int, default=8, help="Puntaje mínimo (1-10) en cada criterio del editor")
+    eb.add_argument("--maquetar", action="store_true", help="Al terminar, genera EPUB, PDF y portadas")
+    eb.add_argument("--paleta", default="noche", help="noche, bosque, terracota, papel, vino")
+    eb.add_argument("--model", default=None)
+    eb.add_argument("--effort", default=None)
+    eb.add_argument("--out", default=None)
+    eb.set_defaults(func=cmd_ebook)
+
+    em = sub.add_parser("ebook-maquetar", help="Manuscrito Markdown → EPUB validado, PDF de imprenta, portada y cubierta KDP")
+    em.add_argument("manuscrito", help="Markdown con front matter (title, subtitle, author); cada '# ' es un capítulo")
+    em.add_argument("--out", default=None)
+    em.add_argument("--portada", default=None, help="Imagen de portada propia (si no, se diseña una)")
+    em.add_argument("--imagen", default=None, help="Foto/ilustración de fondo para la portada diseñada")
+    em.add_argument("--frase", default=None, help="Frase corta para la portada")
+    em.add_argument("--paleta", default="noche", help="noche, bosque, terracota, papel, vino")
+    em.add_argument("--tamano", default="6x9", choices=["6x9", "5.5x8.5", "5x8", "8.5x11"])
+    em.add_argument("--contraportada", default=None, help="Archivo de texto para la contraportada")
+    em.add_argument("--formatos", default="epub,pdf")
+    em.add_argument("--incrustar-fuentes", action="store_true", help="Incrusta EB Garamond en el EPUB")
+    em.set_defaults(func=cmd_ebook_maquetar)
+
+    er = sub.add_parser("ebook-revisar", help="Corrector automático de un manuscrito (sin API): ritmo, clichés, promesas, ortografía")
+    er.add_argument("archivo")
+    er.add_argument("--palabras", type=int, default=None, help="Extensión objetivo por capítulo")
+    er.add_argument("--prohibido", action="append")
+    er.add_argument("--sin-ortografia", action="store_true")
+    er.set_defaults(func=cmd_ebook_revisar)
 
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO if args.verbose else logging.WARNING)

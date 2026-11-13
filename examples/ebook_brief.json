@@ -1,0 +1,20 @@
+{
+  "tema": "Finanzas personales para freelancers y trabajadores independientes en Latinoamérica",
+  "autor": "[Tu nombre o seudónimo]",
+  "lector": "Freelancers de 25 a 40 años (diseño, programación, marketing, traducción) con ingresos irregulares que nunca saben cuánto pueden gastar y temen la declaración de impuestos",
+  "transformacion": "Tener un sistema de tres cuentas, un sueldo fijo, un colchón de 3 meses y los impuestos apartados, revisándolo en 30 minutos al mes",
+  "tono": "cercano, directo y práctico; humor ligero; cero sermones",
+  "genero": "guía práctica",
+  "palabras_objetivo": 22000,
+  "n_capitulos": 9,
+  "mercado": "Amazon KDP en español (EE. UU., México, España)",
+  "precio_usd": 4.99,
+  "competidores": ["Padre rico, padre pobre — Robert Kiyosaki", "La transformación total de su dinero — Dave Ramsey"],
+  "datos_confirmados": [
+    "El método se basa en la experiencia del autor con 40 clientes freelance entre 2021 y 2025",
+    "Regalías KDP: 70 % entre 2,99 y 9,99 USD"
+  ],
+  "prohibido": ["hazte rico", "libertad financiera en 30 días", "consejos de inversión en criptomonedas"],
+  "material": "",
+  "notas": "Cada capítulo debe incluir una plantilla o checklist descargable descrita en el texto. Los porcentajes de impuestos dependen del país: remite siempre a un asesor."
+}
