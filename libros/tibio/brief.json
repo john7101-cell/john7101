@@ -1,0 +1,37 @@
+{
+  "tema": "La tibieza espiritual entendida desde la identidad, los patrones de dependencia y la neuroplasticidad, con base en Apocalipsis 3:14-22",
+  "autor": "Paola Velasquez",
+  "lector": "Cristianos de 18 a 45 años que sirven, asisten y 'hacen todo bien', pero sienten que por dentro no avanzan: mucha actividad religiosa, poca transformación. Saben que son tibios y no entienden por qué siguen igual.",
+  "transformacion": "Identificar su identidad operativa y su patrón dominante de tibieza, entender por qué el cerebro lo repite y salir con una decisión escrita, una acción para 7 días y un plan para que no se apague después del evento.",
+  "idioma": "español latino neutro",
+  "tono": "cercano, honesto y esperanzador; terapeuta que acompaña, no predicador que regaña; directo sin culpa; frases cortas; ejercicios en primera persona",
+  "genero": "autoayuda",
+  "palabras_objetivo": 25000,
+  "n_capitulos": 10,
+  "mercado": "Amazon KDP en español (EE. UU., Colombia, México, España) y venta directa en congresos e iglesias",
+  "competidores": [],
+  "datos_confirmados": [
+    "La autora es Paola Velasquez, terapeuta (psicóloga) con enfoque en identidad y dependencia",
+    "El libro nace de la charla 'El Corazón del Congreso' (Bloque 10) del Congreso TIBIOS, organizado por AMAR/ME el 15 de noviembre de 2026, presentada por Julius e Isa",
+    "La base bíblica del congreso es Apocalipsis 3:14-22, enseñada por el Pastor Villa",
+    "Textos de apoyo: Romanos 12:2, Efesios 4:22-24, Jeremías 17:9, 2 Corintios 5:17",
+    "Marco de la charla: identidad declarada vs. identidad operativa",
+    "Tres fuentes erradas de identidad: heridas del pasado, comparación y rendimiento espiritual",
+    "Cinco señales de identidad en dependencia: cuesta estar a solas con Dios sin actividad; el valor cambia según lo que digan otros; se necesita reconocimiento para seguir sirviendo; cuesta recibir corrección sin sentirse atacado; uno se identifica más con sus heridas que con su llamado",
+    "Cuatro patrones de la tibieza: el rendidor espiritual, el comparador, el evitador de profundidad y el dependiente de validación, cada uno con su pregunta de autoevaluación",
+    "Tres condiciones del cambio: consciencia, repetición de lo nuevo y conexión emocional",
+    "Dinámicas: ejercicio de las tres palabras ('¿de dónde vienen?'), reflexión de las tres preguntas, carta a ti mismo en 4 pasos, una acción concreta antes del próximo domingo, declaración voluntaria ante otros",
+    "Frase eje: 'La tibieza no se derrota en un congreso. Se derrota en el lunes, en el martes, en el miércoles, cuando nadie te ve.'",
+    "Marcos de referencia generales (sin citar datos concretos): neuroplasticidad, teoría del apego de John Bowlby, terapia cognitivo-conductual aplicada a hábitos, concepto de codependencia"
+  ],
+  "prohibido": [
+    "Afirmar que Romanos 12:2 'describe científicamente' la neuroplasticidad (decir que resuena o dialoga con ella)",
+    "Citar a Joe Dispenza como autoridad científica",
+    "Prometer sanidad, curas o cambios garantizados",
+    "Diagnósticos clínicos al lector",
+    "Estudios, cifras o porcentajes no confirmados",
+    "Testimonios presentados como reales sin autorización (usar casos ilustrativos marcados como tales)"
+  ],
+  "material": "Ver charla-bloque10-tibios.md (guion completo de la charla de 90 minutos).",
+  "notas": "Incluir aviso de que el libro no sustituye la terapia ni el acompañamiento pastoral, y recomendar ayuda profesional ante heridas profundas, depresión, ansiedad o dependencia. Cada capítulo cierra con un ejercicio escrito. Usar 'tú'. Versículos citados de forma breve; indicar versión (por defecto Reina-Valera 1960) [PENDIENTE: confirmar versión]."
+}

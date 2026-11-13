@@ -1,0 +1,11 @@
+{
+  "titulo": "Tibio",
+  "capitulos": 2,
+  "portada": "libros/tibio/muestra/portada.jpg",
+  "epub": "libros/tibio/muestra/tibio.epub",
+  "epub_valido": true,
+  "epubcheck": "EPUBCheck: sin errores ni avisos.",
+  "pdf": "libros/tibio/muestra/tibio-interior-6x9.pdf",
+  "paginas": 16,
+  "cubierta": "No generada: 16 páginas (KDP pide mínimo 24 para tapa blanda)."
+}
