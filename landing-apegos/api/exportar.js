@@ -90,7 +90,7 @@ export default async function handler(req, res) {
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     return res.status(200).send(`<!doctype html><html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
-<title>Asistentes · Apegos Emocionales</title>
+<title>Asistentes · Volver a mí</title>
 <style>body{font-family:system-ui,Arial,sans-serif;margin:24px;color:#2B1A22;background:#F6EFEC}
 h1{font-size:1.4rem}table{border-collapse:collapse;width:100%;background:#fff;font-size:.9rem}
 th,td{border:1px solid #D9C3CA;padding:8px;text-align:left;vertical-align:top}th{background:#B5566B;color:#F6EFEC}
