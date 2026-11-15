@@ -1,0 +1,49 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    #padres-stage { position: absolute; inset: 0; }
+    #padres-house { position: absolute; left: 140px; top: 170px; width: 820px; height: 800px; }
+    #padres-col { position: absolute; left: 1040px; top: 220px; width: 800px; }
+    #padres-title { margin-top: 24px; }
+    #padres-title em { color: #e0679a; }
+    .padres-item { display: flex; align-items: center; gap: 22px; margin-top: 26px; font-size: 38px; font-weight: 500; color: #f6e9f0; }
+    .padres-item i { width: 14px; height: 14px; border-radius: 50%; background: #e0679a; display: inline-block; flex: none; }
+    #padres-items { margin-top: 40px; }
+  </style>
+  <div id="root" data-composition-id="padres" data-width="1920" data-height="1080">
+    <div id="padres-stage" class="clip" data-start="0" data-duration="8.95" data-layout-allow-overlap>
+      <svg id="padres-house" viewBox="0 0 820 800" aria-label="Una casa con una familia dentro">
+        <path id="padres-outline" d="M120 380 L 410 120 L 700 380 M170 340 V 700 H 650 V 340" fill="none" stroke="#f0b6d2" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+        <path id="padres-fill" d="M180 345 L 410 140 L 640 345 V 690 H 180 Z" fill="#43283a" />
+        <g id="padres-f1" fill="#f0b6d2"><circle cx="300" cy="470" r="38" /><path d="M240 690 C 240 560, 360 560, 360 690 Z" /></g>
+        <g id="padres-f2" fill="#c98bbf"><circle cx="520" cy="470" r="38" /><path d="M460 690 C 460 560, 580 560, 580 690 Z" /></g>
+        <g id="padres-f3" fill="#f6e9f0"><circle cx="410" cy="560" r="26" /><path d="M370 690 C 370 610, 450 610, 450 690 Z" /></g>
+        <path id="padres-heart" d="M410 330 C 380 306, 376 286, 388 276 C 398 268, 408 272, 410 282 C 412 272, 422 268, 432 276 C 444 286, 440 306, 410 330 Z" fill="#e0679a" />
+      </svg>
+      <div id="padres-col">
+        <div id="padres-eyebrow" class="eyebrow">Mamás y papás</div>
+        <div id="padres-title" class="title"><span class="w">Crianza</span> <span class="w">con</span><br /><em class="w">propósito</em></div>
+        <div id="padres-items">
+          <div id="padres-i1" class="padres-item"><i></i>Pautas coherentes con sus valores</div>
+          <div id="padres-i2" class="padres-item"><i></i>Límites</div>
+          <div id="padres-i3" class="padres-item"><i></i>Acompañamiento emocional</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const S = 48.55, at = (g) => +(g - S).toFixed(3);
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#padres-outline", { strokeDasharray: 2200, strokeDashoffset: 2200 }, { strokeDashoffset: 0, duration: 1.6, ease: "power2.inOut" }, at(48.7));
+    tl.fromTo("#padres-fill", { opacity: 0 }, { opacity: 1, duration: 0.6 }, at(50.0));
+    tl.fromTo("#padres-eyebrow", { opacity: 0 }, { opacity: 1, duration: 0.4 }, at(48.9));
+    tl.fromTo("#padres-title .w", { opacity: 0, filter: "blur(12px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power4.out", stagger: 0.25 }, at(50.0));
+    tl.fromTo("#padres-f1, #padres-f2, #padres-f3", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.5)", stagger: 0.18 }, at(51.6));
+    tl.fromTo("#padres-i1", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out" }, at(52.6));
+    tl.fromTo("#padres-i2", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out" }, at(55.6));
+    tl.fromTo("#padres-i3", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out" }, at(56.4));
+    tl.fromTo("#padres-heart", { opacity: 0, scale: 0.3, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2)" }, at(56.45));
+    tl.to("#padres-stage > *", { opacity: 0, scale: 1.08, filter: "blur(10px)", duration: 0.25, ease: "power3.in" }, at(57.2));
+    window.__timelines["padres"] = tl;
+  </script>
+</template>

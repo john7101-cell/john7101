@@ -1,0 +1,53 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    #objetivo-stage { position: absolute; inset: 0; }
+    #objetivo-title { position: absolute; left: 0; right: 0; top: 110px; text-align: center; }
+    #objetivo-plant { position: absolute; left: 660px; top: 230px; width: 600px; height: 760px; }
+    .objetivo-lbl { position: absolute; font-size: 38px; font-weight: 500; color: #f6e9f0; white-space: nowrap; }
+    .objetivo-lbl b { font-weight: 600; color: #e0679a; margin-right: 14px; font-size: 30px; }
+    #objetivo-l1 { right: 1240px; top: 820px; text-align: right; }
+    #objetivo-l2 { left: 1240px; top: 712px; }
+    #objetivo-l3 { right: 1240px; top: 600px; text-align: right; }
+    #objetivo-l4 { left: 1240px; top: 482px; }
+    #objetivo-close { position: absolute; left: 0; right: 0; top: 960px; text-align: center; font-family: "Playfair Display", serif; font-style: italic; font-size: 52px; color: #f0b6d2; }
+  </style>
+  <div id="root" data-composition-id="objetivo" data-width="1920" data-height="1080">
+    <div id="objetivo-stage" class="clip" data-start="0" data-duration="9.4" data-layout-allow-overlap>
+      <div id="objetivo-title" class="title">¿El objetivo?</div>
+      <svg id="objetivo-plant" viewBox="0 0 600 760" aria-label="Una planta que crece">
+        <path id="objetivo-stem" d="M300 740 C 300 620, 270 560, 300 460 C 330 360, 290 300, 300 160" fill="none" stroke="#8fd1ad" stroke-width="12" stroke-linecap="round" />
+        <path id="objetivo-leaf1" d="M296 640 C 230 600, 170 610, 130 640 C 180 680, 250 680, 296 640 Z" fill="#8fd1ad" />
+        <path id="objetivo-leaf2" d="M302 530 C 370 490, 430 500, 470 530 C 420 570, 350 570, 302 530 Z" fill="#7cc39c" />
+        <path id="objetivo-leaf3" d="M300 400 C 234 360, 174 370, 134 400 C 184 440, 254 440, 300 400 Z" fill="#8fd1ad" />
+        <path id="objetivo-leaf4" d="M302 280 C 370 240, 430 250, 470 280 C 420 320, 350 320, 302 280 Z" fill="#7cc39c" />
+        <g id="objetivo-bloom">
+          <ellipse cx="300" cy="130" rx="34" ry="62" fill="#e0679a" transform="rotate(-35 300 160)" />
+          <ellipse cx="300" cy="130" rx="34" ry="62" fill="#e0679a" transform="rotate(35 300 160)" />
+          <ellipse cx="300" cy="120" rx="34" ry="66" fill="#f0b6d2" />
+          <circle cx="300" cy="160" r="20" fill="#f6e9f0" />
+        </g>
+      </svg>
+      <div id="objetivo-l1" class="objetivo-lbl"><b>01</b>Comprender tu historia</div>
+      <div id="objetivo-l2" class="objetivo-lbl"><b>02</b>Regular tus emociones</div>
+      <div id="objetivo-l3" class="objetivo-lbl"><b>03</b>Poner límites sanos</div>
+      <div id="objetivo-l4" class="objetivo-lbl"><b>04</b>Relacionarte mejor</div>
+      <div id="objetivo-close">Con pasos pequeños y concretos</div>
+    </div>
+  </div>
+  <script>
+    const S = 57.5, at = (g) => +(g - S).toFixed(3);
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#objetivo-title", { opacity: 0, filter: "blur(12px)", scale: 1.1 }, { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.45, ease: "expo.out" }, at(57.65));
+    tl.fromTo("#objetivo-stem", { strokeDasharray: 700, strokeDashoffset: 700 }, { strokeDashoffset: 0, duration: 6.0, ease: "power1.inOut" }, at(58.7));
+    const leaves = [["#objetivo-leaf1", "#objetivo-l1", 59.0, "100% 50%"], ["#objetivo-leaf2", "#objetivo-l2", 60.4, "0% 50%"], ["#objetivo-leaf3", "#objetivo-l3", 62.0, "100% 50%"], ["#objetivo-leaf4", "#objetivo-l4", 63.4, "0% 50%"]];
+    for (const [leaf, lbl, t, origin] of leaves) {
+      tl.fromTo(leaf, { scale: 0, transformOrigin: origin }, { scale: 1, duration: 0.6, ease: "back.out(1.7)" }, at(t));
+      tl.fromTo(lbl, { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power4.out" }, at(t + 0.05));
+    }
+    tl.fromTo("#objetivo-bloom", { scale: 0, transformOrigin: "50% 80%" }, { scale: 1, duration: 0.8, ease: "back.out(1.6)" }, at(64.85));
+    tl.fromTo("#objetivo-close", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power4.out" }, at(64.8));
+    tl.to("#objetivo-stage > *", { opacity: 0, x: 140, filter: "blur(8px)", duration: 0.3, ease: "power3.in" }, at(66.55));
+    window.__timelines["objetivo"] = tl;
+  </script>
+</template>

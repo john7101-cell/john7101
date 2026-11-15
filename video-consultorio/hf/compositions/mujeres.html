@@ -1,0 +1,79 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    #mujeres-stage { position: absolute; inset: 0; }
+    #mujeres-fig { position: absolute; left: 180px; top: 120px; width: 700px; height: 960px; }
+    #mujeres-col { position: absolute; left: 1000px; top: 250px; width: 820px; }
+    #mujeres-pill {
+      display: inline-block; margin-top: 30px; padding: 14px 30px; border-radius: 60px;
+      border: 2px solid rgba(201,139,191,0.6); font-size: 30px; color: #f0b6d2; font-weight: 500;
+    }
+    #mujeres-title { margin-top: 44px; }
+    #mujeres-title2 { margin-top: 10px; font-family: "Playfair Display", serif; font-style: italic; font-size: 64px; color: #f0b6d2; }
+    .mujeres-chip {
+      position: absolute; padding: 16px 34px; border-radius: 16px; font-size: 36px; font-weight: 500;
+      background: #43283a; color: #f6e9f0; border: 2px solid rgba(240,182,210,0.35);
+    }
+    #mujeres-c1 { left: 330px; top: 600px; }
+    #mujeres-c2 { left: 470px; top: 700px; }
+    #mujeres-c3 { left: 300px; top: 800px; }
+  </style>
+  <div id="root" data-composition-id="mujeres" data-width="1920" data-height="1080">
+    <div id="mujeres-stage" class="clip" data-start="0" data-duration="8.8" data-layout-allow-overlap>
+      <svg id="mujeres-fig" viewBox="0 0 700 960" aria-label="Silueta de una mujer">
+        <defs>
+          <radialGradient id="mujeres-glow" cx="50%" cy="45%" r="55%">
+            <stop offset="0" stop-color="#e0679a" stop-opacity="0.55" />
+            <stop offset="1" stop-color="#e0679a" stop-opacity="0" />
+          </radialGradient>
+          <linearGradient id="mujeres-body" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f0b6d2" />
+            <stop offset="1" stop-color="#c98bbf" />
+          </linearGradient>
+        </defs>
+        <circle id="mujeres-halo" cx="350" cy="430" r="330" fill="url(#mujeres-glow)" />
+        <circle id="mujeres-ring" cx="350" cy="430" r="300" fill="none" stroke="#f0b6d2" stroke-width="3" />
+        <g id="mujeres-person" fill="url(#mujeres-body)">
+          <path d="M215 330 C 190 160, 510 160, 485 330 C 480 450, 460 500, 440 520 L 260 520 C 240 500, 220 450, 215 330 Z" fill="#c98bbf" />
+          <ellipse cx="350" cy="330" rx="95" ry="118" />
+          <rect x="314" y="430" width="72" height="90" rx="28" />
+          <path d="M90 960 C 90 640, 210 520, 350 520 C 490 520, 610 640, 610 960 Z" />
+        </g>
+      </svg>
+      <div id="mujeres-c1" class="mujeres-chip">Madre</div>
+      <div id="mujeres-c2" class="mujeres-chip">Pareja</div>
+      <div id="mujeres-c3" class="mujeres-chip">Cuidadora</div>
+      <div id="mujeres-col">
+        <div id="mujeres-eyebrow" class="eyebrow">Mujeres</div>
+        <div id="mujeres-pill">Proceso individual · 3 meses</div>
+        <div id="mujeres-title" class="title"><span class="w">Su</span> <span class="w">identidad,</span></div>
+        <div id="mujeres-title2"><span class="w">más</span> <span class="w">allá</span> <span class="w">de</span> <span class="w">los</span> <span class="w">roles</span></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const S = 19.35, at = (g) => +(g - S).toFixed(3);
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#mujeres-person", { opacity: 0, y: 40 }, { opacity: 0.55, y: 0, duration: 1.0, ease: "expo.out" }, at(19.4));
+    tl.fromTo("#mujeres-ring", { opacity: 0, scale: 0.85, transformOrigin: "50% 50%" }, { opacity: 0.25, scale: 1, duration: 1.2, ease: "expo.out" }, at(19.5));
+    tl.fromTo("#mujeres-halo", { opacity: 0 }, { opacity: 0.15, duration: 1.0 }, at(19.5));
+    tl.fromTo("#mujeres-eyebrow", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, at(19.8));
+    tl.fromTo("#mujeres-pill", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, at(21.4));
+    tl.fromTo("#mujeres-title .w", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power4.out", stagger: 0.2 }, at(23.9));
+    tl.fromTo("#mujeres-title2 .w", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.22, ease: "power4.out", stagger: 0.18 }, at(24.9));
+    // los roles aparecen cuando la voz los nombra y se desprenden de ella
+    const chips = [["#mujeres-c1", 26.2, -260, -120], ["#mujeres-c2", 26.9, 200, -160], ["#mujeres-c3", 27.55, -240, 120]];
+    for (const [id, t, dx, dy] of chips) {
+      tl.fromTo(id, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(1.8)" }, at(t));
+      tl.to(id, { x: dx, y: dy, opacity: 0, filter: "blur(6px)", duration: 0.55, ease: "power2.in" }, at(t + 0.35));
+    }
+    // ella se ilumina
+    tl.to("#mujeres-person", { opacity: 1, duration: 1.2, ease: "power2.out" }, at(26.3));
+    tl.to("#mujeres-ring", { opacity: 1, duration: 1.0, ease: "power2.out" }, at(26.4));
+    tl.to("#mujeres-halo", { opacity: 1, duration: 1.2, ease: "power2.out" }, at(26.4));
+    // salida
+    tl.to("#mujeres-col", { opacity: 0, x: 120, filter: "blur(8px)", duration: 0.25, ease: "power3.in" }, at(27.9));
+    tl.to("#mujeres-fig", { opacity: 0, scale: 1.2, transformOrigin: "50% 45%", duration: 0.3, ease: "power3.in" }, at(27.85));
+    window.__timelines["mujeres"] = tl;
+  </script>
+</template>

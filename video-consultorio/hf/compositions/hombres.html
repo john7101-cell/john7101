@@ -1,0 +1,65 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    #hombres-stage { position: absolute; inset: 0; }
+    #hombres-col { position: absolute; left: 140px; top: 200px; width: 860px; }
+    #hombres-eyebrow span { display: inline-block; }
+    #hombres-title { margin-top: 26px; font-size: 120px; }
+    #hombres-title .hl { color: #e0679a; font-style: italic; font-weight: 400; }
+    #hombres-pill { display: inline-block; margin-top: 34px; padding: 14px 30px; border-radius: 60px; background: #43283a; font-size: 30px; font-weight: 500; color: #f0b6d2; }
+    #hombres-goal { margin-top: 36px; font-family: "Playfair Display", serif; font-style: italic; font-size: 48px; color: #f6e9f0; }
+    #hombres-note { position: absolute; left: 140px; top: 950px; font-size: 28px; color: #c7aabb; }
+    #hombres-steps { position: absolute; left: 1040px; top: 280px; width: 760px; height: 640px; }
+    .hombres-lbl { font-family: "Poppins", sans-serif; }
+  </style>
+  <div id="root" data-composition-id="hombres" data-width="1920" data-height="1080">
+    <div id="hombres-stage" class="clip" data-start="0" data-duration="11.15" data-layout-allow-overlap>
+      <div id="hombres-col">
+        <div id="hombres-eyebrow" class="eyebrow"><span>Hombres</span> · <span>esposos</span> · <span>padres</span></div>
+        <div id="hombres-title" class="title"><span class="w">De</span> <span class="w">saber</span><br /><span class="w hl">a</span> <span class="w hl">hacer</span></div>
+        <div id="hombres-pill">Mentoría · 6 semanas · 1 acción por semana</div>
+        <div id="hombres-goal">Más dirección y coherencia con su fe</div>
+      </div>
+      <div id="hombres-note">Mentoría y formación · no es terapia</div>
+      <svg id="hombres-steps" viewBox="0 0 760 640" aria-label="Seis escalones, uno por semana">
+        <g id="hombres-blocks">
+          <rect id="hombres-s1" x="10" y="520" width="110" height="100" rx="12" />
+          <rect id="hombres-s2" x="135" y="440" width="110" height="180" rx="12" />
+          <rect id="hombres-s3" x="260" y="360" width="110" height="260" rx="12" />
+          <rect id="hombres-s4" x="385" y="280" width="110" height="340" rx="12" />
+          <rect id="hombres-s5" x="510" y="200" width="110" height="420" rx="12" />
+          <rect id="hombres-s6" x="635" y="120" width="110" height="500" rx="12" />
+        </g>
+        <g fill="#f6e9f0" font-size="34" font-weight="600" text-anchor="middle" class="hombres-lbl">
+          <text id="hombres-t1" x="65" y="590">1</text><text id="hombres-t2" x="190" y="590">2</text><text id="hombres-t3" x="315" y="590">3</text>
+          <text id="hombres-t4" x="440" y="590">4</text><text id="hombres-t5" x="565" y="590">5</text><text id="hombres-t6" x="690" y="590">6</text>
+        </g>
+        <g id="hombres-walker" fill="#f6e9f0">
+          <circle cx="65" cy="470" r="16" />
+          <path d="M45 518 C 45 495, 85 495, 85 518 Z" />
+        </g>
+      </svg>
+    </div>
+  </div>
+  <script>
+    const S = 37.4, at = (g) => +(g - S).toFixed(3);
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#hombres-eyebrow span", { opacity: 0.15 }, { opacity: 1, duration: 0.2, stagger: 0.7 }, at(37.8));
+    tl.fromTo("#hombres-eyebrow", { opacity: 0 }, { opacity: 1, duration: 0.3 }, at(37.6));
+    tl.fromTo("#hombres-title .w", { opacity: 0, filter: "blur(12px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power4.out", stagger: 0.28 }, at(39.5));
+    tl.fromTo("#hombres-pill", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "expo.out" }, at(41.6));
+    tl.fromTo("#hombres-blocks rect", { fill: "#3a2233", scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.6, ease: "expo.out", stagger: 0.08 }, at(41.7));
+    tl.fromTo("#hombres-walker", { opacity: 0 }, { opacity: 1, duration: 0.3 }, at(42.6));
+    // una acción concreta cada semana: cada escalón se enciende y la figura sube
+    const tops = [520, 440, 360, 280, 200, 120];
+    for (let k = 0; k < 6; k++) {
+      const t = 43.3 + k * 0.78;
+      tl.to(`#hombres-s${k + 1}`, { fill: "#e0679a", duration: 0.3, ease: "power2.out" }, at(t));
+      tl.to("#hombres-walker", { x: 125 * k, y: tops[k] - 520, duration: 0.45, ease: "power2.inOut" }, at(t - 0.2));
+    }
+    tl.fromTo("#hombres-goal", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.35, ease: "power4.out" }, at(46.3));
+    tl.fromTo("#hombres-note", { opacity: 0 }, { opacity: 1, duration: 0.4 }, at(46.6));
+    tl.to("#hombres-stage > *", { opacity: 0, y: -60, filter: "blur(8px)", duration: 0.3, ease: "power3.in" }, at(48.2));
+    window.__timelines["hombres"] = tl;
+  </script>
+</template>
