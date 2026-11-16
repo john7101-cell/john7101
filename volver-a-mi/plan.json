@@ -1,0 +1,444 @@
+{
+  "titulo": "Volver a mí",
+  "estilo": {
+    "base": "noche",
+    "colores": {
+      "fondo": "#22131F",
+      "fondo2": "#311A2C",
+      "manchas": [
+        "#4A2340",
+        "#5C2A45",
+        "#3A1E3A"
+      ],
+      "acento": "#F2A7BC",
+      "acentoTexto": "#2A0F1E",
+      "texto": "#FFF3F6",
+      "suave": "#D9BFC9"
+    }
+  },
+  "subtitulos": "linea",
+  "frases": [
+    {
+      "texto": "¿Eres una mujer que *puede con todo?*",
+      "emocion": "[confident]",
+      "sinSubtitulos": true,
+      "escena": {
+        "tipo": "titular",
+        "texto": "¿Eres una mujer / que *puede / con todo?*",
+        "icono": "crown",
+        "en": [
+          "puede"
+        ]
+      }
+    },
+    {
+      "texto": "¿Trabajas, produces, *tomas decisiones*,",
+      "emocion": "[confident]",
+      "escena": {
+        "tipo": "lista",
+        "items": [
+          {
+            "texto": "Trabajas",
+            "icono": "briefcase"
+          },
+          {
+            "texto": "Produces",
+            "icono": "trending-up"
+          },
+          {
+            "texto": "Tomas decisiones",
+            "icono": "gavel"
+          }
+        ],
+        "en": [
+          "Trabajas",
+          "produces",
+          "tomas"
+        ]
+      }
+    },
+    {
+      "texto": "eres *independiente* y no necesitas que nadie te *resuelva la vida?*",
+      "emocion": "[confident]",
+      "escena": {
+        "tipo": "comparacion",
+        "izquierda": {
+          "titulo": "En tu vida",
+          "texto": "Independiente, segura, decidida",
+          "icono": "briefcase"
+        },
+        "derecha": {
+          "titulo": "En el amor",
+          "texto": "¿Por qué esperas que te elijan?",
+          "icono": "heart-crack"
+        },
+        "ganador": "ninguno",
+        "en": [
+          "eres",
+          "independiente",
+          "resuelva"
+        ]
+      }
+    },
+    {
+      "texto": "Pero… cuando *te enamoras*,",
+      "emocion": "[whispers]",
+      "entrada": "semitono",
+      "sinSubtitulos": true,
+      "escena": {
+        "tipo": "titular",
+        "etiqueta": "PERO…",
+        "texto": "cuando / *te enamoras…*",
+        "icono": "heart",
+        "en": [
+          "enamoras"
+        ]
+      }
+    },
+    {
+      "texto": "¿por qué terminas necesitando tanto *que alguien te elija?*",
+      "emocion": "[curious]",
+      "escena": {
+        "tipo": "movil",
+        "titulo": "¿Me escribirá?",
+        "subtitulo": "visto 11:47 p. m.",
+        "icono": "message-circle-heart",
+        "pegatina": "en visto",
+        "en": [
+          "por",
+          "necesitando",
+          "alguien"
+        ]
+      }
+    },
+    {
+      "texto": "Te ilusionas rápido, te *entregas* incluso antes de conocer profundamente a esa persona.",
+      "emocion": "[sad]",
+      "escena": {
+        "tipo": "pasos",
+        "pasos": [
+          {
+            "texto": "Te ilusionas rápido",
+            "icono": "sparkles"
+          },
+          {
+            "texto": "Te entregas",
+            "icono": "heart"
+          },
+          {
+            "texto": "…sin conocerlo de verdad",
+            "icono": "eye-off"
+          }
+        ],
+        "en": [
+          "ilusionas",
+          "entregas",
+          "conocer"
+        ]
+      }
+    },
+    {
+      "texto": "Justificas sus ausencias, esperas sus mensajes, *analizas cada palabra,*",
+      "emocion": "[sad]",
+      "escena": {
+        "tipo": "lista",
+        "titulo": "¿Te suena?",
+        "items": [
+          {
+            "texto": "Justificas sus ausencias",
+            "icono": "clock"
+          },
+          {
+            "texto": "Esperas sus mensajes",
+            "icono": "smartphone"
+          },
+          {
+            "texto": "Analizas cada palabra",
+            "icono": "search"
+          }
+        ],
+        "en": [
+          "Justificas",
+          "esperas",
+          "analizas"
+        ]
+      }
+    },
+    {
+      "texto": "perdonas cosas que te duelen y, aunque sabes que algo no está bien, *te cuesta soltar.*",
+      "emocion": "[sad]",
+      "escena": {
+        "tipo": "titular",
+        "etiqueta": "¿TE HA PASADO?",
+        "texto": "sabes que algo / no está bien… / *te cuesta / soltar*",
+        "icono": "heart-crack",
+        "en": [
+          "cuesta"
+        ]
+      }
+    },
+    {
+      "texto": "Y comienzas a preguntarte: ¿por qué siempre termino en *relaciones que me lastiman?*",
+      "emocion": "[curious]",
+      "entrada": "suave",
+      "escena": {
+        "tipo": "pregunta",
+        "pregunta": "¿Por qué siempre termino en relaciones que me lastiman?",
+        "opciones": [
+          "Mala suerte",
+          "Elijo mal",
+          "Hay un patrón"
+        ],
+        "correcta": 2,
+        "en": [
+          "comienzas",
+          "preguntarte",
+          "relaciones"
+        ]
+      }
+    },
+    {
+      "texto": "¿Por qué me cuesta tanto *poner límites?*",
+      "emocion": "[curious]",
+      "sinSubtitulos": true,
+      "escena": {
+        "tipo": "titular",
+        "texto": "¿Por qué / me cuesta / *poner límites?*",
+        "icono": "shield",
+        "en": [
+          "limites"
+        ]
+      }
+    },
+    {
+      "texto": "¿Por qué termino *dando tanto*, esperando tan poco y olvidándome de lo que *yo también necesito?*",
+      "emocion": "[sad]",
+      "escena": {
+        "tipo": "barras",
+        "titulo": "Mi balance afectivo",
+        "barras": [
+          {
+            "etiqueta": "Lo que doy",
+            "valor": 95
+          },
+          {
+            "etiqueta": "Lo que pido",
+            "valor": 25
+          },
+          {
+            "etiqueta": "Para mí",
+            "valor": 6
+          }
+        ],
+        "destacar": 2,
+        "en": [
+          "dando",
+          "esperando",
+          "olvidandome"
+        ]
+      }
+    },
+    {
+      "texto": "Tal vez no necesitas aprender a *ser más fuerte.* Tal vez necesitas *comprender* qué está pasando en tus *vínculos afectivos.*",
+      "emocion": "[confident]",
+      "entrada": "semitono",
+      "escena": {
+        "tipo": "tachado",
+        "antes": "Ser más fuerte",
+        "despues": "Comprenderte",
+        "icono": "sparkles",
+        "en": [
+          "fuerte",
+          "comprender"
+        ]
+      }
+    },
+    {
+      "texto": "En *VOLVER A MÍ* queremos acompañarte a reconocer tus *necesidades afectivas,*",
+      "emocion": "[warm]",
+      "escena": {
+        "tipo": "titular",
+        "etiqueta": "POR ESO NACE",
+        "texto": "*VOLVER / A MÍ*",
+        "icono": "flower-2",
+        "en": [
+          "acompañarte"
+        ]
+      }
+    },
+    {
+      "texto": "comprender tus patrones de *dependencia emocional*, *fortalecer tu identidad* y aprender a construir relaciones donde amar *no signifique abandonarte.*",
+      "emocion": "[warm]",
+      "escena": {
+        "tipo": "lista",
+        "items": [
+          {
+            "texto": "Comprende tus patrones",
+            "icono": "brain"
+          },
+          {
+            "texto": "Fortalece tu identidad",
+            "icono": "user-round-check"
+          },
+          {
+            "texto": "Elige vínculos sanos",
+            "icono": "heart-handshake"
+          }
+        ],
+        "en": [
+          "comprender",
+          "fortalecer",
+          "construir"
+        ]
+      }
+    },
+    {
+      "texto": "Este *5 de diciembre* tienes *una cita contigo.*",
+      "emocion": "[excited]",
+      "entrada": "semitono",
+      "sinSubtitulos": true,
+      "escena": {
+        "tipo": "titular",
+        "etiqueta": "5 DE DICIEMBRE",
+        "texto": "tienes / *una cita / contigo*",
+        "icono": "calendar-heart",
+        "en": [
+          "cita"
+        ]
+      }
+    },
+    {
+      "texto": "Ven a Volver a mí, en *The Ranch Hotel Boutique*, *Santa Elena*, de 1 a 4 de la tarde.",
+      "voz": "Ven a Volver a mí, en The Ranch Hotel Boutique, Santa Elena, de una a cuatro de la tarde.",
+      "emocion": "[warm]",
+      "escena": {
+        "tipo": "ficha",
+        "titulo": "VOLVER A MÍ",
+        "icono": "map-pin",
+        "etiqueta": "presencial",
+        "filas": [
+          [
+            "Fecha",
+            "5 de diciembre"
+          ],
+          [
+            "Hora",
+            "1:00 – 4:00 p. m."
+          ],
+          [
+            "Lugar",
+            "The Ranch Hotel"
+          ],
+          [
+            "Zona",
+            "Santa Elena",
+            true
+          ]
+        ],
+        "en": [
+          "Ven",
+          "Ranch",
+          "Santa",
+          "1"
+        ]
+      }
+    },
+    {
+      "texto": "Inversión: *130.000 pesos.*",
+      "voz": "Inversión: ciento treinta mil pesos.",
+      "emocion": "[confident]",
+      "escena": {
+        "tipo": "contador",
+        "valor": 130000,
+        "prefijo": "$",
+        "etiqueta": "inversión",
+        "icono": "gem",
+        "en": [
+          "Inversion",
+          "pesos"
+        ]
+      }
+    },
+    {
+      "texto": "Porque no se trata de *dejar de amar*, ni de convertirte en una mujer *fría o distante.*",
+      "emocion": "[warm]",
+      "escena": {
+        "tipo": "objecion",
+        "texto": "hay que dejar de amar",
+        "respuesta": "Ni fría ni distante",
+        "en": [
+          "Porque",
+          "fria"
+        ]
+      }
+    },
+    {
+      "texto": "Se trata de aprender a *amar sin perderte*, de reconocer *lo que mereces*",
+      "emocion": "[warm]",
+      "escena": {
+        "tipo": "titular",
+        "etiqueta": "SE TRATA DE",
+        "texto": "amar / *sin perderte*",
+        "icono": "heart-handshake",
+        "en": [
+          "mereces"
+        ]
+      }
+    },
+    {
+      "texto": "y de no volver a *abandonarte* por miedo a que alguien se vaya.",
+      "emocion": "[warm]",
+      "escena": {
+        "tipo": "comparacion",
+        "izquierda": {
+          "titulo": "Por miedo",
+          "texto": "Te abandonas para que no se vaya",
+          "icono": "cloud-rain"
+        },
+        "derecha": {
+          "titulo": "Por amor propio",
+          "texto": "Te eliges a ti, sin perderte",
+          "icono": "sun"
+        },
+        "ganador": "derecha",
+        "en": [
+          "volver",
+          "miedo",
+          "alguien"
+        ]
+      }
+    },
+    {
+      "texto": "Esta vez, *vuelve a ti.* Cupos limitados: *reserva tu lugar.*",
+      "emocion": "[excited]",
+      "sinSubtitulos": true,
+      "escena": {
+        "tipo": "cta",
+        "verbo": "Reserva",
+        "palabra": "TU LUGAR",
+        "texto": "Volver a mí · 5 dic / cupos limitados",
+        "iconos": [
+          "heart",
+          "calendar-heart",
+          "map-pin",
+          "sparkles",
+          "check"
+        ],
+        "en": [
+          "vuelve",
+          "Cupos",
+          "reserva"
+        ]
+      }
+    }
+  ],
+  "portada": {
+    "etiqueta": "5 DE DICIEMBRE",
+    "lineas": [
+      "VOLVER",
+      "*A MÍ*"
+    ],
+    "icono": "heart"
+  },
+  "voz": false
+}

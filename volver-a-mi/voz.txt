@@ -1,0 +1,32 @@
+CÓMO GENERAR LA VOZ EN ELEVENLABS
+1. Entra en elevenlabs.io → Text to Speech.
+2. Modelo: Eleven v4 (o Eleven v3 si no te sale): son los que entienden las etiquetas entre corchetes.
+3. Elige una voz en español (en Voice Library puedes filtrar por acento de España o de Latinoamérica).
+4. Pega el texto de abajo tal cual, con las etiquetas.
+5. Genera, escúchalo y, si te gusta, descarga el MP3 (o WAV) y súbelo al chat.
+   (Si una frase sale rara, vuelve a generar: cada toma sale distinta.)
+6. Al publicar el reel, márcalo como contenido hecho con IA (Instagram y TikTok lo piden si la voz es de IA).
+
+TEXTO (244 palabras, unos 84 s de voz):
+
+[confident] ¿Eres una mujer que puede con todo?
+[confident] ¿Trabajas, produces, tomas decisiones,
+[confident] eres independiente y no necesitas que nadie te resuelva la vida?
+[whispers] Pero… cuando te enamoras,
+[curious] ¿por qué terminas necesitando tanto que alguien te elija?
+[sad] Te ilusionas rápido, te entregas incluso antes de conocer profundamente a esa persona.
+[sad] Justificas sus ausencias, esperas sus mensajes, analizas cada palabra,
+[sad] perdonas cosas que te duelen y, aunque sabes que algo no está bien, te cuesta soltar.
+[curious] Y comienzas a preguntarte: ¿por qué siempre termino en relaciones que me lastiman?
+[curious] ¿Por qué me cuesta tanto poner límites?
+[sad] ¿Por qué termino dando tanto, esperando tan poco y olvidándome de lo que yo también necesito?
+[confident] Tal vez no necesitas aprender a ser más fuerte. Tal vez necesitas comprender qué está pasando en tus vínculos afectivos.
+[warm] En VOLVER A MÍ queremos acompañarte a reconocer tus necesidades afectivas,
+[warm] comprender tus patrones de dependencia emocional, fortalecer tu identidad y aprender a construir relaciones donde amar no signifique abandonarte.
+[excited] Este 5 de diciembre tienes una cita contigo.
+[warm] Ven a Volver a mí, en The Ranch Hotel Boutique, Santa Elena, de una a cuatro de la tarde.
+[confident] Inversión: ciento treinta mil pesos.
+[warm] Porque no se trata de dejar de amar, ni de convertirte en una mujer fría o distante.
+[warm] Se trata de aprender a amar sin perderte, de reconocer lo que mereces
+[warm] y de no volver a abandonarte por miedo a que alguien se vaya.
+[excited] Esta vez, vuelve a ti. Cupos limitados: reserva tu lugar.
