@@ -66,3 +66,35 @@ Static camera with a very slow push-in. The fire crackles and the flames move na
 | 5 – La propuesta | fachada/entrada (llegada) + salón con o sin mujeres |
 | 6 – La cita contigo | panorámica de montañas + fachada (con los datos encima) |
 | 7 – Vuelve a ti | jardín/sendero o terraza al atardecer (espacio abajo para el sticker de reserva) |
+
+---
+
+# Prompts para las fotos reales del sitio
+
+Formato recomendado en Flow: **16:9** (las fotos son horizontales; en 9:16 Flow recortaría o inventaría los lados).
+Yo monto el clip en vertical para la historia, con fondo desenfocado y los textos arriba y abajo.
+
+## Foto 1 · Patio colonial de noche (`fotos/patio-original.jpg`)
+
+**1A · Sin personas (historia 6: «tienes una cita contigo» + datos)**
+```
+Very slow, smooth dolly-in towards the central stone fountain of this colonial courtyard at blue hour. Water flows gently from the fountain, soft ripples and warm light reflections shimmer on the wet tiled floor, palm fronds and hanging plants sway slightly in a light breeze, warm interior lights glow through the arched green stained-glass windows, a few clouds drift slowly in the deep blue sky. Keep the place exactly as in the photo: same architecture, colors, furniture and layout. Do not add or remove objects, signs or text. Realistic camera on a gimbal, photorealistic, natural motion only, no morphing. Ambient sound of water and night insects.
+```
+
+**1B · Con mujeres llegando (historia 7: «esta vez, vuelve a ti»)**
+```
+Static camera with a very slow push-in on this colonial courtyard at blue hour. Two women walk slowly from the left side towards the arched entrance, seen from behind, relaxed and smiling to each other, their reflections on the wet tiled floor. The fountain water flows gently, palms sway slightly, warm lights glow from the windows. Keep the place exactly as in the photo. Photorealistic, natural motion only, no morphing. Ambient sound.
+```
+
+## Foto 2 · Salón con vista al bosque (`fotos/salon-sin-logo.jpg`)
+Usa la versión **sin logo** (le recorté el muñequito de la esquina; si no, Flow lo anima).
+
+**2A · Sin personas (historia 5: «Volver a mí… un encuentro para ti»)**
+```
+Slow lateral camera slide from left to right along the cushioned window bench of this cozy rustic lounge. The warm fairy lights twinkle softly among the hanging vines, pine trees outside the large windows sway gently with light mist drifting through the forest, soft daylight comes in. Keep the room exactly as in the photo: same wooden chairs, tables, beams, cushions and stone floor. Do not add or remove objects or text. Realistic gimbal shot, photorealistic, natural motion only, no morphing. Ambient sound of soft wind and birds.
+```
+
+**2B · Con el grupo de mujeres (historia 5: «reconocer tus necesidades… fortalecer tu identidad»)**
+```
+Slow push-in into this cozy rustic lounge. A small group of five women of different ages sit together at the long wooden table by the window, seen mostly from behind and in profile, talking softly, one woman speaks while the others listen and nod, cups of coffee on the table. Fairy lights twinkle among the vines, pine trees sway outside with light mist. Keep the room exactly as in the photo. Photorealistic, natural motion, no morphing, no distorted faces or hands. Ambient sound of soft conversation.
+```
