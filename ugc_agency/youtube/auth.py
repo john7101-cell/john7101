@@ -37,7 +37,8 @@ def credenciales():
         client_id=os.environ["YT_CLIENT_ID"],
         client_secret=os.environ["YT_CLIENT_SECRET"],
         token_uri="https://oauth2.googleapis.com/token",
-        scopes=SCOPES,
+        # Sin `scopes`: al refrescar se usan los permisos ya concedidos al token.
+        # Pedir más scopes de los concedidos provoca `invalid_scope`.
     )
 
 
