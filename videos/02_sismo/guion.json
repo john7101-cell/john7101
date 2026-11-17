@@ -1,0 +1,124 @@
+{
+  "titulo": "El día que la Ciudad de México se rompió: ¿por qué cayó ESE edificio?",
+  "escenas": [
+    {
+      "id": "gancho",
+      "mood": "tenso",
+      "lineas": [
+        "Diecinueve de septiembre de mil novecientos ochenta y cinco. Poco después de las siete y diecinueve de la mañana, la Ciudad de México empezó a moverse.",
+        "Lo que pasó en los siguientes minutos cambió la ciudad para siempre. Y casi nadie te cuenta por qué pasó."
+      ]
+    },
+    {
+      "id": "quiz",
+      "mood": "tenso",
+      "lineas": [
+        "Imagina tres edificios de la ciudad: uno muy alto, uno de altura intermedia y uno bajo.",
+        "Cuando la tierra se sacude, dos se quedan de pie y uno se viene abajo como si fuera de cartón.",
+        "¿Cuál crees que cayó? Escribe A, B o C en los comentarios antes de seguir.",
+        "La respuesta es la clave de todo este video."
+      ]
+    },
+    {
+      "id": "suelo",
+      "mood": "neutro",
+      "lineas": [
+        "La clave está debajo de la ciudad.",
+        "Buena parte de la capital está construida sobre lo que fue el lago de Texcoco. Esos suelos blandos y llenos de agua funcionan como una gelatina: amplifican el movimiento de la tierra.",
+        "Por eso, dos calles de distancia podían sentir cosas muy distintas. En terreno firme el movimiento duraba poco; en la zona del lago, se alargaba y se volvía más fuerte.",
+        "El epicentro estaba a unos cuatrocientos kilómetros, en la costa del Pacífico de Michoacán. Tuvo una magnitud cercana a ocho punto uno."
+      ]
+    },
+    {
+      "id": "resonancia",
+      "mood": "ligero",
+      "lineas": [
+        "Aquí viene la parte que casi nadie explica.",
+        "Todo lo que se mueve tiene un ritmo natural. Piensa en un columpio: si empujas en el momento justo, cada empujón suma y el columpio sube más y más.",
+        "Los edificios también tienen su ritmo. Los de entre ocho y quince pisos vibraban a un ritmo muy parecido al del suelo lacustre.",
+        "Cuando el suelo y el edificio se mueven igual, la fuerza se suma. A eso se le llama resonancia.",
+        "La Torre Latinoamericana, mucho más alta, tiene un ritmo muy distinto. Por eso se mantuvo de pie.",
+        "Así que el que cayó no fue el más alto, ni el más bajo. Fue el de altura intermedia."
+      ]
+    },
+    {
+      "id": "hospital",
+      "mood": "tenso",
+      "lineas": [
+        "Uno de los golpes más duros fue el Hospital Juárez.",
+        "Su torre central, de doce pisos, se vino abajo. Había personas atrapadas entre los escombros, y varios hospitales dejaron de funcionar justo cuando más se necesitaban."
+      ]
+    },
+    {
+      "id": "bebes",
+      "mood": "calido",
+      "lineas": [
+        "Entre los escombros de ese hospital, los rescatistas encontraron algo que nadie esperaba: bebés recién nacidos con vida.",
+        "En total se rescataron catorce. El presidente de entonces los llamó Hijos de la Nación."
+      ]
+    },
+    {
+      "id": "topos",
+      "mood": "ligero",
+      "lineas": [
+        "Mientras llegaban los equipos oficiales, el rescate lo hicieron vecinos, estudiantes y voluntarios con palas, cubetas y las manos.",
+        "De ese esfuerzo nació un grupo que hoy todos conocen: los Topos.",
+        "Trabajaban en turnos, de día y de noche, entre tuberías rotas, polvo y olor a gas. Cada hueco que abrían podía ser la diferencia entre encontrar a alguien con vida o no.",
+        "Eran voluntarios improvisados que trabajaban sin esperar permiso de nadie."
+      ]
+    },
+    {
+      "id": "cifras",
+      "mood": "tenso",
+      "lineas": [
+        "¿Cuántas personas murieron? Nadie lo sabe con exactitud.",
+        "Las cifras oficiales, las de la Cruz Roja y las estimaciones de los especialistas no coinciden. Hablan de miles, y algunas de más de diez mil.",
+        "Esa falta de cifras claras también es parte de la historia."
+      ]
+    },
+    {
+      "id": "cambio",
+      "mood": "ligero",
+      "lineas": [
+        "Después del sismo, la ciudad cambió. Surgieron organizaciones civiles y las normas de construcción se revisaron.",
+        "La pregunta que dejó el sismo sigue vigente: ¿qué tan preparados estamos hoy?"
+      ]
+    },
+    {
+      "id": "consejo",
+      "mood": "ligero",
+      "lineas": [
+        "Hoy la ciudad cuenta con un sistema de alerta sísmica que avisa segundos antes de que llegue la onda fuerte. Esos segundos sirven para ponerse a salvo.",
+        "Y si te toca sentir un temblor, recuerda la regla básica: agáchate, cúbrete debajo de una mesa resistente y agárrate hasta que pare. Aléjate de ventanas y de objetos que puedan caer.",
+        "Y después de un sismo, revisa a quien esté cerca y evita usar el elevador."
+      ]
+    },
+    {
+      "id": "cierre",
+      "mood": "calido",
+      "lineas": [
+        "Volvamos al principio.",
+        "De los tres edificios, el que cayó fue el de altura intermedia, el que vibró al mismo ritmo que la tierra.",
+        "Si te gustó entender lo que pasó de verdad, suscríbete. Y si quieres otra historia que no te contaron, la Isla de las Muñecas está aquí."
+      ]
+    }
+  ],
+  "fuentes": [
+    "Infobae (2025): cuántos muertos dejó el sismo del 19 de septiembre de 1985",
+    "Infobae (2025): hospitales en ruinas, el impacto del sismo de 1985 sobre el sistema de salud",
+    "BBC Mundo (2025): 40 años del devastador terremoto de Ciudad de México",
+    "Revista de la Universidad de México (1990): Los primeros dos días",
+    "UANL: artículo sobre la Brigada de Rescate Topos Tlatelolco",
+    "La Prensa (Honduras): el niño milagro que nació de entre los muertos",
+    "UNAM: estudio de periodo de vibración del suelo y resonancia en la zona centro (1985)",
+    "Meteored: un terremoto a 400 km de distancia devastó la Ciudad de México"
+  ],
+  "pendientes": [
+    "Confirmar con la memoria oficial de Protección Civil de la CDMX las 'normas de construcción revisadas' (frase general, sin cifras).",
+    "Cifras de muertos: se presentan como rango sin cifra única. No usar un número concreto sin fuente primaria.",
+    "Hora exacta: fuentes dan 7:19 de la mañana; se dice 'poco después de las siete y diecinueve'.",
+    "Magnitud: fuentes citan 8.1 y 8.0; se dice 'cercana a ocho punto uno'.",
+    "Confirmar que el sistema de alerta sísmica sigue activo y vigente (dato general, no está en las fuentes consultadas).",
+    "Los consejos de seguridad son generales; revisar con la guía oficial de Protección Civil antes de publicar."
+  ]
+}

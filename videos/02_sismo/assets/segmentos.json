@@ -1,0 +1,247 @@
+[
+ {
+  "escena": "gancho",
+  "mood": "tenso",
+  "texto": "Diecinueve de septiembre de mil novecientos ochenta y cinco. Poco después de las siete y diecinueve de la mañana, la Ciudad de México empezó a moverse.",
+  "ini": 0.0,
+  "fin": 9.4
+ },
+ {
+  "escena": "gancho",
+  "mood": "tenso",
+  "texto": "Lo que pasó en los siguientes minutos cambió la ciudad para siempre. Y casi nadie te cuenta por qué pasó.",
+  "ini": 9.85,
+  "fin": 16.3
+ },
+ {
+  "escena": "quiz",
+  "mood": "tenso",
+  "texto": "Imagina tres edificios de la ciudad: uno muy alto, uno de altura intermedia y uno bajo.",
+  "ini": 17.1,
+  "fin": 22.775
+ },
+ {
+  "escena": "quiz",
+  "mood": "tenso",
+  "texto": "Cuando la tierra se sacude, dos se quedan de pie y uno se viene abajo como si fuera de cartón.",
+  "ini": 23.225,
+  "fin": 29.025
+ },
+ {
+  "escena": "quiz",
+  "mood": "tenso",
+  "texto": "¿Cuál crees que cayó? Escribe A, B o C en los comentarios antes de seguir.",
+  "ini": 29.475,
+  "fin": 34.2
+ },
+ {
+  "escena": "quiz",
+  "mood": "tenso",
+  "texto": "La respuesta es la clave de todo este video.",
+  "ini": 34.65,
+  "fin": 37.825
+ },
+ {
+  "escena": "suelo",
+  "mood": "neutro",
+  "texto": "La clave está debajo de la ciudad.",
+  "ini": 38.625,
+  "fin": 41.05
+ },
+ {
+  "escena": "suelo",
+  "mood": "neutro",
+  "texto": "Buena parte de la capital está construida sobre lo que fue el lago de Texcoco. Esos suelos blandos y llenos de agua funcionan como una gelatina: amplifican el movimiento de la tierra.",
+  "ini": 41.5,
+  "fin": 52.625
+ },
+ {
+  "escena": "suelo",
+  "mood": "neutro",
+  "texto": "Por eso, dos calles de distancia podían sentir cosas muy distintas. En terreno firme el movimiento duraba poco; en la zona del lago, se alargaba y se volvía más fuerte.",
+  "ini": 53.075,
+  "fin": 63.675
+ },
+ {
+  "escena": "suelo",
+  "mood": "neutro",
+  "texto": "El epicentro estaba a unos cuatrocientos kilómetros, en la costa del Pacífico de Michoacán. Tuvo una magnitud cercana a ocho punto uno.",
+  "ini": 64.125,
+  "fin": 72.65
+ },
+ {
+  "escena": "resonancia",
+  "mood": "ligero",
+  "texto": "Aquí viene la parte que casi nadie explica.",
+  "ini": 73.45,
+  "fin": 76.625
+ },
+ {
+  "escena": "resonancia",
+  "mood": "ligero",
+  "texto": "Todo lo que se mueve tiene un ritmo natural. Piensa en un columpio: si empujas en el momento justo, cada empujón suma y el columpio sube más y más.",
+  "ini": 77.075,
+  "fin": 86.35
+ },
+ {
+  "escena": "resonancia",
+  "mood": "ligero",
+  "texto": "Los edificios también tienen su ritmo. Los de entre ocho y quince pisos vibraban a un ritmo muy parecido al del suelo lacustre.",
+  "ini": 86.8,
+  "fin": 94.875
+ },
+ {
+  "escena": "resonancia",
+  "mood": "ligero",
+  "texto": "Cuando el suelo y el edificio se mueven igual, la fuerza se suma. A eso se le llama resonancia.",
+  "ini": 95.325,
+  "fin": 101.475
+ },
+ {
+  "escena": "resonancia",
+  "mood": "ligero",
+  "texto": "La Torre Latinoamericana, mucho más alta, tiene un ritmo muy distinto. Por eso se mantuvo de pie.",
+  "ini": 101.925,
+  "fin": 108.1
+ },
+ {
+  "escena": "resonancia",
+  "mood": "ligero",
+  "texto": "Así que el que cayó no fue el más alto, ni el más bajo. Fue el de altura intermedia.",
+  "ini": 108.55,
+  "fin": 113.65
+ },
+ {
+  "escena": "hospital",
+  "mood": "tenso",
+  "texto": "Uno de los golpes más duros fue el Hospital Juárez.",
+  "ini": 114.45,
+  "fin": 117.8
+ },
+ {
+  "escena": "hospital",
+  "mood": "tenso",
+  "texto": "Su torre central, de doce pisos, se vino abajo. Había personas atrapadas entre los escombros, y varios hospitales dejaron de funcionar justo cuando más se necesitaban.",
+  "ini": 118.25,
+  "fin": 129.125
+ },
+ {
+  "escena": "bebes",
+  "mood": "calido",
+  "texto": "Entre los escombros de ese hospital, los rescatistas encontraron algo que nadie esperaba: bebés recién nacidos con vida.",
+  "ini": 129.925,
+  "fin": 137.55
+ },
+ {
+  "escena": "bebes",
+  "mood": "calido",
+  "texto": "En total se rescataron catorce. El presidente de entonces los llamó Hijos de la Nación.",
+  "ini": 138.0,
+  "fin": 143.775
+ },
+ {
+  "escena": "topos",
+  "mood": "ligero",
+  "texto": "Mientras llegaban los equipos oficiales, el rescate lo hicieron vecinos, estudiantes y voluntarios con palas, cubetas y las manos.",
+  "ini": 144.575,
+  "fin": 152.625
+ },
+ {
+  "escena": "topos",
+  "mood": "ligero",
+  "texto": "De ese esfuerzo nació un grupo que hoy todos conocen: los Topos.",
+  "ini": 153.075,
+  "fin": 157.05
+ },
+ {
+  "escena": "topos",
+  "mood": "ligero",
+  "texto": "Trabajaban en turnos, de día y de noche, entre tuberías rotas, polvo y olor a gas. Cada hueco que abrían podía ser la diferencia entre encontrar a alguien con vida o no.",
+  "ini": 157.5,
+  "fin": 168.375
+ },
+ {
+  "escena": "topos",
+  "mood": "ligero",
+  "texto": "Eran voluntarios improvisados que trabajaban sin esperar permiso de nadie.",
+  "ini": 168.825,
+  "fin": 173.725
+ },
+ {
+  "escena": "cifras",
+  "mood": "tenso",
+  "texto": "¿Cuántas personas murieron? Nadie lo sabe con exactitud.",
+  "ini": 174.525,
+  "fin": 178.45
+ },
+ {
+  "escena": "cifras",
+  "mood": "tenso",
+  "texto": "Las cifras oficiales, las de la Cruz Roja y las estimaciones de los especialistas no coinciden. Hablan de miles, y algunas de más de diez mil.",
+  "ini": 178.9,
+  "fin": 187.975
+ },
+ {
+  "escena": "cifras",
+  "mood": "tenso",
+  "texto": "Esa falta de cifras claras también es parte de la historia.",
+  "ini": 188.425,
+  "fin": 192.125
+ },
+ {
+  "escena": "cambio",
+  "mood": "ligero",
+  "texto": "Después del sismo, la ciudad cambió. Surgieron organizaciones civiles y las normas de construcción se revisaron.",
+  "ini": 192.925,
+  "fin": 200.025
+ },
+ {
+  "escena": "cambio",
+  "mood": "ligero",
+  "texto": "La pregunta que dejó el sismo sigue vigente: ¿qué tan preparados estamos hoy?",
+  "ini": 200.475,
+  "fin": 205.4
+ },
+ {
+  "escena": "consejo",
+  "mood": "ligero",
+  "texto": "Hoy la ciudad cuenta con un sistema de alerta sísmica que avisa segundos antes de que llegue la onda fuerte. Esos segundos sirven para ponerse a salvo.",
+  "ini": 206.2,
+  "fin": 215.675
+ },
+ {
+  "escena": "consejo",
+  "mood": "ligero",
+  "texto": "Y si te toca sentir un temblor, recuerda la regla básica: agáchate, cúbrete debajo de una mesa resistente y agárrate hasta que pare. Aléjate de ventanas y de objetos que puedan caer.",
+  "ini": 216.125,
+  "fin": 227.625
+ },
+ {
+  "escena": "consejo",
+  "mood": "ligero",
+  "texto": "Y después de un sismo, revisa a quien esté cerca y evita usar el elevador.",
+  "ini": 228.075,
+  "fin": 233.025
+ },
+ {
+  "escena": "cierre",
+  "mood": "calido",
+  "texto": "Volvamos al principio.",
+  "ini": 233.825,
+  "fin": 235.8
+ },
+ {
+  "escena": "cierre",
+  "mood": "calido",
+  "texto": "De los tres edificios, el que cayó fue el de altura intermedia, el que vibró al mismo ritmo que la tierra.",
+  "ini": 236.25,
+  "fin": 242.75
+ },
+ {
+  "escena": "cierre",
+  "mood": "calido",
+  "texto": "Si te gustó entender lo que pasó de verdad, suscríbete. Y si quieres otra historia que no te contaron, la Isla de las Muñecas está aquí.",
+  "ini": 243.2,
+  "fin": 251.525
+ }
+]
