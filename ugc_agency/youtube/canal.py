@@ -14,7 +14,15 @@ UMBRAL_VISTAS_SHORTS_90 = 10_000_000
 
 def estado() -> dict:
     yt = youtube()
-    canal = yt.channels().list(part="snippet,statistics,contentDetails", mine=True).execute()["items"][0]
+    items = yt.channels().list(part="snippet,statistics,contentDetails", mine=True).execute().get("items") or []
+    if not items:
+        raise RuntimeError(
+            "El token de YouTube es válido pero no tiene ningún canal asociado. Al generar "
+            "YT_REFRESH_TOKEN se eligió una cuenta de Google sin canal (p. ej. la personal en vez "
+            "de la cuenta de marca). Genera el token de nuevo eligiendo el canal en la pantalla "
+            "'Elige una cuenta o canal'. Guía: docs/youtube_conexion.md"
+        )
+    canal = items[0]
     stats = canal["statistics"]
     hoy = date.today()
     rep = analytics().reports().query(

@@ -37,7 +37,9 @@ def credenciales():
         client_id=os.environ["YT_CLIENT_ID"],
         client_secret=os.environ["YT_CLIENT_SECRET"],
         token_uri="https://oauth2.googleapis.com/token",
-        scopes=SCOPES,
+        # Sin `scopes`: al refrescar se usan los permisos que ya tiene el token. Pedir uno
+        # que no se concedió (p. ej. youtube.upload) hace fallar el refresh con invalid_scope.
+        # Para subir videos basta con `youtube` o `youtube.force-ssl`.
     )
 
 
