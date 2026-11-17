@@ -7,3 +7,4 @@ assets/narracion.wav
 .*.hf-transaction-*/
 work-*/
 *.mp3
+assets/*.wav

@@ -208,6 +208,7 @@ def e_expediente(a, t, d, idp="", marks=(1.1, 1.6, 2.1), seal=2.6, label="SIN PR
     a.raw(f'tl.from("#card{idp}",{{y:260,opacity:0,duration:.6,ease:"back.out(1.6)"}},{t + .1});')
     for i, m in enumerate(marks):
         a.pop(f"#f{idp}{i}", m, "100% 50%", .3)
+    a.sound("impact-bass-2", seal, .5)
     a.raw(f'tl.from("#st5{idp}",{{scale:2.6,opacity:0,transformOrigin:"50% 50%",duration:.28,ease:"power4.in"}},{seal});')
     dd = f"det2{idp}"
     a.face(dd, t, "flat", (0, 0), (-12, 0))
@@ -291,6 +292,7 @@ def e_unesco(a, t, d):
         a.squash(f"cr{i}", t + .4 + i * .07, .1)
     a.pop("#big1", t + .5)
     a.pop("#badge", k, "50% 50%", .6)
+    a.sound("sparkle", k, .4)
     a.raw(f'tl.to("#badge-r",{{attr:{{transform:"rotate(360)"}},duration:{d - (k - t)},ease:"none"}},{k});')
     rays = "".join(f'<path d="M0 0 L{300 * __import__("math").cos(i * .5236):.0f} {300 * __import__("math").sin(i * .5236):.0f}" '
                    f'stroke="{YEL}" stroke-width="40" opacity=".35"/>' for i in range(12))
@@ -422,6 +424,7 @@ def e_vida(a, t, d):
 
 def e_algo(a, t, d):
     a.raw(f'tl.fromTo("#flash",{{opacity:.9}},{{opacity:0,duration:.5}},{t + 3.0});')
+    a.sound("glitch-1", t + 2.95, .35)
     a.face("ja", t, "flat", (0, 0), (0, 0))
     a.attr("#ja", "translate(960 1180) scale(2.2)", t + 3.0, .4, "power3.out")
     a.face("ja", t + 3.0, "o", (-24, 24), (0, -6))
@@ -541,6 +544,7 @@ def e_turistas(a, t, d):
     a.face("jt", k, "smile", (-8, 8), (-10, -4))
     a.pose("jt", k + .5, .5, uaR=-120, faR=-30)
     a.pop("#hearts", S(47) + .3)
+    a.sound("sparkle", S(47) + .3, .35)
     a.blink("jt", S(47) + 2)
     hearts = "".join(f'<path transform="translate({x} {y})" d="M0 20 C-40 -10 -20 -50 0 -26 C20 -50 40 -10 0 20 Z" fill="{PINK}" stroke="{INK}" stroke-width="5"/>'
                      for x, y in ((1250, 300), (1340, 240), (1430, 310)))
@@ -559,6 +563,7 @@ def e_fama(a, t, d):
         a.pose(f"ph{i}", t + .3, .4, uaR=-110 if i < 2 else -120, faR=-60)
         for j in range(4):
             a.raw(f'tl.fromTo("#fl{i}",{{opacity:1}},{{opacity:0,duration:.25}},{t + 1.2 + i * .5 + j * 2.1:.2f});')
+            a.sound("click", t + 1.2 + i * .5 + j * 2.1, .4)
     a.face("jf", t, "smile", (-6, 6), (0, -4))
     a.pop("#tlk", k, "0% 100%")
     a.pose("jf", k, .4, uaL=-130, faL=-40)
@@ -756,6 +761,7 @@ def e_hombre(a, t, d):
 def e_suscribe(a, t, d):
     k = S(78)
     a.pop("#sub", t + .6, "50% 50%", .6)
+    a.sound("chime", t + 1.6, .45)
     a.raw(f'tl.to("#bell",{{attr:{{transform:"rotate(16)"}},duration:.12,repeat:9,yoyo:true,ease:"sine.inOut"}},{t + 1.6});')
     a.face("det5", t, "smile", (-8, 8), (12, 0))
     a.pose("det5", t + .5, .3, uaR=-110, faR=-30)
@@ -848,8 +854,11 @@ def build() -> str:
                     f'<svg viewBox="0 0 {W} {H}" width="{W}" height="{H}">{svg}</svg></div>')
         a.raw(f'tl.fromTo("#{sid} svg",{{scale:1}},{{scale:1.06,duration:{d},ease:"none",transformOrigin:"50% 55%"}},{t0:.3f});')
         a.raw(f'tl.from("#{sid} svg",{{scale:1.12,opacity:.0,duration:.25,ease:"power2.out"}},{t0:.3f});')
+        if idx:
+            a.sound("whoosh-short", t0 - .1, .28)
         a.raw(f'tl.to(\'#{sid} [class$="-row"]\',{{x:-240,duration:{d},ease:"none"}},{t0:.3f});')
     caps = subtitulos(a)
+    (ROOT / "assets/sfx_events.json").write_text(json.dumps(sorted(a.sfx, key=lambda x: x[1])))
     # olas: todas las que no tienen tween propio se mueven
     js = "\n".join("  " + l for l in a.lines)
     return f'''<!doctype html>
@@ -885,7 +894,9 @@ def build() -> str:
 </head>
 <body>
 <div id="root" data-composition-id="main" data-start="0" data-duration="{FIN}" data-width="{W}" data-height="{H}">
-<audio id="voz" src="assets/narracion.wav" data-start="0" data-duration="{FIN}" data-volume="1"></audio>
+<audio id="voz" src="assets/narracion.wav" data-start="0" data-duration="{FIN}" data-volume="2.5"></audio>
+<audio id="musica" src="assets/musica.wav" data-start="0" data-duration="{FIN}" data-volume="1"></audio>
+<audio id="efectos" src="assets/sfx.wav" data-start="0" data-duration="{FIN}" data-volume="0.55"></audio>
 {chr(10).join(html)}
 {caps}
 </div>

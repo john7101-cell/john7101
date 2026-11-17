@@ -117,6 +117,10 @@ class Anim:
 
     def __init__(self) -> None:
         self.lines: list[str] = []
+        self.sfx: list[tuple[str, float, float]] = []  # (nombre, tiempo, volumen)
+
+    def sound(self, name: str, t: float, vol: float = .5) -> None:
+        self.sfx.append((name, round(t, 3), vol))
 
     def raw(self, line: str) -> None:
         self.lines.append(line)
@@ -148,6 +152,8 @@ class Anim:
         self.attr(f"#{id_}-eyes", "scale(1 1)", t + .09, .08, "power1.out")
 
     def squash(self, id_: str, t: float, amount: float = .12) -> None:
+        if amount >= .14:
+            self.sound("impact-bass-1", t, .35)
         self.attr(f"#{id_}-body", f"scale({1 + amount} {1 - amount})", t, .1, "power2.out")
         self.attr(f"#{id_}-body", f"scale({1 - amount * .6} {1 + amount * .6})", t + .1, .12, "power2.out")
         self.attr(f"#{id_}-body", "scale(1 1)", t + .22, .25, "elastic.out(1,0.5)")
@@ -168,6 +174,11 @@ class Anim:
                  f'yoyo:true,ease:"sine.inOut"}},{t:.3f});')
 
     def pop(self, sel: str, t: float, origin: str = "50% 50%", dur: float = .45) -> None:
+        sello = sel.lstrip("#") in {"st2", "c50", "a50", "y01", "cb2", "nx", "x1", "x2", "x3", "vs"}
+        if sello:
+            self.sound("impact-bass-2", t, .45)
+        elif not any(n == "pop" and abs(tt - t) < .22 for n, tt, _ in self.sfx):
+            self.sound("pop", t, .22)
         self.lines.append(f'tl.from("{sel}",{{scale:0,opacity:0,transformOrigin:"{origin}",duration:{dur},ease:"back.out(2.4)"}},{t:.3f});')
 
 
