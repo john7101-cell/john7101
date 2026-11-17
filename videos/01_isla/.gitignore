@@ -4,3 +4,5 @@ renders/
 snapshots/
 .hyperframes/
 assets/narracion.wav
+.*.hf-transaction-*/
+work-*/
