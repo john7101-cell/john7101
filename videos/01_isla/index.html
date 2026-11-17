@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<script src="./gsap.min.js"></script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { width:1920px; height:1080px; overflow:hidden; background:#f3eee4; }
+  #root { width:100%; height:100%; position:relative; font-family:Lato, sans-serif; color:#1b1b1b; }
+  .scene { position:absolute; inset:0; background:#f3eee4; }
+  .scene svg { position:absolute; inset:0; }
+  .big { font: 900 220px Lato, sans-serif; fill:#1b1b1b; }
+  .mid { font: 900 56px Lato, sans-serif; fill:#1b1b1b; }
+  .small { font: 700 44px Lato, sans-serif; letter-spacing:.2em; fill:#1b1b1b; }
+  .stamp { font: 900 64px Lato, sans-serif; letter-spacing:.06em; fill:#b8322a; }
+  .q { font: 900 170px Lato, sans-serif; fill:#b8322a; }
+  .field { font: 800 50px Lato, sans-serif; fill:#1b1b1b; }
+  .field.red { fill:#b8322a; }
+  .cap { position:absolute; left:0; right:0; bottom:70px; text-align:center;
+         font: 800 54px Lato, sans-serif; color:#1b1b1b; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="30.0" data-width="1920" data-height="1080">
+<div id="s1" class="clip scene" data-start="0" data-duration="6.5"><svg viewBox="0 0 1920 1080" width="1920" height="1080"><g id="w1"><path class="w1-row" d="M-240 760 Q-180 742 -120 760 T0 760 Q60 742 120 760 T240 760 Q300 742 360 760 T480 760 Q540 742 600 760 T720 760 Q780 742 840 760 T960 760 Q1020 742 1080 760 T1200 760 Q1260 742 1320 760 T1440 760 Q1500 742 1560 760 T1680 760 Q1740 742 1800 760 T1920 760 Q1980 742 2040 760 T2160 760 Q2220 742 2280 760 T2400 760" stroke="#3d6f9e" stroke-width="7" fill="none" stroke-linecap="round" opacity="1.0"/><path class="w1-row" d="M-240 794 Q-180 776 -120 794 T0 794 Q60 776 120 794 T240 794 Q300 776 360 794 T480 794 Q540 776 600 794 T720 794 Q780 776 840 794 T960 794 Q1020 776 1080 794 T1200 794 Q1260 776 1320 794 T1440 794 Q1500 776 1560 794 T1680 794 Q1740 776 1800 794 T1920 794 Q1980 776 2040 794 T2160 794 Q2220 776 2280 794 T2400 794" stroke="#3d6f9e" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.75"/><path class="w1-row" d="M-240 828 Q-180 810 -120 828 T0 828 Q60 810 120 828 T240 828 Q300 810 360 828 T480 828 Q540 810 600 828 T720 828 Q780 810 840 828 T960 828 Q1020 810 1080 828 T1200 828 Q1260 810 1320 828 T1440 828 Q1500 810 1560 828 T1680 828 Q1740 810 1800 828 T1920 828 Q1980 810 2040 828 T2160 828 Q2220 810 2280 828 T2400 828" stroke="#3d6f9e" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.5"/><path class="w1-row" d="M-240 862 Q-180 844 -120 862 T0 862 Q60 844 120 862 T240 862 Q300 844 360 862 T480 862 Q540 844 600 862 T720 862 Q780 844 840 862 T960 862 Q1020 844 1080 862 T1200 862 Q1260 844 1320 862 T1440 862 Q1500 844 1560 862 T1680 862 Q1740 844 1800 862 T1920 862 Q1980 844 2040 862 T2160 862 Q2220 844 2280 862 T2400 862" stroke="#3d6f9e" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.25"/></g>
+      <g transform="translate(960 770)"><g id="s1-hat"><path d="M-80 0 L80 0 M-42 0 Q0 -70 42 0"
+        stroke="#1b1b1b" stroke-width="12" fill="none" stroke-linecap="round"/></g></g>
+      <text id="s1-year" x="960" y="380" text-anchor="middle" class="big">2001</text>
+      <text id="s1-place" x="960" y="470" text-anchor="middle" class="small">XOCHIMILCO · MÉXICO</text></svg></div>
+<div id="s2" class="clip scene" data-start="6.5" data-duration="6.0"><svg viewBox="0 0 1920 1080" width="1920" height="1080"><g id="w2"><path class="w2-row" d="M-240 800 Q-180 782 -120 800 T0 800 Q60 782 120 800 T240 800 Q300 782 360 800 T480 800 Q540 782 600 800 T720 800 Q780 782 840 800 T960 800 Q1020 782 1080 800 T1200 800 Q1260 782 1320 800 T1440 800 Q1500 782 1560 800 T1680 800 Q1740 782 1800 800 T1920 800 Q1980 782 2040 800 T2160 800 Q2220 782 2280 800 T2400 800" stroke="#3d6f9e" stroke-width="7" fill="none" stroke-linecap="round" opacity="1.0"/><path class="w2-row" d="M-240 834 Q-180 816 -120 834 T0 834 Q60 816 120 834 T240 834 Q300 816 360 834 T480 834 Q540 816 600 834 T720 834 Q780 816 840 834 T960 834 Q1020 816 1080 834 T1200 834 Q1260 816 1320 834 T1440 834 Q1500 816 1560 834 T1680 834 Q1740 816 1800 834 T1920 834 Q1980 816 2040 834 T2160 834 Q2220 816 2280 834 T2400 834" stroke="#3d6f9e" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.75"/><path class="w2-row" d="M-240 868 Q-180 850 -120 868 T0 868 Q60 850 120 868 T240 868 Q300 850 360 868 T480 868 Q540 850 600 868 T720 868 Q780 850 840 868 T960 868 Q1020 850 1080 868 T1200 868 Q1260 850 1320 868 T1440 868 Q1500 850 1560 868 T1680 868 Q1740 850 1800 868 T1920 868 Q1980 850 2040 868 T2160 868 Q2220 850 2280 868 T2400 868" stroke="#3d6f9e" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.5"/></g>
+<g id="girl" transform="translate(960 760) scale(1.0)">
+ <g stroke="#9aa3ab" stroke-width="9" stroke-linecap="round" fill="none" stroke-dasharray="14 10">
+  <circle cx="0" cy="-225" r="36" fill="#f3eee4"/>
+  <line x1="0" y1="-189" x2="0" y2="-90"/>
+  <line id="girl-al" x1="0" y1="-165" x2="-50" y2="-110"/>
+  <line id="girl-ar" x1="0" y1="-165" x2="50" y2="-110"/>
+  <line id="girl-ll" x1="0" y1="-90" x2="-34" y2="0"/>
+  <line id="girl-lr" x1="0" y1="-90" x2="34" y2="0"/>
+ </g><path d="M-30 -240 Q-44 -200 -40 -175 M30 -240 Q44 -200 40 -175" stroke="#9aa3ab" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M0 -150 L-34 -90 L34 -90 Z" fill="#9aa3ab" opacity="0.85"/>
+</g>
+      <g id="s2-stamp" transform="translate(1420 300) rotate(-8)">
+        <rect x="-300" y="-70" width="600" height="140" fill="none" stroke="#b8322a" stroke-width="8"/>
+        <text x="0" y="22" text-anchor="middle" class="stamp">50 AÑOS ANTES</text></g></svg><div class="cap" id="s2-cap">Según él, aquí se ahogó una niña</div></div>
+<div id="s3" class="clip scene" data-start="12.5" data-duration="6.0"><svg viewBox="0 0 1920 1080" width="1920" height="1080"><g id="w3"><path class="w3-row" d="M-240 900 Q-180 882 -120 900 T0 900 Q60 882 120 900 T240 900 Q300 882 360 900 T480 900 Q540 882 600 900 T720 900 Q780 882 840 900 T960 900 Q1020 882 1080 900 T1200 900 Q1260 882 1320 900 T1440 900 Q1500 882 1560 900 T1680 900 Q1740 882 1800 900 T1920 900 Q1980 882 2040 900 T2160 900 Q2220 882 2280 900 T2400 900" stroke="#3d6f9e" stroke-width="7" fill="none" stroke-linecap="round" opacity="1.0"/><path class="w3-row" d="M-240 934 Q-180 916 -120 934 T0 934 Q60 916 120 934 T240 934 Q300 916 360 934 T480 934 Q540 916 600 934 T720 934 Q780 916 840 934 T960 934 Q1020 916 1080 934 T1200 934 Q1260 916 1320 934 T1440 934 Q1500 916 1560 934 T1680 934 Q1740 916 1800 934 T1920 934 Q1980 916 2040 934 T2160 934 Q2220 916 2280 934 T2400 934" stroke="#3d6f9e" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.75"/></g><path d="M260 860 Q960 700 1660 860 Z" fill="#cdbf9f" stroke="#1b1b1b" stroke-width="8"/><g transform="translate(640 800) scale(1.2)" stroke="#1b1b1b" stroke-width="10" stroke-linecap="round" fill="none"><path d="M0 0 L0 -260 M0 -170 L-110 -250 M0 -200 L100 -290 M0 -120 L90 -170 M-60 -215 L-130 -200"/></g><g transform="translate(960 760) scale(1.4)" stroke="#1b1b1b" stroke-width="10" stroke-linecap="round" fill="none"><path d="M0 0 L0 -260 M0 -170 L-110 -250 M0 -200 L100 -290 M0 -120 L90 -170 M-60 -215 L-130 -200"/></g><g transform="translate(1330 800) scale(1.2)" stroke="#1b1b1b" stroke-width="10" stroke-linecap="round" fill="none"><path d="M0 0 L0 -260 M0 -170 L-110 -250 M0 -200 L100 -290 M0 -120 L90 -170 M-60 -215 L-130 -200"/></g>
+<g id="d0" transform="translate(560 540) scale(1.0)">
+ <line x1="0" y1="-60" x2="0" y2="-28" stroke="#1b1b1b" stroke-width="3"/>
+ <circle cx="0" cy="-10" r="18" fill="#fff" stroke="#1b1b1b" stroke-width="5"/>
+ <circle cx="-6" cy="-12" r="3" fill="#1b1b1b"/><path d="M3 -16 l7 7 M10 -16 l-7 7" stroke="#1b1b1b" stroke-width="3"/>
+ <path d="M0 8 L-14 40 L14 40 Z" fill="#1b1b1b" opacity="0.8"/>
+</g>
+<g id="d1" transform="translate(640 470) scale(1.0)">
+ <line x1="0" y1="-60" x2="0" y2="-28" stroke="#1b1b1b" stroke-width="3"/>
+ <circle cx="0" cy="-10" r="18" fill="#fff" stroke="#1b1b1b" stroke-width="5"/>
+ <circle cx="-6" cy="-12" r="3" fill="#1b1b1b"/><path d="M3 -16 l7 7 M10 -16 l-7 7" stroke="#1b1b1b" stroke-width="3"/>
+ <path d="M0 8 L-14 40 L14 40 Z" fill="#1b1b1b" opacity="0.8"/>
+</g>
+<g id="d2" transform="translate(500 610) scale(1.0)">
+ <line x1="0" y1="-60" x2="0" y2="-28" stroke="#1b1b1b" stroke-width="3"/>
+ <circle cx="0" cy="-10" r="18" fill="#fff" stroke="#1b1b1b" stroke-width="5"/>
+ <circle cx="-6" cy="-12" r="3" fill="#1b1b1b"/><path d="M3 -16 l7 7 M10 -16 l-7 7" stroke="#1b1b1b" stroke-width="3"/>
+ <path d="M0 8 L-14 40 L14 40 Z" fill="#1b1b1b" opacity="0.8"/>
+</g>
+<g id="d3" transform="translate(930 470) scale(1.0)">
+ <line x1="0" y1="-60" x2="0" y2="-28" stroke="#1b1b1b" stroke-width="3"/>
+ <circle cx="0" cy="-10" r="18" fill="#fff" stroke="#1b1b1b" stroke-width="5"/>
+ <circle cx="-6" cy="-12" r="3" fill="#1b1b1b"/><path d="M3 -16 l7 7 M10 -16 l-7 7" stroke="#1b1b1b" stroke-width="3"/>
+ <path d="M0 8 L-14 40 L14 40 Z" fill="#1b1b1b" opacity="0.8"/>
+</g>
+<g id="d4" transform="translate(1010 400) scale(1.0)">
+ <line x1="0" y1="-60" x2="0" y2="-28" stroke="#1b1b1b" stroke-width="3"/>
+ <circle cx="0" cy="-10" r="18" fill="#fff" stroke="#1b1b1b" stroke-width="5"/>
+ <circle cx="-6" cy="-12" r="3" fill="#1b1b1b"/><path d="M3 -16 l7 7 M10 -16 l-7 7" stroke="#1b1b1b" stroke-width="3"/>
+ <path d="M0 8 L-14 40 L14 40 Z" fill="#1b1b1b" opacity="0.8"/>
+</g>
+<g id="d5" transform="translate(870 560) scale(1.0)">
+ <line x1="0" y1="-60" x2="0" y2="-28" stroke="#1b1b1b" stroke-width="3"/>
+ <circle cx="0" cy="-10" r="18" fill="#fff" stroke="#1b1b1b" stroke-width="5"/>
+ <circle cx="-6" cy="-12" r="3" fill="#1b1b1b"/><path d="M3 -16 l7 7 M10 -16 l-7 7" stroke="#1b1b1b" stroke-width="3"/>
+ <path d="M0 8 L-14 40 L14 40 Z" fill="#1b1b1b" opacity="0.8"/>
+</g>
+<g id="d6" transform="translate(1300 520) scale(1.0)">
+ <line x1="0" y1="-60" x2="0" y2="-28" stroke="#1b1b1b" stroke-width="3"/>
+ <circle cx="0" cy="-10" r="18" fill="#fff" stroke="#1b1b1b" stroke-width="5"/>
+ <circle cx="-6" cy="-12" r="3" fill="#1b1b1b"/><path d="M3 -16 l7 7 M10 -16 l-7 7" stroke="#1b1b1b" stroke-width="3"/>
+ <path d="M0 8 L-14 40 L14 40 Z" fill="#1b1b1b" opacity="0.8"/>
+</g>
+<g id="d7" transform="translate(1380 450) scale(1.0)">
+ <line x1="0" y1="-60" x2="0" y2="-28" stroke="#1b1b1b" stroke-width="3"/>
+ <circle cx="0" cy="-10" r="18" fill="#fff" stroke="#1b1b1b" stroke-width="5"/>
+ <circle cx="-6" cy="-12" r="3" fill="#1b1b1b"/><path d="M3 -16 l7 7 M10 -16 l-7 7" stroke="#1b1b1b" stroke-width="3"/>
+ <path d="M0 8 L-14 40 L14 40 Z" fill="#1b1b1b" opacity="0.8"/>
+</g>
+<g id="d8" transform="translate(1250 600) scale(1.0)">
+ <line x1="0" y1="-60" x2="0" y2="-28" stroke="#1b1b1b" stroke-width="3"/>
+ <circle cx="0" cy="-10" r="18" fill="#fff" stroke="#1b1b1b" stroke-width="5"/>
+ <circle cx="-6" cy="-12" r="3" fill="#1b1b1b"/><path d="M3 -16 l7 7 M10 -16 l-7 7" stroke="#1b1b1b" stroke-width="3"/>
+ <path d="M0 8 L-14 40 L14 40 Z" fill="#1b1b1b" opacity="0.8"/>
+</g>
+<g id="d9" transform="translate(700 620) scale(1.0)">
+ <line x1="0" y1="-60" x2="0" y2="-28" stroke="#1b1b1b" stroke-width="3"/>
+ <circle cx="0" cy="-10" r="18" fill="#fff" stroke="#1b1b1b" stroke-width="5"/>
+ <circle cx="-6" cy="-12" r="3" fill="#1b1b1b"/><path d="M3 -16 l7 7 M10 -16 l-7 7" stroke="#1b1b1b" stroke-width="3"/>
+ <path d="M0 8 L-14 40 L14 40 Z" fill="#1b1b1b" opacity="0.8"/>
+</g>
+<g id="d10" transform="translate(1080 560) scale(1.0)">
+ <line x1="0" y1="-60" x2="0" y2="-28" stroke="#1b1b1b" stroke-width="3"/>
+ <circle cx="0" cy="-10" r="18" fill="#fff" stroke="#1b1b1b" stroke-width="5"/>
+ <circle cx="-6" cy="-12" r="3" fill="#1b1b1b"/><path d="M3 -16 l7 7 M10 -16 l-7 7" stroke="#1b1b1b" stroke-width="3"/>
+ <path d="M0 8 L-14 40 L14 40 Z" fill="#1b1b1b" opacity="0.8"/>
+</g>
+<g id="d11" transform="translate(1440 600) scale(1.0)">
+ <line x1="0" y1="-60" x2="0" y2="-28" stroke="#1b1b1b" stroke-width="3"/>
+ <circle cx="0" cy="-10" r="18" fill="#fff" stroke="#1b1b1b" stroke-width="5"/>
+ <circle cx="-6" cy="-12" r="3" fill="#1b1b1b"/><path d="M3 -16 l7 7 M10 -16 l-7 7" stroke="#1b1b1b" stroke-width="3"/>
+ <path d="M0 8 L-14 40 L14 40 Z" fill="#1b1b1b" opacity="0.8"/>
+</g>
+<g id="d12" transform="translate(780 430) scale(1.0)">
+ <line x1="0" y1="-60" x2="0" y2="-28" stroke="#1b1b1b" stroke-width="3"/>
+ <circle cx="0" cy="-10" r="18" fill="#fff" stroke="#1b1b1b" stroke-width="5"/>
+ <circle cx="-6" cy="-12" r="3" fill="#1b1b1b"/><path d="M3 -16 l7 7 M10 -16 l-7 7" stroke="#1b1b1b" stroke-width="3"/>
+ <path d="M0 8 L-14 40 L14 40 Z" fill="#1b1b1b" opacity="0.8"/>
+</g>
+<g id="d13" transform="translate(1180 430) scale(1.0)">
+ <line x1="0" y1="-60" x2="0" y2="-28" stroke="#1b1b1b" stroke-width="3"/>
+ <circle cx="0" cy="-10" r="18" fill="#fff" stroke="#1b1b1b" stroke-width="5"/>
+ <circle cx="-6" cy="-12" r="3" fill="#1b1b1b"/><path d="M3 -16 l7 7 M10 -16 l-7 7" stroke="#1b1b1b" stroke-width="3"/>
+ <path d="M0 8 L-14 40 L14 40 Z" fill="#1b1b1b" opacity="0.8"/>
+</g>
+<g id="d14" transform="translate(600 680) scale(1.0)">
+ <line x1="0" y1="-60" x2="0" y2="-28" stroke="#1b1b1b" stroke-width="3"/>
+ <circle cx="0" cy="-10" r="18" fill="#fff" stroke="#1b1b1b" stroke-width="5"/>
+ <circle cx="-6" cy="-12" r="3" fill="#1b1b1b"/><path d="M3 -16 l7 7 M10 -16 l-7 7" stroke="#1b1b1b" stroke-width="3"/>
+ <path d="M0 8 L-14 40 L14 40 Z" fill="#1b1b1b" opacity="0.8"/>
+</g></svg><div class="cap" id="s3-cap">Medio siglo llenando una isla de muñecas</div></div>
+<div id="s4" class="clip scene" data-start="18.5" data-duration="5.5"><svg viewBox="0 0 1920 1080" width="1920" height="1080"><line x1="0" y1="860" x2="1920" y2="860" stroke="#1b1b1b" stroke-width="6"/>
+<g id="det" transform="translate(300 860) scale(1.4)">
+ <g stroke="#1b1b1b" stroke-width="9" stroke-linecap="round" fill="none">
+  <circle cx="0" cy="-225" r="36" fill="#f3eee4"/>
+  <line x1="0" y1="-189" x2="0" y2="-90"/>
+  <line id="det-al" x1="0" y1="-165" x2="-50" y2="-110"/>
+  <line id="det-ar" x1="0" y1="-165" x2="50" y2="-110"/>
+  <line id="det-ll" x1="0" y1="-90" x2="-34" y2="0"/>
+  <line id="det-lr" x1="0" y1="-90" x2="34" y2="0"/>
+ </g><path d="M-46 -262 L46 -262 M-24 -262 Q0 -300 24 -262" stroke="#1b1b1b" stroke-width="8" fill="none" stroke-linecap="round"/><g id="lupa"><circle cx="95" cy="-170" r="34" fill="none" stroke="#1b1b1b" stroke-width="8"/><line x1="72" y1="-146" x2="50" y2="-112" stroke="#1b1b1b" stroke-width="10" stroke-linecap="round"/></g>
+</g><text id="q1" x="1250" y="420" class="q">?</text><text id="q2" x="1420" y="330" class="q">?</text></svg><div class="cap" id="s4-cap">Pero cuando buscas a la niña…</div></div>
+<div id="s5" class="clip scene" data-start="24.0" data-duration="6.0"><svg viewBox="0 0 1920 1080" width="1920" height="1080">
+      <g id="card" transform="translate(960 560)">
+        <rect x="-440" y="-300" width="880" height="560" rx="14" fill="#fff" stroke="#1b1b1b" stroke-width="8"/>
+        <text x="-360" y="-200" class="mid">EXPEDIENTE: LA NIÑA</text>
+        <line x1="-360" y1="-170" x2="360" y2="-170" stroke="#1b1b1b" stroke-width="4"/><text x="-360" y="-60" class="field">NOMBRE</text><text id="f0" x="360" y="-60" text-anchor="end" class="field red">???</text><text x="-360" y="30" class="field">FECHA</text><text id="f1" x="360" y="30" text-anchor="end" class="field red">???</text><text x="-360" y="120" class="field">REGISTRO</text><text id="f2" x="360" y="120" text-anchor="end" class="field red">???</text>
+      </g>
+      <g id="s5-stamp" transform="translate(1180 820) rotate(-10)">
+        <rect x="-280" y="-75" width="560" height="150" fill="#f3eee4" fill-opacity=".6" stroke="#b8322a" stroke-width="10"/>
+        <text x="0" y="26" text-anchor="middle" class="stamp">SIN PRUEBAS</text></g></svg></div>
+</div>
+<script>
+  window.__timelines = window.__timelines || {};
+  const tl = gsap.timeline({ paused: true });
+    tl.from("#s1-year",{scale:.4,opacity:0,transformOrigin:"960px 340px",duration:.6,ease:"back.out(2)"},0.3);
+  tl.from("#s1-place",{opacity:0,y:20,duration:.5},0.9);
+  tl.to(".w1-row",{x:-240,duration:6.5,ease:"none"},0);
+  tl.fromTo("#s1-hat",{y:0,rotation:-4},{y:14,rotation:4,duration:1.1,repeat:5,yoyo:true,ease:"sine.inOut",transformOrigin:"50% 100%"},0);
+  tl.from("#s2-cap",{opacity:0,y:30,duration:.5,ease:"power2.out"},6.7);
+  tl.from("#s2-stamp",{scale:2.2,opacity:0,transformOrigin:"1420px 300px",duration:.35,ease:"power3.in"},6.9);
+  tl.from("#girl",{opacity:0,duration:1.2},7.5);
+  tl.to("#girl",{opacity:0,y:-40,duration:1.6},10.7);
+  tl.to(".w2-row",{x:-240,duration:6,ease:"none"},6.5);
+  tl.from("#s3-cap",{opacity:0,y:30,duration:.5,ease:"power2.out"},12.7);
+  tl.from("#d0",{scale:0,opacity:0,transformOrigin:"center",duration:.3,ease:"back.out(3)"},13.10);
+  tl.from("#d1",{scale:0,opacity:0,transformOrigin:"center",duration:.3,ease:"back.out(3)"},13.40);
+  tl.from("#d2",{scale:0,opacity:0,transformOrigin:"center",duration:.3,ease:"back.out(3)"},13.70);
+  tl.from("#d3",{scale:0,opacity:0,transformOrigin:"center",duration:.3,ease:"back.out(3)"},14.00);
+  tl.from("#d4",{scale:0,opacity:0,transformOrigin:"center",duration:.3,ease:"back.out(3)"},14.30);
+  tl.from("#d5",{scale:0,opacity:0,transformOrigin:"center",duration:.3,ease:"back.out(3)"},14.60);
+  tl.from("#d6",{scale:0,opacity:0,transformOrigin:"center",duration:.3,ease:"back.out(3)"},14.90);
+  tl.from("#d7",{scale:0,opacity:0,transformOrigin:"center",duration:.3,ease:"back.out(3)"},15.20);
+  tl.from("#d8",{scale:0,opacity:0,transformOrigin:"center",duration:.3,ease:"back.out(3)"},15.50);
+  tl.from("#d9",{scale:0,opacity:0,transformOrigin:"center",duration:.3,ease:"back.out(3)"},15.80);
+  tl.from("#d10",{scale:0,opacity:0,transformOrigin:"center",duration:.3,ease:"back.out(3)"},16.10);
+  tl.from("#d11",{scale:0,opacity:0,transformOrigin:"center",duration:.3,ease:"back.out(3)"},16.40);
+  tl.from("#d12",{scale:0,opacity:0,transformOrigin:"center",duration:.3,ease:"back.out(3)"},16.70);
+  tl.from("#d13",{scale:0,opacity:0,transformOrigin:"center",duration:.3,ease:"back.out(3)"},17.00);
+  tl.from("#d14",{scale:0,opacity:0,transformOrigin:"center",duration:.3,ease:"back.out(3)"},17.30);
+  tl.from("#s4-cap",{opacity:0,y:30,duration:.5,ease:"power2.out"},18.7);
+  tl.to("#det",{x:700,duration:3.2,ease:"none"},18.5);
+  tl.fromTo("#det-ll",{rotation:-18},{rotation:18,duration:.4,repeat:7,yoyo:true,svgOrigin:"0 -90",ease:"sine.inOut"},18.5);
+  tl.fromTo("#det-lr",{rotation:18},{rotation:-18,duration:.4,repeat:7,yoyo:true,svgOrigin:"0 -90",ease:"sine.inOut"},18.5);
+  tl.from("#q1",{scale:0,opacity:0,transformOrigin:"1270px 380px",duration:.4,ease:"back.out(3)"},21.9);
+  tl.from("#q2",{scale:0,opacity:0,transformOrigin:"1440px 290px",duration:.4,ease:"back.out(3)"},22.3);
+  tl.from("#card",{y:200,opacity:0,duration:.6,ease:"power3.out"},24.2);
+  tl.from("#f0",{opacity:0,duration:.25},25.20);
+  tl.from("#f1",{opacity:0,duration:.25},25.80);
+  tl.from("#f2",{opacity:0,duration:.25},26.40);
+  tl.from("#s5-stamp",{scale:2.4,opacity:0,transformOrigin:"1180px 820px",duration:.3,ease:"power3.in"},27.4);
+  window.__timelines["main"] = tl;
+  tl.seek(0);
+</script>
+</body>
+</html>
