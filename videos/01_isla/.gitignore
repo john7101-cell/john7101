@@ -6,3 +6,4 @@ snapshots/
 assets/narracion.wav
 .*.hf-transaction-*/
 work-*/
+*.mp3
