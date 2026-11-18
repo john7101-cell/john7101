@@ -1,0 +1,79 @@
+{
+  "titulo": "Los dieron por muertos… y sobrevivieron 72 días en los Andes",
+  "escenas": [
+    {
+      "id": "gancho",
+      "mood": "tenso",
+      "lineas": [
+        "Los dieron por muertos. Un avión con cuarenta y cinco personas cayó en lo alto de los Andes en mil novecientos setenta y dos, y el mundo dejó de buscarlos.",
+        "Lo que pasó después duró setenta y dos días. Y casi nadie sabe cómo empezó."
+      ]
+    },
+    {
+      "id": "quiz",
+      "mood": "tenso",
+      "lineas": [
+        "Imagina el avión: cuarenta y cinco personas, un equipo de rugby y una cordillera que no perdona.",
+        "¿Cuántos crees que sobrevivieron? Escribe un número en los comentarios antes de seguir.",
+        "La respuesta te va a sorprender."
+      ]
+    },
+    {
+      "id": "impacto",
+      "mood": "tenso",
+      "lineas": [
+        "El avión volaba de Montevideo a Santiago de Chile, con cuarenta y cinco personas a bordo.",
+        "El trece de octubre de mil novecientos setenta y dos, el avión chocó contra la montaña, camino a Santiago de Chile.",
+        "Muchos murieron en el impacto. Otros, días después, en una avalancha que se llevó a ocho personas más."
+      ]
+    },
+    {
+      "id": "espera",
+      "mood": "neutro",
+      "lineas": [
+        "Los que quedaron con vida esperaban en la nieve, con lo poco que tenían y con un frío que no perdona.",
+        "Pasaban los días. Los heridos empeoraban, y cada noche el frío se llevaba un poco más de fuerzas.",
+        "Entre los restos encontraron un radio de transistor. Por ahí supieron que la búsqueda se había suspendido. Nadie iba a venir por ellos."
+      ]
+    },
+    {
+      "id": "caminata",
+      "mood": "ligero",
+      "lineas": [
+        "Entonces dos de ellos, Nando Parrado y Roberto Canessa, tomaron una decisión que parecía imposible: caminar hacia Chile.",
+        "Tenían muy poca comida y una ropa que no servía para la nieve. Cada paso era una apuesta: si se equivocaban de camino, nadie los iba a encontrar.",
+        "Caminaron unos diez días por la montaña, hasta encontrar a un arriero chileno, Sergio Catalán, que dio el aviso."
+      ]
+    },
+    {
+      "id": "rescate",
+      "mood": "calido",
+      "lineas": [
+        "El veintidós de diciembre, setenta y dos días después del choque, llegaron los helicópteros. Dieciséis personas seguían con vida.",
+        "Dieciséis de cuarenta y cinco. Veintinueve no volvieron.",
+        "Los últimos sobrevivientes salieron de la montaña el veintitrés de diciembre."
+      ]
+    },
+    {
+      "id": "cierre",
+      "mood": "calido",
+      "lineas": [
+        "Lo que hace esta historia tan humana no es solo la montaña. Es la fuerza que tuvieron para seguir cuando todo decía que se rindieran.",
+        "Si te gustó esta historia, suscríbete. Y si quieres otra historia real que te deje pensando, la Isla de las Muñecas y el terremoto del 85 ya están en el canal."
+      ]
+    }
+  ],
+  "fuentes": [
+    "National Geographic: Flight 571, the true story of the Andes crash",
+    "History.com: Uruguayan Air Force Flight 571 crashes in the Andes",
+    "Wikipedia (inglés): Uruguayan Air Force Flight 571",
+    "Cronista: 50 años del accidente de los Andes",
+    "Migflug: Uruguayan Air Force Flight 571, 72 days in the Andes"
+  ],
+  "pendientes": [
+    "Día exacto en que la búsqueda se suspendió: las fuentes dan entre el día 9 y el día 11; el guion dice 'se había suspendido' sin día.",
+    "Cifras: 45 a bordo, 16 sobrevivientes, 29 fallecidos (45 - 16); avalancha del 29 de octubre con 8 muertes. Consistentes entre fuentes.",
+    "Sin detalles de la decisión de alimentación: tema sensible; el guion se limita a 'la fuerza para seguir'. Revisar antes de publicar.",
+    "Ubicación exacta del choque: se dice 'camino a Santiago de Chile', sin mencionar la frontera."
+  ]
+}

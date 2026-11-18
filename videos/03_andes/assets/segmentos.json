@@ -1,0 +1,135 @@
+[
+ {
+  "escena": "gancho",
+  "mood": "tenso",
+  "texto": "Los dieron por muertos. Un avión con cuarenta y cinco personas cayó en lo alto de los Andes en mil novecientos setenta y dos, y el mundo dejó de buscarlos.",
+  "ini": 0.0,
+  "fin": 9.525
+ },
+ {
+  "escena": "gancho",
+  "mood": "tenso",
+  "texto": "Lo que pasó después duró setenta y dos días. Y casi nadie sabe cómo empezó.",
+  "ini": 9.975,
+  "fin": 15.25
+ },
+ {
+  "escena": "quiz",
+  "mood": "tenso",
+  "texto": "Imagina el avión: cuarenta y cinco personas, un equipo de rugby y una cordillera que no perdona.",
+  "ini": 16.05,
+  "fin": 22.05
+ },
+ {
+  "escena": "quiz",
+  "mood": "tenso",
+  "texto": "¿Cuántos crees que sobrevivieron? Escribe un número en los comentarios antes de seguir.",
+  "ini": 22.5,
+  "fin": 27.775
+ },
+ {
+  "escena": "quiz",
+  "mood": "tenso",
+  "texto": "La respuesta te va a sorprender.",
+  "ini": 28.225,
+  "fin": 30.825
+ },
+ {
+  "escena": "impacto",
+  "mood": "tenso",
+  "texto": "El avión volaba de Montevideo a Santiago de Chile, con cuarenta y cinco personas a bordo.",
+  "ini": 31.625,
+  "fin": 37.25
+ },
+ {
+  "escena": "impacto",
+  "mood": "tenso",
+  "texto": "El trece de octubre de mil novecientos setenta y dos, el avión chocó contra la montaña, camino a Santiago de Chile.",
+  "ini": 37.7,
+  "fin": 44.8
+ },
+ {
+  "escena": "impacto",
+  "mood": "tenso",
+  "texto": "Muchos murieron en el impacto. Otros, días después, en una avalancha que se llevó a ocho personas más.",
+  "ini": 45.25,
+  "fin": 52.0
+ },
+ {
+  "escena": "espera",
+  "mood": "neutro",
+  "texto": "Los que quedaron con vida esperaban en la nieve, con lo poco que tenían y con un frío que no perdona.",
+  "ini": 52.8,
+  "fin": 58.9
+ },
+ {
+  "escena": "espera",
+  "mood": "neutro",
+  "texto": "Pasaban los días. Los heridos empeoraban, y cada noche el frío se llevaba un poco más de fuerzas.",
+  "ini": 59.35,
+  "fin": 65.5
+ },
+ {
+  "escena": "espera",
+  "mood": "neutro",
+  "texto": "Entre los restos encontraron un radio de transistor. Por ahí supieron que la búsqueda se había suspendido. Nadie iba a venir por ellos.",
+  "ini": 65.95,
+  "fin": 74.25
+ },
+ {
+  "escena": "caminata",
+  "mood": "ligero",
+  "texto": "Entonces dos de ellos, Nando Parrado y Roberto Canessa, tomaron una decisión que parecía imposible: caminar hacia Chile.",
+  "ini": 75.05,
+  "fin": 82.8
+ },
+ {
+  "escena": "caminata",
+  "mood": "ligero",
+  "texto": "Tenían muy poca comida y una ropa que no servía para la nieve. Cada paso era una apuesta: si se equivocaban de camino, nadie los iba a encontrar.",
+  "ini": 83.25,
+  "fin": 92.35
+ },
+ {
+  "escena": "caminata",
+  "mood": "ligero",
+  "texto": "Caminaron unos diez días por la montaña, hasta encontrar a un arriero chileno, Sergio Catalán, que dio el aviso.",
+  "ini": 92.8,
+  "fin": 99.75
+ },
+ {
+  "escena": "rescate",
+  "mood": "calido",
+  "texto": "El veintidós de diciembre, setenta y dos días después del choque, llegaron los helicópteros. Dieciséis personas seguían con vida.",
+  "ini": 100.55,
+  "fin": 108.5
+ },
+ {
+  "escena": "rescate",
+  "mood": "calido",
+  "texto": "Dieciséis de cuarenta y cinco. Veintinueve no volvieron.",
+  "ini": 108.95,
+  "fin": 112.85
+ },
+ {
+  "escena": "rescate",
+  "mood": "calido",
+  "texto": "Los últimos sobrevivientes salieron de la montaña el veintitrés de diciembre.",
+  "ini": 113.3,
+  "fin": 118.075
+ },
+ {
+  "escena": "cierre",
+  "mood": "calido",
+  "texto": "Lo que hace esta historia tan humana no es solo la montaña. Es la fuerza que tuvieron para seguir cuando todo decía que se rindieran.",
+  "ini": 118.875,
+  "fin": 126.975
+ },
+ {
+  "escena": "cierre",
+  "mood": "calido",
+  "texto": "Si te gustó esta historia, suscríbete. Y si quieres otra historia real que te deje pensando, la Isla de las Muñecas y el terremoto del 85 ya están en el canal.",
+  "ini": 127.425,
+  "fin": 137.875
+ }
+]
