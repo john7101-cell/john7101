@@ -1,0 +1,243 @@
+1
+00:00:00,000 --> 00:00:03,986
+En julio de 2015, un prisionero de máxima seguridad desapareció
+
+2
+00:00:03,986 --> 00:00:07,465
+de una cárcel mexicana. Salió por la ducha de su celda.
+
+3
+00:00:07,815 --> 00:00:12,140
+Y lo que hay debajo de esa ducha es una de las obras de ingeniería
+
+4
+00:00:12,140 --> 00:00:14,630
+más sorprendentes de los últimos años.
+
+5
+00:00:15,330 --> 00:00:19,009
+Imagina que tienes que cavar un túnel de un 1,5 km,
+
+6
+00:00:19,009 --> 00:00:21,822
+sin que nadie en la superficie lo note.
+
+7
+00:00:22,172 --> 00:00:25,429
+Piensa en lo que tendrías que resolver: el aire,
+
+8
+00:00:25,429 --> 00:00:29,636
+la tierra que sacas, la luz y el tiempo sin que nadie lo note.
+
+9
+00:00:29,986 --> 00:00:33,685
+¿Cuánto tiempo crees que tomó? Escribe una cantidad en los comentarios
+
+10
+00:00:33,685 --> 00:00:34,530
+antes de seguir.
+
+11
+00:00:34,880 --> 00:00:37,642
+Los expertos calculan entre uno y dos años.
+
+12
+00:00:37,642 --> 00:00:41,047
+La respuesta te va a sorprender por lo largo que fue.
+
+13
+00:00:41,747 --> 00:00:45,577
+Según la versión oficial, el túnel tenía cerca de un 1,5 km
+
+14
+00:00:45,577 --> 00:00:48,822
+de largo y llegaba hasta una casa en construcción,
+
+15
+00:00:48,822 --> 00:00:49,861
+fuera del penal.
+
+16
+00:00:50,211 --> 00:00:53,434
+Tenía luz eléctrica, un sistema de ventilación y rieles por
+
+17
+00:00:53,434 --> 00:00:55,728
+los que se movía una motocicleta adaptada.
+
+18
+00:00:56,078 --> 00:00:59,876
+Cavar bajo una prisión es más difícil de lo que parece.
+
+19
+00:00:59,876 --> 00:01:03,605
+Hay que controlar el aire, la luz, el agua y el ruido,
+
+20
+00:01:03,605 --> 00:01:05,815
+y que nada se note desde arriba.
+
+21
+00:01:06,165 --> 00:01:09,570
+La autoridad cree que esa vagoneta servía para sacar la tierra
+
+22
+00:01:09,570 --> 00:01:13,085
+y llevar herramientas. Un túnel así exige lo mismo que cualquier
+
+23
+00:01:13,085 --> 00:01:16,436
+obra grande: planificación, tiempo y mucha tierra que hay que
+
+24
+00:01:16,436 --> 00:01:16,875
+ocultar.
+
+25
+00:01:17,575 --> 00:01:21,408
+Un exfuncionario de seguridad de Estados Unidos estimó que una
+
+26
+00:01:21,408 --> 00:01:24,066
+obra así tomó entre año y medio y dos años.
+
+27
+00:01:24,416 --> 00:01:27,803
+Otro ingeniero calculó unos 12 meses, y que la tierra excavada
+
+28
+00:01:27,803 --> 00:01:29,934
+llenaría cientos de camiones de volteo.
+
+29
+00:01:30,284 --> 00:01:33,907
+Cada metro de tierra excavada tiene que salir de algún lado.
+
+30
+00:01:33,907 --> 00:01:38,073
+Por eso, en una obra así, la logística pesa tanto como la excavación.
+
+31
+00:01:38,423 --> 00:01:42,150
+Por eso muchos se preguntan lo mismo: ¿cómo pasó tanto tiempo
+
+32
+00:01:42,150 --> 00:01:43,616
+sin que nadie lo notara?
+
+33
+00:01:44,316 --> 00:01:48,067
+Una prisión de máxima seguridad se diseña para que nadie salga.
+
+34
+00:01:48,067 --> 00:01:51,162
+Cuando alguien sale, la pregunta ya no es solo cómo,
+
+35
+00:01:51,162 --> 00:01:54,377
+sino también quién vio, quién firmó y quién no revisó.
+
+36
+00:01:54,727 --> 00:01:57,329
+Los analistas de seguridad coinciden en algo:
+
+37
+00:01:57,329 --> 00:01:59,873
+las obras grandes casi nunca son invisibles.
+
+38
+00:01:59,873 --> 00:02:03,400
+Dejan señales en el ruido, en el polvo, en los pagos y en los
+
+39
+00:02:03,400 --> 00:02:04,788
+movimientos de personal.
+
+40
+00:02:05,138 --> 00:02:08,539
+Eso es lo que hace esta historia más que una anécdota:
+
+41
+00:02:08,539 --> 00:02:12,254
+muestra qué pasa cuando la tecnología, el dinero y la falta
+
+42
+00:02:12,254 --> 00:02:13,577
+de control se juntan.
+
+43
+00:02:13,927 --> 00:02:18,087
+Por eso, revisar lo que no se ve, como un plano que no cuadra
+
+44
+00:02:18,087 --> 00:02:22,452
+o un turno que nadie vigila, es la parte más difícil del trabajo
+
+45
+00:02:22,452 --> 00:02:23,339
+de seguridad.
+
+46
+00:02:24,039 --> 00:02:27,101
+Para un proyecto así, los ingenieros consultados señalaron que
+
+47
+00:02:27,101 --> 00:02:28,583
+hacían falta planos del penal.
+
+48
+00:02:28,933 --> 00:02:32,416
+Por eso, muchos expertos sostienen que la fuga tuvo complicidad
+
+49
+00:02:32,416 --> 00:02:35,125
+dentro de la prisión. Eso todavía es un análisis,
+
+50
+00:02:35,125 --> 00:02:36,397
+no un hecho confirmado.
+
+51
+00:02:37,097 --> 00:02:40,049
+Meses después, las autoridades volvieron a capturarlo.
+
+52
+00:02:40,049 --> 00:02:42,290
+En 2017 fue extraditado a Estados Unidos.
+
+53
+00:02:42,640 --> 00:02:45,480
+Y la historia dejó una pregunta que sigue vigente:
+
+54
+00:02:45,480 --> 00:02:48,945
+¿qué tan seguras son las cárceles cuando alguien tiene dinero
+
+55
+00:02:48,945 --> 00:02:49,456
+y tiempo?
+
+56
+00:02:50,156 --> 00:02:53,447
+Volvamos a la pregunta del principio. Tú, ¿cuánto crees que
+
+57
+00:02:53,447 --> 00:02:53,726
+tomó?
+
+58
+00:02:54,076 --> 00:02:56,899
+Si te gustó entender lo que de verdad pasó,
+
+59
+00:02:56,899 --> 00:03:01,165
+suscríbete. Y si quieres otra historia real que te deje pensando,
+
+60
+00:03:01,165 --> 00:03:05,169
+la Isla de las Muñecas y la tragedia de los Andes ya están en
+
+61
+00:03:05,169 --> 00:03:05,760
+el canal.

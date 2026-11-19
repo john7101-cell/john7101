@@ -1,0 +1,92 @@
+{
+  "titulo": "¿Cuánto tarda cavar un túnel de 1,5 km? La fuga del Chapo, desde la ingeniería",
+  "escenas": [
+    {
+      "id": "gancho",
+      "mood": "tenso",
+      "lineas": [
+        "En julio de dos mil quince, un prisionero de máxima seguridad desapareció de una cárcel mexicana. Salió por la ducha de su celda.",
+        "Y lo que hay debajo de esa ducha es una de las obras de ingeniería más sorprendentes de los últimos años."
+      ]
+    },
+    {
+      "id": "quiz",
+      "mood": "tenso",
+      "lineas": [
+        "Imagina que tienes que cavar un túnel de un kilómetro y medio, sin que nadie en la superficie lo note.",
+        "Piensa en lo que tendrías que resolver: el aire, la tierra que sacas, la luz y el tiempo sin que nadie lo note.",
+        "¿Cuánto tiempo crees que tomó? Escribe una cantidad en los comentarios antes de seguir.",
+        "Los expertos calculan entre uno y dos años. La respuesta te va a sorprender por lo largo que fue."
+      ]
+    },
+    {
+      "id": "tunel",
+      "mood": "neutro",
+      "lineas": [
+        "Según la versión oficial, el túnel tenía cerca de un kilómetro y medio de largo y llegaba hasta una casa en construcción, fuera del penal.",
+        "Tenía luz eléctrica, un sistema de ventilación y rieles por los que se movía una motocicleta adaptada.",
+        "Cavar bajo una prisión es más difícil de lo que parece. Hay que controlar el aire, la luz, el agua y el ruido, y que nada se note desde arriba.",
+        "La autoridad cree que esa vagoneta servía para sacar la tierra y llevar herramientas. Un túnel así exige lo mismo que cualquier obra grande: planificación, tiempo y mucha tierra que hay que ocultar."
+      ]
+    },
+    {
+      "id": "tiempo",
+      "mood": "ligero",
+      "lineas": [
+        "Un exfuncionario de seguridad de Estados Unidos estimó que una obra así tomó entre año y medio y dos años.",
+        "Otro ingeniero calculó unos doce meses, y que la tierra excavada llenaría cientos de camiones de volteo.",
+        "Cada metro de tierra excavada tiene que salir de algún lado. Por eso, en una obra así, la logística pesa tanto como la excavación.",
+        "Por eso muchos se preguntan lo mismo: ¿cómo pasó tanto tiempo sin que nadie lo notara?"
+      ]
+    },
+    {
+      "id": "seguridad",
+      "mood": "neutro",
+      "lineas": [
+        "Una prisión de máxima seguridad se diseña para que nadie salga. Cuando alguien sale, la pregunta ya no es solo cómo, sino también quién vio, quién firmó y quién no revisó.",
+        "Los analistas de seguridad coinciden en algo: las obras grandes casi nunca son invisibles. Dejan señales en el ruido, en el polvo, en los pagos y en los movimientos de personal.",
+        "Eso es lo que hace esta historia más que una anécdota: muestra qué pasa cuando la tecnología, el dinero y la falta de control se juntan.",
+        "Por eso, revisar lo que no se ve, como un plano que no cuadra o un turno que nadie vigila, es la parte más difícil del trabajo de seguridad."
+      ]
+    },
+    {
+      "id": "complicidad",
+      "mood": "tenso",
+      "lineas": [
+        "Para un proyecto así, los ingenieros consultados señalaron que hacían falta planos del penal.",
+        "Por eso, muchos expertos sostienen que la fuga tuvo complicidad dentro de la prisión. Eso todavía es un análisis, no un hecho confirmado."
+      ]
+    },
+    {
+      "id": "desenlace",
+      "mood": "calido",
+      "lineas": [
+        "Meses después, las autoridades volvieron a capturarlo. En dos mil diecisiete fue extraditado a Estados Unidos.",
+        "Y la historia dejó una pregunta que sigue vigente: ¿qué tan seguras son las cárceles cuando alguien tiene dinero y tiempo?"
+      ]
+    },
+    {
+      "id": "cierre",
+      "mood": "calido",
+      "lineas": [
+        "Volvamos a la pregunta del principio. Tú, ¿cuánto crees que tomó?",
+        "Si te gustó entender lo que de verdad pasó, suscríbete. Y si quieres otra historia real que te deje pensando, la Isla de las Muñecas y la tragedia de los Andes ya están en el canal."
+      ]
+    }
+  ],
+  "fuentes": [
+    "Zeta Tijuana (2015): La ingeniería de El Chapo",
+    "Expansión (2015): El Chapo se fugó por un túnel hecho por expertos ingenieros",
+    "Al Jazeera (2015): Mexican kingpin in brazen escape via elaborate tunnel",
+    "CS Monitor (2015): Inside El Chapo's tunnel",
+    "Metro PR / Telemetro (2015): construcción del túnel no pasaría desapercibida"
+  ],
+  "pendientes": [
+    "Recaptura: se dice 'meses después' porque las fuentes consultadas no confirman la fecha de enero de 2016. Verificar antes de publicar.",
+    "Extradición en 2017: confirmada por la búsqueda (Ciudad Juárez y extradición a EE. UU.), revisar la fecha exacta.",
+    "Tiempo de obra: son estimaciones de expertos, no hechos. Se presentan como estimaciones.",
+    "Complicidad: análisis de expertos, no confirmado. Se presenta como opinión de expertos.",
+    "Sin detalles de construcción (medidas exactas, herramientas, método de excavación): se omiten a propósito por seguridad y cumplimiento.",
+    "Versión del segundo túnel (Zeta): no se incluye por no estar confirmada."
+  ]
+}

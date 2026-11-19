@@ -1,0 +1,785 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<script src="./gsap.min.js"></script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { width:1920px; height:1080px; overflow:hidden; background:#14141a; }
+  #root { width:100%; height:100%; position:relative; overflow:hidden; font-family:Lato, sans-serif; color:#14141a; }
+  .scene { position:absolute; inset:0; overflow:hidden; }
+  .scene svg { position:absolute; inset:0; }
+  .huge { font: 900 150px Lato, sans-serif; fill:#fff; stroke:#14141a; stroke-width:12px; paint-order:stroke; }
+  .tag { font: 900 46px Lato, sans-serif; letter-spacing:.06em; fill:#fff; }
+  .tagd { font: 900 60px Lato, sans-serif; fill:#14141a; }
+  .tiny { font: 900 40px Lato, sans-serif; letter-spacing:.06em; fill:#14141a; }
+  .mid { font: 900 54px Lato, sans-serif; fill:#14141a; }
+  .stamp { font: 900 66px Lato, sans-serif; letter-spacing:.05em; fill:#fff; }
+  .cap { position:absolute; left:120px; right:120px; bottom:56px; display:flex; flex-wrap:wrap; gap:0 22px;
+          justify-content:center; z-index:10; }
+  .cap .w { display:inline-block; margin:0 .1em; font: 900 72px Lato, sans-serif; color:#fff; text-transform:uppercase;
+             -webkit-text-stroke: 12px #14141a; paint-order: stroke fill; }
+  .cap .w.hot { color:#ffc93c; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs></svg>
+<div id="root" data-composition-id="main" data-start="0" data-duration="187.76" data-width="1920" data-height="1080">
+<audio id="voz" src="assets/narracion.wav" data-start="0" data-duration="187.76" data-volume="2.5"></audio>
+<audio id="musica" src="assets/musica.wav" data-start="0" data-duration="187.76" data-volume="1"></audio>
+<audio id="efectos" src="assets/sfx.wav" data-start="0" data-duration="187.76" data-volume="0.55"></audio>
+<div id="sc00" class="clip scene" data-start="0.000" data-duration="15.18" data-layout-allow-overflow><svg viewBox="0 0 1920 1080" width="1920" height="1080"><rect width="1920" height="1080" fill="#2b2d42"/><g id="camg"><g id="zoomd"><rect x="0" y="0" width="1920" height="1080" fill="#c9d6df"/><rect x="0" y="760" width="1920" height="320" fill="#adb5bd" stroke="#14141a" stroke-width="8"/><rect x="700" y="60" width="520" height="700" fill="#e9ecef" stroke="#14141a" stroke-width="8"/><line x1="960" y1="90" x2="960" y2="200" stroke="#14141a" stroke-width="12"/><circle cx="960" cy="230" r="46" fill="#a8dadc" stroke="#14141a" stroke-width="7"/><circle id="dren" cx="960" cy="800" r="46" fill="#5c4033" stroke="#14141a" stroke-width="7"/></g></g><g id="tt"><text x="960" y="170" text-anchor="middle" class="tiny">PRISIÓN DE MÁXIMA SEGURIDAD</text></g></svg></div>
+<div id="sc01" class="clip scene" data-start="15.180" data-duration="26.417" data-layout-allow-overflow><svg viewBox="0 0 1920 1080" width="1920" height="1080"><defs><linearGradient id="gq4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3d6"/><stop offset="1" stop-color="#ffd6a5"/></linearGradient></defs><rect width="1920" height="1080" fill="url(#gq4)"/><g id="qtl"><text x="960" y="170" text-anchor="middle" class="huge">¿CUÁNTO TARDÓ?</text></g><g id="o0" transform="translate(380 780)"><rect x="-150" y="-120" width="300" height="120" rx="16" fill="#8d99ae" stroke="#14141a" stroke-width="8"/><text x="0" y="60" text-anchor="middle" class="tiny">1 MES</text></g><g id="o1" transform="translate(760 780)"><rect x="-150" y="-180" width="300" height="180" rx="16" fill="#8d99ae" stroke="#14141a" stroke-width="8"/><text x="0" y="60" text-anchor="middle" class="tiny">6 MESES</text></g><g id="o2" transform="translate(1140 780)"><rect x="-150" y="-240" width="300" height="240" rx="16" fill="#2bb673" stroke="#14141a" stroke-width="8"/><text x="0" y="60" text-anchor="middle" class="tiny">1–2 AÑOS</text></g><g id="o3" transform="translate(1520 780)"><rect x="-150" y="-300" width="300" height="300" rx="16" fill="#8d99ae" stroke="#14141a" stroke-width="8"/><text x="0" y="60" text-anchor="middle" class="tiny">5 AÑOS</text></g><g id="ok"><g id="okp" transform="translate(1140 420) rotate(-4)"><rect x="-376.0" y="-72" width="752" height="144" rx="12" fill="#2bb673" stroke="#14141a" stroke-width="8"/><text x="0" y="25" text-anchor="middle" class="stamp">ENTRE 1 Y 2 AÑOS</text></g></g></svg></div>
+<div id="sc02" class="clip scene" data-start="41.597" data-duration="35.828" data-layout-allow-overflow><svg viewBox="0 0 1920 1080" width="1920" height="1080"><defs><linearGradient id="gt4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfd8dc"/><stop offset="1" stop-color="#8d99ae"/></linearGradient></defs><rect width="1920" height="1080" fill="url(#gt4)"/><g id="tg4"><rect x="-60" y="540" width="2040" height="600" fill="#9c6644" stroke="#14141a" stroke-width="8"/></g><rect x="0" y="540" width="1920" height="540" fill="#8d5524" stroke="#14141a" stroke-width="8"/><path d="M300 590 L1620 590 L1620 640 L300 640 Z" fill="#3a3a3a" stroke="#14141a" stroke-width="6"/><g id="rail"><line x1="300" y1="650" x2="1620" y2="650" stroke="#adb5bd" stroke-width="10"/><line x1="300" y1="672" x2="1620" y2="672" stroke="#adb5bd" stroke-width="10"/></g><circle cx="420" cy="600" r="7" fill="#ffd60a" stroke="#14141a" stroke-width="3"/><circle cx="530" cy="600" r="7" fill="#ffd60a" stroke="#14141a" stroke-width="3"/><circle cx="640" cy="600" r="7" fill="#ffd60a" stroke="#14141a" stroke-width="3"/><circle cx="750" cy="600" r="7" fill="#ffd60a" stroke="#14141a" stroke-width="3"/><circle cx="860" cy="600" r="7" fill="#ffd60a" stroke="#14141a" stroke-width="3"/><circle cx="970" cy="600" r="7" fill="#ffd60a" stroke="#14141a" stroke-width="3"/><circle cx="1080" cy="600" r="7" fill="#ffd60a" stroke="#14141a" stroke-width="3"/><circle cx="1190" cy="600" r="7" fill="#ffd60a" stroke="#14141a" stroke-width="3"/><circle cx="1300" cy="600" r="7" fill="#ffd60a" stroke="#14141a" stroke-width="3"/><circle cx="1410" cy="600" r="7" fill="#ffd60a" stroke="#14141a" stroke-width="3"/><circle cx="1520" cy="600" r="7" fill="#ffd60a" stroke="#14141a" stroke-width="3"/><g id="moto" transform="translate(330 620)"><rect x="-70" y="-40" width="140" height="48" rx="10" fill="#e63946" stroke="#14141a" stroke-width="7"/><circle cx="-40" cy="20" r="18" fill="#14141a"/><circle cx="40" cy="20" r="18" fill="#14141a"/></g><g id="vent"><path d="M300 480 L1620 480" stroke="#7bdff2" stroke-width="16"/><text x="960" y="430" text-anchor="middle" class="tiny">VENTILACIÓN</text></g><g id="km"><g id="kmp" transform="translate(960 200) rotate(0)"><rect x="-310.0" y="-44" width="620" height="88" rx="44" fill="#e63946" stroke="#14141a" stroke-width="7"/><text x="0" y="16" text-anchor="middle" class="tag">1,5 KM DE TÚNEL</text></g></g><g><g id="pen" transform="translate(360 340) rotate(0)"><rect x="-150.0" y="-44" width="300" height="88" rx="44" fill="#14141a" stroke="#14141a" stroke-width="7"/><text x="0" y="16" text-anchor="middle" class="tag">PENAL</text></g><g id="cas" transform="translate(1560 340) rotate(0)"><rect x="-180.0" y="-44" width="360" height="88" rx="44" fill="#1fb5a8" stroke="#14141a" stroke-width="7"/><text x="0" y="16" text-anchor="middle" class="tag">CASA</text></g></g></svg></div>
+<div id="sc03" class="clip scene" data-start="77.425" data-duration="26.741" data-layout-allow-overflow><svg viewBox="0 0 1920 1080" width="1920" height="1080"><defs><linearGradient id="gti4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e0fbfc"/><stop offset="1" stop-color="#ffffff"/></linearGradient></defs><rect width="1920" height="1080" fill="url(#gti4)"/><text x="960" y="170" text-anchor="middle" class="huge">¿CUÁNTOS MESES?</text><line x1="300" y1="640" x2="1620" y2="640" stroke="#14141a" stroke-width="8"/><text x="300" y="700" text-anchor="middle" class="tiny">0</text><text x="600" y="700" text-anchor="middle" class="tiny">3</text><text x="900" y="700" text-anchor="middle" class="tiny">6</text><text x="1200" y="700" text-anchor="middle" class="tiny">9</text><text x="1500" y="700" text-anchor="middle" class="tiny">12</text><text x="1800" y="700" text-anchor="middle" class="tiny">15</text><text x="2100" y="700" text-anchor="middle" class="tiny">18</text><text x="2400" y="700" text-anchor="middle" class="tiny">21</text><text x="2700" y="700" text-anchor="middle" class="tiny">24</text><rect id="barra" x="300" y="520" width="1320" height="60" rx="30" fill="#ffc93c" stroke="#14141a" stroke-width="7"/><g id="rango"><g id="rg" transform="translate(960 440) rotate(0)"><rect x="-401.5" y="-44" width="803" height="88" rx="44" fill="#e63946" stroke="#14141a" stroke-width="7"/><text x="0" y="16" text-anchor="middle" class="tag">ESTIMADO: 12 A 24 MESES</text></g></g><g id="camiones"><g transform="translate(280 880)"><rect x="-40" y="-40" width="60" height="40" fill="#8d99ae" stroke="#14141a" stroke-width="5"/><circle cx="-22" cy="4" r="9" fill="#14141a"/><circle cx="20" cy="4" r="9" fill="#14141a"/></g><g transform="translate(370 880)"><rect x="-40" y="-40" width="60" height="40" fill="#8d99ae" stroke="#14141a" stroke-width="5"/><circle cx="-22" cy="4" r="9" fill="#14141a"/><circle cx="20" cy="4" r="9" fill="#14141a"/></g><g transform="translate(460 880)"><rect x="-40" y="-40" width="60" height="40" fill="#8d99ae" stroke="#14141a" stroke-width="5"/><circle cx="-22" cy="4" r="9" fill="#14141a"/><circle cx="20" cy="4" r="9" fill="#14141a"/></g><g transform="translate(550 880)"><rect x="-40" y="-40" width="60" height="40" fill="#8d99ae" stroke="#14141a" stroke-width="5"/><circle cx="-22" cy="4" r="9" fill="#14141a"/><circle cx="20" cy="4" r="9" fill="#14141a"/></g><g transform="translate(640 880)"><rect x="-40" y="-40" width="60" height="40" fill="#8d99ae" stroke="#14141a" stroke-width="5"/><circle cx="-22" cy="4" r="9" fill="#14141a"/><circle cx="20" cy="4" r="9" fill="#14141a"/></g><g transform="translate(730 880)"><rect x="-40" y="-40" width="60" height="40" fill="#8d99ae" stroke="#14141a" stroke-width="5"/><circle cx="-22" cy="4" r="9" fill="#14141a"/><circle cx="20" cy="4" r="9" fill="#14141a"/></g><g transform="translate(820 880)"><rect x="-40" y="-40" width="60" height="40" fill="#8d99ae" stroke="#14141a" stroke-width="5"/><circle cx="-22" cy="4" r="9" fill="#14141a"/><circle cx="20" cy="4" r="9" fill="#14141a"/></g><g transform="translate(910 880)"><rect x="-40" y="-40" width="60" height="40" fill="#8d99ae" stroke="#14141a" stroke-width="5"/><circle cx="-22" cy="4" r="9" fill="#14141a"/><circle cx="20" cy="4" r="9" fill="#14141a"/></g><g transform="translate(1000 880)"><rect x="-40" y="-40" width="60" height="40" fill="#8d99ae" stroke="#14141a" stroke-width="5"/><circle cx="-22" cy="4" r="9" fill="#14141a"/><circle cx="20" cy="4" r="9" fill="#14141a"/></g><g transform="translate(1090 880)"><rect x="-40" y="-40" width="60" height="40" fill="#8d99ae" stroke="#14141a" stroke-width="5"/><circle cx="-22" cy="4" r="9" fill="#14141a"/><circle cx="20" cy="4" r="9" fill="#14141a"/></g><g transform="translate(1180 880)"><rect x="-40" y="-40" width="60" height="40" fill="#8d99ae" stroke="#14141a" stroke-width="5"/><circle cx="-22" cy="4" r="9" fill="#14141a"/><circle cx="20" cy="4" r="9" fill="#14141a"/></g><g transform="translate(1270 880)"><rect x="-40" y="-40" width="60" height="40" fill="#8d99ae" stroke="#14141a" stroke-width="5"/><circle cx="-22" cy="4" r="9" fill="#14141a"/><circle cx="20" cy="4" r="9" fill="#14141a"/></g><text x="960" y="800" text-anchor="middle" class="tiny">CIENTOS DE CAMIONES DE TIERRA</text></g></svg></div>
+<div id="sc04" class="clip scene" data-start="104.166" data-duration="39.723" data-layout-allow-overflow><svg viewBox="0 0 1920 1080" width="1920" height="1080"><defs><linearGradient id="gs4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1faee"/><stop offset="1" stop-color="#dbe9f4"/></linearGradient></defs><rect width="1920" height="1080" fill="url(#gs4)"/><g id="sg4"><rect x="-60" y="880" width="2040" height="260" fill="#adb5bd" stroke="#14141a" stroke-width="8"/></g><g id="plano" transform="translate(960 420)"><rect x="-420" y="-260" width="840" height="520" rx="18" fill="#dbe9f4" stroke="#14141a" stroke-width="9"/><line x1="-380" y1="-220" x2="-380" y2="220" stroke="#8ecae6" stroke-width="3"/><line x1="-290" y1="-220" x2="-290" y2="220" stroke="#8ecae6" stroke-width="3"/><line x1="-200" y1="-220" x2="-200" y2="220" stroke="#8ecae6" stroke-width="3"/><line x1="-110" y1="-220" x2="-110" y2="220" stroke="#8ecae6" stroke-width="3"/><line x1="-20" y1="-220" x2="-20" y2="220" stroke="#8ecae6" stroke-width="3"/><line x1="70" y1="-220" x2="70" y2="220" stroke="#8ecae6" stroke-width="3"/><line x1="160" y1="-220" x2="160" y2="220" stroke="#8ecae6" stroke-width="3"/><line x1="250" y1="-220" x2="250" y2="220" stroke="#8ecae6" stroke-width="3"/><line x1="340" y1="-220" x2="340" y2="220" stroke="#8ecae6" stroke-width="3"/><line x1="430" y1="-220" x2="430" y2="220" stroke="#8ecae6" stroke-width="3"/><rect x="-120" y="-80" width="240" height="160" fill="none" stroke="#e63946" stroke-width="8" stroke-dasharray="18 12"/><text x="0" y="100" text-anchor="middle" class="tag">¿?</text></g><g id="dt4" transform="translate(300 900) scale(1.2)"><ellipse cx="0" cy="4" rx="70" ry="12" fill="#14141a" opacity="0.18"/><g id="dt4-body" transform="scale(1 1)"><g transform="translate(-30 -262)"><g id="dt4-uaL" transform="rotate(22)"><line x1="0" y1="0" x2="0" y2="62" stroke="#a47148" stroke-width="17" stroke-linecap="round"/><line x1="0" y1="0" x2="0" y2="62" stroke="#14141a" stroke-width="11" stroke-linecap="round" fill="none" stroke-opacity="0"/><g transform="translate(0 62)"><g id="dt4-faL" transform="rotate(-14)"><line x1="0" y1="0" x2="0" y2="62" stroke="#a47148" stroke-width="13" stroke-linecap="round"/><circle cx="0" cy="62" r="11" fill="#fff3e0" stroke="#14141a" stroke-width="5"/></g></g></g></g><g transform="translate(-16 -150)"><g id="dt4-thL" transform="rotate(8)"><line x1="0" y1="0" x2="0" y2="78" stroke="#3d405b" stroke-width="17" stroke-linecap="round"/><line x1="0" y1="0" x2="0" y2="78" stroke="#14141a" stroke-width="11" stroke-linecap="round" fill="none" stroke-opacity="0"/><g transform="translate(0 78)"><g id="dt4-shL" transform="rotate(-4)"><line x1="0" y1="0" x2="0" y2="74" stroke="#3d405b" stroke-width="13" stroke-linecap="round"/><ellipse cx="10" cy="74" rx="22" ry="11" fill="#14141a"/></g></g></g></g><g transform="translate(16 -150)"><g id="dt4-thR" transform="rotate(-8)"><line x1="0" y1="0" x2="0" y2="78" stroke="#3d405b" stroke-width="17" stroke-linecap="round"/><line x1="0" y1="0" x2="0" y2="78" stroke="#14141a" stroke-width="11" stroke-linecap="round" fill="none" stroke-opacity="0"/><g transform="translate(0 78)"><g id="dt4-shR" transform="rotate(4)"><line x1="0" y1="0" x2="0" y2="74" stroke="#3d405b" stroke-width="13" stroke-linecap="round"/><ellipse cx="10" cy="74" rx="22" ry="11" fill="#14141a"/></g></g></g></g><line x1="0" y1="-282" x2="0" y2="-300" stroke="#14141a" stroke-width="11"/><path d="M-34 -276 Q0 -292 34 -276 L30 -150 Q0 -140 -30 -150 Z" fill="#a47148" stroke="#14141a" stroke-width="7"/>
+  <g transform="translate(0 -340)"><g id="dt4-head" transform="rotate(0)">
+   
+   <circle cx="0" cy="0" r="58" fill="#fff3e0" stroke="#14141a" stroke-width="8"/>
+   <circle cx="-34" cy="22" r="10" fill="#ff5d8f" opacity="0.45"/><circle cx="34" cy="22" r="10" fill="#ff5d8f" opacity="0.45"/>
+   <g transform="translate(0 -8)"><g id="dt4-eyes" transform="scale(1 1)">
+     <ellipse cx="-20" cy="0" rx="14" ry="17" fill="#fff" stroke="#14141a" stroke-width="5"/>
+     <ellipse cx="20" cy="0" rx="14" ry="17" fill="#fff" stroke="#14141a" stroke-width="5"/>
+     <g id="dt4-pup" transform="translate(0 0)"><circle cx="-20" cy="2" r="7" fill="#14141a"/><circle cx="20" cy="2" r="7" fill="#14141a"/>
+       <circle cx="-17" cy="-1" r="2.5" fill="#fff"/><circle cx="23" cy="-1" r="2.5" fill="#fff"/></g>
+   </g></g>
+   <g transform="translate(-20 -32)"><g id="dt4-brL" transform="rotate(0)"><path d="M-13 0 L13 0" stroke="#14141a" stroke-width="6" stroke-linecap="round" fill="none" stroke-width="7"/></g></g>
+   <g transform="translate(20 -32)"><g id="dt4-brR" transform="rotate(0)"><path d="M-13 0 L13 0" stroke="#14141a" stroke-width="6" stroke-linecap="round" fill="none" stroke-width="7"/></g></g>
+   <g id="dt4-m-smile" opacity="0"><path d="M-18 30 Q0 48 18 30" stroke="#14141a" stroke-width="6" stroke-linecap="round" fill="none"/></g><g id="dt4-m-open" opacity="0"><path d="M-18 28 Q0 62 18 28 Z" fill="#7a1f2b" stroke="#14141a" stroke-width="6"/></g><g id="dt4-m-frown" opacity="0"><path d="M-18 40 Q0 24 18 40" stroke="#14141a" stroke-width="6" stroke-linecap="round" fill="none"/></g><g id="dt4-m-flat" opacity="1"><path d="M-16 34 L16 34" stroke="#14141a" stroke-width="6" stroke-linecap="round" fill="none"/></g><g id="dt4-m-o" opacity="0"><ellipse cx="0" cy="36" rx="11" ry="15" fill="#7a1f2b" stroke="#14141a" stroke-width="6"/></g><ellipse cx="0" cy="-60" rx="74" ry="14" fill="#5a3e2b" stroke="#14141a" stroke-width="6"/><path d="M-46 -62 L-40 -116 Q0 -100 40 -116 L46 -62 Z" fill="#5a3e2b" stroke="#14141a" stroke-width="6"/><path d="M-44 -76 L44 -76" stroke="#e63946" stroke-width="8"/>
+  </g></g><g transform="translate(30 -262)"><g id="dt4-uaR" transform="rotate(-22)"><line x1="0" y1="0" x2="0" y2="62" stroke="#a47148" stroke-width="17" stroke-linecap="round"/><line x1="0" y1="0" x2="0" y2="62" stroke="#14141a" stroke-width="11" stroke-linecap="round" fill="none" stroke-opacity="0"/><g transform="translate(0 62)"><g id="dt4-faR" transform="rotate(14)"><line x1="0" y1="0" x2="0" y2="62" stroke="#a47148" stroke-width="13" stroke-linecap="round"/><circle cx="0" cy="62" r="11" fill="#fff3e0" stroke="#14141a" stroke-width="5"/></g></g></g></g></g></g><g id="hint"><g id="hn" transform="translate(1400 230) rotate(0)"><rect x="-339.5" y="-44" width="679" height="88" rx="44" fill="#14141a" stroke="#14141a" stroke-width="7"/><text x="0" y="16" text-anchor="middle" class="tag">LOS PLANOS IMPORTAN</text></g></g><g id="ojo"><g id="ojp" transform="translate(1450 700) rotate(0)"><rect x="-280.0" y="-44" width="560" height="88" rx="44" fill="#e63946" stroke="#14141a" stroke-width="7"/><text x="0" y="16" text-anchor="middle" class="tag">ALGO NO CUADRA</text></g></g></svg></div>
+<div id="sc05" class="clip scene" data-start="143.889" data-duration="13.058" data-layout-allow-overflow><svg viewBox="0 0 1920 1080" width="1920" height="1080"><defs><linearGradient id="gc4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b2d42"/><stop offset="1" stop-color="#6d597a"/></linearGradient></defs><rect width="1920" height="1080" fill="url(#gc4)"/><g id="cc4" transform="translate(960 480) rotate(-2)"><rect x="-450.0" y="-280.0" width="900" height="560" rx="22" fill="#fff8ec" stroke="#14141a" stroke-width="9"/><rect x="-450.0" y="-280.0" width="900" height="104" rx="22" fill="#ffc93c" stroke="#14141a" stroke-width="9"/><text x="0" y="-210.0" text-anchor="middle" class="mid">PLANOS DEL PENAL</text><text x="0" y="60" text-anchor="middle" class="mid">¿QUIÉN LOS TENÍA?</text><text x="0" y="150" text-anchor="middle" class="tiny">ANÁLISIS DE EXPERTOS</text></g><g id="st4"><g id="sp4" transform="translate(960 880) rotate(-3)"><rect x="-565.0" y="-72" width="1130" height="144" rx="12" fill="#e63946" stroke="#14141a" stroke-width="8"/><text x="0" y="25" text-anchor="middle" class="stamp">NO ES UN HECHO CONFIRMADO</text></g></g><g id="tag4"><g id="tg4p" transform="translate(960 110) rotate(0)"><rect x="-380.0" y="-44" width="760" height="88" rx="44" fill="#7b2cbf" stroke="#14141a" stroke-width="7"/><text x="0" y="16" text-anchor="middle" class="tag">COMPLICIDAD</text></g></g></svg></div>
+<div id="sc06" class="clip scene" data-start="156.947" data-duration="13.059" data-layout-allow-overflow><svg viewBox="0 0 1920 1080" width="1920" height="1080"><defs><linearGradient id="gd4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a0ca3"/><stop offset="1" stop-color="#10002b"/></linearGradient></defs><rect width="1920" height="1080" fill="url(#gd4)"/><g id="linea" transform="translate(0 0)"><line x1="260" y1="560" x2="1660" y2="560" stroke="#ffc93c" stroke-width="12"/></g><g id="e15"><g id="p15" transform="translate(420 560) rotate(0)"><rect x="-215.5" y="-44" width="431" height="88" rx="44" fill="#e63946" stroke="#14141a" stroke-width="7"/><text x="0" y="16" text-anchor="middle" class="tag">2015 · FUGA</text></g></g><g id="e16"><g id="p16" transform="translate(960 560) rotate(0)"><rect x="-210.0" y="-44" width="420" height="88" rx="44" fill="#14141a" stroke="#14141a" stroke-width="7"/><text x="0" y="16" text-anchor="middle" class="tag">RECAPTURA</text></g></g><g id="e17"><g id="p17" transform="translate(1500 560) rotate(0)"><rect x="-324.0" y="-44" width="648" height="88" rx="44" fill="#2bb673" stroke="#14141a" stroke-width="7"/><text x="0" y="16" text-anchor="middle" class="tag">2017 · EXTRADICIÓN</text></g></g><g><text x="960" y="300" text-anchor="middle" class="huge">MESES DESPUÉS</text></g></svg></div>
+<div id="sc07" class="clip scene" data-start="170.006" data-duration="17.754" data-layout-allow-overflow><svg viewBox="0 0 1920 1080" width="1920" height="1080"><defs><linearGradient id="gz4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff7b54"/><stop offset="1" stop-color="#ffd56b"/></linearGradient></defs><rect width="1920" height="1080" fill="url(#gz4)"/><g id="zg4"><rect x="-60" y="880" width="2040" height="260" fill="#9c6644" stroke="#14141a" stroke-width="8"/></g><g id="cz4" transform="translate(960 880) scale(1.2)"><ellipse cx="0" cy="4" rx="70" ry="12" fill="#14141a" opacity="0.18"/><g id="cz4-body" transform="scale(1 1)"><g transform="translate(-30 -262)"><g id="cz4-uaL" transform="rotate(22)"><line x1="0" y1="0" x2="0" y2="62" stroke="#a47148" stroke-width="17" stroke-linecap="round"/><line x1="0" y1="0" x2="0" y2="62" stroke="#14141a" stroke-width="11" stroke-linecap="round" fill="none" stroke-opacity="0"/><g transform="translate(0 62)"><g id="cz4-faL" transform="rotate(-14)"><line x1="0" y1="0" x2="0" y2="62" stroke="#a47148" stroke-width="13" stroke-linecap="round"/><circle cx="0" cy="62" r="11" fill="#fff3e0" stroke="#14141a" stroke-width="5"/></g></g></g></g><g transform="translate(-16 -150)"><g id="cz4-thL" transform="rotate(8)"><line x1="0" y1="0" x2="0" y2="78" stroke="#3d405b" stroke-width="17" stroke-linecap="round"/><line x1="0" y1="0" x2="0" y2="78" stroke="#14141a" stroke-width="11" stroke-linecap="round" fill="none" stroke-opacity="0"/><g transform="translate(0 78)"><g id="cz4-shL" transform="rotate(-4)"><line x1="0" y1="0" x2="0" y2="74" stroke="#3d405b" stroke-width="13" stroke-linecap="round"/><ellipse cx="10" cy="74" rx="22" ry="11" fill="#14141a"/></g></g></g></g><g transform="translate(16 -150)"><g id="cz4-thR" transform="rotate(-8)"><line x1="0" y1="0" x2="0" y2="78" stroke="#3d405b" stroke-width="17" stroke-linecap="round"/><line x1="0" y1="0" x2="0" y2="78" stroke="#14141a" stroke-width="11" stroke-linecap="round" fill="none" stroke-opacity="0"/><g transform="translate(0 78)"><g id="cz4-shR" transform="rotate(4)"><line x1="0" y1="0" x2="0" y2="74" stroke="#3d405b" stroke-width="13" stroke-linecap="round"/><ellipse cx="10" cy="74" rx="22" ry="11" fill="#14141a"/></g></g></g></g><line x1="0" y1="-282" x2="0" y2="-300" stroke="#14141a" stroke-width="11"/><path d="M-34 -276 Q0 -292 34 -276 L30 -150 Q0 -140 -30 -150 Z" fill="#a47148" stroke="#14141a" stroke-width="7"/>
+  <g transform="translate(0 -340)"><g id="cz4-head" transform="rotate(0)">
+   
+   <circle cx="0" cy="0" r="58" fill="#fff3e0" stroke="#14141a" stroke-width="8"/>
+   <circle cx="-34" cy="22" r="10" fill="#ff5d8f" opacity="0.45"/><circle cx="34" cy="22" r="10" fill="#ff5d8f" opacity="0.45"/>
+   <g transform="translate(0 -8)"><g id="cz4-eyes" transform="scale(1 1)">
+     <ellipse cx="-20" cy="0" rx="14" ry="17" fill="#fff" stroke="#14141a" stroke-width="5"/>
+     <ellipse cx="20" cy="0" rx="14" ry="17" fill="#fff" stroke="#14141a" stroke-width="5"/>
+     <g id="cz4-pup" transform="translate(0 0)"><circle cx="-20" cy="2" r="7" fill="#14141a"/><circle cx="20" cy="2" r="7" fill="#14141a"/>
+       <circle cx="-17" cy="-1" r="2.5" fill="#fff"/><circle cx="23" cy="-1" r="2.5" fill="#fff"/></g>
+   </g></g>
+   <g transform="translate(-20 -32)"><g id="cz4-brL" transform="rotate(0)"><path d="M-13 0 L13 0" stroke="#14141a" stroke-width="6" stroke-linecap="round" fill="none" stroke-width="7"/></g></g>
+   <g transform="translate(20 -32)"><g id="cz4-brR" transform="rotate(0)"><path d="M-13 0 L13 0" stroke="#14141a" stroke-width="6" stroke-linecap="round" fill="none" stroke-width="7"/></g></g>
+   <g id="cz4-m-smile" opacity="0"><path d="M-18 30 Q0 48 18 30" stroke="#14141a" stroke-width="6" stroke-linecap="round" fill="none"/></g><g id="cz4-m-open" opacity="0"><path d="M-18 28 Q0 62 18 28 Z" fill="#7a1f2b" stroke="#14141a" stroke-width="6"/></g><g id="cz4-m-frown" opacity="0"><path d="M-18 40 Q0 24 18 40" stroke="#14141a" stroke-width="6" stroke-linecap="round" fill="none"/></g><g id="cz4-m-flat" opacity="1"><path d="M-16 34 L16 34" stroke="#14141a" stroke-width="6" stroke-linecap="round" fill="none"/></g><g id="cz4-m-o" opacity="0"><ellipse cx="0" cy="36" rx="11" ry="15" fill="#7a1f2b" stroke="#14141a" stroke-width="6"/></g><ellipse cx="0" cy="-60" rx="74" ry="14" fill="#5a3e2b" stroke="#14141a" stroke-width="6"/><path d="M-46 -62 L-40 -116 Q0 -100 40 -116 L46 -62 Z" fill="#5a3e2b" stroke="#14141a" stroke-width="6"/><path d="M-44 -76 L44 -76" stroke="#e63946" stroke-width="8"/>
+  </g></g><g transform="translate(30 -262)"><g id="cz4-uaR" transform="rotate(-22)"><line x1="0" y1="0" x2="0" y2="62" stroke="#a47148" stroke-width="17" stroke-linecap="round"/><line x1="0" y1="0" x2="0" y2="62" stroke="#14141a" stroke-width="11" stroke-linecap="round" fill="none" stroke-opacity="0"/><g transform="translate(0 62)"><g id="cz4-faR" transform="rotate(14)"><line x1="0" y1="0" x2="0" y2="62" stroke="#a47148" stroke-width="13" stroke-linecap="round"/><circle cx="0" cy="62" r="11" fill="#fff3e0" stroke="#14141a" stroke-width="5"/></g></g></g></g></g></g><g id="qq4"><text x="960" y="240" text-anchor="middle" class="huge">¿CUÁNTO TARDÓ?</text></g><g id="cf4"><g id="cfa4" transform="translate(1620 620) rotate(3)"><rect x="-260.0" y="-170.0" width="520" height="340" rx="22" fill="#fff8ec" stroke="#14141a" stroke-width="9"/><rect x="-260.0" y="-170.0" width="520" height="104" rx="22" fill="#ffc93c" stroke="#14141a" stroke-width="9"/><text x="0" y="-100.0" text-anchor="middle" class="mid">MIRA ESTO</text><text x="0" y="90" text-anchor="middle" class="tiny">LA ISLA DE LAS</text><text x="0" y="150" text-anchor="middle" class="tiny">MUÑECAS</text></g></g></svg></div>
+<div id="cap0" class="clip cap" data-start="0.000" data-duration="1.992"><span id="cw0" class="w">En</span><span id="cw1" class="w">julio</span><span id="cw2" class="w">de</span><span id="cw3" class="w">2015,</span><span id="cw4" class="w">un</span><span id="cw5" class="w">prisionero</span></div>
+<div id="cap1" class="clip cap" data-start="2.012" data-duration="1.886"><span id="cw6" class="w">de</span><span id="cw7" class="w">máxima</span><span id="cw8" class="w">seguridad</span><span id="cw9" class="w">desapareció</span></div>
+<div id="cap2" class="clip cap" data-start="3.918" data-duration="1.462"><span id="cw10" class="w">de</span><span id="cw11" class="w">una</span><span id="cw12" class="w">cárcel</span><span id="cw13" class="w">mexicana.</span></div>
+<div id="cap3" class="clip cap" data-start="5.400" data-duration="2.395"><span id="cw14" class="w">Salió</span><span id="cw15" class="w">por</span><span id="cw16" class="w">la</span><span id="cw17" class="w">ducha</span><span id="cw18" class="w">de</span><span id="cw19" class="w">su</span><span id="cw20" class="w">celda.</span></div>
+<div id="cap4" class="clip cap" data-start="7.815" data-duration="1.804"><span id="cw21" class="w">Y</span><span id="cw22" class="w">lo</span><span id="cw23" class="w">que</span><span id="cw24" class="w">hay</span><span id="cw25" class="w">debajo</span><span id="cw26" class="w">de</span><span id="cw27" class="w">esa</span></div>
+<div id="cap5" class="clip cap" data-start="9.639" data-duration="1.912"><span id="cw28" class="w">ducha</span><span id="cw29" class="w">es</span><span id="cw30" class="w">una</span><span id="cw31" class="w">de</span><span id="cw32" class="w">las</span><span id="cw33" class="w">obras</span><span id="cw34" class="w">de</span></div>
+<div id="cap6" class="clip cap" data-start="11.571" data-duration="1.697"><span id="cw35" class="w">ingeniería</span><span id="cw36" class="w">más</span><span id="cw37" class="w">sorprendentes</span></div>
+<div id="cap7" class="clip cap" data-start="13.288" data-duration="1.922"><span id="cw38" class="w">de</span><span id="cw39" class="w">los</span><span id="cw40" class="w">últimos</span><span id="cw41" class="w">años.</span></div>
+<div id="cap8" class="clip cap" data-start="15.330" data-duration="1.969"><span id="cw42" class="w">Imagina</span><span id="cw43" class="w">que</span><span id="cw44" class="w">tienes</span><span id="cw45" class="w">que</span><span id="cw46" class="w">cavar</span></div>
+<div id="cap9" class="clip cap" data-start="17.319" data-duration="1.969"><span id="cw47" class="w">un</span><span id="cw48" class="w">túnel</span><span id="cw49" class="w">de</span><span id="cw50" class="w">un</span><span id="cw51" class="w">1,5</span><span id="cw52" class="w">km,</span><span id="cw53" class="w">sin</span></div>
+<div id="cap10" class="clip cap" data-start="19.307" data-duration="1.852"><span id="cw54" class="w">que</span><span id="cw55" class="w">nadie</span><span id="cw56" class="w">en</span><span id="cw57" class="w">la</span><span id="cw58" class="w">superficie</span></div>
+<div id="cap11" class="clip cap" data-start="21.179" data-duration="0.973"><span id="cw59" class="w">lo</span><span id="cw60" class="w">note.</span></div>
+<div id="cap12" class="clip cap" data-start="22.172" data-duration="1.970"><span id="cw61" class="w">Piensa</span><span id="cw62" class="w">en</span><span id="cw63" class="w">lo</span><span id="cw64" class="w">que</span><span id="cw65" class="w">tendrías</span><span id="cw66" class="w">que</span></div>
+<div id="cap13" class="clip cap" data-start="24.162" data-duration="0.588"><span id="cw67" class="w">resolver:</span></div>
+<div id="cap14" class="clip cap" data-start="24.771" data-duration="1.970"><span id="cw68" class="w">el</span><span id="cw69" class="w">aire,</span><span id="cw70" class="w">la</span><span id="cw71" class="w">tierra</span><span id="cw72" class="w">que</span><span id="cw73" class="w">sacas,</span></div>
+<div id="cap15" class="clip cap" data-start="26.761" data-duration="1.860"><span id="cw74" class="w">la</span><span id="cw75" class="w">luz</span><span id="cw76" class="w">y</span><span id="cw77" class="w">el</span><span id="cw78" class="w">tiempo</span><span id="cw79" class="w">sin</span><span id="cw80" class="w">que</span></div>
+<div id="cap16" class="clip cap" data-start="28.641" data-duration="1.325"><span id="cw81" class="w">nadie</span><span id="cw82" class="w">lo</span><span id="cw83" class="w">note.</span></div>
+<div id="cap17" class="clip cap" data-start="29.986" data-duration="1.584"><span id="cw84" class="w">¿Cuánto</span><span id="cw85" class="w">tiempo</span><span id="cw86" class="w">crees</span><span id="cw87" class="w">que</span><span id="cw88" class="w">tomó?</span></div>
+<div id="cap18" class="clip cap" data-start="31.590" data-duration="1.450"><span id="cw89" class="w">Escribe</span><span id="cw90" class="w">una</span><span id="cw91" class="w">cantidad</span><span id="cw92" class="w">en</span><span id="cw93" class="w">los</span></div>
+<div id="cap19" class="clip cap" data-start="33.060" data-duration="1.800"><span id="cw94" class="w">comentarios</span><span id="cw95" class="w">antes</span><span id="cw96" class="w">de</span><span id="cw97" class="w">seguir.</span></div>
+<div id="cap20" class="clip cap" data-start="34.880" data-duration="1.667"><span id="cw98" class="w">Los</span><span id="cw99" class="w">expertos</span><span id="cw100" class="w">calculan</span><span id="cw101" class="w">entre</span></div>
+<div id="cap21" class="clip cap" data-start="36.567" data-duration="1.034"><span id="cw102" class="w">uno</span><span id="cw103" class="w">y</span><span id="cw104" class="w">dos</span><span id="cw105" class="w">años.</span></div>
+<div id="cap22" class="clip cap" data-start="37.621" data-duration="1.983"><span id="cw106" class="w">La</span><span id="cw107" class="w">respuesta</span><span id="cw108" class="w">te</span><span id="cw109" class="w">va</span><span id="cw110" class="w">a</span><span id="cw111" class="w">sorprender</span></div>
+<div id="cap23" class="clip cap" data-start="39.624" data-duration="2.003"><span id="cw112" class="w">por</span><span id="cw113" class="w">lo</span><span id="cw114" class="w">largo</span><span id="cw115" class="w">que</span><span id="cw116" class="w">fue.</span></div>
+<div id="cap24" class="clip cap" data-start="41.747" data-duration="1.795"><span id="cw117" class="w">Según</span><span id="cw118" class="w">la</span><span id="cw119" class="w">versión</span><span id="cw120" class="w">oficial,</span><span id="cw121" class="w">el</span></div>
+<div id="cap25" class="clip cap" data-start="43.562" data-duration="1.795"><span id="cw122" class="w">túnel</span><span id="cw123" class="w">tenía</span><span id="cw124" class="w">cerca</span><span id="cw125" class="w">de</span><span id="cw126" class="w">un</span><span id="cw127" class="w">1,5</span></div>
+<div id="cap26" class="clip cap" data-start="45.377" data-duration="1.795"><span id="cw128" class="w">km</span><span id="cw129" class="w">de</span><span id="cw130" class="w">largo</span><span id="cw131" class="w">y</span><span id="cw132" class="w">llegaba</span><span id="cw133" class="w">hasta</span></div>
+<div id="cap27" class="clip cap" data-start="47.192" data-duration="1.955"><span id="cw134" class="w">una</span><span id="cw135" class="w">casa</span><span id="cw136" class="w">en</span><span id="cw137" class="w">construcción,</span><span id="cw138" class="w">fuera</span></div>
+<div id="cap28" class="clip cap" data-start="49.167" data-duration="1.024"><span id="cw139" class="w">del</span><span id="cw140" class="w">penal.</span></div>
+<div id="cap29" class="clip cap" data-start="50.211" data-duration="1.681"><span id="cw141" class="w">Tenía</span><span id="cw142" class="w">luz</span><span id="cw143" class="w">eléctrica,</span><span id="cw144" class="w">un</span><span id="cw145" class="w">sistema</span></div>
+<div id="cap30" class="clip cap" data-start="51.912" data-duration="1.497"><span id="cw146" class="w">de</span><span id="cw147" class="w">ventilación</span><span id="cw148" class="w">y</span><span id="cw149" class="w">rieles</span><span id="cw150" class="w">por</span></div>
+<div id="cap31" class="clip cap" data-start="53.429" data-duration="1.773"><span id="cw151" class="w">los</span><span id="cw152" class="w">que</span><span id="cw153" class="w">se</span><span id="cw154" class="w">movía</span><span id="cw155" class="w">una</span><span id="cw156" class="w">motocicleta</span></div>
+<div id="cap32" class="clip cap" data-start="55.222" data-duration="0.836"><span id="cw157" class="w">adaptada.</span></div>
+<div id="cap33" class="clip cap" data-start="56.078" data-duration="1.995"><span id="cw158" class="w">Cavar</span><span id="cw159" class="w">bajo</span><span id="cw160" class="w">una</span><span id="cw161" class="w">prisión</span><span id="cw162" class="w">es</span><span id="cw163" class="w">más</span></div>
+<div id="cap34" class="clip cap" data-start="58.093" data-duration="1.715"><span id="cw164" class="w">difícil</span><span id="cw165" class="w">de</span><span id="cw166" class="w">lo</span><span id="cw167" class="w">que</span><span id="cw168" class="w">parece.</span></div>
+<div id="cap35" class="clip cap" data-start="59.827" data-duration="1.771"><span id="cw169" class="w">Hay</span><span id="cw170" class="w">que</span><span id="cw171" class="w">controlar</span><span id="cw172" class="w">el</span><span id="cw173" class="w">aire,</span></div>
+<div id="cap36" class="clip cap" data-start="61.618" data-duration="1.939"><span id="cw174" class="w">la</span><span id="cw175" class="w">luz,</span><span id="cw176" class="w">el</span><span id="cw177" class="w">agua</span><span id="cw178" class="w">y</span><span id="cw179" class="w">el</span><span id="cw180" class="w">ruido,</span></div>
+<div id="cap37" class="clip cap" data-start="63.577" data-duration="2.568"><span id="cw181" class="w">y</span><span id="cw182" class="w">que</span><span id="cw183" class="w">nada</span><span id="cw184" class="w">se</span><span id="cw185" class="w">note</span><span id="cw186" class="w">desde</span><span id="cw187" class="w">arriba.</span></div>
+<div id="cap38" class="clip cap" data-start="66.165" data-duration="1.873"><span id="cw188" class="w">La</span><span id="cw189" class="w">autoridad</span><span id="cw190" class="w">cree</span><span id="cw191" class="w">que</span><span id="cw192" class="w">esa</span><span id="cw193" class="w">vagoneta</span></div>
+<div id="cap39" class="clip cap" data-start="68.058" data-duration="1.503"><span id="cw194" class="w">servía</span><span id="cw195" class="w">para</span><span id="cw196" class="w">sacar</span><span id="cw197" class="w">la</span><span id="cw198" class="w">tierra</span></div>
+<div id="cap40" class="clip cap" data-start="69.581" data-duration="1.180"><span id="cw199" class="w">y</span><span id="cw200" class="w">llevar</span><span id="cw201" class="w">herramientas.</span></div>
+<div id="cap41" class="clip cap" data-start="70.781" data-duration="1.550"><span id="cw202" class="w">Un</span><span id="cw203" class="w">túnel</span><span id="cw204" class="w">así</span><span id="cw205" class="w">exige</span><span id="cw206" class="w">lo</span><span id="cw207" class="w">mismo</span></div>
+<div id="cap42" class="clip cap" data-start="72.351" data-duration="1.411"><span id="cw208" class="w">que</span><span id="cw209" class="w">cualquier</span><span id="cw210" class="w">obra</span><span id="cw211" class="w">grande:</span></div>
+<div id="cap43" class="clip cap" data-start="73.782" data-duration="1.550"><span id="cw212" class="w">planificación,</span><span id="cw213" class="w">tiempo</span><span id="cw214" class="w">y</span><span id="cw215" class="w">mucha</span></div>
+<div id="cap44" class="clip cap" data-start="75.352" data-duration="2.103"><span id="cw216" class="w">tierra</span><span id="cw217" class="w">que</span><span id="cw218" class="w">hay</span><span id="cw219" class="w">que</span><span id="cw220" class="w">ocultar.</span></div>
+<div id="cap45" class="clip cap" data-start="77.575" data-duration="1.718"><span id="cw221" class="w">Un</span><span id="cw222" class="w">exfuncionario</span><span id="cw223" class="w">de</span><span id="cw224" class="w">seguridad</span></div>
+<div id="cap46" class="clip cap" data-start="79.313" data-duration="1.718"><span id="cw225" class="w">de</span><span id="cw226" class="w">Estados</span><span id="cw227" class="w">Unidos</span><span id="cw228" class="w">estimó</span><span id="cw229" class="w">que</span></div>
+<div id="cap47" class="clip cap" data-start="81.050" data-duration="1.718"><span id="cw230" class="w">una</span><span id="cw231" class="w">obra</span><span id="cw232" class="w">así</span><span id="cw233" class="w">tomó</span><span id="cw234" class="w">entre</span><span id="cw235" class="w">año</span></div>
+<div id="cap48" class="clip cap" data-start="82.788" data-duration="1.608"><span id="cw236" class="w">y</span><span id="cw237" class="w">medio</span><span id="cw238" class="w">y</span><span id="cw239" class="w">dos</span><span id="cw240" class="w">años.</span></div>
+<div id="cap49" class="clip cap" data-start="84.416" data-duration="1.451"><span id="cw241" class="w">Otro</span><span id="cw242" class="w">ingeniero</span><span id="cw243" class="w">calculó</span><span id="cw244" class="w">unos</span></div>
+<div id="cap50" class="clip cap" data-start="85.887" data-duration="1.911"><span id="cw245" class="w">12</span><span id="cw246" class="w">meses,</span><span id="cw247" class="w">y</span><span id="cw248" class="w">que</span><span id="cw249" class="w">la</span><span id="cw250" class="w">tierra</span><span id="cw251" class="w">excavada</span></div>
+<div id="cap51" class="clip cap" data-start="87.819" data-duration="1.497"><span id="cw252" class="w">llenaría</span><span id="cw253" class="w">cientos</span><span id="cw254" class="w">de</span><span id="cw255" class="w">camiones</span></div>
+<div id="cap52" class="clip cap" data-start="89.336" data-duration="0.928"><span id="cw256" class="w">de</span><span id="cw257" class="w">volteo.</span></div>
+<div id="cap53" class="clip cap" data-start="90.284" data-duration="1.739"><span id="cw258" class="w">Cada</span><span id="cw259" class="w">metro</span><span id="cw260" class="w">de</span><span id="cw261" class="w">tierra</span><span id="cw262" class="w">excavada</span></div>
+<div id="cap54" class="clip cap" data-start="92.043" data-duration="1.839"><span id="cw263" class="w">tiene</span><span id="cw264" class="w">que</span><span id="cw265" class="w">salir</span><span id="cw266" class="w">de</span><span id="cw267" class="w">algún</span><span id="cw268" class="w">lado.</span></div>
+<div id="cap55" class="clip cap" data-start="93.902" data-duration="1.789"><span id="cw269" class="w">Por</span><span id="cw270" class="w">eso,</span><span id="cw271" class="w">en</span><span id="cw272" class="w">una</span><span id="cw273" class="w">obra</span><span id="cw274" class="w">así,</span><span id="cw275" class="w">la</span></div>
+<div id="cap56" class="clip cap" data-start="95.711" data-duration="1.689"><span id="cw276" class="w">logística</span><span id="cw277" class="w">pesa</span><span id="cw278" class="w">tanto</span><span id="cw279" class="w">como</span><span id="cw280" class="w">la</span></div>
+<div id="cap57" class="clip cap" data-start="97.420" data-duration="0.983"><span id="cw281" class="w">excavación.</span></div>
+<div id="cap58" class="clip cap" data-start="98.423" data-duration="1.644"><span id="cw282" class="w">Por</span><span id="cw283" class="w">eso</span><span id="cw284" class="w">muchos</span><span id="cw285" class="w">se</span><span id="cw286" class="w">preguntan</span></div>
+<div id="cap59" class="clip cap" data-start="100.087" data-duration="0.585"><span id="cw287" class="w">lo</span><span id="cw288" class="w">mismo:</span></div>
+<div id="cap60" class="clip cap" data-start="100.692" data-duration="1.644"><span id="cw289" class="w">¿cómo</span><span id="cw290" class="w">pasó</span><span id="cw291" class="w">tanto</span><span id="cw292" class="w">tiempo</span><span id="cw293" class="w">sin</span></div>
+<div id="cap61" class="clip cap" data-start="102.356" data-duration="1.840"><span id="cw294" class="w">que</span><span id="cw295" class="w">nadie</span><span id="cw296" class="w">lo</span><span id="cw297" class="w">notara?</span></div>
+<div id="cap62" class="clip cap" data-start="104.316" data-duration="1.814"><span id="cw298" class="w">Una</span><span id="cw299" class="w">prisión</span><span id="cw300" class="w">de</span><span id="cw301" class="w">máxima</span><span id="cw302" class="w">seguridad</span></div>
+<div id="cap63" class="clip cap" data-start="106.150" data-duration="1.863"><span id="cw303" class="w">se</span><span id="cw304" class="w">diseña</span><span id="cw305" class="w">para</span><span id="cw306" class="w">que</span><span id="cw307" class="w">nadie</span><span id="cw308" class="w">salga.</span></div>
+<div id="cap64" class="clip cap" data-start="108.033" data-duration="1.863"><span id="cw309" class="w">Cuando</span><span id="cw310" class="w">alguien</span><span id="cw311" class="w">sale,</span><span id="cw312" class="w">la</span><span id="cw313" class="w">pregunta</span></div>
+<div id="cap65" class="clip cap" data-start="109.916" data-duration="1.962"><span id="cw314" class="w">ya</span><span id="cw315" class="w">no</span><span id="cw316" class="w">es</span><span id="cw317" class="w">solo</span><span id="cw318" class="w">cómo,</span><span id="cw319" class="w">sino</span><span id="cw320" class="w">también</span></div>
+<div id="cap66" class="clip cap" data-start="111.899" data-duration="1.814"><span id="cw321" class="w">quién</span><span id="cw322" class="w">vio,</span><span id="cw323" class="w">quién</span><span id="cw324" class="w">firmó</span><span id="cw325" class="w">y</span><span id="cw326" class="w">quién</span></div>
+<div id="cap67" class="clip cap" data-start="113.733" data-duration="0.974"><span id="cw327" class="w">no</span><span id="cw328" class="w">revisó.</span></div>
+<div id="cap68" class="clip cap" data-start="114.727" data-duration="1.472"><span id="cw329" class="w">Los</span><span id="cw330" class="w">analistas</span><span id="cw331" class="w">de</span><span id="cw332" class="w">seguridad</span></div>
+<div id="cap69" class="clip cap" data-start="116.219" data-duration="1.039"><span id="cw333" class="w">coinciden</span><span id="cw334" class="w">en</span><span id="cw335" class="w">algo:</span></div>
+<div id="cap70" class="clip cap" data-start="117.278" data-duration="1.617"><span id="cw336" class="w">las</span><span id="cw337" class="w">obras</span><span id="cw338" class="w">grandes</span><span id="cw339" class="w">casi</span><span id="cw340" class="w">nunca</span></div>
+<div id="cap71" class="clip cap" data-start="118.915" data-duration="0.846"><span id="cw341" class="w">son</span><span id="cw342" class="w">invisibles.</span></div>
+<div id="cap72" class="clip cap" data-start="119.782" data-duration="1.520"><span id="cw343" class="w">Dejan</span><span id="cw344" class="w">señales</span><span id="cw345" class="w">en</span><span id="cw346" class="w">el</span><span id="cw347" class="w">ruido,</span></div>
+<div id="cap73" class="clip cap" data-start="121.322" data-duration="1.665"><span id="cw348" class="w">en</span><span id="cw349" class="w">el</span><span id="cw350" class="w">polvo,</span><span id="cw351" class="w">en</span><span id="cw352" class="w">los</span><span id="cw353" class="w">pagos</span><span id="cw354" class="w">y</span></div>
+<div id="cap74" class="clip cap" data-start="123.007" data-duration="2.111"><span id="cw355" class="w">en</span><span id="cw356" class="w">los</span><span id="cw357" class="w">movimientos</span><span id="cw358" class="w">de</span><span id="cw359" class="w">personal.</span></div>
+<div id="cap75" class="clip cap" data-start="125.138" data-duration="2.051"><span id="cw360" class="w">Eso</span><span id="cw361" class="w">es</span><span id="cw362" class="w">lo</span><span id="cw363" class="w">que</span><span id="cw364" class="w">hace</span><span id="cw365" class="w">esta</span><span id="cw366" class="w">historia</span></div>
+<div id="cap76" class="clip cap" data-start="127.209" data-duration="1.326"><span id="cw367" class="w">más</span><span id="cw368" class="w">que</span><span id="cw369" class="w">una</span><span id="cw370" class="w">anécdota:</span></div>
+<div id="cap77" class="clip cap" data-start="128.555" data-duration="1.637"><span id="cw371" class="w">muestra</span><span id="cw372" class="w">qué</span><span id="cw373" class="w">pasa</span><span id="cw374" class="w">cuando</span><span id="cw375" class="w">la</span></div>
+<div id="cap78" class="clip cap" data-start="130.212" data-duration="1.637"><span id="cw376" class="w">tecnología,</span><span id="cw377" class="w">el</span><span id="cw378" class="w">dinero</span><span id="cw379" class="w">y</span><span id="cw380" class="w">la</span></div>
+<div id="cap79" class="clip cap" data-start="131.868" data-duration="2.039"><span id="cw381" class="w">falta</span><span id="cw382" class="w">de</span><span id="cw383" class="w">control</span><span id="cw384" class="w">se</span><span id="cw385" class="w">juntan.</span></div>
+<div id="cap80" class="clip cap" data-start="133.927" data-duration="1.807"><span id="cw386" class="w">Por</span><span id="cw387" class="w">eso,</span><span id="cw388" class="w">revisar</span><span id="cw389" class="w">lo</span><span id="cw390" class="w">que</span><span id="cw391" class="w">no</span></div>
+<div id="cap81" class="clip cap" data-start="135.754" data-duration="1.918"><span id="cw392" class="w">se</span><span id="cw393" class="w">ve,</span><span id="cw394" class="w">como</span><span id="cw395" class="w">un</span><span id="cw396" class="w">plano</span><span id="cw397" class="w">que</span><span id="cw398" class="w">no</span></div>
+<div id="cap82" class="clip cap" data-start="137.692" data-duration="1.862"><span id="cw399" class="w">cuadra</span><span id="cw400" class="w">o</span><span id="cw401" class="w">un</span><span id="cw402" class="w">turno</span><span id="cw403" class="w">que</span><span id="cw404" class="w">nadie</span></div>
+<div id="cap83" class="clip cap" data-start="139.574" data-duration="2.084"><span id="cw405" class="w">vigila,</span><span id="cw406" class="w">es</span><span id="cw407" class="w">la</span><span id="cw408" class="w">parte</span><span id="cw409" class="w">más</span><span id="cw410" class="w">difícil</span></div>
+<div id="cap84" class="clip cap" data-start="141.678" data-duration="2.241"><span id="cw411" class="w">del</span><span id="cw412" class="w">trabajo</span><span id="cw413" class="w">de</span><span id="cw414" class="w">seguridad.</span></div>
+<div id="cap85" class="clip cap" data-start="144.039" data-duration="1.789"><span id="cw415" class="w">Para</span><span id="cw416" class="w">un</span><span id="cw417" class="w">proyecto</span><span id="cw418" class="w">así,</span><span id="cw419" class="w">los</span><span id="cw420" class="w">ingenieros</span></div>
+<div id="cap86" class="clip cap" data-start="145.848" data-duration="1.537"><span id="cw421" class="w">consultados</span><span id="cw422" class="w">señalaron</span><span id="cw423" class="w">que</span><span id="cw424" class="w">hacían</span></div>
+<div id="cap87" class="clip cap" data-start="147.405" data-duration="1.508"><span id="cw425" class="w">falta</span><span id="cw426" class="w">planos</span><span id="cw427" class="w">del</span><span id="cw428" class="w">penal.</span></div>
+<div id="cap88" class="clip cap" data-start="148.933" data-duration="1.834"><span id="cw429" class="w">Por</span><span id="cw430" class="w">eso,</span><span id="cw431" class="w">muchos</span><span id="cw432" class="w">expertos</span><span id="cw433" class="w">sostienen</span></div>
+<div id="cap89" class="clip cap" data-start="150.787" data-duration="1.556"><span id="cw434" class="w">que</span><span id="cw435" class="w">la</span><span id="cw436" class="w">fuga</span><span id="cw437" class="w">tuvo</span><span id="cw438" class="w">complicidad</span></div>
+<div id="cap90" class="clip cap" data-start="152.364" data-duration="1.185"><span id="cw439" class="w">dentro</span><span id="cw440" class="w">de</span><span id="cw441" class="w">la</span><span id="cw442" class="w">prisión.</span></div>
+<div id="cap91" class="clip cap" data-start="153.569" data-duration="1.510"><span id="cw443" class="w">Eso</span><span id="cw444" class="w">todavía</span><span id="cw445" class="w">es</span><span id="cw446" class="w">un</span><span id="cw447" class="w">análisis,</span></div>
+<div id="cap92" class="clip cap" data-start="155.099" data-duration="1.878"><span id="cw448" class="w">no</span><span id="cw449" class="w">un</span><span id="cw450" class="w">hecho</span><span id="cw451" class="w">confirmado.</span></div>
+<div id="cap93" class="clip cap" data-start="157.097" data-duration="1.617"><span id="cw452" class="w">Meses</span><span id="cw453" class="w">después,</span><span id="cw454" class="w">las</span><span id="cw455" class="w">autoridades</span></div>
+<div id="cap94" class="clip cap" data-start="158.734" data-duration="1.243"><span id="cw456" class="w">volvieron</span><span id="cw457" class="w">a</span><span id="cw458" class="w">capturarlo.</span></div>
+<div id="cap95" class="clip cap" data-start="159.998" data-duration="1.851"><span id="cw459" class="w">En</span><span id="cw460" class="w">2017</span><span id="cw461" class="w">fue</span><span id="cw462" class="w">extraditado</span><span id="cw463" class="w">a</span><span id="cw464" class="w">Estados</span></div>
+<div id="cap96" class="clip cap" data-start="161.869" data-duration="0.751"><span id="cw465" class="w">Unidos.</span></div>
+<div id="cap97" class="clip cap" data-start="162.640" data-duration="1.779"><span id="cw466" class="w">Y</span><span id="cw467" class="w">la</span><span id="cw468" class="w">historia</span><span id="cw469" class="w">dejó</span><span id="cw470" class="w">una</span><span id="cw471" class="w">pregunta</span></div>
+<div id="cap98" class="clip cap" data-start="164.439" data-duration="1.021"><span id="cw472" class="w">que</span><span id="cw473" class="w">sigue</span><span id="cw474" class="w">vigente:</span></div>
+<div id="cap99" class="clip cap" data-start="165.480" data-duration="1.873"><span id="cw475" class="w">¿qué</span><span id="cw476" class="w">tan</span><span id="cw477" class="w">seguras</span><span id="cw478" class="w">son</span><span id="cw479" class="w">las</span><span id="cw480" class="w">cárceles</span></div>
+<div id="cap100" class="clip cap" data-start="167.373" data-duration="1.495"><span id="cw481" class="w">cuando</span><span id="cw482" class="w">alguien</span><span id="cw483" class="w">tiene</span><span id="cw484" class="w">dinero</span></div>
+<div id="cap101" class="clip cap" data-start="168.888" data-duration="1.148"><span id="cw485" class="w">y</span><span id="cw486" class="w">tiempo?</span></div>
+<div id="cap102" class="clip cap" data-start="170.156" data-duration="1.464"><span id="cw487" class="w">Volvamos</span><span id="cw488" class="w">a</span><span id="cw489" class="w">la</span><span id="cw490" class="w">pregunta</span><span id="cw491" class="w">del</span></div>
+<div id="cap103" class="clip cap" data-start="171.640" data-duration="0.536"><span id="cw492" class="w">principio.</span></div>
+<div id="cap104" class="clip cap" data-start="172.196" data-duration="1.860"><span id="cw493" class="w">Tú,</span><span id="cw494" class="w">¿cuánto</span><span id="cw495" class="w">crees</span><span id="cw496" class="w">que</span><span id="cw497" class="w">tomó?</span></div>
+<div id="cap105" class="clip cap" data-start="174.076" data-duration="1.802"><span id="cw498" class="w">Si</span><span id="cw499" class="w">te</span><span id="cw500" class="w">gustó</span><span id="cw501" class="w">entender</span><span id="cw502" class="w">lo</span><span id="cw503" class="w">que</span></div>
+<div id="cap106" class="clip cap" data-start="175.898" data-duration="1.695"><span id="cw504" class="w">de</span><span id="cw505" class="w">verdad</span><span id="cw506" class="w">pasó,</span><span id="cw507" class="w">suscríbete.</span></div>
+<div id="cap107" class="clip cap" data-start="177.613" data-duration="1.695"><span id="cw508" class="w">Y</span><span id="cw509" class="w">si</span><span id="cw510" class="w">quieres</span><span id="cw511" class="w">otra</span><span id="cw512" class="w">historia</span></div>
+<div id="cap108" class="clip cap" data-start="179.328" data-duration="1.695"><span id="cw513" class="w">real</span><span id="cw514" class="w">que</span><span id="cw515" class="w">te</span><span id="cw516" class="w">deje</span><span id="cw517" class="w">pensando,</span></div>
+<div id="cap109" class="clip cap" data-start="181.044" data-duration="1.856"><span id="cw518" class="w">la</span><span id="cw519" class="w">Isla</span><span id="cw520" class="w">de</span><span id="cw521" class="w">las</span><span id="cw522" class="w">Muñecas</span><span id="cw523" class="w">y</span><span id="cw524" class="w">la</span></div>
+<div id="cap110" class="clip cap" data-start="182.919" data-duration="1.963"><span id="cw525" class="w">tragedia</span><span id="cw526" class="w">de</span><span id="cw527" class="w">los</span><span id="cw528" class="w">Andes</span><span id="cw529" class="w">ya</span><span id="cw530" class="w">están</span></div>
+<div id="cap111" class="clip cap" data-start="184.902" data-duration="1.438"><span id="cw531" class="w">en</span><span id="cw532" class="w">el</span><span id="cw533" class="w">canal.</span></div>
+</div>
+<script>
+  window.__timelines = window.__timelines || {};
+  const tl = gsap.timeline({ paused: true });
+  tl.from("#dren",{scale:0,opacity:0,transformOrigin:"50% 50%",duration:0.5,ease:"back.out(2.4)"},0.500);
+  tl.fromTo("#zoomd",{attr:{transform:"translate(0 0) scale(1)"}},{attr:{transform:"translate(-860 -560) scale(3.2)"},duration:14.68,ease:"power1.inOut"},0.300);
+  tl.fromTo("#camg",{attr:{transform:"translate(0 0)"}},{attr:{transform:"translate(8 -4.0)"},duration:.05,repeat:20,yoyo:true,ease:"none"},7.815);
+  tl.from("#tt",{scale:0,opacity:0,transformOrigin:"50% 50%",duration:0.45,ease:"back.out(2.4)"},0.300);
+  tl.fromTo("#sc00 svg",{scale:1},{scale:1.05,duration:15.18,ease:"none",transformOrigin:"50% 55%"},0.000);
+  tl.from("#qtl",{scale:0,opacity:0,transformOrigin:"50% 50%",duration:0.45,ease:"back.out(2.4)"},15.380);
+  tl.from("#o0",{scale:0,opacity:0,transformOrigin:"50% 100%",duration:0.35,ease:"back.out(2.4)"},15.780);
+  tl.from("#o1",{scale:0,opacity:0,transformOrigin:"50% 100%",duration:0.35,ease:"back.out(2.4)"},15.980);
+  tl.from("#o2",{scale:0,opacity:0,transformOrigin:"50% 100%",duration:0.35,ease:"back.out(2.4)"},16.180);
+  tl.from("#o3",{scale:0,opacity:0,transformOrigin:"50% 100%",duration:0.35,ease:"back.out(2.4)"},16.380);
+  tl.from("#ok",{scale:0,opacity:0,transformOrigin:"50% 50%",duration:0.45,ease:"back.out(2.4)"},35.180);
+  tl.fromTo("#sc01 svg",{scale:1},{scale:1.05,duration:26.417,ease:"none",transformOrigin:"50% 55%"},15.180);
+  tl.from("#sc01 svg",{opacity:.0,duration:.2},15.180);
+  tl.fromTo("#moto",{attr:{transform:"translate(330 620)"}},{attr:{transform:"translate(1600 620)"},duration:34.83,ease:"none"},41.997);
+  tl.from("#km",{scale:0,opacity:0,transformOrigin:"50% 50%",duration:0.45,ease:"back.out(2.4)"},41.947);
+  tl.from("#vent",{scale:0,opacity:0,transformOrigin:"50% 50%",duration:0.45,ease:"back.out(2.4)"},50.411);
+  tl.from("#rail",{scale:0,opacity:0,transformOrigin:"50% 50%",duration:0.45,ease:"back.out(2.4)"},50.611);
+  tl.fromTo("#sc02 svg",{scale:1},{scale:1.05,duration:35.828,ease:"none",transformOrigin:"50% 55%"},41.597);
+  tl.from("#sc02 svg",{opacity:.0,duration:.2},41.597);
+  tl.from("#barra",{scaleX:0,transformOrigin:"0% 50%",duration:1.4,ease:"power2.out"},77.725);
+  tl.from("#rango",{scale:0,opacity:0,transformOrigin:"50% 50%",duration:0.45,ease:"back.out(2.4)"},77.975);
+  tl.from("#camiones",{scale:0,opacity:0,transformOrigin:"50% 50%",duration:0.45,ease:"back.out(2.4)"},84.716);
+  tl.fromTo("#sc03 svg",{scale:1},{scale:1.05,duration:26.741,ease:"none",transformOrigin:"50% 55%"},77.425);
+  tl.from("#sc03 svg",{opacity:.0,duration:.2},77.425);
+  tl.to("#dt4-m-smile",{opacity:0,duration:.08},104.166);
+  tl.to("#dt4-m-open",{opacity:0,duration:.08},104.166);
+  tl.to("#dt4-m-frown",{opacity:0,duration:.08},104.166);
+  tl.to("#dt4-m-flat",{opacity:1,duration:.08},104.166);
+  tl.to("#dt4-m-o",{opacity:0,duration:.08},104.166);
+  tl.to("#dt4-brL",{attr:{transform:"rotate(6)"},duration:0.2,ease:"power2.out"},104.166);
+  tl.to("#dt4-brR",{attr:{transform:"rotate(-6)"},duration:0.2,ease:"power2.out"},104.166);
+  tl.to("#dt4-pup",{attr:{transform:"translate(-10 2)"},duration:0.2,ease:"power2.out"},104.166);
+  tl.to("#dt4-uaR",{attr:{transform:"rotate(-120)"},duration:0.5,ease:"back.out(1.6)"},104.466);
+  tl.to("#dt4-faR",{attr:{transform:"rotate(-40)"},duration:0.5,ease:"back.out(1.6)"},104.466);
+  tl.to("#dt4-head",{attr:{transform:"rotate(-6)"},duration:0.5,ease:"back.out(1.6)"},104.466);
+  tl.from("#plano",{opacity:0,scale:.8,transformOrigin:"50% 50%",duration:.8,ease:"power2.out"},104.366);
+  tl.from("#hint",{scale:0,opacity:0,transformOrigin:"50% 50%",duration:0.45,ease:"back.out(2.4)"},114.927);
+  tl.from("#ojo",{scale:0,opacity:0,transformOrigin:"50% 50%",duration:0.45,ease:"back.out(2.4)"},125.338);
+  tl.fromTo("#sc04 svg",{scale:1},{scale:1.05,duration:39.723,ease:"none",transformOrigin:"50% 55%"},104.166);
+  tl.from("#sc04 svg",{opacity:.0,duration:.2},104.166);
+  tl.from("#st4",{scale:0,opacity:0,transformOrigin:"50% 50%",duration:0.45,ease:"back.out(2.4)"},144.339);
+  tl.from("#tag4",{scale:0,opacity:0,transformOrigin:"50% 50%",duration:0.45,ease:"back.out(2.4)"},149.133);
+  tl.fromTo("#sc05 svg",{scale:1},{scale:1.05,duration:13.058,ease:"none",transformOrigin:"50% 55%"},143.889);
+  tl.from("#sc05 svg",{opacity:.0,duration:.2},143.889);
+  tl.from("#e15",{scale:0,opacity:0,transformOrigin:"50% 50%",duration:0.45,ease:"back.out(2.4)"},157.147);
+  tl.from("#e16",{scale:0,opacity:0,transformOrigin:"50% 50%",duration:0.45,ease:"back.out(2.4)"},157.297);
+  tl.from("#e17",{scale:0,opacity:0,transformOrigin:"50% 50%",duration:0.45,ease:"back.out(2.4)"},158.297);
+  tl.fromTo("#linea",{attr:{transform:"scale(0 1)"}},{attr:{transform:"scale(1 1)"},duration:1.6,ease:"power2.out"},157.347);
+  tl.fromTo("#sc06 svg",{scale:1},{scale:1.05,duration:13.059,ease:"none",transformOrigin:"50% 55%"},156.947);
+  tl.from("#sc06 svg",{opacity:.0,duration:.2},156.947);
+  tl.from("#qq4",{scale:0,opacity:0,transformOrigin:"50% 50%",duration:0.45,ease:"back.out(2.4)"},170.206);
+  tl.from("#cf4",{scale:0,opacity:0,transformOrigin:"50% 50%",duration:0.45,ease:"back.out(2.4)"},174.276);
+  tl.to("#cz4-m-smile",{opacity:1,duration:.08},170.006);
+  tl.to("#cz4-m-open",{opacity:0,duration:.08},170.006);
+  tl.to("#cz4-m-frown",{opacity:0,duration:.08},170.006);
+  tl.to("#cz4-m-flat",{opacity:0,duration:.08},170.006);
+  tl.to("#cz4-m-o",{opacity:0,duration:.08},170.006);
+  tl.to("#cz4-brL",{attr:{transform:"rotate(-6)"},duration:0.2,ease:"power2.out"},170.006);
+  tl.to("#cz4-brR",{attr:{transform:"rotate(6)"},duration:0.2,ease:"power2.out"},170.006);
+  tl.to("#cz4-pup",{attr:{transform:"translate(8 -4)"},duration:0.2,ease:"power2.out"},170.006);
+  tl.to("#cz4-body",{attr:{transform:"scale(1.015 0.985)"},duration:1.2,repeat:13,yoyo:true,ease:"sine.inOut"},170.006);
+  tl.fromTo("#sc07 svg",{scale:1},{scale:1.05,duration:17.754,ease:"none",transformOrigin:"50% 55%"},170.006);
+  tl.from("#sc07 svg",{opacity:.0,duration:.2},170.006);
+  tl.from("#cw0",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},0.000);
+  tl.from("#cw1",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},0.212);
+  tl.from("#cw2",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},0.582);
+  tl.from("#cw3",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},0.794);
+  tl.from("#cw4",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},1.165);
+  tl.from("#cw5",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},1.377);
+  tl.from("#cw6",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},2.012);
+  tl.from("#cw7",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},2.224);
+  tl.from("#cw8",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},2.647);
+  tl.from("#cw9",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},3.230);
+  tl.from("#cw10",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},3.918);
+  tl.from("#cw11",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},4.130);
+  tl.from("#cw12",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},4.394);
+  tl.from("#cw13",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},4.818);
+  tl.from("#cw14",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},5.400);
+  tl.from("#cw15",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},5.771);
+  tl.from("#cw16",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},6.036);
+  tl.from("#cw17",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},6.247);
+  tl.from("#cw18",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},6.618);
+  tl.from("#cw19",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},6.830);
+  tl.from("#cw20",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},7.041);
+  tl.from("#cw21",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},7.815);
+  tl.from("#cw22",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},7.976);
+  tl.from("#cw23",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},8.191);
+  tl.from("#cw24",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},8.459);
+  tl.from("#cw25",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},8.727);
+  tl.from("#cw26",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},9.157);
+  tl.from("#cw27",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},9.371);
+  tl.from("#cw28",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},9.639);
+  tl.from("#cw29",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},10.015);
+  tl.from("#cw30",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},10.230);
+  tl.from("#cw31",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},10.498);
+  tl.from("#cw32",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},10.713);
+  tl.from("#cw33",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},10.981);
+  tl.from("#cw34",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},11.357);
+  tl.from("#cw35",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},11.571);
+  tl.from("#cw36",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},12.215);
+  tl.from("#cw37",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},12.484);
+  tl.from("#cw38",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},13.288);
+  tl.from("#cw39",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},13.503);
+  tl.from("#cw40",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},13.771);
+  tl.from("#cw41",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},14.254);
+  tl.from("#cw42",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},15.330);
+  tl.from("#cw43",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},15.856);
+  tl.from("#cw44",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},16.149);
+  tl.from("#cw45",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},16.617);
+  tl.from("#cw46",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},16.909);
+  tl.from("#cw47",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},17.319);
+  tl.from("#cw48",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},17.552);
+  tl.from("#cw49",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},17.962);
+  tl.from("#cw50",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},18.196);
+  tl.from("#cw51",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},18.430);
+  tl.from("#cw52",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},18.722);
+  tl.from("#cw53",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},19.015);
+  tl.from("#cw54",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},19.307);
+  tl.from("#cw55",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},19.600);
+  tl.from("#cw56",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},20.009);
+  tl.from("#cw57",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},20.243);
+  tl.from("#cw58",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},20.477);
+  tl.from("#cw59",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},21.179);
+  tl.from("#cw60",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},21.413);
+  tl.from("#cw61",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},22.172);
+  tl.from("#cw62",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},22.614);
+  tl.from("#cw63",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},22.835);
+  tl.from("#cw64",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},23.057);
+  tl.from("#cw65",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},23.333);
+  tl.from("#cw66",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},23.886);
+  tl.from("#cw67",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},24.162);
+  tl.from("#cw68",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},24.771);
+  tl.from("#cw69",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},24.992);
+  tl.from("#cw70",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},25.379);
+  tl.from("#cw71",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},25.600);
+  tl.from("#cw72",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},26.042);
+  tl.from("#cw73",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},26.319);
+  tl.from("#cw74",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},26.761);
+  tl.from("#cw75",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},26.982);
+  tl.from("#cw76",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},27.259);
+  tl.from("#cw77",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},27.424);
+  tl.from("#cw78",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},27.646);
+  tl.from("#cw79",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},28.088);
+  tl.from("#cw80",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},28.364);
+  tl.from("#cw81",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},28.641);
+  tl.from("#cw82",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},29.028);
+  tl.from("#cw83",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},29.249);
+  tl.from("#cw84",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},29.986);
+  tl.from("#cw85",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},30.387);
+  tl.from("#cw86",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},30.743);
+  tl.from("#cw87",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},31.055);
+  tl.from("#cw88",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},31.278);
+  tl.from("#cw89",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},31.590);
+  tl.from("#cw90",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},31.991);
+  tl.from("#cw91",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},32.213);
+  tl.from("#cw92",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},32.659);
+  tl.from("#cw93",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},32.837);
+  tl.from("#cw94",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},33.060);
+  tl.from("#cw95",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},33.639);
+  tl.from("#cw96",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},33.951);
+  tl.from("#cw97",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},34.129);
+  tl.from("#cw98",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},34.880);
+  tl.from("#cw99",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},35.144);
+  tl.from("#cw100",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},35.671);
+  tl.from("#cw101",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},36.198);
+  tl.from("#cw102",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},36.567);
+  tl.from("#cw103",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},36.830);
+  tl.from("#cw104",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},36.988);
+  tl.from("#cw105",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},37.252);
+  tl.from("#cw106",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},37.621);
+  tl.from("#cw107",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},37.832);
+  tl.from("#cw108",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},38.412);
+  tl.from("#cw109",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},38.622);
+  tl.from("#cw110",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},38.833);
+  tl.from("#cw111",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},38.991);
+  tl.from("#cw112",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},39.624);
+  tl.from("#cw113",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},39.887);
+  tl.from("#cw114",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},40.098);
+  tl.from("#cw115",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},40.467);
+  tl.from("#cw116",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},40.731);
+  tl.from("#cw117",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},41.747);
+  tl.from("#cw118",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},42.121);
+  tl.from("#cw119",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},42.334);
+  tl.from("#cw120",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},42.815);
+  tl.from("#cw121",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},43.348);
+  tl.from("#cw122",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},43.562);
+  tl.from("#cw123",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},43.936);
+  tl.from("#cw124",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},44.309);
+  tl.from("#cw125",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},44.683);
+  tl.from("#cw126",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},44.897);
+  tl.from("#cw127",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},45.110);
+  tl.from("#cw128",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},45.377);
+  tl.from("#cw129",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},45.590);
+  tl.from("#cw130",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},45.804);
+  tl.from("#cw131",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},46.178);
+  tl.from("#cw132",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},46.338);
+  tl.from("#cw133",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},46.818);
+  tl.from("#cw134",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},47.192);
+  tl.from("#cw135",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},47.459);
+  tl.from("#cw136",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},47.779);
+  tl.from("#cw137",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},47.993);
+  tl.from("#cw138",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},48.793);
+  tl.from("#cw139",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},49.167);
+  tl.from("#cw140",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},49.434);
+  tl.from("#cw141",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},50.211);
+  tl.from("#cw142",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},50.533);
+  tl.from("#cw143",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},50.763);
+  tl.from("#cw144",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},51.314);
+  tl.from("#cw145",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},51.498);
+  tl.from("#cw146",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},51.912);
+  tl.from("#cw147",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},52.096);
+  tl.from("#cw148",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},52.694);
+  tl.from("#cw149",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},52.832);
+  tl.from("#cw150",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},53.199);
+  tl.from("#cw151",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},53.429);
+  tl.from("#cw152",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},53.659);
+  tl.from("#cw153",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},53.889);
+  tl.from("#cw154",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},54.073);
+  tl.from("#cw155",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},54.395);
+  tl.from("#cw156",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},54.625);
+  tl.from("#cw157",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},55.222);
+  tl.from("#cw158",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},56.078);
+  tl.from("#cw159",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},56.470);
+  tl.from("#cw160",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},56.805);
+  tl.from("#cw161",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},57.085);
+  tl.from("#cw162",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},57.589);
+  tl.from("#cw163",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},57.813);
+  tl.from("#cw164",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},58.093);
+  tl.from("#cw165",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},58.596);
+  tl.from("#cw166",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},58.820);
+  tl.from("#cw167",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},59.044);
+  tl.from("#cw168",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},59.324);
+  tl.from("#cw169",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},59.827);
+  tl.from("#cw170",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},60.107);
+  tl.from("#cw171",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},60.387);
+  tl.from("#cw172",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},61.002);
+  tl.from("#cw173",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},61.226);
+  tl.from("#cw174",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},61.618);
+  tl.from("#cw175",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},61.842);
+  tl.from("#cw176",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},62.178);
+  tl.from("#cw177",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},62.401);
+  tl.from("#cw178",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},62.737);
+  tl.from("#cw179",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},62.905);
+  tl.from("#cw180",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},63.129);
+  tl.from("#cw181",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},63.577);
+  tl.from("#cw182",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},63.744);
+  tl.from("#cw183",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},64.024);
+  tl.from("#cw184",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},64.360);
+  tl.from("#cw185",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},64.584);
+  tl.from("#cw186",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},64.920);
+  tl.from("#cw187",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},65.311);
+  tl.from("#cw188",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},66.165);
+  tl.from("#cw189",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},66.350);
+  tl.from("#cw190",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},66.857);
+  tl.from("#cw191",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},67.134);
+  tl.from("#cw192",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},67.365);
+  tl.from("#cw193",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},67.596);
+  tl.from("#cw194",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},68.058);
+  tl.from("#cw195",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},68.427);
+  tl.from("#cw196",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},68.704);
+  tl.from("#cw197",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},69.027);
+  tl.from("#cw198",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},69.212);
+  tl.from("#cw199",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},69.581);
+  tl.from("#cw200",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},69.720);
+  tl.from("#cw201",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},70.089);
+  tl.from("#cw202",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},70.781);
+  tl.from("#cw203",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},70.966);
+  tl.from("#cw204",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},71.289);
+  tl.from("#cw205",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},71.520);
+  tl.from("#cw206",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},71.843);
+  tl.from("#cw207",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},72.028);
+  tl.from("#cw208",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},72.351);
+  tl.from("#cw209",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},72.582);
+  tl.from("#cw210",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},73.090);
+  tl.from("#cw211",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},73.367);
+  tl.from("#cw212",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},73.782);
+  tl.from("#cw213",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},74.521);
+  tl.from("#cw214",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},74.890);
+  tl.from("#cw215",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},75.028);
+  tl.from("#cw216",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},75.352);
+  tl.from("#cw217",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},75.721);
+  tl.from("#cw218",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},75.952);
+  tl.from("#cw219",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},76.183);
+  tl.from("#cw220",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},76.413);
+  tl.from("#cw221",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},77.575);
+  tl.from("#cw222",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},77.779);
+  tl.from("#cw223",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},78.546);
+  tl.from("#cw224",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},78.751);
+  tl.from("#cw225",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},79.313);
+  tl.from("#cw226",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},79.517);
+  tl.from("#cw227",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},79.977);
+  tl.from("#cw228",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},80.386);
+  tl.from("#cw229",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},80.795);
+  tl.from("#cw230",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},81.050);
+  tl.from("#cw231",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},81.306);
+  tl.from("#cw232",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},81.613);
+  tl.from("#cw233",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},81.868);
+  tl.from("#cw234",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},82.175);
+  tl.from("#cw235",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},82.533);
+  tl.from("#cw236",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},82.788);
+  tl.from("#cw237",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},82.942);
+  tl.from("#cw238",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},83.299);
+  tl.from("#cw239",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},83.453);
+  tl.from("#cw240",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},83.708);
+  tl.from("#cw241",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},84.416);
+  tl.from("#cw242",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},84.692);
+  tl.from("#cw243",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},85.198);
+  tl.from("#cw244",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},85.612);
+  tl.from("#cw245",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},85.887);
+  tl.from("#cw246",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},86.071);
+  tl.from("#cw247",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},86.439);
+  tl.from("#cw248",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},86.577);
+  tl.from("#cw249",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},86.807);
+  tl.from("#cw250",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},86.991);
+  tl.from("#cw251",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},87.359);
+  tl.from("#cw252",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},87.819);
+  tl.from("#cw253",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},88.279);
+  tl.from("#cw254",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},88.692);
+  tl.from("#cw255",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},88.876);
+  tl.from("#cw256",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},89.336);
+  tl.from("#cw257",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},89.520);
+  tl.from("#cw258",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},90.284);
+  tl.from("#cw259",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},90.586);
+  tl.from("#cw260",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},90.937);
+  tl.from("#cw261",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},91.138);
+  tl.from("#cw262",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},91.540);
+  tl.from("#cw263",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},92.043);
+  tl.from("#cw264",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},92.395);
+  tl.from("#cw265",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},92.646);
+  tl.from("#cw266",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},92.998);
+  tl.from("#cw267",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},93.199);
+  tl.from("#cw268",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},93.550);
+  tl.from("#cw269",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},93.902);
+  tl.from("#cw270",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},94.153);
+  tl.from("#cw271",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},94.455);
+  tl.from("#cw272",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},94.656);
+  tl.from("#cw273",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},94.907);
+  tl.from("#cw274",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},95.209);
+  tl.from("#cw275",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},95.510);
+  tl.from("#cw276",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},95.711);
+  tl.from("#cw277",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},96.264);
+  tl.from("#cw278",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},96.565);
+  tl.from("#cw279",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},96.917);
+  tl.from("#cw280",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},97.219);
+  tl.from("#cw281",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},97.420);
+  tl.from("#cw282",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},98.423);
+  tl.from("#cw283",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},98.675);
+  tl.from("#cw284",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},98.927);
+  tl.from("#cw285",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},99.331);
+  tl.from("#cw286",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},99.532);
+  tl.from("#cw287",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},100.087);
+  tl.from("#cw288",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},100.288);
+  tl.from("#cw289",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},100.692);
+  tl.from("#cw290",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},101.045);
+  tl.from("#cw291",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},101.347);
+  tl.from("#cw292",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},101.700);
+  tl.from("#cw293",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},102.103);
+  tl.from("#cw294",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},102.356);
+  tl.from("#cw295",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},102.608);
+  tl.from("#cw296",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},102.961);
+  tl.from("#cw297",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},103.162);
+  tl.from("#cw298",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},104.316);
+  tl.from("#cw299",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},104.564);
+  tl.from("#cw300",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},105.010);
+  tl.from("#cw301",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},105.208);
+  tl.from("#cw302",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},105.605);
+  tl.from("#cw303",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},106.150);
+  tl.from("#cw304",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},106.348);
+  tl.from("#cw305",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},106.745);
+  tl.from("#cw306",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},107.042);
+  tl.from("#cw307",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},107.290);
+  tl.from("#cw308",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},107.637);
+  tl.from("#cw309",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},108.033);
+  tl.from("#cw310",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},108.430);
+  tl.from("#cw311",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},108.876);
+  tl.from("#cw312",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},109.223);
+  tl.from("#cw313",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},109.421);
+  tl.from("#cw314",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},109.916);
+  tl.from("#cw315",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},110.115);
+  tl.from("#cw316",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},110.313);
+  tl.from("#cw317",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},110.511);
+  tl.from("#cw318",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},110.809);
+  tl.from("#cw319",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},111.155);
+  tl.from("#cw320",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},111.453);
+  tl.from("#cw321",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},111.899);
+  tl.from("#cw322",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},112.246);
+  tl.from("#cw323",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},112.543);
+  tl.from("#cw324",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},112.890);
+  tl.from("#cw325",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},113.237);
+  tl.from("#cw326",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},113.386);
+  tl.from("#cw327",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},113.733);
+  tl.from("#cw328",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},113.931);
+  tl.from("#cw329",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},114.727);
+  tl.from("#cw330",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},114.968);
+  tl.from("#cw331",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},115.497);
+  tl.from("#cw332",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},115.690);
+  tl.from("#cw333",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},116.219);
+  tl.from("#cw334",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},116.749);
+  tl.from("#cw335",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},116.941);
+  tl.from("#cw336",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},117.278);
+  tl.from("#cw337",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},117.519);
+  tl.from("#cw338",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},117.856);
+  tl.from("#cw339",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},118.289);
+  tl.from("#cw340",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},118.578);
+  tl.from("#cw341",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},118.915);
+  tl.from("#cw342",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},119.156);
+  tl.from("#cw343",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},119.782);
+  tl.from("#cw344",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},120.119);
+  tl.from("#cw345",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},120.552);
+  tl.from("#cw346",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},120.744);
+  tl.from("#cw347",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},120.937);
+  tl.from("#cw348",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},121.322);
+  tl.from("#cw349",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},121.515);
+  tl.from("#cw350",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},121.707);
+  tl.from("#cw351",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},122.092);
+  tl.from("#cw352",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},122.285);
+  tl.from("#cw353",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},122.525);
+  tl.from("#cw354",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},122.862);
+  tl.from("#cw355",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},123.007);
+  tl.from("#cw356",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},123.199);
+  tl.from("#cw357",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},123.440);
+  tl.from("#cw358",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},124.066);
+  tl.from("#cw359",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},124.258);
+  tl.from("#cw360",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},125.138);
+  tl.from("#cw361",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},125.397);
+  tl.from("#cw362",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},125.604);
+  tl.from("#cw363",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},125.811);
+  tl.from("#cw364",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},126.070);
+  tl.from("#cw365",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},126.381);
+  tl.from("#cw366",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},126.691);
+  tl.from("#cw367",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},127.209);
+  tl.from("#cw368",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},127.468);
+  tl.from("#cw369",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},127.727);
+  tl.from("#cw370",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},127.986);
+  tl.from("#cw371",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},128.555);
+  tl.from("#cw372",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},129.021);
+  tl.from("#cw373",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},129.280);
+  tl.from("#cw374",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},129.590);
+  tl.from("#cw375",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},130.005);
+  tl.from("#cw376",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},130.212);
+  tl.from("#cw377",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},130.885);
+  tl.from("#cw378",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},131.092);
+  tl.from("#cw379",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},131.506);
+  tl.from("#cw380",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},131.661);
+  tl.from("#cw381",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},131.868);
+  tl.from("#cw382",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},132.231);
+  tl.from("#cw383",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},132.438);
+  tl.from("#cw384",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},132.904);
+  tl.from("#cw385",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},133.111);
+  tl.from("#cw386",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},133.927);
+  tl.from("#cw387",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},134.204);
+  tl.from("#cw388",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},134.536);
+  tl.from("#cw389",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},135.034);
+  tl.from("#cw390",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},135.256);
+  tl.from("#cw391",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},135.533);
+  tl.from("#cw392",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},135.754);
+  tl.from("#cw393",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},135.975);
+  tl.from("#cw394",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},136.252);
+  tl.from("#cw395",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},136.585);
+  tl.from("#cw396",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},136.806);
+  tl.from("#cw397",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},137.194);
+  tl.from("#cw398",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},137.470);
+  tl.from("#cw399",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},137.692);
+  tl.from("#cw400",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},138.135);
+  tl.from("#cw401",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},138.301);
+  tl.from("#cw402",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},138.522);
+  tl.from("#cw403",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},138.910);
+  tl.from("#cw404",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},139.187);
+  tl.from("#cw405",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},139.574);
+  tl.from("#cw406",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},140.072);
+  tl.from("#cw407",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},140.294);
+  tl.from("#cw408",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},140.515);
+  tl.from("#cw409",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},140.903);
+  tl.from("#cw410",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},141.180);
+  tl.from("#cw411",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},141.678);
+  tl.from("#cw412",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},141.955);
+  tl.from("#cw413",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},142.453);
+  tl.from("#cw414",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},142.675);
+  tl.from("#cw415",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},144.039);
+  tl.from("#cw416",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},144.291);
+  tl.from("#cw417",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},144.460);
+  tl.from("#cw418",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},144.880);
+  tl.from("#cw419",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},145.133);
+  tl.from("#cw420",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},145.343);
+  tl.from("#cw421",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},145.848);
+  tl.from("#cw422",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},146.395);
+  tl.from("#cw423",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},146.858);
+  tl.from("#cw424",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},147.068);
+  tl.from("#cw425",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},147.405);
+  tl.from("#cw426",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},147.699);
+  tl.from("#cw427",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},148.036);
+  tl.from("#cw428",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},148.246);
+  tl.from("#cw429",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},148.933);
+  tl.from("#cw430",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},149.165);
+  tl.from("#cw431",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},149.443);
+  tl.from("#cw432",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},149.814);
+  tl.from("#cw433",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},150.277);
+  tl.from("#cw434",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},150.787);
+  tl.from("#cw435",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},151.019);
+  tl.from("#cw436",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},151.205);
+  tl.from("#cw437",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},151.483);
+  tl.from("#cw438",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},151.761);
+  tl.from("#cw439",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},152.364);
+  tl.from("#cw440",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},152.735);
+  tl.from("#cw441",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},152.920);
+  tl.from("#cw442",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},153.105);
+  tl.from("#cw443",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},153.569);
+  tl.from("#cw444",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},153.801);
+  tl.from("#cw445",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},154.218);
+  tl.from("#cw446",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},154.404);
+  tl.from("#cw447",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},154.589);
+  tl.from("#cw448",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},155.099);
+  tl.from("#cw449",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},155.284);
+  tl.from("#cw450",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},155.470);
+  tl.from("#cw451",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},155.794);
+  tl.from("#cw452",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},157.097);
+  tl.from("#cw453",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},157.424);
+  tl.from("#cw454",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},157.892);
+  tl.from("#cw455",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},158.126);
+  tl.from("#cw456",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},158.734);
+  tl.from("#cw457",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},159.249);
+  tl.from("#cw458",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},159.389);
+  tl.from("#cw459",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},159.998);
+  tl.from("#cw460",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},160.185);
+  tl.from("#cw461",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},160.465);
+  tl.from("#cw462",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},160.699);
+  tl.from("#cw463",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},161.308);
+  tl.from("#cw464",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},161.448);
+  tl.from("#cw465",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},161.869);
+  tl.from("#cw466",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},162.640);
+  tl.from("#cw467",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},162.782);
+  tl.from("#cw468",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},162.971);
+  tl.from("#cw469",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},163.445);
+  tl.from("#cw470",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},163.729);
+  tl.from("#cw471",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},163.965);
+  tl.from("#cw472",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},164.439);
+  tl.from("#cw473",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},164.675);
+  tl.from("#cw474",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},165.007);
+  tl.from("#cw475",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},165.480);
+  tl.from("#cw476",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},165.764);
+  tl.from("#cw477",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},166.001);
+  tl.from("#cw478",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},166.427);
+  tl.from("#cw479",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},166.663);
+  tl.from("#cw480",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},166.900);
+  tl.from("#cw481",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},167.373);
+  tl.from("#cw482",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},167.752);
+  tl.from("#cw483",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},168.178);
+  tl.from("#cw484",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},168.509);
+  tl.from("#cw485",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},168.888);
+  tl.from("#cw486",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},169.030);
+  tl.from("#cw487",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},170.156);
+  tl.from("#cw488",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},170.620);
+  tl.from("#cw489",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},170.759);
+  tl.from("#cw490",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},170.944);
+  tl.from("#cw491",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},171.408);
+  tl.from("#cw492",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},171.640);
+  tl.from("#cw493",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},172.196);
+  tl.from("#cw494",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},172.428);
+  tl.from("#cw495",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},172.845);
+  tl.from("#cw496",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},173.170);
+  tl.from("#cw497",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},173.401);
+  tl.from("#cw498",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},174.076);
+  tl.from("#cw499",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},174.290);
+  tl.from("#cw500",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},174.505);
+  tl.from("#cw501",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},174.880);
+  tl.from("#cw502",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},175.416);
+  tl.from("#cw503",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},175.630);
+  tl.from("#cw504",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},175.898);
+  tl.from("#cw505",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},176.113);
+  tl.from("#cw506",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},176.541);
+  tl.from("#cw507",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},176.917);
+  tl.from("#cw508",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},177.613);
+  tl.from("#cw509",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},177.774);
+  tl.from("#cw510",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},177.989);
+  tl.from("#cw511",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},178.471);
+  tl.from("#cw512",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},178.792);
+  tl.from("#cw513",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},179.328);
+  tl.from("#cw514",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},179.650);
+  tl.from("#cw515",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},179.918);
+  tl.from("#cw516",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},180.132);
+  tl.from("#cw517",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},180.454);
+  tl.from("#cw518",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},181.044);
+  tl.from("#cw519",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},181.258);
+  tl.from("#cw520",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},181.579);
+  tl.from("#cw521",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},181.794);
+  tl.from("#cw522",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},182.062);
+  tl.from("#cw523",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},182.544);
+  tl.from("#cw524",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},182.705);
+  tl.from("#cw525",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},182.919);
+  tl.from("#cw526",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},183.455);
+  tl.from("#cw527",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},183.670);
+  tl.from("#cw528",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},183.938);
+  tl.from("#cw529",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},184.313);
+  tl.from("#cw530",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},184.527);
+  tl.from("#cw531",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},184.902);
+  tl.from("#cw532",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},185.117);
+  tl.from("#cw533",{scale:.4,opacity:0,y:24,duration:.18,ease:"back.out(3)"},185.331);
+  window.__timelines["main"] = tl;
+  tl.seek(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+[
+ {
+  "escena": "gancho",
+  "mood": "tenso",
+  "texto": "En julio de dos mil quince, un prisionero de máxima seguridad desapareció de una cárcel mexicana. Salió por la ducha de su celda.",
+  "ini": 0.0,
+  "fin": 7.465
+ },
+ {
+  "escena": "gancho",
+  "mood": "tenso",
+  "texto": "Y lo que hay debajo de esa ducha es una de las obras de ingeniería más sorprendentes de los últimos años.",
+  "ini": 7.815,
+  "fin": 14.63
+ },
+ {
+  "escena": "quiz",
+  "mood": "tenso",
+  "texto": "Imagina que tienes que cavar un túnel de un kilómetro y medio, sin que nadie en la superficie lo note.",
+  "ini": 15.33,
+  "fin": 21.822
+ },
+ {
+  "escena": "quiz",
+  "mood": "tenso",
+  "texto": "Piensa en lo que tendrías que resolver: el aire, la tierra que sacas, la luz y el tiempo sin que nadie lo note.",
+  "ini": 22.172,
+  "fin": 29.636
+ },
+ {
+  "escena": "quiz",
+  "mood": "tenso",
+  "texto": "¿Cuánto tiempo crees que tomó? Escribe una cantidad en los comentarios antes de seguir.",
+  "ini": 29.986,
+  "fin": 34.53
+ },
+ {
+  "escena": "quiz",
+  "mood": "tenso",
+  "texto": "Los expertos calculan entre uno y dos años. La respuesta te va a sorprender por lo largo que fue.",
+  "ini": 34.88,
+  "fin": 41.047
+ },
+ {
+  "escena": "tunel",
+  "mood": "neutro",
+  "texto": "Según la versión oficial, el túnel tenía cerca de un kilómetro y medio de largo y llegaba hasta una casa en construcción, fuera del penal.",
+  "ini": 41.747,
+  "fin": 49.861
+ },
+ {
+  "escena": "tunel",
+  "mood": "neutro",
+  "texto": "Tenía luz eléctrica, un sistema de ventilación y rieles por los que se movía una motocicleta adaptada.",
+  "ini": 50.211,
+  "fin": 55.728
+ },
+ {
+  "escena": "tunel",
+  "mood": "neutro",
+  "texto": "Cavar bajo una prisión es más difícil de lo que parece. Hay que controlar el aire, la luz, el agua y el ruido, y que nada se note desde arriba.",
+  "ini": 56.078,
+  "fin": 65.815
+ },
+ {
+  "escena": "tunel",
+  "mood": "neutro",
+  "texto": "La autoridad cree que esa vagoneta servía para sacar la tierra y llevar herramientas. Un túnel así exige lo mismo que cualquier obra grande: planificación, tiempo y mucha tierra que hay que ocultar.",
+  "ini": 66.165,
+  "fin": 76.875
+ },
+ {
+  "escena": "tiempo",
+  "mood": "ligero",
+  "texto": "Un exfuncionario de seguridad de Estados Unidos estimó que una obra así tomó entre año y medio y dos años.",
+  "ini": 77.575,
+  "fin": 84.066
+ },
+ {
+  "escena": "tiempo",
+  "mood": "ligero",
+  "texto": "Otro ingeniero calculó unos doce meses, y que la tierra excavada llenaría cientos de camiones de volteo.",
+  "ini": 84.416,
+  "fin": 89.934
+ },
+ {
+  "escena": "tiempo",
+  "mood": "ligero",
+  "texto": "Cada metro de tierra excavada tiene que salir de algún lado. Por eso, en una obra así, la logística pesa tanto como la excavación.",
+  "ini": 90.284,
+  "fin": 98.073
+ },
+ {
+  "escena": "tiempo",
+  "mood": "ligero",
+  "texto": "Por eso muchos se preguntan lo mismo: ¿cómo pasó tanto tiempo sin que nadie lo notara?",
+  "ini": 98.423,
+  "fin": 103.616
+ },
+ {
+  "escena": "seguridad",
+  "mood": "neutro",
+  "texto": "Una prisión de máxima seguridad se diseña para que nadie salga. Cuando alguien sale, la pregunta ya no es solo cómo, sino también quién vio, quién firmó y quién no revisó.",
+  "ini": 104.316,
+  "fin": 114.377
+ },
+ {
+  "escena": "seguridad",
+  "mood": "neutro",
+  "texto": "Los analistas de seguridad coinciden en algo: las obras grandes casi nunca son invisibles. Dejan señales en el ruido, en el polvo, en los pagos y en los movimientos de personal.",
+  "ini": 114.727,
+  "fin": 124.788
+ },
+ {
+  "escena": "seguridad",
+  "mood": "neutro",
+  "texto": "Eso es lo que hace esta historia más que una anécdota: muestra qué pasa cuando la tecnología, el dinero y la falta de control se juntan.",
+  "ini": 125.138,
+  "fin": 133.577
+ },
+ {
+  "escena": "seguridad",
+  "mood": "neutro",
+  "texto": "Por eso, revisar lo que no se ve, como un plano que no cuadra o un turno que nadie vigila, es la parte más difícil del trabajo de seguridad.",
+  "ini": 133.927,
+  "fin": 143.339
+ },
+ {
+  "escena": "complicidad",
+  "mood": "tenso",
+  "texto": "Para un proyecto así, los ingenieros consultados señalaron que hacían falta planos del penal.",
+  "ini": 144.039,
+  "fin": 148.583
+ },
+ {
+  "escena": "complicidad",
+  "mood": "tenso",
+  "texto": "Por eso, muchos expertos sostienen que la fuga tuvo complicidad dentro de la prisión. Eso todavía es un análisis, no un hecho confirmado.",
+  "ini": 148.933,
+  "fin": 156.397
+ },
+ {
+  "escena": "desenlace",
+  "mood": "calido",
+  "texto": "Meses después, las autoridades volvieron a capturarlo. En dos mil diecisiete fue extraditado a Estados Unidos.",
+  "ini": 157.097,
+  "fin": 162.29
+ },
+ {
+  "escena": "desenlace",
+  "mood": "calido",
+  "texto": "Y la historia dejó una pregunta que sigue vigente: ¿qué tan seguras son las cárceles cuando alguien tiene dinero y tiempo?",
+  "ini": 162.64,
+  "fin": 169.456
+ },
+ {
+  "escena": "cierre",
+  "mood": "calido",
+  "texto": "Volvamos a la pregunta del principio. Tú, ¿cuánto crees que tomó?",
+  "ini": 170.156,
+  "fin": 173.726
+ },
+ {
+  "escena": "cierre",
+  "mood": "calido",
+  "texto": "Si te gustó entender lo que de verdad pasó, suscríbete. Y si quieres otra historia real que te deje pensando, la Isla de las Muñecas y la tragedia de los Andes ya están en el canal.",
+  "ini": 174.076,
+  "fin": 185.76
+ }
+]
