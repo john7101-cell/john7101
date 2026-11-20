@@ -11,6 +11,9 @@ const FIELDS = {
   origen: 60,
   expectativa: 600,
   consentimiento: 5,
+  pago: 40,
+  valor: 20,
+  referencia_pago: 80,
 };
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

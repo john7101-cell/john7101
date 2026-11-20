@@ -13,6 +13,9 @@ const COLUMNS = [
   ['ciudad', 'Ciudad'],
   ['origen', '¿Cómo se enteró?'],
   ['expectativa', 'Qué quiere trabajar'],
+  ['pago', '¿Ya pagó?'],
+  ['valor', 'Valor'],
+  ['referencia_pago', 'Referencia de pago'],
   ['consentimiento', 'Consentimiento'],
 ];
 
