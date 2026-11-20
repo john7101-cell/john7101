@@ -1,0 +1,64 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    #parejas-stage { position: absolute; inset: 0; }
+    #parejas-viz { position: absolute; left: 120px; top: 190px; width: 800px; height: 700px; }
+    #parejas-col { position: absolute; left: 1020px; top: 230px; width: 800px; }
+    #parejas-title { margin-top: 18px; font-size: 140px; }
+    .parejas-item { display: flex; align-items: center; gap: 22px; margin-top: 26px; font-size: 40px; font-weight: 500; color: #f6e9f0; }
+    .parejas-item i { width: 14px; height: 14px; border-radius: 50%; background: #e0679a; display: inline-block; }
+    #parejas-items { margin-top: 30px; }
+    #parejas-close { margin-top: 44px; font-family: "Playfair Display", serif; font-style: italic; font-size: 54px; color: #f0b6d2; }
+  </style>
+  <div id="root" data-composition-id="parejas" data-width="1920" data-height="1080">
+    <div id="parejas-stage" class="clip" data-start="0" data-duration="9.25" data-layout-allow-overlap>
+      <svg id="parejas-viz" viewBox="0 0 800 700" aria-label="Dos círculos que se encuentran y comparten un centro">
+        <defs>
+          <radialGradient id="parejas-core" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#fff1f7" />
+            <stop offset="0.4" stop-color="#f0b6d2" stop-opacity="0.9" />
+            <stop offset="1" stop-color="#e0679a" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+        <g id="parejas-a"><circle cx="400" cy="350" r="190" fill="rgba(224,103,154,0.16)" stroke="#e0679a" stroke-width="5" /></g>
+        <g id="parejas-b"><circle cx="400" cy="350" r="190" fill="rgba(201,139,191,0.16)" stroke="#c98bbf" stroke-width="5" /></g>
+        <g id="parejas-bridge" stroke="#f0b6d2" stroke-width="4" stroke-linecap="round">
+          <path d="M330 350 H 470" stroke-dasharray="2 18" />
+        </g>
+        <circle id="parejas-center" cx="400" cy="350" r="110" fill="url(#parejas-core)" />
+      </svg>
+      <div id="parejas-col">
+        <div id="parejas-eyebrow" class="eyebrow">Parejas</div>
+        <div id="parejas-title" class="title">Unidos</div>
+        <div id="parejas-items">
+          <div id="parejas-i1" class="parejas-item"><i></i>Comunicación</div>
+          <div id="parejas-i2" class="parejas-item"><i></i>Acuerdos</div>
+          <div id="parejas-i3" class="parejas-item"><i></i>Manejo de conflictos</div>
+        </div>
+        <div id="parejas-close">Un propósito compartido</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const S = 28.15, at = (g) => +(g - S).toFixed(3);
+    const tl = gsap.timeline({ paused: true });
+    // dos círculos separados que se acercan con cada tema
+    tl.fromTo("#parejas-a", { x: -230, opacity: 0 }, { x: -170, opacity: 1, duration: 0.8, ease: "expo.out" }, at(28.3));
+    tl.fromTo("#parejas-b", { x: 230, opacity: 0 }, { x: 170, opacity: 1, duration: 0.8, ease: "expo.out" }, at(28.5));
+    tl.fromTo("#parejas-eyebrow", { opacity: 0 }, { opacity: 1, duration: 0.4 }, at(28.6));
+    tl.fromTo("#parejas-title", { opacity: 0, scale: 0.92, filter: "blur(12px)", transformOrigin: "0% 50%" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, at(29.9));
+    const items = [["#parejas-i1", 31.6, 110], ["#parejas-i2", 32.8, 70], ["#parejas-i3", 34.2, 30]];
+    for (const [id, t, gap] of items) {
+      tl.fromTo(id, { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out" }, at(t));
+      tl.to("#parejas-a", { x: -gap, duration: 0.8, ease: "power2.inOut" }, at(t));
+      tl.to("#parejas-b", { x: gap, duration: 0.8, ease: "power2.inOut" }, at(t));
+    }
+    tl.fromTo("#parejas-bridge", { opacity: 0 }, { opacity: 1, duration: 0.4 }, at(31.7));
+    tl.to("#parejas-bridge", { opacity: 0, duration: 0.3 }, at(35.6));
+    // propósito compartido: el centro común se enciende
+    tl.fromTo("#parejas-center", { opacity: 0, scale: 0.3, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.8, ease: "expo.out" }, at(36.0));
+    tl.fromTo("#parejas-close", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power4.out" }, at(36.0));
+    tl.to("#parejas-stage > *", { opacity: 0, x: -120, filter: "blur(8px)", duration: 0.3, ease: "power3.in" }, at(37.05));
+    window.__timelines["parejas"] = tl;
+  </script>
+</template>

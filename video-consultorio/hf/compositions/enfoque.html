@@ -1,0 +1,90 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    #enfoque-stage { position: absolute; inset: 0; }
+    #enfoque-eyebrow { position: absolute; left: 0; right: 0; top: 150px; text-align: center; }
+    #enfoque-links { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .enfoque-node { position: absolute; top: 330px; width: 460px; margin-left: -230px; text-align: center; }
+    .enfoque-disc {
+      width: 230px; height: 230px; margin: 0 auto; border-radius: 50%;
+      background: radial-gradient(circle at 50% 40%, rgba(240,182,210,0.22), rgba(42,25,36,0.92) 70%);
+      border: 2px solid rgba(201,139,191,0.6);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .enfoque-disc svg { width: 140px; height: 140px; }
+    .enfoque-label { margin-top: 34px; font-family: "Playfair Display", serif; font-weight: 700; font-size: 46px; color: #f6e9f0; }
+    .enfoque-note { margin-top: 12px; font-size: 28px; color: #c7aabb; }
+    #enfoque-n1 { left: 480px; }
+    #enfoque-n2 { left: 960px; }
+    #enfoque-n3 { left: 1440px; }
+    #enfoque-stamp {
+      position: absolute; left: 1440px; top: 800px; margin-left: -170px; width: 340px; text-align: center;
+      font-family: "Playfair Display", serif; font-style: italic; font-size: 44px; color: #e0679a;
+      border-top: 2px solid rgba(224,103,154,0.6); padding-top: 14px;
+    }
+  </style>
+  <div id="root" data-composition-id="enfoque" data-width="1920" data-height="1080">
+    <div id="enfoque-stage" class="clip" data-start="0" data-duration="8.25" data-layout-allow-overlap>
+      <div id="enfoque-eyebrow" class="eyebrow">Cómo trabajo</div>
+      <svg id="enfoque-links" viewBox="0 0 1920 1080" aria-label="Líneas que conectan los tres pilares">
+        <path id="enfoque-l1" d="M600 445 H 840" stroke="#c98bbf" stroke-width="3" stroke-dasharray="6 10" fill="none" />
+        <path id="enfoque-l2" d="M1080 445 H 1320" stroke="#c98bbf" stroke-width="3" stroke-dasharray="6 10" fill="none" />
+      </svg>
+      <div id="enfoque-n1" class="enfoque-node">
+        <div class="enfoque-disc">
+          <svg viewBox="0 0 140 140" aria-label="Red de ideas">
+            <g stroke="#f0b6d2" stroke-width="3" fill="none">
+              <path d="M30 50 L70 28 L110 52 L100 98 L56 112 L28 88 Z M30 50 L70 70 L110 52 M70 70 L100 98 M70 70 L56 112 M70 70 L28 88 M70 28 L70 70" />
+            </g>
+            <g fill="#e0679a">
+              <circle cx="30" cy="50" r="8" /><circle cx="70" cy="28" r="8" /><circle cx="110" cy="52" r="8" />
+              <circle cx="100" cy="98" r="8" /><circle cx="56" cy="112" r="8" /><circle cx="28" cy="88" r="8" />
+              <circle cx="70" cy="70" r="11" fill="#f6e9f0" />
+            </g>
+          </svg>
+        </div>
+        <div class="enfoque-label">Terapia cognitivo-conductual</div>
+        <div id="enfoque-n1-note" class="enfoque-note">Con base científica</div>
+      </div>
+      <div id="enfoque-n2" class="enfoque-node">
+        <div class="enfoque-disc">
+          <svg viewBox="0 0 140 140" aria-label="Corazón">
+            <path d="M70 118 C 20 82, 14 52, 32 36 C 48 22, 66 30, 70 46 C 74 30, 92 22, 108 36 C 126 52, 120 82, 70 118 Z" fill="#e0679a" />
+          </svg>
+        </div>
+        <div class="enfoque-label">Mirada humana</div>
+      </div>
+      <div id="enfoque-n3" class="enfoque-node">
+        <div class="enfoque-disc">
+          <svg viewBox="0 0 140 140" aria-label="Luz">
+            <g stroke="#f0b6d2" stroke-width="4" stroke-linecap="round">
+              <path d="M70 14 V 30 M70 110 V 126 M14 70 H 30 M110 70 H 126 M30 30 L 41 41 M99 99 L 110 110 M110 30 L 99 41 M41 99 L 30 110" />
+            </g>
+            <circle cx="70" cy="70" r="26" fill="#f6e9f0" />
+          </svg>
+        </div>
+        <div class="enfoque-label">Tu fe, si tú lo deseas</div>
+      </div>
+      <div id="enfoque-stamp">Nunca impuesta.</div>
+    </div>
+  </div>
+  <script>
+    const S = 11.1, at = (g) => +(g - S).toFixed(3);
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#enfoque-eyebrow", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, at(11.2));
+    const node = (id, t) => {
+      tl.fromTo(id + " .enfoque-disc", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.7, ease: "back.out(1.4)" }, at(t));
+      tl.fromTo(id + " .enfoque-label", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power4.out" }, at(t + 0.15));
+    };
+    node("#enfoque-n1", 11.3);
+    tl.fromTo("#enfoque-n1-note", { opacity: 0 }, { opacity: 1, duration: 0.3 }, at(12.6));
+    tl.fromTo("#enfoque-l1", { strokeDashoffset: 240, opacity: 0 }, { strokeDashoffset: 0, opacity: 1, duration: 0.6, ease: "power2.inOut" }, at(13.3));
+    node("#enfoque-n2", 13.65);
+    tl.fromTo("#enfoque-l2", { strokeDashoffset: 240, opacity: 0 }, { strokeDashoffset: 0, opacity: 1, duration: 0.6, ease: "power2.inOut" }, at(16.4));
+    node("#enfoque-n3", 16.85);
+    tl.fromTo("#enfoque-stamp", { opacity: 0, scale: 1.25, filter: "blur(6px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, at(18.2));
+    // salida: desenfoque sobre el mismo escenario
+    tl.to("#enfoque-stage > *", { opacity: 0, filter: "blur(10px)", duration: 0.2, ease: "power2.in" }, at(19.1));
+    window.__timelines["enfoque"] = tl;
+  </script>
+</template>
