@@ -1,0 +1,70 @@
+{
+ "shorts": [
+  {
+   "id": "llorona",
+   "titulo": "¿Escuchas llorar cerca del agua de noche? 🌙",
+   "mood": "tenso",
+   "lineas": [
+    "Si escuchas a una mujer llorar cerca del agua, de noche, no te asomes.",
+    "Según la tradición mexicana, se llama La Llorona. Va de blanco y busca a sus hijos junto a los canales.",
+    "Dicen que quien la sigue hasta el agua ya no vuelve a casa.",
+    "¿La escucharías? Escribe tu respuesta en los comentarios."
+   ],
+   "etiquetas": [
+    "la llorona",
+    "leyendas de méxico",
+    "mitos mexicanos",
+    "leyenda de terror",
+    "historia real",
+    "misterios"
+   ],
+   "fuentes": [
+    "Tradición oral mexicana sobre La Llorona (versiones regionales)"
+   ]
+  },
+  {
+   "id": "cadejo",
+   "titulo": "Un perro negro de ojos rojos en la carretera 🐕‍🦺",
+   "mood": "tenso",
+   "lineas": [
+    "En Centroamérica, cuando alguien camina solo de noche, a veces aparece un perro negro de ojos rojos.",
+    "Lo llaman El Cadejo. Para unos es un espíritu protector que cuida a los caminantes.",
+    "Para otros, es un mal presagio. Y la regla es la misma: nunca camines solo por una carretera vacía.",
+    "¿Qué crees tú: protección o maldición? Escríbelo en los comentarios."
+   ],
+   "etiquetas": [
+    "el cadejo",
+    "leyendas centroamericanas",
+    "mitos de guatemala",
+    "perro de ojos rojos",
+    "leyenda de terror",
+    "misterios"
+   ],
+   "fuentes": [
+    "Tradición oral centroamericana sobre El Cadejo (versiones de Guatemala, El Salvador, Honduras, Nicaragua y Costa Rica)"
+   ]
+  },
+  {
+   "id": "patasola",
+   "titulo": "Se perdió en el bosque… y escuchó su nombre 🌲",
+   "mood": "tenso",
+   "lineas": [
+    "Un hombre se pierde en el bosque de los Andes colombianos. Y de pronto escucha su nombre entre los árboles.",
+    "Según la leyenda, es La Patasola: una mujer con una sola pierna que aparece en la selva para atraer a los viajeros.",
+    "Quienes la siguen se internan cada vez más, hasta perderse para siempre.",
+    "¿Te perderías en el bosque por seguir una voz? Cuéntanos en los comentarios."
+   ],
+   "etiquetas": [
+    "la patasola",
+    "leyendas colombianas",
+    "mitos de colombia",
+    "leyenda del bosque",
+    "leyenda de terror",
+    "misterios"
+   ],
+   "fuentes": [
+    "Tradición oral colombiana sobre La Patasola (región andina)"
+   ]
+  }
+ ]
+}

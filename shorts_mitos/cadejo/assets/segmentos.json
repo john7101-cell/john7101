@@ -1,0 +1,30 @@
+[
+ {
+  "escena": "l0",
+  "mood": "tenso",
+  "texto": "En Centroamérica, cuando alguien camina solo de noche, a veces aparece un perro negro de ojos rojos.",
+  "ini": 0.0,
+  "fin": 6.371
+ },
+ {
+  "escena": "l1",
+  "mood": "tenso",
+  "texto": "Lo llaman El Cadejo. Para unos es un espíritu protector que cuida a los caminantes.",
+  "ini": 6.671,
+  "fin": 12.292
+ },
+ {
+  "escena": "l2",
+  "mood": "tenso",
+  "texto": "Para otros, es un mal presagio. Y la regla es la misma: nunca camines solo por una carretera vacía.",
+  "ini": 12.592,
+  "fin": 19.712
+ },
+ {
+  "escena": "l3",
+  "mood": "tenso",
+  "texto": "¿Qué crees tú: protección o maldición? Escríbelo en los comentarios.",
+  "ini": 20.012,
+  "fin": 23.76
+ }
+]

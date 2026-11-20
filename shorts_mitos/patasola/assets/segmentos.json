@@ -1,0 +1,30 @@
+[
+ {
+  "escena": "l0",
+  "mood": "tenso",
+  "texto": "Un hombre se pierde en el bosque de los Andes colombianos. Y de pronto escucha su nombre entre los árboles.",
+  "ini": 0.0,
+  "fin": 6.728
+ },
+ {
+  "escena": "l1",
+  "mood": "tenso",
+  "texto": "Según la leyenda, es La Patasola: una mujer con una sola pierna que aparece en la selva para atraer a los viajeros.",
+  "ini": 7.028,
+  "fin": 14.43
+ },
+ {
+  "escena": "l2",
+  "mood": "tenso",
+  "texto": "Quienes la siguen se internan cada vez más, hasta perderse para siempre.",
+  "ini": 14.73,
+  "fin": 18.767
+ },
+ {
+  "escena": "l3",
+  "mood": "tenso",
+  "texto": "¿Te perderías en el bosque por seguir una voz? Cuéntanos en los comentarios.",
+  "ini": 19.067,
+  "fin": 23.44
+ }
+]

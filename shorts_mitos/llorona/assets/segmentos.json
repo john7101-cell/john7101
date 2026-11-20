@@ -1,0 +1,30 @@
+[
+ {
+  "escena": "l0",
+  "mood": "tenso",
+  "texto": "Si escuchas a una mujer llorar cerca del agua, de noche, no te asomes.",
+  "ini": 0.0,
+  "fin": 4.76
+ },
+ {
+  "escena": "l1",
+  "mood": "tenso",
+  "texto": "Según la tradición mexicana, se llama La Llorona. Va de blanco y busca a sus hijos junto a los canales.",
+  "ini": 5.06,
+  "fin": 11.86
+ },
+ {
+  "escena": "l2",
+  "mood": "tenso",
+  "texto": "Dicen que quien la sigue hasta el agua ya no vuelve a casa.",
+  "ini": 12.16,
+  "fin": 16.58
+ },
+ {
+  "escena": "l3",
+  "mood": "tenso",
+  "texto": "¿La escucharías? Escribe tu respuesta en los comentarios.",
+  "ini": 16.88,
+  "fin": 19.6
+ }
+]
