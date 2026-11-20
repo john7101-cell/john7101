@@ -77,8 +77,8 @@ const Title3D: React.FC<{ s: number; e: number; t: string; label?: string; top?:
 type Cue = [number, number, string];
 const SUBS: Cue[] = [
   [0.0, 1.95, "¿Se acaba el año?"], [2.0, 4.6, "¿Cuántas veces dijiste / *«esta es la última vez»*?"], [5.05, 7.8, "Muchas… y siempre / *vuelvo a buscarlo*."],
-  [8.0, 9.95, "Eres *fuerte*, *independiente*,"], [9.95, 11.25, "logras todo…"], [11.25, 13.4, "pero en el amor sigues / *en el mismo círculo*."],
-  [13.45, 15.95, "Y estoy cansada de / *conformarme con menos*."],
+  [8.45, 10.3, "Eres *fuerte*, *independiente*,"], [10.3, 11.45, "logras todo…"], [11.45, 13.45, "pero en el amor sigues / *en el mismo círculo*."],
+  [13.5, 15.95, "Lo sé… y estoy cansada de / *conformarme con menos*."],
   [16.0, 18.7, "No termines el año / *repitiendo la misma historia*."], [18.9, 21.45, "Ven conmigo a *Volver a mí*, / en Talita Kum."],
   [21.5, 23.95, "Cuatro psicólogas, / aquí en *Laureles*."],
   [24.0, 25.05, "¿Y cuánto vale?"], [25.05, 26.15, "*$120.000*."], [26.15, 27.6, "Con pronto pago, *$90.000*."],
@@ -272,7 +272,7 @@ export const Promo: React.FC = () => {
       <Bokeh s={19.4} e={24.0} n={18} />
       <Bokeh s={31.6} e={DUR} n={30} />
       <Title3D s={0.1} e={7.85} label="CERRANDO EL AÑO" t="¿Cuántas veces / dijiste *«la última vez»?*" />
-      <Ring3D s={12.3} e={15.9} />
+      <Ring3D s={12.45} e={15.9} />
       <Title3D s={8.05} e={15.9} t="Fuerte en todo… / *el mismo círculo*" size={80} />
       <Title3D s={16.05} e={19.4} t="No termines el año / *repitiendo la historia*" size={80} />
       <Title3D s={30.15} e={31.95} t="Esta vez, / *vuelvo a mí*" size={92} />
