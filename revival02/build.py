@@ -32,9 +32,9 @@ SHOTS = [
     ("F1", "clip6", 1.1, 4.5, 1.00, .5, .5,  None),          # encuentro
     ("F2", "clip6", 4.5, 8.0, 1.12, .5, .44, None),          # ángulo cerrado: abrazo
     ("G",  "clip8", 0.0, 8.0, 1.00, .5, .5,  None),          # botella + aérea
-    ("K",  None,    0.0, 5.0, 1.00, .5, .5,  ("fade", .8)),  # negro: cierre
+    ("K",  None,    0.0, 5.8, 1.00, .5, .5,  ("fade", .8)),  # negro: cierre
 ]
-MUSIC_START = 0.3
+MUSIC_START = 3.6
 
 
 def render_shot(name, clip, t0, t1, z, cx, cy):
@@ -103,14 +103,14 @@ for a, b, txt in LYRICS:
     if t1 < K_START - 4.5:  # que no choque con los textos finales
         add(txt, F_SERIF, 58, "white", .70, t0, t1, .3, .3)
 
-e1 = S["G"] + 3.4
-add("En 1971 nos pidieron", F_SERIF, 64, "white", .27, e1, K_START + .5, .6, .5)
-add("cantar en armonía.", F_SERIF, 64, "white", .305, e1 + .15, K_START + .5, .6, .5)
-add("En 2026 basta con", F_SERIF, 64, "white", .36, e1 + 1.4, K_START + .5, .6, .5)
-add("subir a la colina.", F_SERIF, 64, "white", .395, e1 + 1.55, K_START + .5, .6, .5)
-add("Comparte algo real.", F_SERIF_B, 96, "0xF2B544", .45, K_START + 1.0, TOTAL, .6, .6)
-add("Reimaginación no oficial y homenaje a un anuncio de 1971.", F_SANS, 27, "white@0.72", .74, K_START + 1.6, TOTAL, .4, .6)
-add("Sin afiliación con ninguna marca. Contenido generado con IA.", F_SANS, 27, "white@0.72", .758, K_START + 1.6, TOTAL, .4, .6)
+e1 = S["G"] + 3.2
+add("En 1971 nos pidieron", F_SERIF, 64, "white", .27, e1, K_START + 1.7, .6, .5)
+add("cantar en armonía.", F_SERIF, 64, "white", .305, e1 + .15, K_START + 1.7, .6, .5)
+add("En 2026 basta con", F_SERIF, 64, "white", .36, e1 + 1.4, K_START + 1.7, .6, .5)
+add("subir a la colina.", F_SERIF, 64, "white", .395, e1 + 1.55, K_START + 1.7, .6, .5)
+add("Comparte algo real.", F_SERIF_B, 96, "0xF2B544", .45, K_START + 2.1, TOTAL, .6, .6)
+add("Reimaginación no oficial y homenaje a un anuncio de 1971.", F_SANS, 27, "white@0.72", .74, K_START + 2.6, TOTAL, .4, .6)
+add("Sin afiliación con ninguna marca. Contenido generado con IA.", F_SANS, 27, "white@0.72", .758, K_START + 2.6, TOTAL, .4, .6)
 
 
 def alpha_expr(t0, t1, fi, fo, flicker):
@@ -162,7 +162,7 @@ for i in range(1, len(files)):
 g.append(f"[{cur_v}]noise=alls=4:allf=t+u,format=yuv420p,split[vbase][vclean]")
 g.append(f"[vbase]{drawtexts()}[vtxt]")
 ms = int(MUSIC_START * 1000)
-g.append(f"[{mi}:a]aresample=48000,aformat=channel_layouts=stereo,afade=t=in:d=1.5,"
+g.append(f"[{mi}:a]aresample=48000,aformat=channel_layouts=stereo,afade=t=in:d=2.5,"
          f"adelay={ms}|{ms},apad=whole_dur={TOTAL:.3f},atrim=0:{TOTAL:.3f},"
          f"afade=t=out:st={TOTAL-3.0:.3f}:d=3.0[mus]")
 # Sonido ambiente de los clips por debajo de la música

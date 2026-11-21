@@ -1,0 +1,126 @@
+{
+  "duracion_total": 57.4,
+  "loudness_antes": "-16.13",
+  "planos": [
+    {
+      "plano": "A",
+      "clip": "clip1",
+      "fuente": [
+        0.0,
+        7.6
+      ],
+      "zoom": 1.0,
+      "inicio": 0.0,
+      "fin": 7.62,
+      "transicion": "corte"
+    },
+    {
+      "plano": "B",
+      "clip": "clip2",
+      "fuente": [
+        0.5,
+        8.0
+      ],
+      "zoom": 1.0,
+      "inicio": 7.03,
+      "fin": 14.53,
+      "transicion": "fade"
+    },
+    {
+      "plano": "C1",
+      "clip": "clip3",
+      "fuente": [
+        0.0,
+        4.0
+      ],
+      "zoom": 1.0,
+      "inicio": 14.53,
+      "fin": 18.52,
+      "transicion": "corte"
+    },
+    {
+      "plano": "C2",
+      "clip": "clip3",
+      "fuente": [
+        4.0,
+        8.0
+      ],
+      "zoom": 1.15,
+      "inicio": 18.52,
+      "fin": 22.52,
+      "transicion": "corte"
+    },
+    {
+      "plano": "D",
+      "clip": "clip4",
+      "fuente": [
+        0.0,
+        8.0
+      ],
+      "zoom": 1.0,
+      "inicio": 22.52,
+      "fin": 30.52,
+      "transicion": "corte"
+    },
+    {
+      "plano": "E",
+      "clip": "clip5",
+      "fuente": [
+        0.6,
+        8.0
+      ],
+      "zoom": 1.0,
+      "inicio": 30.02,
+      "fin": 37.44,
+      "transicion": "fade"
+    },
+    {
+      "plano": "F1",
+      "clip": "clip6",
+      "fuente": [
+        1.1,
+        4.5
+      ],
+      "zoom": 1.0,
+      "inicio": 37.44,
+      "fin": 40.9,
+      "transicion": "corte"
+    },
+    {
+      "plano": "F2",
+      "clip": "clip6",
+      "fuente": [
+        4.5,
+        8.0
+      ],
+      "zoom": 1.12,
+      "inicio": 40.9,
+      "fin": 44.4,
+      "transicion": "corte"
+    },
+    {
+      "plano": "G",
+      "clip": "clip8",
+      "fuente": [
+        0.0,
+        8.0
+      ],
+      "zoom": 1.0,
+      "inicio": 44.4,
+      "fin": 52.4,
+      "transicion": "corte"
+    },
+    {
+      "plano": "K",
+      "clip": null,
+      "fuente": [
+        0.0,
+        5.8
+      ],
+      "zoom": 1.0,
+      "inicio": 51.6,
+      "fin": 57.4,
+      "transicion": "fade"
+    }
+  ]
+}
