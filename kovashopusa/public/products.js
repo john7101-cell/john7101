@@ -56,6 +56,14 @@ window.PRODUCTS = [
     es: 'Tejida a crochet por artesanas wayuu de La Guajira. Cada diseño es único; toma hasta 20 días.' },
 ];
 
+// Foto del producto si está en public/img/ (lista en img/photos.js); si no, la ilustración SVG.
+window.hasPhoto = (id) => Array.isArray(window.PRODUCT_PHOTOS) && window.PRODUCT_PHOTOS.includes(id);
+window.productMedia = function productMedia(p) {
+  return hasPhoto(p.id)
+    ? `<img class="photo" src="img/${p.id}.jpg" alt="${p.name} — ${p.brand}" loading="lazy" width="800" height="800">`
+    : productArt(p);
+};
+
 // Ilustración SVG por tipo de empaque (estilo minimalista de la marca).
 window.productArt = function productArt(p) {
   const c = p.color;

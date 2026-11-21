@@ -289,7 +289,7 @@
     }
     body.innerHTML = freeBar() + cart.map(({ id, qty }) => {
       const p = product(id);
-      return `<div class="cart-item"><div class="th">${productArt(p)}</div><div class="grow">
+      return `<div class="cart-item"><div class="th">${productMedia(p)}</div><div class="grow">
         <div class="name">${esc(p.name)}</div><div class="note">${esc(p.brand)} · ${p.flag} ${esc(p.country)}</div>
         <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
           <div class="qty"><button data-dec="${id}" aria-label="-">−</button><input value="${qty}" readonly aria-label="qty"><button data-inc="${id}" aria-label="+">+</button></div>
@@ -310,7 +310,7 @@
   // ---------------- Componentes ----------------
   function card(p) {
     return `<article class="card">
-      <a class="media" href="#/product/${p.id}" aria-label="${esc(p.name)}">${p.badge ? `<span class="badge ${p.badge}">${t('badge.' + p.badge)}</span>` : ''}${productArt(p)}</a>
+      <a class="media" href="#/product/${p.id}" aria-label="${esc(p.name)}">${p.badge ? `<span class="badge ${p.badge}">${t('badge.' + p.badge)}</span>` : ''}${productMedia(p)}</a>
       <div class="body"><span class="brand">${esc(p.brand)} · ${p.flag}</span>
         <h3><a href="#/product/${p.id}">${esc(p.name)}</a></h3>${stars(p.rating, p.reviews)}
         <div class="foot"><span class="price">${money(p.price)}</span><button class="add-btn" data-add="${p.id}">+ ${t('add')}</button></div>
@@ -331,9 +331,9 @@
         <div class="hero-cta"><a href="#/shop" class="btn btn-primary">${t('hero.shop')}</a><a href="#/brands" class="btn btn-outline">${t('hero.brands')}</a></div>
         <div class="hero-trust"><span>${I.shield} ${t('trust.curated')}</span><span>${I.truck} ${t('trust.usps')}</span><span>${I.flag} ${t('trust.compliant')}</span></div>
       </div>
-      <div class="hero-art" aria-hidden="true"><div class="blob"></div>${I.leafBig}
+      ${hasPhoto('hero') ? `<div class="hero-photo"><img src="img/hero.jpg" alt="" width="1200" height="800"></div>` : `<div class="hero-art" aria-hidden="true"><div class="blob"></div>${I.leafBig}
         ${hp.map((p, i) => `<div class="p p${i + 1}">${productArt(p)}</div>`).join('')}
-      </div>
+      </div>`}
     </div></section>
     <div class="channels"><div class="wrap"><span>${t('channels.also')}</span><b>amazon</b><b>TikTok Shop</b><b>shopify</b></div></div>
     <section><div class="wrap">
@@ -393,7 +393,7 @@
     const related = PRODUCTS.filter((x) => x.category === p.category && x.id !== p.id).slice(0, 4);
     return `<div class="wrap"><div class="crumbs"><a href="#/shop">${t('nav.shop')}</a> / <a href="#/shop?cat=${p.category}">${catName(p.category)}</a> / ${esc(p.name)}</div>
       <div class="pdp">
-        <div class="media">${p.badge ? `<span class="badge ${p.badge}">${t('badge.' + p.badge)}</span>` : ''}${productArt(p)}</div>
+        <div class="media">${p.badge ? `<span class="badge ${p.badge}">${t('badge.' + p.badge)}</span>` : ''}${productMedia(p)}</div>
         <div>
           <div class="eyebrow">${esc(p.brand)}</div>
           <h1>${esc(p.name)}</h1>
@@ -479,7 +479,7 @@
     const ship = shippingCost();
     const sub = subtotal();
     el.innerHTML = `<h3>${t('co.summary')}</h3>
-      ${cart.map(({ id, qty }) => { const p = product(id); return `<div class="mini"><div class="th">${productArt(p)}<span class="q">${qty}</span></div><div class="grow"><b>${esc(p.name)}</b><div class="note">${esc(p.brand)}</div></div><span>${money(p.price * qty)}</span></div>`; }).join('')}
+      ${cart.map(({ id, qty }) => { const p = product(id); return `<div class="mini"><div class="th">${productMedia(p)}<span class="q">${qty}</span></div><div class="grow"><b>${esc(p.name)}</b><div class="note">${esc(p.brand)}</div></div><span>${money(p.price * qty)}</span></div>`; }).join('')}
       <div style="margin-top:10px">${freeBar()}</div>
       <div class="line"><span>${t('cart.subtotal')}</span><span>${money(sub)}</span></div>
       <div class="line"><span>${t('co.shipping')}${co.mailClass ? ` <small class="note">(${co.rates.rates.find((r) => r.mailClass === co.mailClass)?.name || ''})</small>` : ''}</span><span>${ship == null ? `<span class="note">${t('co.pending')}</span>` : ship === 0 ? t('co.free') : money(ship)}</span></div>
@@ -601,7 +601,7 @@
       <div class="panel" style="text-align:left">
         <div class="row"><div><b>${t('ord.shipTo')}</b><p class="note" style="margin:6px 0">${esc(a.name)}<br>${esc(a.street)} ${esc(a.secondary || '')}<br>${esc(a.city)}, ${a.state} ${a.zip}${a.zip4 ? '-' + a.zip4 : ''}</p></div>
         <div><b>${t('ord.service')}</b><p class="note" style="margin:6px 0">${o.service} · ${o.days} ${t('co.days')}<br>${o.shipping === 0 ? t('co.free') : money(o.shipping)}</p></div></div>
-        ${o.items.map((i) => { const p = product(i.id); return `<div class="mini"><div class="th">${productArt(p)}<span class="q">${i.qty}</span></div><div class="grow"><b>${esc(p.name)}</b></div><span>${money(i.price * i.qty)}</span></div>`; }).join('')}
+        ${o.items.map((i) => { const p = product(i.id); return `<div class="mini"><div class="th">${productMedia(p)}<span class="q">${i.qty}</span></div><div class="grow"><b>${esc(p.name)}</b></div><span>${money(i.price * i.qty)}</span></div>`; }).join('')}
         <div class="line total"><span>${t('co.total')}</span><span>${money(o.subtotal + o.shipping)}</span></div>
       </div>
       <p class="note">${t('ord.labelNote')}</p>

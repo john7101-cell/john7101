@@ -65,13 +65,25 @@ Las credenciales se quedan en el servidor (`server.js`), nunca llegan al navegad
 | Tarifas | `POST /prices/v3/base-rates/search` | `POST /api/usps/rates` |
 | Rastreo | `GET /tracking/v3/tracking/{n}` | `GET /api/usps/track/:n` |
 
+## Fotos de producto
+
+Cada producto muestra su foto si existe `public/img/<id>.jpg` y su id está en `public/img/photos.js`; si no, muestra la ilustración SVG. `hero.jpg` (1200×800) reemplaza la composición de la portada.
+
+- **Fotos reales**: guárdalas cuadradas (800×800, JPG) con el id del producto como nombre, por ejemplo `cafe-huila.jpg`, y agrega el id a `photos.js`.
+- **Fotos generadas con IA** (estilo del branding: fondo crema, luz suave, hojas verdes):
+
+  ```bash
+  OPENAI_API_KEY=sk-... python tools/generar_fotos.py
+  ```
+
+  Genera las que falten y actualiza `photos.js`. Para rehacer una: `python tools/generar_fotos.py cafe-huila`. Cuesta unos centavos por foto.
+
 ## Lo que falta para producción
 
 - **Etiquetas de envío**: hoy el número de rastreo del pedido es simulado. Para generar etiquetas reales hace falta la API de Labels de USPS (`/labels/v3/label`), que pide una cuenta de pago (EPS o Permit), el token de pago (`/payments/v3/payment-authorization`) y la aprobación de USPS.
 - **Pagos reales**: por ejemplo con Stripe o Shopify Checkout.
 - **Impuesto sobre las ventas** según el estado (por ejemplo con Stripe Tax o TaxJar).
 - **Base de datos** de productos, pedidos y postulaciones de marcas. Hoy se guardan en el navegador (`localStorage`).
-- **Fotos reales** de producto. Hoy los productos son ilustraciones SVG.
 - Los productos y las marcas del catálogo son ficticios.
 
 ## Estructura
