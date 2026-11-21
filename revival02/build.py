@@ -34,7 +34,7 @@ SHOTS = [
     ("G",  "clip8", 0.0, 8.0, 1.00, .5, .5,  None),          # botella + aérea
     ("K",  None,    0.0, 5.8, 1.00, .5, .5,  ("fade", .8)),  # negro: cierre
 ]
-MUSIC_START = 3.6
+MUSIC_START = 3.9
 
 
 def render_shot(name, clip, t0, t1, z, cx, cy):
@@ -100,7 +100,7 @@ LYRICS = json.load(open(os.path.join(AUDIO, "letra_tiempos.json"), encoding="utf
     if os.path.exists(os.path.join(AUDIO, "letra_tiempos.json")) else []
 for a, b, txt in LYRICS:
     t0, t1 = MUSIC_START + a, MUSIC_START + b
-    if t1 < K_START - 4.5:  # que no choque con los textos finales
+    if t1 <= S["G"] + 3.3:  # que no choque con los textos finales
         add(txt, F_SERIF, 58, "white", .70, t0, t1, .3, .3)
 
 e1 = S["G"] + 3.2
@@ -162,11 +162,11 @@ for i in range(1, len(files)):
 g.append(f"[{cur_v}]noise=alls=4:allf=t+u,format=yuv420p,split[vbase][vclean]")
 g.append(f"[vbase]{drawtexts()}[vtxt]")
 ms = int(MUSIC_START * 1000)
-g.append(f"[{mi}:a]aresample=48000,aformat=channel_layouts=stereo,afade=t=in:d=2.5,"
+g.append(f"[{mi}:a]aresample=48000,aformat=channel_layouts=stereo,afade=t=in:d=1.0,"
          f"adelay={ms}|{ms},apad=whole_dur={TOTAL:.3f},atrim=0:{TOTAL:.3f},"
          f"afade=t=out:st={TOTAL-3.0:.3f}:d=3.0[mus]")
 # Sonido ambiente de los clips por debajo de la música
-g.append(f"[{cur_a}]volume=0.55,afade=t=out:st={K_START-0.5:.3f}:d=1.0[amb]")
+g.append(f"[{cur_a}]volume=0.4,afade=t=out:st={K_START-0.5:.3f}:d=1.0[amb]")
 g.append(f"[amb][mus]amix=inputs=2:normalize=0,atrim=0:{TOTAL:.3f},alimiter=limit=0.9[amix]")
 
 graph = os.path.join(TMP, "graph.txt")
