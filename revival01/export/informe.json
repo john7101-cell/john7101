@@ -1,0 +1,173 @@
+{
+  "duracion_total": 60.34,
+  "impacto": 34.851,
+  "silencio_previo": [
+    34.431,
+    34.851
+  ],
+  "planos": [
+    {
+      "plano": "A",
+      "clip": "escena01",
+      "fuente": [
+        0.0,
+        6.6
+      ],
+      "zoom": 1.0,
+      "inicio": 0.0,
+      "fin": 6.62,
+      "transicion": "corte"
+    },
+    {
+      "plano": "B1",
+      "clip": "escena02",
+      "fuente": [
+        1.2,
+        5.0
+      ],
+      "zoom": 1.0,
+      "inicio": 6.38,
+      "fin": 10.21,
+      "transicion": "fade"
+    },
+    {
+      "plano": "B2",
+      "clip": "escena02",
+      "fuente": [
+        5.0,
+        8.0
+      ],
+      "zoom": 1.15,
+      "inicio": 10.21,
+      "fin": 13.21,
+      "transicion": "corte"
+    },
+    {
+      "plano": "C1",
+      "clip": "escena03",
+      "fuente": [
+        0.5,
+        4.0
+      ],
+      "zoom": 1.0,
+      "inicio": 13.21,
+      "fin": 16.71,
+      "transicion": "corte"
+    },
+    {
+      "plano": "C2",
+      "clip": "escena03",
+      "fuente": [
+        4.0,
+        7.75
+      ],
+      "zoom": 1.0,
+      "inicio": 16.71,
+      "fin": 20.46,
+      "transicion": "corte"
+    },
+    {
+      "plano": "D",
+      "clip": "escena05",
+      "fuente": [
+        0.0,
+        4.0
+      ],
+      "zoom": 1.0,
+      "inicio": 20.46,
+      "fin": 24.46,
+      "transicion": "corte"
+    },
+    {
+      "plano": "E",
+      "clip": "escena04",
+      "fuente": [
+        0.5,
+        4.5
+      ],
+      "zoom": 1.0,
+      "inicio": 24.46,
+      "fin": 28.46,
+      "transicion": "corte"
+    },
+    {
+      "plano": "F",
+      "clip": "escena05",
+      "fuente": [
+        5.0,
+        6.5
+      ],
+      "zoom": 1.2,
+      "inicio": 28.46,
+      "fin": 29.96,
+      "transicion": "corte"
+    },
+    {
+      "plano": "G",
+      "clip": "escena04",
+      "fuente": [
+        5.0,
+        7.6
+      ],
+      "zoom": 1.0,
+      "inicio": 29.96,
+      "fin": 32.58,
+      "transicion": "corte"
+    },
+    {
+      "plano": "H",
+      "clip": "escena06",
+      "fuente": [
+        0.0,
+        7.4
+      ],
+      "zoom": 1.0,
+      "inicio": 32.58,
+      "fin": 40.0,
+      "transicion": "corte"
+    },
+    {
+      "plano": "I",
+      "clip": "escena07",
+      "fuente": [
+        0.0,
+        7.6
+      ],
+      "zoom": 1.0,
+      "inicio": 39.5,
+      "fin": 47.13,
+      "transicion": "fade"
+    },
+    {
+      "plano": "J",
+      "clip": "escena08",
+      "fuente": [
+        0.0,
+        7.7
+      ],
+      "zoom": 1.0,
+      "inicio": 47.13,
+      "fin": 54.84,
+      "transicion": "corte"
+    },
+    {
+      "plano": "K",
+      "clip": null,
+      "fuente": [
+        0.0,
+        5.5
+      ],
+      "zoom": 1.0,
+      "inicio": 54.84,
+      "fin": 60.34,
+      "transicion": "corte"
+    }
+  ],
+  "voz": {
+    "e07": 32.11,
+    "e06": 26.78,
+    "e05": 23.48,
+    "e03": 9.0
+  },
+  "loudness_medida_antes": "-18.58"
+}
