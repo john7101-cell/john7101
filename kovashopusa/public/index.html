@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KovaShopUSA</title>
+  <meta name="description" content="The trusted place to discover exceptional Latin American brands. Curated quality, trusted shopping, shipped with USPS.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M7 10h18l-1.5 18h-15z' fill='none' stroke='%230D1B3D' stroke-width='2.5' stroke-linejoin='round'/%3E%3Cpath d='M11 10V7a5 5 0 0 1 10 0v3' fill='none' stroke='%2315803D' stroke-width='2.5'/%3E%3Cpath d='M13 15v9M13 20l5-5M14.5 18.5 19 24' stroke='%230D1B3D' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+  <div class="announce" data-i18n="announce">Free USPS Ground Advantage™ shipping on orders over $75 · Ships from Miami, FL</div>
+
+  <header class="site-header">
+    <div class="wrap header-row">
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <a href="#/" class="logo" aria-label="KovaShopUSA home">
+        <svg viewBox="0 0 40 44" class="logo-mark" aria-hidden="true">
+          <path d="M5 14h30l-2.5 27h-25z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M12 14V9.5a8 8 0 0 1 16 0V14" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round"/>
+          <path d="M15 21v14M15 28l8-7.5M17.5 26l6.5 9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="logo-text">KovaShop<span>USA</span></span>
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="Main">
+        <a href="#/shop" data-i18n="nav.shop">Shop</a>
+        <a href="#/shop?cat=all" data-i18n="nav.categories" id="navCats">Categories</a>
+        <a href="#/brands" data-i18n="nav.brands">For Brands</a>
+        <a href="#/story" data-i18n="nav.story">Our Story</a>
+        <a href="#/track" data-i18n="nav.track">Track Order</a>
+      </nav>
+      <div class="header-actions">
+        <form class="search" id="searchForm" role="search">
+          <input type="search" id="searchInput" data-i18n-ph="search" placeholder="Search brands & products" aria-label="Search">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </form>
+        <button class="lang-btn" id="langBtn" aria-label="Cambiar idioma / Change language">ES</button>
+        <button class="icon-btn cart-btn" id="cartBtn" aria-label="Cart">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 7h14l-1.2 13H6.2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 7V5.5a3 3 0 0 1 6 0V7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1"></main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <div class="logo logo-light"><span class="logo-text">KovaShop<span>USA</span></span></div>
+        <p class="tagline">DISCOVER WHAT'S NEXT.</p>
+        <p class="muted" data-i18n="footer.about">A curated marketplace connecting U.S. shoppers with the best brands from Latin America.</p>
+      </div>
+      <div>
+        <h4 data-i18n="footer.shop">Shop</h4>
+        <ul id="footerCats"></ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer.company">Company</h4>
+        <ul>
+          <li><a href="#/story" data-i18n="nav.story">Our Story</a></li>
+          <li><a href="#/brands" data-i18n="footer.sell">Sell with us</a></li>
+          <li><a href="#/track" data-i18n="nav.track">Track Order</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer.ship">Shipping</h4>
+        <p class="muted" data-i18n="footer.shipText">All orders ship with USPS from our Miami, FL fulfillment center. Real-time rates, address verification and tracking.</p>
+        <p class="usps-mode" id="uspsMode"></p>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <span>© 2026 KovaShopUSA · <span data-i18n="footer.backed">Backed by WeComex Intl</span></span>
+      <span data-i18n="footer.mock">Prototype for testing — no real payments are processed.</span>
+    </div>
+  </footer>
+
+  <!-- Carrito -->
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="drawer" id="cartDrawer" aria-label="Cart" aria-hidden="true">
+    <div class="drawer-head">
+      <h3 data-i18n="cart.title">Your cart</h3>
+      <button class="icon-btn" id="closeCart" aria-label="Close">✕</button>
+    </div>
+    <div class="drawer-body" id="cartItems"></div>
+    <div class="drawer-foot" id="cartFoot"></div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="usps-mock.js"></script>
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

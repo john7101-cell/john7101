@@ -1,0 +1,12 @@
+{
+  "name": "kovashopusa-mockup",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Maqueta de tienda en línea KovaShopUSA con envíos USPS",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "engines": { "node": ">=18" }
+}
