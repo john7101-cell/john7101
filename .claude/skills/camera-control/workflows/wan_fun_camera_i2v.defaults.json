@@ -1,0 +1,19 @@
+{
+ "_note": "Original defaults for this collection (MIT). Values follow motionfield's catalog defaults (camera.ts CAM_DIMS 16:9 832x480, FPS 16, 4n+1 frames; relight.ts ambient 0.35, strength 0.85, steps 4) and are UNVERIFIED on GPU. CAM_W/CAM_H for 9:16 = 480x832, 1:1 = 624x624.",
+ "placeholders": {
+  "NEGATIVE": "",
+  "MOVES": "dolly-in",
+  "STRENGTH": "1",
+  "FPS": "16",
+  "DISTANCE": "4",
+  "FOV": "40",
+  "CAM_W": "832",
+  "CAM_H": "480",
+  "CAM_SCALE": "1",
+  "STEPS": "8",
+  "PREFIX": "vd_cam"
+ },
+ "fps": 16,
+ "frame_rule": "4n+1",
+ "duration_placeholder": "DURATION"
+}

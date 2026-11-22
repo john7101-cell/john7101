@@ -1,0 +1,1972 @@
+{
+ "444": {
+  "inputs": {
+   "image": "ltx2-a2v-input.png"
+  },
+  "class_type": "LoadImage",
+  "_meta": {
+   "title": "Load Image",
+   "cnr_id": "comfy-core",
+   "ver": "0.8.2"
+  }
+ },
+ "565": {
+  "inputs": {
+   "audio": "ltx2-a2v-input.mp3"
+  },
+  "class_type": "LoadAudio",
+  "_meta": {
+   "title": "Load Audio",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "982": {
+  "inputs": {
+   "filename_prefix": "video/ltx-2-a2v",
+   "format": "auto",
+   "format.codec": "auto",
+   "codec": "auto",
+   "video": [
+    "994:995",
+    0
+   ]
+  },
+  "class_type": "SaveVideo",
+  "_meta": {
+   "title": "Final Video"
+  }
+ },
+ "984": {
+  "inputs": {
+   "filename_prefix": "video/ltx-2-a2v",
+   "format": "auto",
+   "format.codec": "auto",
+   "codec": "auto",
+   "video": [
+    "994:983",
+    0
+   ]
+  },
+  "class_type": "SaveVideo",
+  "_meta": {
+   "title": "Preview Video"
+  }
+ },
+ "994:952": {
+  "inputs": {
+   "unet_name": "ltx-2-19b-distilled_transformer_only_bf16.safetensors",
+   "weight_dtype": "default"
+  },
+  "class_type": "UNETLoader",
+  "_meta": {
+   "title": "Load Diffusion Model",
+   "cnr_id": "comfy-core",
+   "ver": "0.8.2"
+  }
+ },
+ "994:922": {
+  "inputs": {
+   "text": "still image with no motion, subtitles, text, scene change",
+   "clip": [
+    "994:951",
+    0
+   ]
+  },
+  "class_type": "CLIPTextEncode",
+  "_meta": {
+   "title": "CLIP Text Encode (Prompt)",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.56"
+  }
+ },
+ "994:819": {
+  "inputs": {
+   "chunks": 4,
+   "dim_threshold": 4096,
+   "model": [
+    "994:952",
+    0
+   ]
+  },
+  "class_type": "LTXVChunkFeedForward",
+  "_meta": {
+   "title": "LTXV Chunk FeedForward",
+   "cnr_id": "comfyui-kjnodes",
+   "ver": "0ea5ece1793263d9fb0ad97bb067f96b83a9dea3"
+  }
+ },
+ "994:927": {
+  "inputs": {
+   "frame_rate": [
+    "994:1001",
+    0
+   ],
+   "positive": [
+    "994:921",
+    0
+   ],
+   "negative": [
+    "994:950",
+    0
+   ]
+  },
+  "class_type": "LTXVConditioning",
+  "_meta": {
+   "title": "LTXVConditioning",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.56"
+  }
+ },
+ "994:855": {
+  "inputs": {
+   "width": [
+    "994:923",
+    1
+   ],
+   "height": [
+    "994:923",
+    2
+   ],
+   "length": 241,
+   "batch_size": 1
+  },
+  "class_type": "EmptyLTXVLatentVideo",
+  "_meta": {
+   "title": "Empty LTXV Latent Video",
+   "cnr_id": "comfy-core",
+   "ver": "0.8.0"
+  }
+ },
+ "994:933": {
+  "inputs": {
+   "preview_rate": 8,
+   "model": [
+    "994:820",
+    0
+   ]
+  },
+  "class_type": "LTX2SamplingPreviewOverride",
+  "_meta": {
+   "title": "LTX2 Sampling Preview Override",
+   "cnr_id": "comfyui-kjnodes",
+   "ver": "0ea5ece1793263d9fb0ad97bb067f96b83a9dea3"
+  }
+ },
+ "994:951": {
+  "inputs": {
+   "clip_name1": "gemma_3_12B_it_fp8_scaled.safetensors",
+   "clip_name2": "ltx-2-19b-embeddings_connector_distill_bf16.safetensors",
+   "type": "ltxv",
+   "device": "default"
+  },
+  "class_type": "DualCLIPLoader",
+  "_meta": {
+   "title": "Load CLIP (Dual)",
+   "cnr_id": "comfy-core",
+   "ver": "0.8.2"
+  }
+ },
+ "994:895": {
+  "inputs": {
+   "vae_name": "LTX2_audio_vae_bf16.safetensors",
+   "device": "main_device",
+   "weight_dtype": "bf16"
+  },
+  "class_type": "VAELoaderKJ",
+  "_meta": {
+   "title": "VAELoader KJ",
+   "cnr_id": "comfyui-kjnodes",
+   "ver": "487c7d86a0230aae3d8c0a37d517159b73834f85"
+  }
+ },
+ "994:842": {
+  "inputs": {
+   "num_images": "1",
+   "num_images.strength_1": 1,
+   "num_images.index_1": 0,
+   "vae": [
+    "994:904",
+    0
+   ],
+   "latent": [
+    "994:855",
+    0
+   ],
+   "num_images.image_1": [
+    "994:821",
+    0
+   ]
+  },
+  "class_type": "LTXVImgToVideoInplaceKJ",
+  "_meta": {
+   "title": "LTXVImgToVideoInplaceKJ",
+   "cnr_id": "comfyui-kjnodes",
+   "ver": "bb7227bfea7e95f35ecdecddf74caca87757cfc6"
+  }
+ },
+ "994:904": {
+  "inputs": {
+   "vae_name": "LTX2_video_vae_bf16.safetensors",
+   "device": "main_device",
+   "weight_dtype": "bf16"
+  },
+  "class_type": "VAELoaderKJ",
+  "_meta": {
+   "title": "VAELoader KJ",
+   "cnr_id": "comfyui-kjnodes",
+   "ver": "47ca2b2c26358615974162059061e9dc78be6715"
+  }
+ },
+ "994:995": {
+  "inputs": {
+   "fps": [
+    "994:1001",
+    0
+   ],
+   "bit_depth": "auto",
+   "color_space": "sRGB",
+   "codec": "none",
+   "images": [
+    "994:990:1042",
+    0
+   ],
+   "audio": [
+    "994:892",
+    0
+   ]
+  },
+  "class_type": "CreateVideo",
+  "_meta": {
+   "title": "Create Video"
+  }
+ },
+ "994:950": {
+  "inputs": {
+   "conditioning": [
+    "994:921",
+    0
+   ]
+  },
+  "class_type": "ConditioningZeroOut",
+  "_meta": {
+   "title": "Conditioning Zero Out",
+   "cnr_id": "comfy-core",
+   "ver": "0.8.2"
+  }
+ },
+ "994:921": {
+  "inputs": {
+   "text": "the man is singing passionately",
+   "clip": [
+    "994:951",
+    0
+   ]
+  },
+  "class_type": "CLIPTextEncode",
+  "_meta": {
+   "title": "CLIP Text Encode (Prompt)",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.56"
+  }
+ },
+ "994:820": {
+  "inputs": {
+   "nag_scale": 11,
+   "nag_alpha": 0.25,
+   "nag_tau": 2.5,
+   "inplace": true,
+   "model": [
+    "994:819",
+    0
+   ],
+   "nag_cond_video": [
+    "994:922",
+    0
+   ]
+  },
+  "class_type": "LTX2_NAG",
+  "_meta": {
+   "title": "LTX2 NAG",
+   "cnr_id": "comfyui-kjnodes",
+   "ver": "0ea5ece1793263d9fb0ad97bb067f96b83a9dea3"
+  }
+ },
+ "994:821": {
+  "inputs": {
+   "img_compression": 25,
+   "image": [
+    "994:923",
+    0
+   ]
+  },
+  "class_type": "LTXVPreprocess",
+  "_meta": {
+   "title": "LTXV Preprocess",
+   "cnr_id": "comfy-core",
+   "ver": "0.8.2"
+  }
+ },
+ "994:923": {
+  "inputs": {
+   "width": 720,
+   "height": 720,
+   "upscale_method": "lanczos",
+   "keep_proportion": "crop",
+   "pad_color": "0, 0, 0",
+   "crop_position": "center",
+   "divisible_by": 2,
+   "device": "cpu",
+   "image": [
+    "444",
+    0
+   ]
+  },
+  "class_type": "ImageResizeKJv2",
+  "_meta": {
+   "title": "Resize Image v2",
+   "cnr_id": "comfyui-kjnodes",
+   "ver": "37bda1000e75e5649c224b0b4a8a6f57093ef925"
+  }
+ },
+ "994:892": {
+  "inputs": {
+   "start_time": "1:05",
+   "end_time": "2:05",
+   "audio": [
+    "565",
+    0
+   ]
+  },
+  "class_type": "AudioCrop",
+  "_meta": {
+   "title": "AudioCrop"
+  }
+ },
+ "994:890": {
+  "inputs": {
+   "chunk_fade_shape": "linear",
+   "chunk_length": 10,
+   "chunk_overlap": 0.1,
+   "audio": [
+    "994:892",
+    0
+   ]
+  },
+  "class_type": "AudioSeparation",
+  "_meta": {
+   "title": "AudioSeparation"
+  }
+ },
+ "994:983": {
+  "inputs": {
+   "fps": [
+    "994:1001",
+    0
+   ],
+   "bit_depth": "auto",
+   "color_space": "sRGB",
+   "codec": "none",
+   "images": [
+    "994:978:826",
+    0
+   ],
+   "audio": [
+    "994:892",
+    0
+   ]
+  },
+  "class_type": "CreateVideo",
+  "_meta": {
+   "title": "Create Video"
+  }
+ },
+ "994:1001": {
+  "inputs": {
+   "value": 24
+  },
+  "class_type": "PrimitiveFloat",
+  "_meta": {
+   "title": "FPS"
+  }
+ },
+ "994:857": {
+  "inputs": {
+   "value": 10.25
+  },
+  "class_type": "FloatConstant",
+  "_meta": {
+   "title": "window_size_seconds",
+   "cnr_id": "comfyui-kjnodes",
+   "ver": "c8e7f48a7f68b7a31ee336bc0be54bedbca05ffa"
+  }
+ },
+ "994:978:883": {
+  "inputs": {
+   "noise": [
+    "994:978:863",
+    0
+   ],
+   "guider": [
+    "994:978:828",
+    0
+   ],
+   "sampler": [
+    "994:978:944",
+    0
+   ],
+   "sigmas": [
+    "994:978:939",
+    0
+   ],
+   "latent_image": [
+    "994:978:822",
+    0
+   ]
+  },
+  "class_type": "SamplerCustomAdvanced",
+  "_meta": {
+   "title": "SamplerCustomAdvanced",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.60"
+  }
+ },
+ "994:978:828": {
+  "inputs": {
+   "cfg": 1,
+   "model": [
+    "994:933",
+    0
+   ],
+   "positive": [
+    "994:927",
+    0
+   ],
+   "negative": [
+    "994:927",
+    1
+   ]
+  },
+  "class_type": "CFGGuider",
+  "_meta": {
+   "title": "CFG Guider",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.64"
+  }
+ },
+ "994:978:825": {
+  "inputs": {
+   "av_latent": [
+    "994:978:883",
+    0
+   ]
+  },
+  "class_type": "LTXVSeparateAVLatent",
+  "_meta": {
+   "title": "Separate AV Latent",
+   "cnr_id": "comfy-core",
+   "ver": "0.7.0"
+  }
+ },
+ "994:978:944": {
+  "inputs": {
+   "sampler_name": "lcm"
+  },
+  "class_type": "KSamplerSelect",
+  "_meta": {
+   "title": "KSamplerSelect",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.56"
+  }
+ },
+ "994:978:939": {
+  "inputs": {
+   "steps": 8,
+   "max_shift": 2.05,
+   "base_shift": 0.95,
+   "stretch": true,
+   "terminal": 0.1,
+   "latent": [
+    "994:842",
+    0
+   ]
+  },
+  "class_type": "LTXVScheduler",
+  "_meta": {
+   "title": "LTXVScheduler",
+   "cnr_id": "comfy-core",
+   "ver": "0.8.0"
+  }
+ },
+ "994:978:826": {
+  "inputs": {
+   "tile_size": 1024,
+   "overlap": 64,
+   "temporal_size": 128,
+   "temporal_overlap": 16,
+   "samples": [
+    "994:978:825",
+    0
+   ],
+   "vae": [
+    "994:904",
+    0
+   ]
+  },
+  "class_type": "VAEDecodeTiled",
+  "_meta": {
+   "title": "VAE Decode (Tiled)",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:978:863": {
+  "inputs": {
+   "noise_seed": 44
+  },
+  "class_type": "RandomNoise",
+  "_meta": {
+   "title": "RandomNoise",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.56"
+  }
+ },
+ "994:978:818": {
+  "inputs": {
+   "value": 0,
+   "width": 512,
+   "height": 512
+  },
+  "class_type": "SolidMask",
+  "_meta": {
+   "title": "Create Solid Mask",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:978:822": {
+  "inputs": {
+   "video_latent": [
+    "994:842",
+    0
+   ],
+   "audio_latent": [
+    "994:978:817",
+    0
+   ]
+  },
+  "class_type": "LTXVConcatAVLatent",
+  "_meta": {
+   "title": "Concat AV Latent",
+   "cnr_id": "comfy-core",
+   "ver": "0.8.0"
+  }
+ },
+ "994:978:991": {
+  "inputs": {
+   "start_index": 0,
+   "duration": [
+    "994:857",
+    0
+   ],
+   "audio": [
+    "994:890",
+    3
+   ]
+  },
+  "class_type": "TrimAudioDuration",
+  "_meta": {
+   "title": "Trim Audio Duration",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:978:907": {
+  "inputs": {
+   "audio": [
+    "994:978:991",
+    0
+   ],
+   "audio_vae": [
+    "994:895",
+    0
+   ]
+  },
+  "class_type": "LTXVAudioVAEEncode",
+  "_meta": {
+   "title": "LTXV Audio VAE Encode",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:978:817": {
+  "inputs": {
+   "samples": [
+    "994:978:907",
+    0
+   ],
+   "mask": [
+    "994:978:818",
+    0
+   ]
+  },
+  "class_type": "SetLatentNoiseMask",
+  "_meta": {
+   "title": "Set Latent Noise Mask",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:969:1045": {
+  "inputs": {
+   "av_latent": [
+    "994:969:1059",
+    0
+   ]
+  },
+  "class_type": "LTXVSeparateAVLatent",
+  "_meta": {
+   "title": "Separate AV Latent",
+   "cnr_id": "comfy-core",
+   "ver": "0.7.0"
+  }
+ },
+ "994:969:1046": {
+  "inputs": {
+   "sampler_name": "lcm"
+  },
+  "class_type": "KSamplerSelect",
+  "_meta": {
+   "title": "KSamplerSelect",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.56"
+  }
+ },
+ "994:969:1047": {
+  "inputs": {
+   "steps": 8,
+   "max_shift": 2.05,
+   "base_shift": 0.95,
+   "stretch": true,
+   "terminal": 0.1,
+   "latent": [
+    "994:842",
+    0
+   ]
+  },
+  "class_type": "LTXVScheduler",
+  "_meta": {
+   "title": "LTXVScheduler",
+   "cnr_id": "comfy-core",
+   "ver": "0.8.0"
+  }
+ },
+ "994:969:1048": {
+  "inputs": {
+   "noise_seed": 42
+  },
+  "class_type": "RandomNoise",
+  "_meta": {
+   "title": "RandomNoise",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.56"
+  }
+ },
+ "994:969:1049": {
+  "inputs": {
+   "num_guides": "2",
+   "num_guides.frame_idx_1": 0,
+   "num_guides.strength_1": 1,
+   "num_guides.frame_idx_2": -1,
+   "num_guides.strength_2": 0.5,
+   "positive": [
+    "994:927",
+    0
+   ],
+   "negative": [
+    "994:927",
+    1
+   ],
+   "vae": [
+    "994:904",
+    0
+   ],
+   "latent": [
+    "994:969:1054",
+    0
+   ],
+   "num_guides.image_1": [
+    "994:923",
+    0
+   ],
+   "num_guides.image_2": [
+    "994:923",
+    0
+   ]
+  },
+  "class_type": "LTXVAddGuideMulti",
+  "_meta": {
+   "title": "LTXVAddGuideMulti",
+   "cnr_id": "comfyui-kjnodes",
+   "ver": "c8e7f48a7f68b7a31ee336bc0be54bedbca05ffa"
+  }
+ },
+ "994:969:1050": {
+  "inputs": {
+   "video_latent": [
+    "994:969:1049",
+    2
+   ],
+   "audio_latent": [
+    "994:969:1054",
+    1
+   ]
+  },
+  "class_type": "LTXVConcatAVLatent",
+  "_meta": {
+   "title": "Concat AV Latent",
+   "cnr_id": "comfy-core",
+   "ver": "0.8.0"
+  }
+ },
+ "994:969:1051": {
+  "inputs": {
+   "start_index": -1,
+   "num_frames": 25,
+   "images": [
+    "994:978:826",
+    0
+   ]
+  },
+  "class_type": "GetImageRangeFromBatch",
+  "_meta": {
+   "title": "Get Image or Mask Range From Batch",
+   "cnr_id": "comfyui-kjnodes",
+   "ver": "c8e7f48a7f68b7a31ee336bc0be54bedbca05ffa"
+  }
+ },
+ "994:969:1052": {
+  "inputs": {
+   "pixels": [
+    "994:969:1051",
+    0
+   ],
+   "vae": [
+    "994:904",
+    0
+   ]
+  },
+  "class_type": "VAEEncode",
+  "_meta": {
+   "title": "VAE Encode",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:969:1053": {
+  "inputs": {
+   "cfg": 1,
+   "model": [
+    "994:933",
+    0
+   ],
+   "positive": [
+    "994:969:1049",
+    0
+   ],
+   "negative": [
+    "994:969:1049",
+    1
+   ]
+  },
+  "class_type": "CFGGuider",
+  "_meta": {
+   "title": "CFG Guider",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.64"
+  }
+ },
+ "994:969:1054": {
+  "inputs": {
+   "video_fps": [
+    "994:1001",
+    0
+   ],
+   "video_start_time": 1,
+   "video_end_time": [
+    "994:857",
+    0
+   ],
+   "audio_start_time": [
+    "994:857",
+    0
+   ],
+   "audio_end_time": [
+    "994:857",
+    0
+   ],
+   "max_length": "pad",
+   "existing_mask_mode": "add",
+   "video_latent": [
+    "994:969:1052",
+    0
+   ],
+   "audio_latent": [
+    "994:969:1055",
+    0
+   ]
+  },
+  "class_type": "LTXVAudioVideoMask",
+  "_meta": {
+   "title": "LTXVAudioVideoMask",
+   "cnr_id": "comfyui-kjnodes",
+   "ver": "c8e7f48a7f68b7a31ee336bc0be54bedbca05ffa"
+  }
+ },
+ "994:969:1055": {
+  "inputs": {
+   "audio": [
+    "994:969:1060",
+    0
+   ],
+   "audio_vae": [
+    "994:895",
+    0
+   ]
+  },
+  "class_type": "LTXVAudioVAEEncode",
+  "_meta": {
+   "title": "LTXV Audio VAE Encode",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:969:1056": {
+  "inputs": {
+   "positive": [
+    "994:969:1049",
+    0
+   ],
+   "negative": [
+    "994:969:1049",
+    1
+   ],
+   "latent": [
+    "994:969:1045",
+    0
+   ]
+  },
+  "class_type": "LTXVCropGuides",
+  "_meta": {
+   "title": "LTXVCropGuides",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:969:1057": {
+  "inputs": {
+   "tile_size": 1024,
+   "overlap": 64,
+   "temporal_size": 256,
+   "temporal_overlap": 16,
+   "samples": [
+    "994:969:1056",
+    2
+   ],
+   "vae": [
+    "994:904",
+    0
+   ]
+  },
+  "class_type": "VAEDecodeTiled",
+  "_meta": {
+   "title": "VAE Decode (Tiled)",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:969:1058": {
+  "inputs": {
+   "overlap": 25,
+   "overlap_side": "source",
+   "overlap_mode": "filmic_crossfade",
+   "source_images": [
+    "994:978:826",
+    0
+   ],
+   "new_images": [
+    "994:969:1057",
+    0
+   ]
+  },
+  "class_type": "ImageBatchExtendWithOverlap",
+  "_meta": {
+   "title": "Image Batch Extend With Overlap",
+   "cnr_id": "comfyui-kjnodes",
+   "ver": "c8e7f48a7f68b7a31ee336bc0be54bedbca05ffa"
+  }
+ },
+ "994:969:1059": {
+  "inputs": {
+   "noise": [
+    "994:969:1048",
+    0
+   ],
+   "guider": [
+    "994:969:1053",
+    0
+   ],
+   "sampler": [
+    "994:969:1046",
+    0
+   ],
+   "sigmas": [
+    "994:969:1047",
+    0
+   ],
+   "latent_image": [
+    "994:969:1050",
+    0
+   ]
+  },
+  "class_type": "SamplerCustomAdvanced",
+  "_meta": {
+   "title": "SamplerCustomAdvanced",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.60"
+  }
+ },
+ "994:969:1060": {
+  "inputs": {
+   "start_index": 9,
+   "duration": [
+    "994:857",
+    0
+   ],
+   "audio": [
+    "994:890",
+    3
+   ]
+  },
+  "class_type": "TrimAudioDuration",
+  "_meta": {
+   "title": "Trim Audio Duration",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:988:1013": {
+  "inputs": {
+   "av_latent": [
+    "994:988:1027",
+    0
+   ]
+  },
+  "class_type": "LTXVSeparateAVLatent",
+  "_meta": {
+   "title": "Separate AV Latent",
+   "cnr_id": "comfy-core",
+   "ver": "0.7.0"
+  }
+ },
+ "994:988:1014": {
+  "inputs": {
+   "sampler_name": "lcm"
+  },
+  "class_type": "KSamplerSelect",
+  "_meta": {
+   "title": "KSamplerSelect",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.56"
+  }
+ },
+ "994:988:1015": {
+  "inputs": {
+   "steps": 8,
+   "max_shift": 2.05,
+   "base_shift": 0.95,
+   "stretch": true,
+   "terminal": 0.1,
+   "latent": [
+    "994:842",
+    0
+   ]
+  },
+  "class_type": "LTXVScheduler",
+  "_meta": {
+   "title": "LTXVScheduler",
+   "cnr_id": "comfy-core",
+   "ver": "0.8.0"
+  }
+ },
+ "994:988:1016": {
+  "inputs": {
+   "noise_seed": 42
+  },
+  "class_type": "RandomNoise",
+  "_meta": {
+   "title": "RandomNoise",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.56"
+  }
+ },
+ "994:988:1017": {
+  "inputs": {
+   "num_guides": "2",
+   "num_guides.frame_idx_1": 0,
+   "num_guides.strength_1": 1,
+   "num_guides.frame_idx_2": -1,
+   "num_guides.strength_2": 0.5,
+   "positive": [
+    "994:927",
+    0
+   ],
+   "negative": [
+    "994:927",
+    1
+   ],
+   "vae": [
+    "994:904",
+    0
+   ],
+   "latent": [
+    "994:988:1023",
+    0
+   ],
+   "num_guides.image_1": [
+    "994:923",
+    0
+   ],
+   "num_guides.image_2": [
+    "994:923",
+    0
+   ]
+  },
+  "class_type": "LTXVAddGuideMulti",
+  "_meta": {
+   "title": "LTXVAddGuideMulti",
+   "cnr_id": "comfyui-kjnodes",
+   "ver": "c8e7f48a7f68b7a31ee336bc0be54bedbca05ffa"
+  }
+ },
+ "994:988:1018": {
+  "inputs": {
+   "video_latent": [
+    "994:988:1017",
+    2
+   ],
+   "audio_latent": [
+    "994:988:1023",
+    1
+   ]
+  },
+  "class_type": "LTXVConcatAVLatent",
+  "_meta": {
+   "title": "Concat AV Latent",
+   "cnr_id": "comfy-core",
+   "ver": "0.8.0"
+  }
+ },
+ "994:988:1019": {
+  "inputs": {
+   "start_index": -1,
+   "num_frames": 25,
+   "images": [
+    "994:969:1057",
+    0
+   ]
+  },
+  "class_type": "GetImageRangeFromBatch",
+  "_meta": {
+   "title": "Get Image or Mask Range From Batch",
+   "cnr_id": "comfyui-kjnodes",
+   "ver": "c8e7f48a7f68b7a31ee336bc0be54bedbca05ffa"
+  }
+ },
+ "994:988:1020": {
+  "inputs": {
+   "pixels": [
+    "994:988:1019",
+    0
+   ],
+   "vae": [
+    "994:904",
+    0
+   ]
+  },
+  "class_type": "VAEEncode",
+  "_meta": {
+   "title": "VAE Encode",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:988:1021": {
+  "inputs": {
+   "cfg": 1,
+   "model": [
+    "994:933",
+    0
+   ],
+   "positive": [
+    "994:988:1017",
+    0
+   ],
+   "negative": [
+    "994:988:1017",
+    1
+   ]
+  },
+  "class_type": "CFGGuider",
+  "_meta": {
+   "title": "CFG Guider",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.64"
+  }
+ },
+ "994:988:1022": {
+  "inputs": {
+   "start_index": 18,
+   "duration": [
+    "994:857",
+    0
+   ],
+   "audio": [
+    "994:890",
+    3
+   ]
+  },
+  "class_type": "TrimAudioDuration",
+  "_meta": {
+   "title": "Trim Audio Duration",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:988:1023": {
+  "inputs": {
+   "video_fps": [
+    "994:1001",
+    0
+   ],
+   "video_start_time": 1,
+   "video_end_time": [
+    "994:857",
+    0
+   ],
+   "audio_start_time": [
+    "994:857",
+    0
+   ],
+   "audio_end_time": [
+    "994:857",
+    0
+   ],
+   "max_length": "pad",
+   "existing_mask_mode": "add",
+   "video_latent": [
+    "994:988:1020",
+    0
+   ],
+   "audio_latent": [
+    "994:988:1028",
+    0
+   ]
+  },
+  "class_type": "LTXVAudioVideoMask",
+  "_meta": {
+   "title": "LTXVAudioVideoMask",
+   "cnr_id": "comfyui-kjnodes",
+   "ver": "c8e7f48a7f68b7a31ee336bc0be54bedbca05ffa"
+  }
+ },
+ "994:988:1024": {
+  "inputs": {
+   "positive": [
+    "994:988:1017",
+    0
+   ],
+   "negative": [
+    "994:988:1017",
+    1
+   ],
+   "latent": [
+    "994:988:1013",
+    0
+   ]
+  },
+  "class_type": "LTXVCropGuides",
+  "_meta": {
+   "title": "LTXVCropGuides",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:988:1025": {
+  "inputs": {
+   "tile_size": 1024,
+   "overlap": 64,
+   "temporal_size": 256,
+   "temporal_overlap": 16,
+   "samples": [
+    "994:988:1024",
+    2
+   ],
+   "vae": [
+    "994:904",
+    0
+   ]
+  },
+  "class_type": "VAEDecodeTiled",
+  "_meta": {
+   "title": "VAE Decode (Tiled)",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:988:1026": {
+  "inputs": {
+   "overlap": 25,
+   "overlap_side": "source",
+   "overlap_mode": "filmic_crossfade",
+   "source_images": [
+    "994:969:1057",
+    0
+   ],
+   "new_images": [
+    "994:988:1025",
+    0
+   ]
+  },
+  "class_type": "ImageBatchExtendWithOverlap",
+  "_meta": {
+   "title": "Image Batch Extend With Overlap",
+   "cnr_id": "comfyui-kjnodes",
+   "ver": "c8e7f48a7f68b7a31ee336bc0be54bedbca05ffa"
+  }
+ },
+ "994:988:1027": {
+  "inputs": {
+   "noise": [
+    "994:988:1016",
+    0
+   ],
+   "guider": [
+    "994:988:1021",
+    0
+   ],
+   "sampler": [
+    "994:988:1014",
+    0
+   ],
+   "sigmas": [
+    "994:988:1015",
+    0
+   ],
+   "latent_image": [
+    "994:988:1018",
+    0
+   ]
+  },
+  "class_type": "SamplerCustomAdvanced",
+  "_meta": {
+   "title": "SamplerCustomAdvanced",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.60"
+  }
+ },
+ "994:988:1028": {
+  "inputs": {
+   "audio": [
+    "994:988:1022",
+    0
+   ],
+   "audio_vae": [
+    "994:895",
+    0
+   ]
+  },
+  "class_type": "LTXVAudioVAEEncode",
+  "_meta": {
+   "title": "LTXV Audio VAE Encode",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:989:831": {
+  "inputs": {
+   "av_latent": [
+    "994:989:827",
+    0
+   ]
+  },
+  "class_type": "LTXVSeparateAVLatent",
+  "_meta": {
+   "title": "Separate AV Latent",
+   "cnr_id": "comfy-core",
+   "ver": "0.7.0"
+  }
+ },
+ "994:989:953": {
+  "inputs": {
+   "sampler_name": "lcm"
+  },
+  "class_type": "KSamplerSelect",
+  "_meta": {
+   "title": "KSamplerSelect",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.56"
+  }
+ },
+ "994:989:954": {
+  "inputs": {
+   "steps": 8,
+   "max_shift": 2.05,
+   "base_shift": 0.95,
+   "stretch": true,
+   "terminal": 0.1,
+   "latent": [
+    "994:842",
+    0
+   ]
+  },
+  "class_type": "LTXVScheduler",
+  "_meta": {
+   "title": "LTXVScheduler",
+   "cnr_id": "comfy-core",
+   "ver": "0.8.0"
+  }
+ },
+ "994:989:823": {
+  "inputs": {
+   "noise_seed": 42
+  },
+  "class_type": "RandomNoise",
+  "_meta": {
+   "title": "RandomNoise",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.56"
+  }
+ },
+ "994:989:896": {
+  "inputs": {
+   "num_guides": "2",
+   "num_guides.frame_idx_1": 0,
+   "num_guides.strength_1": 1,
+   "num_guides.frame_idx_2": -1,
+   "num_guides.strength_2": 0.5,
+   "positive": [
+    "994:927",
+    0
+   ],
+   "negative": [
+    "994:927",
+    1
+   ],
+   "vae": [
+    "994:904",
+    0
+   ],
+   "latent": [
+    "994:989:859",
+    0
+   ],
+   "num_guides.image_1": [
+    "994:923",
+    0
+   ],
+   "num_guides.image_2": [
+    "994:923",
+    0
+   ]
+  },
+  "class_type": "LTXVAddGuideMulti",
+  "_meta": {
+   "title": "LTXVAddGuideMulti",
+   "cnr_id": "comfyui-kjnodes",
+   "ver": "c8e7f48a7f68b7a31ee336bc0be54bedbca05ffa"
+  }
+ },
+ "994:989:829": {
+  "inputs": {
+   "video_latent": [
+    "994:989:896",
+    2
+   ],
+   "audio_latent": [
+    "994:989:859",
+    1
+   ]
+  },
+  "class_type": "LTXVConcatAVLatent",
+  "_meta": {
+   "title": "Concat AV Latent",
+   "cnr_id": "comfy-core",
+   "ver": "0.8.0"
+  }
+ },
+ "994:989:843": {
+  "inputs": {
+   "start_index": -1,
+   "num_frames": 25,
+   "images": [
+    "994:988:1025",
+    0
+   ]
+  },
+  "class_type": "GetImageRangeFromBatch",
+  "_meta": {
+   "title": "Get Image or Mask Range From Batch",
+   "cnr_id": "comfyui-kjnodes",
+   "ver": "c8e7f48a7f68b7a31ee336bc0be54bedbca05ffa"
+  }
+ },
+ "994:989:900": {
+  "inputs": {
+   "pixels": [
+    "994:989:843",
+    0
+   ],
+   "vae": [
+    "994:904",
+    0
+   ]
+  },
+  "class_type": "VAEEncode",
+  "_meta": {
+   "title": "VAE Encode",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:989:830": {
+  "inputs": {
+   "cfg": 1,
+   "model": [
+    "994:933",
+    0
+   ],
+   "positive": [
+    "994:989:896",
+    0
+   ],
+   "negative": [
+    "994:989:896",
+    1
+   ]
+  },
+  "class_type": "CFGGuider",
+  "_meta": {
+   "title": "CFG Guider",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.64"
+  }
+ },
+ "994:989:862": {
+  "inputs": {
+   "start_index": 27,
+   "duration": [
+    "994:857",
+    0
+   ],
+   "audio": [
+    "994:890",
+    3
+   ]
+  },
+  "class_type": "TrimAudioDuration",
+  "_meta": {
+   "title": "Trim Audio Duration",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:989:859": {
+  "inputs": {
+   "video_fps": [
+    "994:1001",
+    0
+   ],
+   "video_start_time": 1,
+   "video_end_time": [
+    "994:857",
+    0
+   ],
+   "audio_start_time": [
+    "994:857",
+    0
+   ],
+   "audio_end_time": [
+    "994:857",
+    0
+   ],
+   "max_length": "pad",
+   "existing_mask_mode": "add",
+   "video_latent": [
+    "994:989:900",
+    0
+   ],
+   "audio_latent": [
+    "994:989:824",
+    0
+   ]
+  },
+  "class_type": "LTXVAudioVideoMask",
+  "_meta": {
+   "title": "LTXVAudioVideoMask",
+   "cnr_id": "comfyui-kjnodes",
+   "ver": "c8e7f48a7f68b7a31ee336bc0be54bedbca05ffa"
+  }
+ },
+ "994:989:824": {
+  "inputs": {
+   "audio": [
+    "994:989:862",
+    0
+   ],
+   "audio_vae": [
+    "994:895",
+    0
+   ]
+  },
+  "class_type": "LTXVAudioVAEEncode",
+  "_meta": {
+   "title": "LTXV Audio VAE Encode",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:989:832": {
+  "inputs": {
+   "positive": [
+    "994:989:896",
+    0
+   ],
+   "negative": [
+    "994:989:896",
+    1
+   ],
+   "latent": [
+    "994:989:831",
+    0
+   ]
+  },
+  "class_type": "LTXVCropGuides",
+  "_meta": {
+   "title": "LTXVCropGuides",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:989:901": {
+  "inputs": {
+   "tile_size": 1024,
+   "overlap": 64,
+   "temporal_size": 256,
+   "temporal_overlap": 16,
+   "samples": [
+    "994:989:832",
+    2
+   ],
+   "vae": [
+    "994:904",
+    0
+   ]
+  },
+  "class_type": "VAEDecodeTiled",
+  "_meta": {
+   "title": "VAE Decode (Tiled)",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:989:987": {
+  "inputs": {
+   "overlap": 25,
+   "overlap_side": "source",
+   "overlap_mode": "filmic_crossfade",
+   "source_images": [
+    "994:988:1025",
+    0
+   ],
+   "new_images": [
+    "994:989:901",
+    0
+   ]
+  },
+  "class_type": "ImageBatchExtendWithOverlap",
+  "_meta": {
+   "title": "Image Batch Extend With Overlap",
+   "cnr_id": "comfyui-kjnodes",
+   "ver": "c8e7f48a7f68b7a31ee336bc0be54bedbca05ffa"
+  }
+ },
+ "994:989:827": {
+  "inputs": {
+   "noise": [
+    "994:989:823",
+    0
+   ],
+   "guider": [
+    "994:989:830",
+    0
+   ],
+   "sampler": [
+    "994:989:953",
+    0
+   ],
+   "sigmas": [
+    "994:989:954",
+    0
+   ],
+   "latent_image": [
+    "994:989:829",
+    0
+   ]
+  },
+  "class_type": "SamplerCustomAdvanced",
+  "_meta": {
+   "title": "SamplerCustomAdvanced",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.60"
+  }
+ },
+ "994:990:1029": {
+  "inputs": {
+   "av_latent": [
+    "994:990:1044",
+    0
+   ]
+  },
+  "class_type": "LTXVSeparateAVLatent",
+  "_meta": {
+   "title": "Separate AV Latent",
+   "cnr_id": "comfy-core",
+   "ver": "0.7.0"
+  }
+ },
+ "994:990:1030": {
+  "inputs": {
+   "sampler_name": "lcm"
+  },
+  "class_type": "KSamplerSelect",
+  "_meta": {
+   "title": "KSamplerSelect",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.56"
+  }
+ },
+ "994:990:1031": {
+  "inputs": {
+   "steps": 8,
+   "max_shift": 2.05,
+   "base_shift": 0.95,
+   "stretch": true,
+   "terminal": 0.1,
+   "latent": [
+    "994:842",
+    0
+   ]
+  },
+  "class_type": "LTXVScheduler",
+  "_meta": {
+   "title": "LTXVScheduler",
+   "cnr_id": "comfy-core",
+   "ver": "0.8.0"
+  }
+ },
+ "994:990:1032": {
+  "inputs": {
+   "noise_seed": 42
+  },
+  "class_type": "RandomNoise",
+  "_meta": {
+   "title": "RandomNoise",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.56"
+  }
+ },
+ "994:990:1033": {
+  "inputs": {
+   "num_guides": "2",
+   "num_guides.frame_idx_1": 0,
+   "num_guides.strength_1": 1,
+   "num_guides.frame_idx_2": -1,
+   "num_guides.strength_2": 0.5,
+   "positive": [
+    "994:927",
+    0
+   ],
+   "negative": [
+    "994:927",
+    1
+   ],
+   "vae": [
+    "994:904",
+    0
+   ],
+   "latent": [
+    "994:990:1039",
+    0
+   ],
+   "num_guides.image_1": [
+    "994:923",
+    0
+   ],
+   "num_guides.image_2": [
+    "994:923",
+    0
+   ]
+  },
+  "class_type": "LTXVAddGuideMulti",
+  "_meta": {
+   "title": "LTXVAddGuideMulti",
+   "cnr_id": "comfyui-kjnodes",
+   "ver": "c8e7f48a7f68b7a31ee336bc0be54bedbca05ffa"
+  }
+ },
+ "994:990:1034": {
+  "inputs": {
+   "video_latent": [
+    "994:990:1033",
+    2
+   ],
+   "audio_latent": [
+    "994:990:1039",
+    1
+   ]
+  },
+  "class_type": "LTXVConcatAVLatent",
+  "_meta": {
+   "title": "Concat AV Latent",
+   "cnr_id": "comfy-core",
+   "ver": "0.8.0"
+  }
+ },
+ "994:990:1035": {
+  "inputs": {
+   "start_index": -1,
+   "num_frames": 25,
+   "images": [
+    "994:989:901",
+    0
+   ]
+  },
+  "class_type": "GetImageRangeFromBatch",
+  "_meta": {
+   "title": "Get Image or Mask Range From Batch",
+   "cnr_id": "comfyui-kjnodes",
+   "ver": "c8e7f48a7f68b7a31ee336bc0be54bedbca05ffa"
+  }
+ },
+ "994:990:1036": {
+  "inputs": {
+   "pixels": [
+    "994:990:1035",
+    0
+   ],
+   "vae": [
+    "994:904",
+    0
+   ]
+  },
+  "class_type": "VAEEncode",
+  "_meta": {
+   "title": "VAE Encode",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:990:1037": {
+  "inputs": {
+   "cfg": 1,
+   "model": [
+    "994:933",
+    0
+   ],
+   "positive": [
+    "994:990:1033",
+    0
+   ],
+   "negative": [
+    "994:990:1033",
+    1
+   ]
+  },
+  "class_type": "CFGGuider",
+  "_meta": {
+   "title": "CFG Guider",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.64"
+  }
+ },
+ "994:990:1038": {
+  "inputs": {
+   "start_index": 36,
+   "duration": [
+    "994:857",
+    0
+   ],
+   "audio": [
+    "994:890",
+    3
+   ]
+  },
+  "class_type": "TrimAudioDuration",
+  "_meta": {
+   "title": "Trim Audio Duration",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:990:1039": {
+  "inputs": {
+   "video_fps": [
+    "994:1001",
+    0
+   ],
+   "video_start_time": 1,
+   "video_end_time": [
+    "994:857",
+    0
+   ],
+   "audio_start_time": [
+    "994:857",
+    0
+   ],
+   "audio_end_time": [
+    "994:857",
+    0
+   ],
+   "max_length": "pad",
+   "existing_mask_mode": "add",
+   "video_latent": [
+    "994:990:1036",
+    0
+   ],
+   "audio_latent": [
+    "994:990:1040",
+    0
+   ]
+  },
+  "class_type": "LTXVAudioVideoMask",
+  "_meta": {
+   "title": "LTXVAudioVideoMask",
+   "cnr_id": "comfyui-kjnodes",
+   "ver": "c8e7f48a7f68b7a31ee336bc0be54bedbca05ffa"
+  }
+ },
+ "994:990:1040": {
+  "inputs": {
+   "audio": [
+    "994:990:1038",
+    0
+   ],
+   "audio_vae": [
+    "994:895",
+    0
+   ]
+  },
+  "class_type": "LTXVAudioVAEEncode",
+  "_meta": {
+   "title": "LTXV Audio VAE Encode",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:990:1041": {
+  "inputs": {
+   "positive": [
+    "994:990:1033",
+    0
+   ],
+   "negative": [
+    "994:990:1033",
+    1
+   ],
+   "latent": [
+    "994:990:1029",
+    0
+   ]
+  },
+  "class_type": "LTXVCropGuides",
+  "_meta": {
+   "title": "LTXVCropGuides",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:990:1042": {
+  "inputs": {
+   "tile_size": 1024,
+   "overlap": 64,
+   "temporal_size": 256,
+   "temporal_overlap": 16,
+   "samples": [
+    "994:990:1041",
+    2
+   ],
+   "vae": [
+    "994:904",
+    0
+   ]
+  },
+  "class_type": "VAEDecodeTiled",
+  "_meta": {
+   "title": "VAE Decode (Tiled)",
+   "cnr_id": "comfy-core",
+   "ver": "0.9.2"
+  }
+ },
+ "994:990:1043": {
+  "inputs": {
+   "overlap": 25,
+   "overlap_side": "source",
+   "overlap_mode": "filmic_crossfade",
+   "source_images": [
+    "994:989:901",
+    0
+   ],
+   "new_images": [
+    "994:990:1042",
+    0
+   ]
+  },
+  "class_type": "ImageBatchExtendWithOverlap",
+  "_meta": {
+   "title": "Image Batch Extend With Overlap",
+   "cnr_id": "comfyui-kjnodes",
+   "ver": "c8e7f48a7f68b7a31ee336bc0be54bedbca05ffa"
+  }
+ },
+ "994:990:1044": {
+  "inputs": {
+   "noise": [
+    "994:990:1032",
+    0
+   ],
+   "guider": [
+    "994:990:1037",
+    0
+   ],
+   "sampler": [
+    "994:990:1030",
+    0
+   ],
+   "sigmas": [
+    "994:990:1031",
+    0
+   ],
+   "latent_image": [
+    "994:990:1034",
+    0
+   ]
+  },
+  "class_type": "SamplerCustomAdvanced",
+  "_meta": {
+   "title": "SamplerCustomAdvanced",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.60"
+  }
+ }
+}

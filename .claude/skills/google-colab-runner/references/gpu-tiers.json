@@ -1,0 +1,58 @@
+{
+ "v": 1,
+ "note": "Google Colab GPUs mapped to video-director tiers. cu_per_hour values are approximate public figures and are UNVERIFIED: Google Colab changes them and shows the live rate in its Resources panel. Override with --cu-per-hour or manifest target.colab.cu_per_hour. speed is a multiplier on the director's per-render seconds (which assume a 24 GB-class GPU); also an unverified assumption.",
+ "gpus": {
+  "T4": {
+   "match": [
+    "T4"
+   ],
+   "vram_gb": 16,
+   "tier": "draft",
+   "cu_per_hour": 1.8,
+   "speed": 2.5,
+   "note": "fp16 only; no bf16/fp8. Draft tier at small sizes; LTX 22B needs GGUF and may still OOM."
+  },
+  "L4": {
+   "match": [
+    "L4"
+   ],
+   "vram_gb": 24,
+   "tier": "standard",
+   "cu_per_hour": 4.8,
+   "speed": 1.2,
+   "note": "24 GB nominal (about 22.5 GiB usable): standard tier; drop to draft if it runs out of memory."
+  },
+  "A100": {
+   "match": [
+    "A100"
+   ],
+   "vram_gb": 40,
+   "tier": "max",
+   "cu_per_hour": 11.8,
+   "speed": 0.5,
+   "note": "40 GB (sometimes 80 GB) runtimes."
+  },
+  "H100": {
+   "match": [
+    "H100"
+   ],
+   "vram_gb": 80,
+   "tier": "max",
+   "cu_per_hour": 18.0,
+   "speed": 0.3,
+   "note": "Availability varies by plan."
+  }
+ },
+ "unknown": {
+  "vram_gb": 0,
+  "tier": "draft",
+  "cu_per_hour": 12.0,
+  "speed": 2.5,
+  "note": "Unknown GPU: price pessimistically."
+ },
+ "session_overhead_minutes": {
+  "bootstrap": 6,
+  "per_gb_download": 0.12,
+  "collect_and_stop_reserve": 3
+ }
+}

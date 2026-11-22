@@ -1,0 +1,275 @@
+{
+ "schema_version": "1.0",
+ "created": "2026-10-30T14:40:00",
+ "id": "aurora-bottle-spot",
+ "brief": {
+  "prompt": "a 15-second spot for our Aurora insulated steel bottle",
+  "kind": "product",
+  "length_s": 15,
+  "aspect": "9:16",
+  "fps": 24,
+  "style": "clean premium product commercial, glacier blue and white, crisp studio light, macro detail",
+  "audio": {
+   "narration": true,
+   "music": true,
+   "sfx": true,
+   "lip_sync": false,
+   "music_file": null,
+   "language": "en"
+  },
+  "captions": "burned",
+  "deliverables": [
+   "9:16",
+   "1:1",
+   "16:9"
+  ],
+  "commercial_use": true,
+  "defaults_used": [
+   "fps 24"
+  ]
+ },
+ "target": {
+  "kind": "local",
+  "url": "http://127.0.0.1:8188",
+  "gpu": "A100 80GB",
+  "vram_gb": 80,
+  "budget": {
+   "max_gpu_minutes": 120,
+   "max_credits": null,
+   "credit_unit": "",
+   "deadline_minutes": null
+  }
+ },
+ "tier": "max",
+ "tier_reason": "80 GB and 120 GPU-min budget fit max",
+ "caps": {
+  "still_retries": 3,
+  "still_variants": 2,
+  "video_retries": 2,
+  "continuity_regens": 2,
+  "max_renders": 48,
+  "max_gpu_minutes": 120,
+  "pass_mean": 4.0,
+  "pass_min": 3
+ },
+ "gates": {
+  "bible": "human",
+  "plan": "human",
+  "spend": "human",
+  "final": "human"
+ },
+ "stages": {
+  "intake": "done",
+  "preflight": "pending",
+  "bible": "pending",
+  "plan": "pending",
+  "stills": "pending",
+  "video": "pending",
+  "continuity": "pending",
+  "audio": "pending",
+  "post": "pending",
+  "assembly": "pending",
+  "critique": "pending"
+ },
+ "bible": {
+  "path": "aurora-bottle-spot/bible.md",
+  "logline": "Cold stays cold: the Aurora bottle on a glacier morning.",
+  "cast": [
+   {
+    "id": "bottle",
+    "descriptor": "matte glacier-blue 750 ml stainless steel bottle, brushed steel cap, small white 'AURORA' wordmark, beaded condensation",
+    "ref_image": "aurora-bottle-spot/inputs/product_matte.png",
+    "seed": null
+   }
+  ],
+  "style": "premium commercial, glacier blue/white",
+  "lut": "scifi_cyan.cube",
+  "voice": "crisp confident female VO"
+ },
+ "shots": [
+  {
+   "id": "s01",
+   "beat": "1 hook",
+   "start_s": 0.0,
+   "duration_s": 4,
+   "type": "product",
+   "framing": "macro",
+   "camera": "static locked-off",
+   "cast": [
+    "bottle"
+   ],
+   "location": "ice studio",
+   "narration": "Cold that lasts.",
+   "sfx": null,
+   "chain_from": null,
+   "transition_in": "cut",
+   "still": {
+    "route": "still.klein_base",
+    "status": "pending",
+    "prompt": "Clean premium product photo, vertical frame. Macro shot of a matte glacier-blue 750 ml stainless steel bottle with brushed steel cap and small white wordmark \"AURORA\", standing on a slab of clear blue ice at frame center, beaded condensation, crisp white studio key light from frame left, soft blue gradient background.",
+    "seed": null
+   },
+   "video": {
+    "route": "video.i2v",
+    "status": "pending",
+    "prompt": "Static camera. Condensation beads slide down the bottle; a thin cold vapor curls off the ice.",
+    "seed": null
+   },
+   "status": "pending",
+   "extra": []
+  },
+  {
+   "id": "s02",
+   "beat": "2 proof",
+   "start_s": 4.0,
+   "duration_s": 4,
+   "type": "product",
+   "framing": "medium",
+   "camera": "slow orbit",
+   "cast": [
+    "bottle"
+   ],
+   "location": "glacier",
+   "narration": "Twenty-four hours on the ice.",
+   "sfx": null,
+   "chain_from": "s01",
+   "transition_in": "cut",
+   "still": {
+    "route": "still.klein_base",
+    "status": "pending",
+    "prompt": "Clean premium product photo, vertical frame. Medium shot: the matte glacier-blue AURORA bottle planted in snow at frame center on a sunlit glacier ridge, blue sky, sharp shadows, cap off with ice cubes visible at the rim.",
+    "seed": null
+   },
+   "video": {
+    "route": "video.i2v",
+    "status": "pending",
+    "prompt": "Slow orbit left around the bottle; snow sparkles; breath of vapor from the open neck.",
+    "seed": null
+   },
+   "status": "pending"
+  },
+  {
+   "id": "s03",
+   "beat": "3 hero",
+   "start_s": 8.0,
+   "duration_s": 4,
+   "type": "vfx",
+   "framing": "medium close-up",
+   "camera": "static locked-off",
+   "cast": [
+    "bottle"
+   ],
+   "location": "glacier",
+   "narration": null,
+   "sfx": null,
+   "chain_from": null,
+   "transition_in": "flf",
+   "still": {
+    "route": "still.klein_base",
+    "status": "pending",
+    "prompt": "Clean premium product photo, vertical frame. Medium close-up of the AURORA bottle on ice at frame center, deep blue dusk light, the brushed cap catching a star of light.",
+    "seed": null
+   },
+   "video": {
+    "route": "video.i2v",
+    "status": "pending",
+    "prompt": "Static camera. The ice around the bottle freezes outward in crystalline patterns.",
+    "seed": null
+   },
+   "status": "pending",
+   "extra": [
+    {
+     "route": "vfx.onetake",
+     "status": "pending",
+     "params": {
+      "preset": "time-freeze"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s04",
+   "beat": "4 tag",
+   "start_s": 12.0,
+   "duration_s": 3,
+   "type": "title",
+   "framing": "wide",
+   "camera": "slow push-in",
+   "cast": [
+    "bottle"
+   ],
+   "location": "ice studio",
+   "narration": "Aurora. Built for cold.",
+   "sfx": null,
+   "chain_from": null,
+   "transition_in": "cut",
+   "still": {
+    "route": "still.klein_base",
+    "status": "pending",
+    "prompt": "Clean premium product photo, vertical frame. The AURORA bottle at frame lower third on a white seamless, large empty space above for the end title, cool blue rim light.",
+    "seed": null
+   },
+   "video": {
+    "route": "video.i2v",
+    "status": "pending",
+    "prompt": "Slow push-in; a soft light sweep passes across the bottle.",
+    "seed": null
+   },
+   "status": "pending"
+  }
+ ],
+ "audio": {
+  "voiceover": {
+   "route": "audio.voice",
+   "status": "pending",
+   "params": {},
+   "seed": 3
+  },
+  "music": {
+   "route": "audio.music",
+   "status": "pending",
+   "params": {
+    "tags": "minimal electronic pulse, 110 bpm, cold shimmering pads, confident, no vocals",
+    "lyrics": "[instrumental]"
+   }
+  },
+  "sfx": [
+   {
+    "route": "audio.sfx",
+    "status": "pending",
+    "params": {
+     "prompt": "ice cracking and freezing, crisp close-up crackle",
+     "seconds": 4
+    }
+   }
+  ]
+ },
+ "post": [],
+ "assembly": {
+  "status": "pending",
+  "xfade": 0.0,
+  "beats_file": null,
+  "captions": "burned",
+  "exports": [
+   {
+    "aspect": "1:1",
+    "method": "crop",
+    "file": null
+   },
+   {
+    "aspect": "16:9",
+    "method": "reframe",
+    "file": null
+   }
+  ],
+  "output": null
+ },
+ "cost": {
+  "renders": 0,
+  "estimate_gpu_minutes": null,
+  "actual_gpu_minutes": 0,
+  "rates_s_per_render": {},
+  "rates_note": "unverified assumptions"
+ },
+ "log": []
+}

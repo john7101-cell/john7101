@@ -1,0 +1,6 @@
+{
+ "_note": "Original defaults for this collection (MIT). Values follow motionfield's catalog defaults (camera.ts CAM_DIMS 16:9 832x480, FPS 16, 4n+1 frames; relight.ts ambient 0.35, strength 0.85, steps 4) and are UNVERIFIED on GPU. CAM_W/CAM_H for 9:16 = 480x832, 1:1 = 624x624.",
+ "placeholders": {
+  "DURATION_INT": 5
+ }
+}

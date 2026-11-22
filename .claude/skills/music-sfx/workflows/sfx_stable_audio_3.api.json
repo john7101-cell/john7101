@@ -1,0 +1,118 @@
+{
+ "3": {
+  "class_type": "KSampler",
+  "inputs": {
+   "seed": 0,
+   "steps": 8,
+   "cfg": 1,
+   "sampler_name": "lcm",
+   "scheduler": "simple",
+   "denoise": 1,
+   "model": [
+    "25",
+    0
+   ],
+   "positive": [
+    "6",
+    0
+   ],
+   "negative": [
+    "7",
+    0
+   ],
+   "latent_image": [
+    "11",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Sampler"
+  }
+ },
+ "6": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "text": "",
+   "clip": [
+    "26",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Description"
+  }
+ },
+ "7": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "text": "",
+   "clip": [
+    "26",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Negative"
+  }
+ },
+ "11": {
+  "class_type": "EmptyLatentAudio",
+  "inputs": {
+   "seconds": 5,
+   "batch_size": 1
+  },
+  "_meta": {
+   "title": "Length"
+  }
+ },
+ "12": {
+  "class_type": "VAEDecodeAudio",
+  "inputs": {
+   "samples": [
+    "3",
+    0
+   ],
+   "vae": [
+    "25",
+    2
+   ]
+  },
+  "_meta": {
+   "title": "Decode"
+  }
+ },
+ "25": {
+  "class_type": "CheckpointLoaderSimple",
+  "inputs": {
+   "ckpt_name": "stable_audio_3_medium.safetensors"
+  },
+  "_meta": {
+   "title": "Stable Audio 3 Medium"
+  }
+ },
+ "26": {
+  "class_type": "CLIPLoader",
+  "inputs": {
+   "clip_name": "t5gemma_b_b_ul2.safetensors",
+   "type": "stable_audio",
+   "device": "default"
+  },
+  "_meta": {
+   "title": "Text encoder"
+  }
+ },
+ "57": {
+  "class_type": "SaveAudioMP3",
+  "inputs": {
+   "filename_prefix": "audio/rosesfield-sound",
+   "quality": "V0",
+   "audio": [
+    "12",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Audio"
+  }
+ }
+}

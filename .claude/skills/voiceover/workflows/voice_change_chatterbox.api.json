@@ -1,0 +1,67 @@
+{
+ "1": {
+  "class_type": "FL_ChatterboxVC",
+  "inputs": {
+   "seed": 0,
+   "use_cpu": false,
+   "keep_model_loaded": false,
+   "input_audio": [
+    "5",
+    0
+   ],
+   "target_voice": [
+    "2",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Voice change"
+  }
+ },
+ "2": {
+  "class_type": "LoadAudio",
+  "inputs": {
+   "audio": "target.mp3"
+  },
+  "_meta": {
+   "title": "Target voice"
+  }
+ },
+ "3": {
+  "class_type": "LoadAudio",
+  "inputs": {
+   "audio": "source.mp3"
+  },
+  "_meta": {
+   "title": "Your recording"
+  }
+ },
+ "4": {
+  "class_type": "SaveAudioMP3",
+  "inputs": {
+   "filename_prefix": "audio/rosesfield-voice-change",
+   "quality": "V0",
+   "audio": [
+    "1",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Audio"
+  }
+ },
+ "5": {
+  "class_type": "TrimAudioDuration",
+  "inputs": {
+   "start_index": 0,
+   "duration": 30,
+   "audio": [
+    "3",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "First 30 seconds"
+  }
+ }
+}

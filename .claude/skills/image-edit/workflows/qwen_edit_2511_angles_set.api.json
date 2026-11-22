@@ -1,0 +1,574 @@
+{
+ "9": {
+  "class_type": "SaveImage",
+  "inputs": {
+   "images": [
+    "132",
+    0
+   ],
+   "filename_prefix": "rosesfield-angles"
+  }
+ },
+ "41": {
+  "class_type": "LoadImage",
+  "inputs": {
+   "image": "source.png"
+  }
+ },
+ "93": {
+  "class_type": "CLIPLoader",
+  "inputs": {
+   "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+   "type": "qwen_image",
+   "device": "default"
+  }
+ },
+ "94": {
+  "class_type": "ModelSamplingAuraFlow",
+  "inputs": {
+   "model": [
+    "102",
+    0
+   ],
+   "shift": 3.1
+  }
+ },
+ "95": {
+  "class_type": "VAELoader",
+  "inputs": {
+   "vae_name": "qwen_image_vae.safetensors"
+  }
+ },
+ "96": {
+  "class_type": "FluxKontextMultiReferenceLatentMethod",
+  "inputs": {
+   "conditioning": [
+    "100",
+    0
+   ],
+   "reference_latents_method": "index_timestep_zero"
+  }
+ },
+ "98": {
+  "class_type": "CFGNorm",
+  "inputs": {
+   "model": [
+    "94",
+    0
+   ],
+   "strength": 1
+  }
+ },
+ "100": {
+  "class_type": "TextEncodeQwenImageEditPlus",
+  "inputs": {
+   "clip": [
+    "93",
+    0
+   ],
+   "vae": [
+    "95",
+    0
+   ],
+   "image1": [
+    "107",
+    0
+   ],
+   "prompt": ""
+  }
+ },
+ "102": {
+  "class_type": "LoraLoaderModelOnly",
+  "inputs": {
+   "model": [
+    "109",
+    0
+   ],
+   "lora_name": "Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors",
+   "strength_model": 1
+  }
+ },
+ "105": {
+  "class_type": "VAEEncode",
+  "inputs": {
+   "pixels": [
+    "107",
+    0
+   ],
+   "vae": [
+    "95",
+    0
+   ]
+  }
+ },
+ "107": {
+  "class_type": "FluxKontextImageScale",
+  "inputs": {
+   "image": [
+    "41",
+    0
+   ]
+  }
+ },
+ "108": {
+  "class_type": "UNETLoader",
+  "inputs": {
+   "unet_name": "qwen_image_edit_2511_bf16.safetensors",
+   "weight_dtype": "default"
+  }
+ },
+ "109": {
+  "class_type": "LoraLoaderModelOnly",
+  "inputs": {
+   "model": [
+    "108",
+    0
+   ],
+   "lora_name": "qwen-image-edit-2511-multiple-angles-lora.safetensors",
+   "strength_model": 1
+  }
+ },
+ "130": {
+  "class_type": "ImageBatch",
+  "inputs": {
+   "image1": [
+    "1103",
+    0
+   ],
+   "image2": [
+    "2103",
+    0
+   ]
+  }
+ },
+ "131": {
+  "class_type": "ImageBatch",
+  "inputs": {
+   "image1": [
+    "130",
+    0
+   ],
+   "image2": [
+    "3103",
+    0
+   ]
+  }
+ },
+ "132": {
+  "class_type": "ImageBatch",
+  "inputs": {
+   "image1": [
+    "131",
+    0
+   ],
+   "image2": [
+    "4103",
+    0
+   ]
+  }
+ },
+ "1097": {
+  "class_type": "FluxKontextMultiReferenceLatentMethod",
+  "inputs": {
+   "conditioning": [
+    "1112",
+    0
+   ],
+   "reference_latents_method": "index_timestep_zero"
+  }
+ },
+ "1103": {
+  "class_type": "VAEDecode",
+  "inputs": {
+   "samples": [
+    "1106",
+    0
+   ],
+   "vae": [
+    "95",
+    0
+   ]
+  }
+ },
+ "1106": {
+  "class_type": "KSampler",
+  "inputs": {
+   "model": [
+    "98",
+    0
+   ],
+   "positive": [
+    "1097",
+    0
+   ],
+   "negative": [
+    "96",
+    0
+   ],
+   "latent_image": [
+    "105",
+    0
+   ],
+   "seed": 0,
+   "steps": 4,
+   "cfg": 1,
+   "sampler_name": "euler",
+   "scheduler": "simple",
+   "denoise": 1
+  }
+ },
+ "1112": {
+  "class_type": "TextEncodeQwenImageEditPlus",
+  "inputs": {
+   "clip": [
+    "93",
+    0
+   ],
+   "vae": [
+    "95",
+    0
+   ],
+   "image1": [
+    "107",
+    0
+   ],
+   "prompt": [
+    "1122",
+    0
+   ]
+  }
+ },
+ "1120": {
+  "class_type": "StringConcatenate",
+  "inputs": {
+   "string_a": "",
+   "string_b": "",
+   "delimiter": " "
+  }
+ },
+ "1121": {
+  "class_type": "StringConcatenate",
+  "inputs": {
+   "string_a": [
+    "1120",
+    0
+   ],
+   "string_b": "",
+   "delimiter": " "
+  }
+ },
+ "1122": {
+  "class_type": "StringConcatenate",
+  "inputs": {
+   "string_a": "<sks>",
+   "string_b": [
+    "1121",
+    0
+   ],
+   "delimiter": " "
+  }
+ },
+ "2097": {
+  "class_type": "FluxKontextMultiReferenceLatentMethod",
+  "inputs": {
+   "conditioning": [
+    "2112",
+    0
+   ],
+   "reference_latents_method": "index_timestep_zero"
+  }
+ },
+ "2103": {
+  "class_type": "VAEDecode",
+  "inputs": {
+   "samples": [
+    "2106",
+    0
+   ],
+   "vae": [
+    "95",
+    0
+   ]
+  }
+ },
+ "2106": {
+  "class_type": "KSampler",
+  "inputs": {
+   "model": [
+    "98",
+    0
+   ],
+   "positive": [
+    "2097",
+    0
+   ],
+   "negative": [
+    "96",
+    0
+   ],
+   "latent_image": [
+    "105",
+    0
+   ],
+   "seed": 0,
+   "steps": 4,
+   "cfg": 1,
+   "sampler_name": "euler",
+   "scheduler": "simple",
+   "denoise": 1
+  }
+ },
+ "2112": {
+  "class_type": "TextEncodeQwenImageEditPlus",
+  "inputs": {
+   "clip": [
+    "93",
+    0
+   ],
+   "vae": [
+    "95",
+    0
+   ],
+   "image1": [
+    "107",
+    0
+   ],
+   "prompt": [
+    "2122",
+    0
+   ]
+  }
+ },
+ "2120": {
+  "class_type": "StringConcatenate",
+  "inputs": {
+   "string_a": "",
+   "string_b": "",
+   "delimiter": " "
+  }
+ },
+ "2121": {
+  "class_type": "StringConcatenate",
+  "inputs": {
+   "string_a": [
+    "2120",
+    0
+   ],
+   "string_b": "",
+   "delimiter": " "
+  }
+ },
+ "2122": {
+  "class_type": "StringConcatenate",
+  "inputs": {
+   "string_a": "<sks>",
+   "string_b": [
+    "2121",
+    0
+   ],
+   "delimiter": " "
+  }
+ },
+ "3097": {
+  "class_type": "FluxKontextMultiReferenceLatentMethod",
+  "inputs": {
+   "conditioning": [
+    "3112",
+    0
+   ],
+   "reference_latents_method": "index_timestep_zero"
+  }
+ },
+ "3103": {
+  "class_type": "VAEDecode",
+  "inputs": {
+   "samples": [
+    "3106",
+    0
+   ],
+   "vae": [
+    "95",
+    0
+   ]
+  }
+ },
+ "3106": {
+  "class_type": "KSampler",
+  "inputs": {
+   "model": [
+    "98",
+    0
+   ],
+   "positive": [
+    "3097",
+    0
+   ],
+   "negative": [
+    "96",
+    0
+   ],
+   "latent_image": [
+    "105",
+    0
+   ],
+   "seed": 0,
+   "steps": 4,
+   "cfg": 1,
+   "sampler_name": "euler",
+   "scheduler": "simple",
+   "denoise": 1
+  }
+ },
+ "3112": {
+  "class_type": "TextEncodeQwenImageEditPlus",
+  "inputs": {
+   "clip": [
+    "93",
+    0
+   ],
+   "vae": [
+    "95",
+    0
+   ],
+   "image1": [
+    "107",
+    0
+   ],
+   "prompt": [
+    "3122",
+    0
+   ]
+  }
+ },
+ "3120": {
+  "class_type": "StringConcatenate",
+  "inputs": {
+   "string_a": "",
+   "string_b": "",
+   "delimiter": " "
+  }
+ },
+ "3121": {
+  "class_type": "StringConcatenate",
+  "inputs": {
+   "string_a": [
+    "3120",
+    0
+   ],
+   "string_b": "",
+   "delimiter": " "
+  }
+ },
+ "3122": {
+  "class_type": "StringConcatenate",
+  "inputs": {
+   "string_a": "<sks>",
+   "string_b": [
+    "3121",
+    0
+   ],
+   "delimiter": " "
+  }
+ },
+ "4097": {
+  "class_type": "FluxKontextMultiReferenceLatentMethod",
+  "inputs": {
+   "conditioning": [
+    "4112",
+    0
+   ],
+   "reference_latents_method": "index_timestep_zero"
+  }
+ },
+ "4103": {
+  "class_type": "VAEDecode",
+  "inputs": {
+   "samples": [
+    "4106",
+    0
+   ],
+   "vae": [
+    "95",
+    0
+   ]
+  }
+ },
+ "4106": {
+  "class_type": "KSampler",
+  "inputs": {
+   "model": [
+    "98",
+    0
+   ],
+   "positive": [
+    "4097",
+    0
+   ],
+   "negative": [
+    "96",
+    0
+   ],
+   "latent_image": [
+    "105",
+    0
+   ],
+   "seed": 0,
+   "steps": 4,
+   "cfg": 1,
+   "sampler_name": "euler",
+   "scheduler": "simple",
+   "denoise": 1
+  }
+ },
+ "4112": {
+  "class_type": "TextEncodeQwenImageEditPlus",
+  "inputs": {
+   "clip": [
+    "93",
+    0
+   ],
+   "vae": [
+    "95",
+    0
+   ],
+   "image1": [
+    "107",
+    0
+   ],
+   "prompt": [
+    "4122",
+    0
+   ]
+  }
+ },
+ "4120": {
+  "class_type": "StringConcatenate",
+  "inputs": {
+   "string_a": "",
+   "string_b": "",
+   "delimiter": " "
+  }
+ },
+ "4121": {
+  "class_type": "StringConcatenate",
+  "inputs": {
+   "string_a": [
+    "4120",
+    0
+   ],
+   "string_b": "",
+   "delimiter": " "
+  }
+ },
+ "4122": {
+  "class_type": "StringConcatenate",
+  "inputs": {
+   "string_a": "<sks>",
+   "string_b": [
+    "4121",
+    0
+   ],
+   "delimiter": " "
+  }
+ }
+}

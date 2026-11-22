@@ -1,0 +1,202 @@
+{
+ "8": {
+  "inputs": {
+   "shift": 8.000000000000002,
+   "model": [
+    "72",
+    0
+   ]
+  },
+  "class_type": "ModelSamplingSD3",
+  "_meta": {
+   "title": "Shift",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.36"
+  }
+ },
+ "11": {
+  "inputs": {
+   "clip_name": "umt5_xxl_fp16.safetensors",
+   "type": "wan",
+   "device": "default"
+  },
+  "class_type": "CLIPLoader",
+  "_meta": {
+   "title": "CLIP",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.43"
+  }
+ },
+ "12": {
+  "inputs": {
+   "text": "A sea turtle swims amidst vibrant coral reefs, two sergeant major fish nearby.  The water is clear and blue, showcasing the intricate details of the coral and turtle's shell.  Photorealistic, underwater scene, 8k resolution.",
+   "clip": [
+    "11",
+    0
+   ]
+  },
+  "class_type": "CLIPTextEncode",
+  "_meta": {
+   "title": "Positive Prompt",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.43"
+  }
+ },
+ "14": {
+  "inputs": {
+   "vae_name": "wan_2.1_vae.safetensors"
+  },
+  "class_type": "VAELoader",
+  "_meta": {
+   "title": "VAE",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.43"
+  }
+ },
+ "18": {
+  "inputs": {
+   "seed": 157027921504581,
+   "steps": 5,
+   "cfg": 1,
+   "sampler_name": "res_2s",
+   "scheduler": "bong_tangent",
+   "denoise": 0.35,
+   "tile_width": 1024,
+   "tile_height": 1024,
+   "padding": 32,
+   "mask_blur": 16,
+   "force_uniform_tiles": true,
+   "tiled_decode": false,
+   "upscaled_image": [
+    "71",
+    0
+   ],
+   "model": [
+    "8",
+    0
+   ],
+   "positive": [
+    "12",
+    0
+   ],
+   "negative": [
+    "26",
+    0
+   ],
+   "vae": [
+    "14",
+    0
+   ]
+  },
+  "class_type": "UltimateSDUpscaleDistributed",
+  "_meta": {
+   "title": "Ultimate SD Upscale Distributed (No Upscale)",
+   "cnr_id": "ComfyUI-Distributed",
+   "ver": "e076cf3455df72383d17f1d5f5b5aa5e709f2e4a"
+  }
+ },
+ "26": {
+  "inputs": {
+   "conditioning": [
+    "12",
+    0
+   ]
+  },
+  "class_type": "ConditioningZeroOut",
+  "_meta": {
+   "title": "Conditioning Zero Out",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.51"
+  }
+ },
+ "54": {
+  "inputs": {
+   "video": "ComfyUI_00005_.mp4",
+   "force_rate": 0,
+   "custom_width": 0,
+   "custom_height": 0,
+   "frame_load_cap": 5,
+   "skip_first_frames": 0,
+   "select_every_nth": 1,
+   "format": "Wan"
+  },
+  "class_type": "VHS_LoadVideo",
+  "_meta": {
+   "title": "Load Video (Upload) \ud83c\udfa5\ud83c\udd65\ud83c\udd57\ud83c\udd62",
+   "cnr_id": "comfyui-videohelpersuite",
+   "ver": "a7ce59e381934733bfae03b1be029756d6ce936d"
+  }
+ },
+ "57": {
+  "inputs": {
+   "frame_rate": 16,
+   "loop_count": 0,
+   "filename_prefix": "WAN",
+   "format": "video/h264-mp4",
+   "pix_fmt": "yuv420p",
+   "crf": 20,
+   "save_metadata": true,
+   "trim_to_audio": false,
+   "pingpong": false,
+   "save_output": true,
+   "images": [
+    "18",
+    0
+   ]
+  },
+  "class_type": "VHS_VideoCombine",
+  "_meta": {
+   "title": "Video Combine \ud83c\udfa5\ud83c\udd65\ud83c\udd57\ud83c\udd62",
+   "cnr_id": "comfyui-videohelpersuite",
+   "ver": "a7ce59e381934733bfae03b1be029756d6ce936d"
+  }
+ },
+ "71": {
+  "inputs": {
+   "width": 1920,
+   "height": 1080,
+   "interpolation": "lanczos",
+   "method": "keep proportion",
+   "condition": "always",
+   "multiple_of": 0,
+   "image": [
+    "54",
+    0
+   ]
+  },
+  "class_type": "ImageResize+",
+  "_meta": {
+   "title": "\ud83d\udd27 Image Resize",
+   "cnr_id": "comfyui_essentials",
+   "ver": "9d9f4bedfc9f0321c19faf71855e228c93bd0dc9"
+  }
+ },
+ "72": {
+  "inputs": {
+   "lora_name": "Wan2.2-Lightning_T2V-v1.1-A14B-4steps-lora_LOW_fp16.safetensors",
+   "strength_model": 1,
+   "model": [
+    "76",
+    0
+   ]
+  },
+  "class_type": "LoraLoaderModelOnly",
+  "_meta": {
+   "title": "Load LoRA",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.59"
+  }
+ },
+ "76": {
+  "inputs": {
+   "unet_name": "wan2.2_t2v_low_noise_14B_fp8_scaled.safetensors",
+   "weight_dtype": "default"
+  },
+  "class_type": "UNETLoader",
+  "_meta": {
+   "title": "Load Diffusion Model",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.59"
+  }
+ }
+}

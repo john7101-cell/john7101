@@ -1,0 +1,226 @@
+{
+ "v": 1,
+ "converted": "2026-10-30",
+ "comfyui_commit": "b5a432157de6b8884f81104cd02926adf4d597e4",
+ "frontend": "comfyui-frontend-package bundled with that commit (app.graphToPrompt)",
+ "templates": [
+  {
+   "ui": "control-to-video/workflows/ui/utility_openpose_video.ui.json",
+   "api": "control-to-video/workflows/api/utility_openpose_video.api.json",
+   "nodes": 3,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "control-to-video/workflows/ui/wan22_14b_fun_control.ui.json",
+   "api": "control-to-video/workflows/api/wan22_14b_fun_control.api.json",
+   "nodes": 17,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "control-to-video/workflows/ui/ltx2_canny_to_video.ui.json",
+   "api": "control-to-video/workflows/api/ltx2_canny_to_video.api.json",
+   "nodes": 50,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "control-to-video/workflows/ui/ltx2_depth_to_video.ui.json",
+   "api": "control-to-video/workflows/api/ltx2_depth_to_video.api.json",
+   "nodes": 61,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "control-to-video/workflows/ui/ltx2_pose_to_video.ui.json",
+   "api": "control-to-video/workflows/api/ltx2_pose_to_video.api.json",
+   "nodes": 50,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "control-to-video/workflows/ui/utility_sdpose_video_to_pose_map.ui.json",
+   "api": "control-to-video/workflows/api/utility_sdpose_video_to_pose_map.api.json",
+   "nodes": 8,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "relighting/workflows/ui/character_portrait_relighting.ui.json",
+   "api": null,
+   "nodes": 11,
+   "status": "excluded: uses a closed hosted API node (GeminiImage2Node); this collection is open weights only",
+   "errors": [],
+   "closed_api_nodes": [
+    "GeminiImage2Node"
+   ]
+  },
+  {
+   "ui": "relighting/workflows/ui/qwen_edit_2509_relight.ui.json",
+   "api": "relighting/workflows/api/qwen_edit_2509_relight.api.json",
+   "nodes": 17,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "ltx-iclora-utils/workflows/ui/ltx23_style_transition.ui.json",
+   "api": "ltx-iclora-utils/workflows/api/ltx23_style_transition.api.json",
+   "nodes": 36,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "ltx-iclora-utils/workflows/ui/ltx23_remove_subtitles.ui.json",
+   "api": "ltx-iclora-utils/workflows/api/ltx23_remove_subtitles.api.json",
+   "nodes": 49,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "ltx-iclora-utils/workflows/ui/ltx23_ic_lora.ui.json",
+   "api": "ltx-iclora-utils/workflows/api/ltx23_ic_lora.api.json",
+   "nodes": 45,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "ltx-iclora-utils/workflows/ui/ltx23_id_lora.ui.json",
+   "api": "ltx-iclora-utils/workflows/api/ltx23_id_lora.api.json",
+   "nodes": 49,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "ltx-iclora-utils/workflows/ui/ltx23_remove_watermark.ui.json",
+   "api": "ltx-iclora-utils/workflows/api/ltx23_remove_watermark.api.json",
+   "nodes": 49,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "ltx-iclora-utils/workflows/ui/ltx23_restore_archival.ui.json",
+   "api": "ltx-iclora-utils/workflows/api/ltx23_restore_archival.api.json",
+   "nodes": 49,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "audio-driven-motion/workflows/ui/ltx2_audio_to_video.ui.json",
+   "api": "audio-driven-motion/workflows/api/ltx2_audio_to_video.api.json",
+   "nodes": 101,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "audio-driven-motion/workflows/ui/wan22_14b_s2v.ui.json",
+   "api": "audio-driven-motion/workflows/api/wan22_14b_s2v.api.json",
+   "nodes": 29,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "audio-driven-motion/workflows/ui/wan21_infinitetalk_music.ui.json",
+   "api": "audio-driven-motion/workflows/api/wan21_infinitetalk_music.api.json",
+   "nodes": 19,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "audio-driven-motion/workflows/ui/humo.ui.json",
+   "api": "audio-driven-motion/workflows/api/humo.api.json",
+   "nodes": 16,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "audio-driven-motion/workflows/ui/ltx23_image_audio_to_video.ui.json",
+   "api": "audio-driven-motion/workflows/api/ltx23_image_audio_to_video.api.json",
+   "nodes": 55,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "audio-driven-motion/workflows/ui/wan21_infinitetalk.ui.json",
+   "api": "audio-driven-motion/workflows/api/wan21_infinitetalk.api.json",
+   "nodes": 47,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "multi-gpu-dispatch/workflows/ui/raylight_wan22.ui.json",
+   "api": "multi-gpu-dispatch/workflows/api/raylight_wan22.api.json",
+   "nodes": 19,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "multi-gpu-dispatch/workflows/ui/raylight_ltx23_i2v.ui.json",
+   "api": "multi-gpu-dispatch/workflows/api/raylight_ltx23_i2v.api.json",
+   "nodes": 46,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "multi-gpu-dispatch/workflows/ui/distributed_wan22_14b_t2v.ui.json",
+   "api": "multi-gpu-dispatch/workflows/api/distributed_wan22_14b_t2v.api.json",
+   "nodes": 21,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "multi-gpu-dispatch/workflows/ui/distributed_upscale_video.ui.json",
+   "api": "multi-gpu-dispatch/workflows/api/distributed_upscale_video.api.json",
+   "nodes": 11,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "camera-control/workflows/ui/wan21_fun_camera_1_3b.ui.json",
+   "api": "camera-control/workflows/api/wan21_fun_camera_1_3b.api.json",
+   "nodes": 15,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "camera-control/workflows/ui/wan22_14b_fun_camera.ui.json",
+   "api": "camera-control/workflows/api/wan22_14b_fun_camera.api.json",
+   "nodes": 16,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  },
+  {
+   "ui": "camera-control/workflows/ui/wan_ati_trajectory.ui.json",
+   "api": "camera-control/workflows/api/wan_ati_trajectory.api.json",
+   "nodes": 19,
+   "status": "ok",
+   "errors": [],
+   "closed_api_nodes": []
+  }
+ ]
+}

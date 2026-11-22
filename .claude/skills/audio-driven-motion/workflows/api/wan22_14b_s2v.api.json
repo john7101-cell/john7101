@@ -1,0 +1,572 @@
+{
+ "3": {
+  "inputs": {
+   "seed": 20,
+   "steps": [
+    "103",
+    0
+   ],
+   "cfg": [
+    "105",
+    0
+   ],
+   "sampler_name": "uni_pc",
+   "scheduler": "simple",
+   "denoise": 1,
+   "model": [
+    "54",
+    0
+   ],
+   "positive": [
+    "93",
+    0
+   ],
+   "negative": [
+    "93",
+    1
+   ],
+   "latent_image": [
+    "93",
+    2
+   ]
+  },
+  "class_type": "KSampler",
+  "_meta": {
+   "title": "KSampler",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "6": {
+  "inputs": {
+   "text": "The man is playing the guitar. He looks down at his hands playing the guitar and sings affectionately and gently.",
+   "clip": [
+    "38",
+    0
+   ]
+  },
+  "class_type": "CLIPTextEncode",
+  "_meta": {
+   "title": "CLIP Text Encode (Positive Prompt)",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "7": {
+  "inputs": {
+   "text": "\u8272\u8c03\u8273\u4e3d\uff0c\u8fc7\u66dd\uff0c\u9759\u6001\uff0c\u7ec6\u8282\u6a21\u7cca\u4e0d\u6e05\uff0c\u5b57\u5e55\uff0c\u98ce\u683c\uff0c\u4f5c\u54c1\uff0c\u753b\u4f5c\uff0c\u753b\u9762\uff0c\u9759\u6b62\uff0c\u6574\u4f53\u53d1\u7070\uff0c\u6700\u5dee\u8d28\u91cf\uff0c\u4f4e\u8d28\u91cf\uff0cJPEG\u538b\u7f29\u6b8b\u7559\uff0c\u4e11\u964b\u7684\uff0c\u6b8b\u7f3a\u7684\uff0c\u591a\u4f59\u7684\u624b\u6307\uff0c\u753b\u5f97\u4e0d\u597d\u7684\u624b\u90e8\uff0c\u753b\u5f97\u4e0d\u597d\u7684\u8138\u90e8\uff0c\u7578\u5f62\u7684\uff0c\u6bc1\u5bb9\u7684\uff0c\u5f62\u6001\u7578\u5f62\u7684\u80a2\u4f53\uff0c\u624b\u6307\u878d\u5408\uff0c\u9759\u6b62\u4e0d\u52a8\u7684\u753b\u9762\uff0c\u6742\u4e71\u7684\u80cc\u666f\uff0c\u4e09\u6761\u817f\uff0c\u80cc\u666f\u4eba\u5f88\u591a\uff0c\u5012\u7740\u8d70",
+   "clip": [
+    "38",
+    0
+   ]
+  },
+  "class_type": "CLIPTextEncode",
+  "_meta": {
+   "title": "CLIP Text Encode (Negative Prompt)",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "37": {
+  "inputs": {
+   "unet_name": "wan2.2_s2v_14B_fp8_scaled.safetensors",
+   "weight_dtype": "default"
+  },
+  "class_type": "UNETLoader",
+  "_meta": {
+   "title": "Load Diffusion Model",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "38": {
+  "inputs": {
+   "clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+   "type": "wan",
+   "device": "default"
+  },
+  "class_type": "CLIPLoader",
+  "_meta": {
+   "title": "Load CLIP",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "39": {
+  "inputs": {
+   "vae_name": "wan_2.1_vae.safetensors"
+  },
+  "class_type": "VAELoader",
+  "_meta": {
+   "title": "Load VAE",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "52": {
+  "inputs": {
+   "image": "video_wan2_2_14B_s2v_reference_image.jpg"
+  },
+  "class_type": "LoadImage",
+  "_meta": {
+   "title": "Load Image",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "54": {
+  "inputs": {
+   "shift": 8,
+   "model": [
+    "107",
+    0
+   ]
+  },
+  "class_type": "ModelSamplingSD3",
+  "_meta": {
+   "title": "ModelSamplingSD3",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "56": {
+  "inputs": {
+   "audio_encoder": [
+    "57",
+    0
+   ],
+   "audio": [
+    "58",
+    0
+   ]
+  },
+  "class_type": "AudioEncoderEncode",
+  "_meta": {
+   "title": "AudioEncoderEncode",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "57": {
+  "inputs": {
+   "audio_encoder_name": "wav2vec2_large_english_fp16.safetensors"
+  },
+  "class_type": "AudioEncoderLoader",
+  "_meta": {
+   "title": "Load Audio Encoder",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "58": {
+  "inputs": {
+   "audio": "video_wan2_2_14B_s2v_input_audio.MP3"
+  },
+  "class_type": "LoadAudio",
+  "_meta": {
+   "title": "Load Audio",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "80": {
+  "inputs": {
+   "samples": [
+    "95",
+    0
+   ],
+   "vae": [
+    "39",
+    0
+   ]
+  },
+  "class_type": "VAEDecode",
+  "_meta": {
+   "title": "VAE Decode",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "82": {
+  "inputs": {
+   "fps": 16,
+   "bit_depth": "auto",
+   "color_space": "sRGB",
+   "codec": "none",
+   "images": [
+    "96",
+    0
+   ],
+   "audio": [
+    "58",
+    0
+   ]
+  },
+  "class_type": "CreateVideo",
+  "_meta": {
+   "title": "Create Video",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "93": {
+  "inputs": {
+   "width": 640,
+   "height": 640,
+   "length": [
+    "104",
+    0
+   ],
+   "batch_size": 1,
+   "positive": [
+    "6",
+    0
+   ],
+   "negative": [
+    "7",
+    0
+   ],
+   "vae": [
+    "39",
+    0
+   ],
+   "audio_encoder_output": [
+    "56",
+    0
+   ],
+   "ref_image": [
+    "52",
+    0
+   ]
+  },
+  "class_type": "WanSoundImageToVideo",
+  "_meta": {
+   "title": "WanSoundImageToVideo",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "94": {
+  "inputs": {
+   "dim": "t",
+   "index": 0,
+   "amount": 1,
+   "samples": [
+    "85:182",
+    0
+   ]
+  },
+  "class_type": "LatentCut",
+  "_meta": {
+   "title": "LatentCut",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "95": {
+  "inputs": {
+   "dim": "t",
+   "samples1": [
+    "94",
+    0
+   ],
+   "samples2": [
+    "85:182",
+    0
+   ]
+  },
+  "class_type": "LatentConcat",
+  "_meta": {
+   "title": "LatentConcat",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "96": {
+  "inputs": {
+   "batch_index": [
+    "100",
+    0
+   ],
+   "length": 4096,
+   "image": [
+    "80",
+    0
+   ]
+  },
+  "class_type": "ImageFromBatch",
+  "_meta": {
+   "title": "Get Image from Batch",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "100": {
+  "inputs": {
+   "value": 3
+  },
+  "class_type": "PrimitiveInt",
+  "_meta": {
+   "title": "Batch sizes",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "103": {
+  "inputs": {
+   "value": 4
+  },
+  "class_type": "PrimitiveInt",
+  "_meta": {
+   "title": "Steps",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "104": {
+  "inputs": {
+   "value": 77
+  },
+  "class_type": "PrimitiveInt",
+  "_meta": {
+   "title": "Chunk Length",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "105": {
+  "inputs": {
+   "value": 1
+  },
+  "class_type": "PrimitiveFloat",
+  "_meta": {
+   "title": "CFG",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "107": {
+  "inputs": {
+   "lora_name": "wan2.2_t2v_lightx2v_4steps_lora_v1.1_high_noise.safetensors",
+   "strength_model": 1,
+   "model": [
+    "37",
+    0
+   ]
+  },
+  "class_type": "LoraLoaderModelOnly",
+  "_meta": {
+   "title": "Load LoRA",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "113": {
+  "inputs": {
+   "filename_prefix": "video/ComfyUI",
+   "format": "auto",
+   "format.codec": "auto",
+   "codec": "auto",
+   "video": [
+    "82",
+    0
+   ]
+  },
+  "class_type": "SaveVideo",
+  "_meta": {
+   "title": "Save Video",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "79:78": {
+  "inputs": {
+   "dim": "t",
+   "samples1": [
+    "3",
+    0
+   ],
+   "samples2": [
+    "79:77",
+    0
+   ]
+  },
+  "class_type": "LatentConcat",
+  "_meta": {
+   "title": "LatentConcat",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "79:77": {
+  "inputs": {
+   "seed": 1,
+   "steps": [
+    "103",
+    0
+   ],
+   "cfg": [
+    "105",
+    0
+   ],
+   "sampler_name": "uni_pc",
+   "scheduler": "simple",
+   "denoise": 1,
+   "model": [
+    "54",
+    0
+   ],
+   "positive": [
+    "79:76",
+    0
+   ],
+   "negative": [
+    "79:76",
+    1
+   ],
+   "latent_image": [
+    "79:76",
+    2
+   ]
+  },
+  "class_type": "KSampler",
+  "_meta": {
+   "title": "KSampler",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "79:76": {
+  "inputs": {
+   "length": [
+    "104",
+    0
+   ],
+   "positive": [
+    "6",
+    0
+   ],
+   "negative": [
+    "7",
+    0
+   ],
+   "vae": [
+    "39",
+    0
+   ],
+   "video_latent": [
+    "3",
+    0
+   ],
+   "audio_encoder_output": [
+    "56",
+    0
+   ],
+   "ref_image": [
+    "52",
+    0
+   ]
+  },
+  "class_type": "WanSoundImageToVideoExtend",
+  "_meta": {
+   "title": "WanSoundImageToVideoExtend",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "85:182": {
+  "inputs": {
+   "dim": "t",
+   "samples1": [
+    "79:78",
+    0
+   ],
+   "samples2": [
+    "85:183",
+    0
+   ]
+  },
+  "class_type": "LatentConcat",
+  "_meta": {
+   "title": "LatentConcat",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "85:183": {
+  "inputs": {
+   "seed": 250,
+   "steps": [
+    "103",
+    0
+   ],
+   "cfg": [
+    "105",
+    0
+   ],
+   "sampler_name": "uni_pc",
+   "scheduler": "simple",
+   "denoise": 1,
+   "model": [
+    "54",
+    0
+   ],
+   "positive": [
+    "85:184",
+    0
+   ],
+   "negative": [
+    "85:184",
+    1
+   ],
+   "latent_image": [
+    "85:184",
+    2
+   ]
+  },
+  "class_type": "KSampler",
+  "_meta": {
+   "title": "KSampler",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ },
+ "85:184": {
+  "inputs": {
+   "length": [
+    "104",
+    0
+   ],
+   "positive": [
+    "6",
+    0
+   ],
+   "negative": [
+    "7",
+    0
+   ],
+   "vae": [
+    "39",
+    0
+   ],
+   "video_latent": [
+    "79:78",
+    0
+   ],
+   "audio_encoder_output": [
+    "56",
+    0
+   ],
+   "ref_image": [
+    "52",
+    0
+   ]
+  },
+  "class_type": "WanSoundImageToVideoExtend",
+  "_meta": {
+   "title": "WanSoundImageToVideoExtend",
+   "cnr_id": "comfy-core",
+   "ver": "0.3.54"
+  }
+ }
+}

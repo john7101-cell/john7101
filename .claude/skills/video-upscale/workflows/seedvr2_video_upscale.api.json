@@ -1,0 +1,176 @@
+{
+ "1": {
+  "class_type": "LoadVideo",
+  "inputs": {
+   "file": ""
+  }
+ },
+ "106": {
+  "class_type": "VAEEncodeTiled",
+  "inputs": {
+   "pixels": [
+    "112",
+    0
+   ],
+   "vae": [
+    "107",
+    0
+   ],
+   "tile_size": 512,
+   "overlap": 128,
+   "temporal_size": 64,
+   "temporal_overlap": 8
+  }
+ },
+ "107": {
+  "class_type": "VAELoader",
+  "inputs": {
+   "vae_name": "seedvr2_ema_vae_fp16.safetensors"
+  }
+ },
+ "108": {
+  "class_type": "UNETLoader",
+  "inputs": {
+   "unet_name": "seedvr2_3b_int8_convrot.safetensors",
+   "weight_dtype": "default"
+  }
+ },
+ "109": {
+  "class_type": "KSampler",
+  "inputs": {
+   "model": [
+    "108",
+    0
+   ],
+   "positive": [
+    "114",
+    0
+   ],
+   "negative": [
+    "114",
+    1
+   ],
+   "latent_image": [
+    "106",
+    0
+   ],
+   "seed": 0,
+   "steps": 1,
+   "cfg": 1,
+   "sampler_name": "euler",
+   "scheduler": "simple",
+   "denoise": 1
+  }
+ },
+ "110": {
+  "class_type": "VAEDecodeTiled",
+  "inputs": {
+   "samples": [
+    "109",
+    0
+   ],
+   "vae": [
+    "107",
+    0
+   ],
+   "tile_size": 512,
+   "overlap": 128,
+   "temporal_size": 64,
+   "temporal_overlap": 8
+  }
+ },
+ "111": {
+  "class_type": "ResizeImageMaskNode",
+  "inputs": {
+   "input": [
+    "115",
+    0
+   ],
+   "resize_type": "scale by multiplier",
+   "resize_type.multiplier": 2,
+   "scale_method": "lanczos"
+  }
+ },
+ "112": {
+  "class_type": "SeedVR2Preprocess",
+  "inputs": {
+   "resized_images": [
+    "111",
+    0
+   ]
+  }
+ },
+ "113": {
+  "class_type": "SeedVR2PostProcessing",
+  "inputs": {
+   "images": [
+    "110",
+    0
+   ],
+   "original_resized_images": [
+    "111",
+    0
+   ],
+   "color_correction_method": "none"
+  }
+ },
+ "114": {
+  "class_type": "SeedVR2Conditioning",
+  "inputs": {
+   "model": [
+    "108",
+    0
+   ],
+   "vae_conditioning": [
+    "106",
+    0
+   ]
+  }
+ },
+ "115": {
+  "class_type": "GetVideoComponents",
+  "inputs": {
+   "video": [
+    "1",
+    0
+   ]
+  }
+ },
+ "116": {
+  "class_type": "CreateVideo",
+  "inputs": {
+   "images": [
+    "113",
+    0
+   ],
+   "audio": [
+    "115",
+    1
+   ],
+   "fps": [
+    "115",
+    2
+   ],
+   "bit_depth": [
+    "115",
+    3
+   ],
+   "color_space": [
+    "115",
+    4
+   ]
+  }
+ },
+ "130": {
+  "class_type": "SaveVideo",
+  "inputs": {
+   "video": [
+    "116",
+    0
+   ],
+   "filename_prefix": "upscale/video",
+   "format": "mp4",
+   "format.codec": "h264"
+  }
+ }
+}

@@ -1,0 +1,279 @@
+{
+ "schema_version": "1.0",
+ "created": "2026-10-30T14:40:00",
+ "id": "neon-chorus-mv",
+ "brief": {
+  "prompt": "music video snippet for my track 'Neon Chorus' - singer in a rainy neon alley",
+  "kind": "music-video",
+  "length_s": 20,
+  "aspect": "9:16",
+  "fps": 24,
+  "style": "neon noir, magenta and cyan, wet reflections, anamorphic flares",
+  "audio": {
+   "narration": false,
+   "music": true,
+   "sfx": false,
+   "lip_sync": true,
+   "music_file": "neon-chorus-mv/inputs/neon_chorus_chorus.wav",
+   "language": "en"
+  },
+  "captions": "burned",
+  "deliverables": [
+   "9:16"
+  ],
+  "commercial_use": false,
+  "defaults_used": [
+   "fps 24",
+   "captions burned (lyrics)"
+  ]
+ },
+ "target": {
+  "kind": "google_colab",
+  "url": "https://<tunnel>.trycloudflare.com",
+  "gpu": "T4/L4 (unknown)",
+  "vram_gb": 16,
+  "budget": {
+   "max_gpu_minutes": 25,
+   "max_credits": 10,
+   "credit_unit": "Google Colab compute units",
+   "deadline_minutes": 60
+  }
+ },
+ "tier": "draft",
+ "tier_reason": "16 GB and 25 GPU-min only fit draft",
+ "caps": {
+  "still_retries": 1,
+  "still_variants": 1,
+  "video_retries": 0,
+  "continuity_regens": 0,
+  "max_renders": 20,
+  "max_gpu_minutes": 25,
+  "pass_mean": 3.0,
+  "pass_min": 2
+ },
+ "gates": {
+  "bible": "auto",
+  "plan": "auto",
+  "spend": "human",
+  "final": "auto"
+ },
+ "stages": {
+  "intake": "done",
+  "preflight": "pending",
+  "bible": "pending",
+  "plan": "pending",
+  "stills": "pending",
+  "video": "pending",
+  "continuity": "pending",
+  "audio": "pending",
+  "post": "pending",
+  "assembly": "pending",
+  "critique": "pending"
+ },
+ "bible": {
+  "path": "neon-chorus-mv/bible.md",
+  "logline": "One chorus, one alley, one voice in the rain.",
+  "cast": [
+   {
+    "id": "singer",
+    "descriptor": "Kai, mid-20s singer, sharp cheekbones, bleached buzz cut, silver hoop earrings, black vinyl jacket over a white tank top",
+    "ref_image": null,
+    "seed": null
+   }
+  ],
+  "style": "neon noir magenta/cyan",
+  "lut": "scifi_cyan.cube",
+  "voice": null
+ },
+ "shots": [
+  {
+   "id": "s01",
+   "beat": "intro",
+   "start_s": 0.0,
+   "duration_s": 4,
+   "type": "establishing",
+   "framing": "wide",
+   "camera": "slow push-in",
+   "cast": [],
+   "location": "alley",
+   "narration": null,
+   "sfx": null,
+   "chain_from": null,
+   "transition_in": "cut",
+   "still": {
+    "route": "still.flux2_4b",
+    "status": "pending",
+    "prompt": "Neon noir film still, vertical frame. Wide shot down a narrow rain-soaked alley at night, magenta and cyan neon signs on both walls, puddles reflecting the signs, steam from a grate at frame center, anamorphic flare.",
+    "seed": null
+   },
+   "video": {
+    "route": "video.i2v",
+    "status": "pending",
+    "prompt": "Slow push-in down the alley; rain streaks; neon flickers.",
+    "seed": null
+   },
+   "status": "pending"
+  },
+  {
+   "id": "s02",
+   "beat": "chorus 1",
+   "start_s": 4.0,
+   "duration_s": 4,
+   "type": "performance",
+   "framing": "medium close-up",
+   "camera": "static locked-off",
+   "cast": [
+    "singer"
+   ],
+   "location": "alley",
+   "narration": "Neon chorus, sing it back to me",
+   "sfx": null,
+   "chain_from": null,
+   "transition_in": "cut",
+   "still": {
+    "route": "still.flux2_4b",
+    "status": "pending",
+    "prompt": "Neon noir film still, vertical frame. Medium close-up of Kai, mid-20s singer, bleached buzz cut, silver hoop earrings, black vinyl jacket over a white tank top, singing toward camera, mouth open, rain on his face, magenta key light frame left, cyan rim frame right.",
+    "seed": null
+   },
+   "video": {
+    "route": "video.lipsync_wan",
+    "status": "pending",
+    "prompt": "Singing the line with energy, slight head movement, rain falling.",
+    "seed": null
+   },
+   "status": "pending",
+   "extra": [
+    {
+     "route": "video.lipsync_wan",
+     "status": "pending",
+     "params": {
+      "audio": "neon-chorus-mv/inputs/chorus_line1.wav"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s03",
+   "beat": "chorus 1",
+   "start_s": 8.0,
+   "duration_s": 4,
+   "type": "broll",
+   "framing": "insert",
+   "camera": "whip pan",
+   "cast": [],
+   "location": "alley",
+   "narration": null,
+   "sfx": null,
+   "chain_from": null,
+   "transition_in": "cut",
+   "still": {
+    "route": "still.flux2_4b",
+    "status": "pending",
+    "prompt": "Neon noir film still, vertical frame. Close-up of a puddle reflecting a magenta neon sign reading \"CHORUS\", raindrops rippling the reflection.",
+    "seed": null
+   },
+   "video": {
+    "route": "video.i2v",
+    "status": "pending",
+    "prompt": "Raindrops hit the puddle; the reflection ripples and re-forms.",
+    "seed": null
+   },
+   "status": "pending"
+  },
+  {
+   "id": "s04",
+   "beat": "chorus 2",
+   "start_s": 12.0,
+   "duration_s": 4,
+   "type": "performance",
+   "framing": "medium",
+   "camera": "handheld drift",
+   "cast": [
+    "singer"
+   ],
+   "location": "alley",
+   "narration": "Every light in the city knows my name",
+   "sfx": null,
+   "chain_from": "s02",
+   "transition_in": "cut",
+   "still": {
+    "route": "still.flux2_4b",
+    "status": "pending",
+    "prompt": "Neon noir film still, vertical frame. Medium shot of Kai, mid-20s singer, bleached buzz cut, silver hoop earrings, black vinyl jacket, arms out mid-chorus in the alley, neon behind, wet reflections.",
+    "seed": null
+   },
+   "video": {
+    "route": "video.lipsync_wan",
+    "status": "pending",
+    "prompt": "Handheld drift around him as he sings, arms rising.",
+    "seed": null
+   },
+   "status": "pending",
+   "extra": [
+    {
+     "route": "video.lipsync_wan",
+     "status": "pending",
+     "params": {
+      "audio": "neon-chorus-mv/inputs/chorus_line2.wav"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s05",
+   "beat": "outro",
+   "start_s": 16.0,
+   "duration_s": 4,
+   "type": "broll",
+   "framing": "wide",
+   "camera": "slow crane up",
+   "cast": [],
+   "location": "alley",
+   "narration": null,
+   "sfx": null,
+   "chain_from": null,
+   "transition_in": "cut",
+   "still": {
+    "route": "still.flux2_4b",
+    "status": "pending",
+    "prompt": "Neon noir film still, vertical frame. High wide shot looking down into the alley, neon grid of signs, a lone figure small at frame center, rain.",
+    "seed": null
+   },
+   "video": {
+    "route": "video.t2v",
+    "status": "pending",
+    "prompt": "Slow crane up and away; rain sheets across the neon.",
+    "seed": null
+   },
+   "status": "pending"
+  }
+ ],
+ "audio": {
+  "music": {
+   "route": "audio.music",
+   "status": "pending",
+   "params": {
+    "file": "neon-chorus-mv/inputs/neon_chorus_chorus.wav"
+   }
+  },
+  "sfx": []
+ },
+ "post": [],
+ "assembly": {
+  "status": "pending",
+  "xfade": 0.0,
+  "beats_file": "neon-chorus-mv/inputs/beats.txt",
+  "captions": "burned",
+  "exports": [],
+  "output": null
+ },
+ "cost": {
+  "renders": 0,
+  "estimate_gpu_minutes": null,
+  "actual_gpu_minutes": 0,
+  "rates_s_per_render": {},
+  "rates_note": "unverified assumptions"
+ },
+ "log": []
+}

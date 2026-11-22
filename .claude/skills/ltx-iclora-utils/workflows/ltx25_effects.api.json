@@ -1,0 +1,1945 @@
+{
+ "75": {
+  "class_type": "SaveVideo",
+  "inputs": {
+   "video": [
+    "370",
+    0
+   ],
+   "filename_prefix": "video/rosesfield-effects",
+   "format": "mp4",
+   "format.codec": "h264"
+  },
+  "_meta": {
+   "title": "Video"
+  }
+ },
+ "338": {
+  "class_type": "RandomNoise",
+  "inputs": {
+   "noise_seed": 42
+  }
+ },
+ "339": {
+  "class_type": "RandomNoise",
+  "inputs": {
+   "noise_seed": 0
+  },
+  "_meta": {
+   "title": "Seed"
+  }
+ },
+ "340": {
+  "class_type": "LTXVConcatAVLatent",
+  "inputs": {
+   "video_latent": [
+    "464",
+    2
+   ],
+   "audio_latent": [
+    "367",
+    1
+   ]
+  }
+ },
+ "341": {
+  "class_type": "KSamplerSelect",
+  "inputs": {
+   "sampler_name": "euler_ancestral"
+  }
+ },
+ "344": {
+  "class_type": "SamplerCustomAdvanced",
+  "inputs": {
+   "noise": [
+    "339",
+    0
+   ],
+   "guider": [
+    "388",
+    0
+   ],
+   "sampler": [
+    "352",
+    0
+   ],
+   "sigmas": [
+    "397",
+    0
+   ],
+   "latent_image": [
+    "377",
+    0
+   ]
+  }
+ },
+ "348": {
+  "class_type": "LTXVLatentUpsampler",
+  "inputs": {
+   "samples": [
+    "462",
+    2
+   ],
+   "upscale_model": [
+    "371",
+    0
+   ],
+   "vae": [
+    "385",
+    0
+   ]
+  }
+ },
+ "349": {
+  "class_type": "LTXVImgToVideoInplace",
+  "inputs": {
+   "vae": [
+    "385",
+    0
+   ],
+   "image": [
+    "350",
+    0
+   ],
+   "latent": [
+    "348",
+    0
+   ],
+   "strength": 1.0,
+   "bypass": false
+  },
+  "_meta": {
+   "title": "Frame 0 lock at full size"
+  }
+ },
+ "350": {
+  "class_type": "LTXVPreprocess",
+  "inputs": {
+   "image": [
+    "351",
+    0
+   ],
+   "img_compression": 18
+  }
+ },
+ "351": {
+  "class_type": "ResizeImageMaskNode",
+  "inputs": {
+   "input": [
+    "606",
+    0
+   ],
+   "resize_type": "scale longer dimension",
+   "resize_type.longer_size": 1536,
+   "scale_method": "lanczos"
+  }
+ },
+ "352": {
+  "class_type": "KSamplerSelect",
+  "inputs": {
+   "sampler_name": "euler_ancestral"
+  }
+ },
+ "356": {
+  "class_type": "EmptyLTXVLatentVideo",
+  "inputs": {
+   "width": 640,
+   "height": 352,
+   "length": 241,
+   "batch_size": 1
+  },
+  "_meta": {
+   "title": "Size and length"
+  }
+ },
+ "357": {
+  "class_type": "LTXVImgToVideoInplace",
+  "inputs": {
+   "vae": [
+    "385",
+    0
+   ],
+   "image": [
+    "350",
+    0
+   ],
+   "latent": [
+    "356",
+    0
+   ],
+   "strength": 0.7,
+   "bypass": false
+  },
+  "_meta": {
+   "title": "Frame 0 lock"
+  }
+ },
+ "358": {
+  "class_type": "LTXVAudioVAEDecode",
+  "inputs": {
+   "samples": [
+    "369",
+    1
+   ],
+   "audio_vae": [
+    "386",
+    0
+   ]
+  }
+ },
+ "364": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "text": [
+    "506",
+    0
+   ],
+   "clip": [
+    "387",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Prompt"
+  }
+ },
+ "365": {
+  "class_type": "LTXVConditioning",
+  "inputs": {
+   "positive": [
+    "364",
+    0
+   ],
+   "negative": [
+    "373",
+    0
+   ],
+   "frame_rate": 24
+  }
+ },
+ "366": {
+  "class_type": "LTXVEmptyLatentAudio",
+  "inputs": {
+   "audio_vae": [
+    "386",
+    0
+   ],
+   "frames_number": 242,
+   "frame_rate": 24,
+   "batch_size": 1
+  }
+ },
+ "367": {
+  "class_type": "LTXVSeparateAVLatent",
+  "inputs": {
+   "av_latent": [
+    "344",
+    0
+   ]
+  }
+ },
+ "368": {
+  "class_type": "SamplerCustomAdvanced",
+  "inputs": {
+   "noise": [
+    "338",
+    0
+   ],
+   "guider": [
+    "391",
+    0
+   ],
+   "sampler": [
+    "341",
+    0
+   ],
+   "sigmas": [
+    "396",
+    0
+   ],
+   "latent_image": [
+    "340",
+    0
+   ]
+  }
+ },
+ "369": {
+  "class_type": "LTXVSeparateAVLatent",
+  "inputs": {
+   "av_latent": [
+    "368",
+    0
+   ]
+  }
+ },
+ "370": {
+  "class_type": "CreateVideo",
+  "inputs": {
+   "images": [
+    "381",
+    0
+   ],
+   "audio": [
+    "361",
+    0
+   ],
+   "fps": 24,
+   "bit_depth": 8
+  }
+ },
+ "371": {
+  "class_type": "LatentUpscaleModelLoader",
+  "inputs": {
+   "model_name": "ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors"
+  },
+  "_meta": {
+   "title": "Latent upscaler"
+  }
+ },
+ "373": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "text": "",
+   "clip": [
+    "387",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Negative prompt"
+  }
+ },
+ "374": {
+  "class_type": "VAEDecodeTiled",
+  "inputs": {
+   "samples": [
+    "465",
+    2
+   ],
+   "vae": [
+    "385",
+    0
+   ],
+   "tile_size": 512,
+   "overlap": 64,
+   "temporal_size": 64,
+   "temporal_overlap": 16
+  }
+ },
+ "377": {
+  "class_type": "LTXVConcatAVLatent",
+  "inputs": {
+   "video_latent": [
+    "461",
+    2
+   ],
+   "audio_latent": [
+    "366",
+    0
+   ]
+  }
+ },
+ "380": {
+  "class_type": "ImageScale",
+  "inputs": {
+   "image": [
+    "374",
+    0
+   ],
+   "upscale_method": "lanczos",
+   "width": 1280,
+   "height": 720,
+   "crop": "center"
+  },
+  "_meta": {
+   "title": "Delivery size"
+  }
+ },
+ "381": {
+  "class_type": "ImageAddNoise",
+  "inputs": {
+   "image": [
+    "380",
+    0
+   ],
+   "seed": 0,
+   "strength": 0.004
+  },
+  "_meta": {
+   "title": "Grain"
+  }
+ },
+ "384": {
+  "class_type": "UNETLoader",
+  "inputs": {
+   "unet_name": "ltx-2.5-22b-distilled-transformer-bf16.safetensors",
+   "weight_dtype": "default"
+  },
+  "_meta": {
+   "title": "LTX 2.5 model"
+  }
+ },
+ "385": {
+  "class_type": "VAELoader",
+  "inputs": {
+   "vae_name": "ltx-2.5-video-vae-bf16.safetensors"
+  },
+  "_meta": {
+   "title": "Video VAE"
+  }
+ },
+ "386": {
+  "class_type": "VAELoader",
+  "inputs": {
+   "vae_name": "ltx-2.5-audio-vae-bf16.safetensors"
+  },
+  "_meta": {
+   "title": "Audio VAE"
+  }
+ },
+ "387": {
+  "class_type": "CLIPLoader",
+  "inputs": {
+   "clip_name": "gemma4-12b-with-proj-ltx-2.5-bf16.safetensors",
+   "type": "ltxv",
+   "device": "default"
+  },
+  "_meta": {
+   "title": "Text encoder"
+  }
+ },
+ "388": {
+  "class_type": "LTXVDualCFGGuider",
+  "inputs": {
+   "model": [
+    "384",
+    0
+   ],
+   "positive": [
+    "461",
+    0
+   ],
+   "negative": [
+    "461",
+    1
+   ],
+   "video_cfg": 1,
+   "audio_cfg": 1
+  }
+ },
+ "391": {
+  "class_type": "LTXVDualCFGGuider",
+  "inputs": {
+   "model": [
+    "384",
+    0
+   ],
+   "positive": [
+    "464",
+    0
+   ],
+   "negative": [
+    "464",
+    1
+   ],
+   "video_cfg": 1,
+   "audio_cfg": 1
+  }
+ },
+ "395": {
+  "class_type": "LoadImage",
+  "inputs": {
+   "image": "photo.png"
+  },
+  "_meta": {
+   "title": "Photo"
+  }
+ },
+ "396": {
+  "class_type": "ManualSigmas",
+  "inputs": {
+   "sigmas": "0.85, 0.7250, 0.4219, 0.0"
+  }
+ },
+ "397": {
+  "class_type": "ManualSigmas",
+  "inputs": {
+   "sigmas": "1.0, 0.99375, 0.9875, 0.98125, 0.975, 0.909375, 0.725, 0.421875, 0.0"
+  }
+ },
+ "410": {
+  "class_type": "LoadBackgroundRemovalModel",
+  "inputs": {
+   "bg_removal_name": "birefnet.safetensors"
+  },
+  "_meta": {
+   "title": "Matte model"
+  }
+ },
+ "411": {
+  "class_type": "RemoveBackground",
+  "inputs": {
+   "bg_removal_model": [
+    "410",
+    0
+   ],
+   "image": [
+    "351",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Subject matte"
+  }
+ },
+ "412": {
+  "class_type": "GrowMask",
+  "inputs": {
+   "mask": [
+    "411",
+    0
+   ],
+   "expand": 8,
+   "tapered_corners": true
+  }
+ },
+ "460": {
+  "class_type": "LTXVAddGuide",
+  "inputs": {
+   "positive": [
+    "472",
+    0
+   ],
+   "negative": [
+    "472",
+    1
+   ],
+   "vae": [
+    "385",
+    0
+   ],
+   "latent": [
+    "472",
+    2
+   ],
+   "image": [
+    "627",
+    0
+   ],
+   "frame_idx": -1,
+   "strength": 0.9
+  },
+  "_meta": {
+   "title": "End-frame guide"
+  }
+ },
+ "461": {
+  "class_type": "LTXVAddGuide",
+  "inputs": {
+   "positive": [
+    "460",
+    0
+   ],
+   "negative": [
+    "460",
+    1
+   ],
+   "vae": [
+    "385",
+    0
+   ],
+   "latent": [
+    "460",
+    2
+   ],
+   "image": [
+    "350",
+    0
+   ],
+   "frame_idx": -1,
+   "strength": 0.5,
+   "attention_mask": [
+    "412",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Subject hold"
+  }
+ },
+ "462": {
+  "class_type": "LTXVCropGuides",
+  "inputs": {
+   "positive": [
+    "461",
+    0
+   ],
+   "negative": [
+    "461",
+    1
+   ],
+   "latent": [
+    "367",
+    0
+   ]
+  }
+ },
+ "463": {
+  "class_type": "LTXVAddGuide",
+  "inputs": {
+   "positive": [
+    "473",
+    0
+   ],
+   "negative": [
+    "473",
+    1
+   ],
+   "vae": [
+    "385",
+    0
+   ],
+   "latent": [
+    "473",
+    2
+   ],
+   "image": [
+    "627",
+    0
+   ],
+   "frame_idx": -1,
+   "strength": 0.9
+  },
+  "_meta": {
+   "title": "End-frame guide at full size"
+  }
+ },
+ "464": {
+  "class_type": "LTXVAddGuide",
+  "inputs": {
+   "positive": [
+    "463",
+    0
+   ],
+   "negative": [
+    "463",
+    1
+   ],
+   "vae": [
+    "385",
+    0
+   ],
+   "latent": [
+    "463",
+    2
+   ],
+   "image": [
+    "350",
+    0
+   ],
+   "frame_idx": -1,
+   "strength": 0.5,
+   "attention_mask": [
+    "412",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Subject hold at full size"
+  }
+ },
+ "465": {
+  "class_type": "LTXVCropGuides",
+  "inputs": {
+   "positive": [
+    "464",
+    0
+   ],
+   "negative": [
+    "464",
+    1
+   ],
+   "latent": [
+    "369",
+    0
+   ]
+  }
+ },
+ "501": {
+  "class_type": "StringConcatenate",
+  "inputs": {
+   "string_a": "One unbroken aerial shot. The camera starts on the person at ground level and rises straight up and back. The person shrinks below as the streets, the city, the coastline and the clouds come into view. The camera passes through a layer of white cloud and keeps rising until the curve of the Earth and the black of space fill the frame. The move is fastest in the middle and slows to almost still in the last second.",
+   "string_b": "",
+   "delimiter": " "
+  },
+  "_meta": {
+   "title": "Prompt and detail"
+  }
+ },
+ "503": {
+  "class_type": "StringConcatenate",
+  "inputs": {
+   "string_a": [
+    "501",
+    0
+   ],
+   "string_b": "The sound is a steady rush of wind with a low rising tone that settles in the last second.",
+   "delimiter": " "
+  }
+ },
+ "504": {
+  "class_type": "StringReplace",
+  "inputs": {
+   "string": [
+    "503",
+    0
+   ],
+   "find": "  ",
+   "replace": " "
+  }
+ },
+ "506": {
+  "class_type": "StringTrim",
+  "inputs": {
+   "string": [
+    "504",
+    0
+   ],
+   "mode": "Both"
+  }
+ },
+ "600": {
+  "class_type": "UNETLoader",
+  "inputs": {
+   "unet_name": "qwen_image_edit_2511_bf16.safetensors",
+   "weight_dtype": "default"
+  },
+  "_meta": {
+   "title": "Image edit model"
+  }
+ },
+ "601": {
+  "class_type": "CLIPLoader",
+  "inputs": {
+   "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+   "type": "qwen_image",
+   "device": "default"
+  },
+  "_meta": {
+   "title": "Image edit text encoder"
+  }
+ },
+ "602": {
+  "class_type": "VAELoader",
+  "inputs": {
+   "vae_name": "qwen_image_vae.safetensors"
+  },
+  "_meta": {
+   "title": "Image edit VAE"
+  }
+ },
+ "603": {
+  "class_type": "ModelSamplingAuraFlow",
+  "inputs": {
+   "model": [
+    "600",
+    0
+   ],
+   "shift": 3.1
+  },
+  "_meta": {
+   "title": "Image edit sampling"
+  }
+ },
+ "604": {
+  "class_type": "CFGNorm",
+  "inputs": {
+   "model": [
+    "603",
+    0
+   ],
+   "strength": 1,
+   "pre_cfg": false
+  },
+  "_meta": {
+   "title": "Image edit guidance"
+  }
+ },
+ "620": {
+  "class_type": "TextEncodeQwenImageEditPlus",
+  "inputs": {
+   "clip": [
+    "601",
+    0
+   ],
+   "prompt": "The planet Earth seen from orbit above the place in the photo, the curve of the globe with blue oceans, white clouds and a thin glowing blue edge of atmosphere against black space.",
+   "vae": [
+    "602",
+    0
+   ],
+   "image1": [
+    "606",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "End-frame prompt"
+  }
+ },
+ "621": {
+  "class_type": "TextEncodeQwenImageEditPlus",
+  "inputs": {
+   "clip": [
+    "601",
+    0
+   ],
+   "prompt": "",
+   "vae": [
+    "602",
+    0
+   ],
+   "image1": [
+    "606",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "End-frame negative"
+  }
+ },
+ "622": {
+  "class_type": "FluxKontextMultiReferenceLatentMethod",
+  "inputs": {
+   "conditioning": [
+    "620",
+    0
+   ],
+   "reference_latents_method": "index_timestep_zero"
+  },
+  "_meta": {
+   "title": "End-frame reference"
+  }
+ },
+ "623": {
+  "class_type": "FluxKontextMultiReferenceLatentMethod",
+  "inputs": {
+   "conditioning": [
+    "621",
+    0
+   ],
+   "reference_latents_method": "index_timestep_zero"
+  },
+  "_meta": {
+   "title": "End-frame negative reference"
+  }
+ },
+ "624": {
+  "class_type": "GetImageSize",
+  "inputs": {
+   "image": [
+    "606",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Fitted size"
+  }
+ },
+ "625": {
+  "class_type": "EmptySD3LatentImage",
+  "inputs": {
+   "width": [
+    "624",
+    0
+   ],
+   "height": [
+    "624",
+    1
+   ],
+   "batch_size": 1
+  },
+  "_meta": {
+   "title": "End-frame size"
+  }
+ },
+ "626": {
+  "class_type": "KSampler",
+  "inputs": {
+   "model": [
+    "604",
+    0
+   ],
+   "positive": [
+    "622",
+    0
+   ],
+   "negative": [
+    "623",
+    0
+   ],
+   "latent_image": [
+    "625",
+    0
+   ],
+   "seed": 0,
+   "steps": 20,
+   "cfg": 4,
+   "sampler_name": "euler",
+   "scheduler": "simple",
+   "denoise": 1
+  },
+  "_meta": {
+   "title": "End frame"
+  }
+ },
+ "627": {
+  "class_type": "VAEDecode",
+  "inputs": {
+   "samples": [
+    "626",
+    0
+   ],
+   "vae": [
+    "602",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "End frame image"
+  }
+ },
+ "606": {
+  "class_type": "ImageScale",
+  "inputs": {
+   "image": [
+    "395",
+    0
+   ],
+   "upscale_method": "lanczos",
+   "width": 1280,
+   "height": 720,
+   "crop": "center"
+  },
+  "_meta": {
+   "title": "Fitted photo"
+  }
+ },
+ "628": {
+  "class_type": "EmptyImage",
+  "inputs": {
+   "width": [
+    "624",
+    0
+   ],
+   "height": [
+    "624",
+    1
+   ],
+   "batch_size": 1,
+   "color": 0
+  },
+  "_meta": {
+   "title": "Dark end frame"
+  }
+ },
+ "359": {
+  "class_type": "NormalizeAudioLoudness",
+  "inputs": {
+   "audio": [
+    "717",
+    0
+   ],
+   "lufs": -23.0
+  },
+  "_meta": {
+   "title": "Loudness"
+  }
+ },
+ "360": {
+  "class_type": "AudioAmplify",
+  "inputs": {
+   "audio": [
+    "359",
+    0
+   ],
+   "gain_db": 4.0
+  },
+  "_meta": {
+   "title": "Peak ceiling"
+  }
+ },
+ "361": {
+  "class_type": "AudioAmplify",
+  "inputs": {
+   "audio": [
+    "360",
+    0
+   ],
+   "gain_db": -4.0
+  },
+  "_meta": {
+   "title": "Back from the peak ceiling"
+  }
+ },
+ "470": {
+  "class_type": "ResizeImageMaskNode",
+  "inputs": {
+   "input": [
+    "627",
+    0
+   ],
+   "resize_type": "scale longer dimension",
+   "resize_type.longer_size": 1536,
+   "scale_method": "lanczos"
+  },
+  "_meta": {
+   "title": "Mid frame size"
+  }
+ },
+ "471": {
+  "class_type": "LTXVPreprocess",
+  "inputs": {
+   "image": [
+    "470",
+    0
+   ],
+   "img_compression": 18
+  },
+  "_meta": {
+   "title": "Mid frame"
+  }
+ },
+ "472": {
+  "class_type": "LTXVAddGuide",
+  "inputs": {
+   "positive": [
+    "365",
+    0
+   ],
+   "negative": [
+    "365",
+    1
+   ],
+   "vae": [
+    "385",
+    0
+   ],
+   "latent": [
+    "357",
+    0
+   ],
+   "image": [
+    "471",
+    0
+   ],
+   "frame_idx": 132,
+   "strength": 0.8
+  },
+  "_meta": {
+   "title": "Mid-frame guide"
+  }
+ },
+ "473": {
+  "class_type": "LTXVAddGuide",
+  "inputs": {
+   "positive": [
+    "462",
+    0
+   ],
+   "negative": [
+    "462",
+    1
+   ],
+   "vae": [
+    "385",
+    0
+   ],
+   "latent": [
+    "349",
+    0
+   ],
+   "image": [
+    "471",
+    0
+   ],
+   "frame_idx": 132,
+   "strength": 0.8
+  },
+  "_meta": {
+   "title": "Mid-frame guide at full size"
+  }
+ },
+ "630": {
+  "class_type": "CheckpointLoaderSimple",
+  "inputs": {
+   "ckpt_name": "stable_audio_3_medium.safetensors"
+  },
+  "_meta": {
+   "title": "Hits: Stable Audio 3 Medium"
+  }
+ },
+ "631": {
+  "class_type": "CLIPLoader",
+  "inputs": {
+   "clip_name": "t5gemma_b_b_ul2.safetensors",
+   "type": "stable_audio",
+   "device": "default"
+  },
+  "_meta": {
+   "title": "Hits: text encoder"
+  }
+ },
+ "633": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "text": "",
+   "clip": [
+    "631",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Hit negative"
+  }
+ },
+ "660": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "text": "One single heavy cinematic impact hit, a deep sub bass boom with a sharp punch at the very start and a long low rumbling tail that fades out. Trailer hit, no music, no voice.",
+   "clip": [
+    "631",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Hit 1 prompt"
+  }
+ },
+ "661": {
+  "class_type": "EmptyLatentAudio",
+  "inputs": {
+   "seconds": 2,
+   "batch_size": 1
+  },
+  "_meta": {
+   "title": "Hit 1 length"
+  }
+ },
+ "662": {
+  "class_type": "KSampler",
+  "inputs": {
+   "seed": 0,
+   "steps": 8,
+   "cfg": 1,
+   "sampler_name": "lcm",
+   "scheduler": "simple",
+   "denoise": 1,
+   "model": [
+    "630",
+    0
+   ],
+   "positive": [
+    "660",
+    0
+   ],
+   "negative": [
+    "633",
+    0
+   ],
+   "latent_image": [
+    "661",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Hit 1"
+  }
+ },
+ "663": {
+  "class_type": "VAEDecodeAudio",
+  "inputs": {
+   "samples": [
+    "662",
+    0
+   ],
+   "vae": [
+    "630",
+    2
+   ]
+  },
+  "_meta": {
+   "title": "Hit 1 decode"
+  }
+ },
+ "664": {
+  "class_type": "AudioAdjustVolume",
+  "inputs": {
+   "audio": [
+    "663",
+    0
+   ],
+   "volume": 0
+  },
+  "_meta": {
+   "title": "Hit 1 gain"
+  }
+ },
+ "668": {
+  "class_type": "AudioFadeOut",
+  "inputs": {
+   "audio": [
+    "664",
+    0
+   ],
+   "duration_seconds": 0.3
+  },
+  "_meta": {
+   "title": "Hit 1 tail"
+  }
+ },
+ "665": {
+  "class_type": "EmptyAudio",
+  "inputs": {
+   "duration": 1,
+   "sample_rate": 44100,
+   "channels": 2
+  },
+  "_meta": {
+   "title": "Silence before hit 1"
+  }
+ },
+ "666": {
+  "class_type": "AudioConcat",
+  "inputs": {
+   "audio1": [
+    "665",
+    0
+   ],
+   "audio2": [
+    "668",
+    0
+   ],
+   "direction": "after"
+  },
+  "_meta": {
+   "title": "Hit 1 at its time"
+  }
+ },
+ "667": {
+  "class_type": "AudioMerge",
+  "inputs": {
+   "audio1": [
+    "358",
+    0
+   ],
+   "audio2": [
+    "666",
+    0
+   ],
+   "merge_method": "add"
+  },
+  "_meta": {
+   "title": "Sound with hit 1"
+  }
+ },
+ "670": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "text": "One single heavy cinematic impact hit, a deep sub bass boom with a sharp punch at the very start and a long low rumbling tail that fades out. Trailer hit, no music, no voice.",
+   "clip": [
+    "631",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Hit 2 prompt"
+  }
+ },
+ "671": {
+  "class_type": "EmptyLatentAudio",
+  "inputs": {
+   "seconds": 2,
+   "batch_size": 1
+  },
+  "_meta": {
+   "title": "Hit 2 length"
+  }
+ },
+ "672": {
+  "class_type": "KSampler",
+  "inputs": {
+   "seed": 0,
+   "steps": 8,
+   "cfg": 1,
+   "sampler_name": "lcm",
+   "scheduler": "simple",
+   "denoise": 1,
+   "model": [
+    "630",
+    0
+   ],
+   "positive": [
+    "670",
+    0
+   ],
+   "negative": [
+    "633",
+    0
+   ],
+   "latent_image": [
+    "671",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Hit 2"
+  }
+ },
+ "673": {
+  "class_type": "VAEDecodeAudio",
+  "inputs": {
+   "samples": [
+    "672",
+    0
+   ],
+   "vae": [
+    "630",
+    2
+   ]
+  },
+  "_meta": {
+   "title": "Hit 2 decode"
+  }
+ },
+ "674": {
+  "class_type": "AudioAdjustVolume",
+  "inputs": {
+   "audio": [
+    "673",
+    0
+   ],
+   "volume": 0
+  },
+  "_meta": {
+   "title": "Hit 2 gain"
+  }
+ },
+ "678": {
+  "class_type": "AudioFadeOut",
+  "inputs": {
+   "audio": [
+    "674",
+    0
+   ],
+   "duration_seconds": 0.3
+  },
+  "_meta": {
+   "title": "Hit 2 tail"
+  }
+ },
+ "675": {
+  "class_type": "EmptyAudio",
+  "inputs": {
+   "duration": 3,
+   "sample_rate": 44100,
+   "channels": 2
+  },
+  "_meta": {
+   "title": "Silence before hit 2"
+  }
+ },
+ "676": {
+  "class_type": "AudioConcat",
+  "inputs": {
+   "audio1": [
+    "675",
+    0
+   ],
+   "audio2": [
+    "678",
+    0
+   ],
+   "direction": "after"
+  },
+  "_meta": {
+   "title": "Hit 2 at its time"
+  }
+ },
+ "677": {
+  "class_type": "AudioMerge",
+  "inputs": {
+   "audio1": [
+    "667",
+    0
+   ],
+   "audio2": [
+    "676",
+    0
+   ],
+   "merge_method": "add"
+  },
+  "_meta": {
+   "title": "Sound with hit 2"
+  }
+ },
+ "680": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "text": "One single heavy cinematic impact hit, a deep sub bass boom with a sharp punch at the very start and a long low rumbling tail that fades out. Trailer hit, no music, no voice.",
+   "clip": [
+    "631",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Hit 3 prompt"
+  }
+ },
+ "681": {
+  "class_type": "EmptyLatentAudio",
+  "inputs": {
+   "seconds": 2,
+   "batch_size": 1
+  },
+  "_meta": {
+   "title": "Hit 3 length"
+  }
+ },
+ "682": {
+  "class_type": "KSampler",
+  "inputs": {
+   "seed": 0,
+   "steps": 8,
+   "cfg": 1,
+   "sampler_name": "lcm",
+   "scheduler": "simple",
+   "denoise": 1,
+   "model": [
+    "630",
+    0
+   ],
+   "positive": [
+    "680",
+    0
+   ],
+   "negative": [
+    "633",
+    0
+   ],
+   "latent_image": [
+    "681",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Hit 3"
+  }
+ },
+ "683": {
+  "class_type": "VAEDecodeAudio",
+  "inputs": {
+   "samples": [
+    "682",
+    0
+   ],
+   "vae": [
+    "630",
+    2
+   ]
+  },
+  "_meta": {
+   "title": "Hit 3 decode"
+  }
+ },
+ "684": {
+  "class_type": "AudioAdjustVolume",
+  "inputs": {
+   "audio": [
+    "683",
+    0
+   ],
+   "volume": 0
+  },
+  "_meta": {
+   "title": "Hit 3 gain"
+  }
+ },
+ "688": {
+  "class_type": "AudioFadeOut",
+  "inputs": {
+   "audio": [
+    "684",
+    0
+   ],
+   "duration_seconds": 0.3
+  },
+  "_meta": {
+   "title": "Hit 3 tail"
+  }
+ },
+ "685": {
+  "class_type": "EmptyAudio",
+  "inputs": {
+   "duration": 5,
+   "sample_rate": 44100,
+   "channels": 2
+  },
+  "_meta": {
+   "title": "Silence before hit 3"
+  }
+ },
+ "686": {
+  "class_type": "AudioConcat",
+  "inputs": {
+   "audio1": [
+    "685",
+    0
+   ],
+   "audio2": [
+    "688",
+    0
+   ],
+   "direction": "after"
+  },
+  "_meta": {
+   "title": "Hit 3 at its time"
+  }
+ },
+ "687": {
+  "class_type": "AudioMerge",
+  "inputs": {
+   "audio1": [
+    "677",
+    0
+   ],
+   "audio2": [
+    "686",
+    0
+   ],
+   "merge_method": "add"
+  },
+  "_meta": {
+   "title": "Sound with hit 3"
+  }
+ },
+ "690": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "text": "One single heavy cinematic impact hit, a deep sub bass boom with a sharp punch at the very start and a long low rumbling tail that fades out. Trailer hit, no music, no voice.",
+   "clip": [
+    "631",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Hit 4 prompt"
+  }
+ },
+ "691": {
+  "class_type": "EmptyLatentAudio",
+  "inputs": {
+   "seconds": 2,
+   "batch_size": 1
+  },
+  "_meta": {
+   "title": "Hit 4 length"
+  }
+ },
+ "692": {
+  "class_type": "KSampler",
+  "inputs": {
+   "seed": 0,
+   "steps": 8,
+   "cfg": 1,
+   "sampler_name": "lcm",
+   "scheduler": "simple",
+   "denoise": 1,
+   "model": [
+    "630",
+    0
+   ],
+   "positive": [
+    "690",
+    0
+   ],
+   "negative": [
+    "633",
+    0
+   ],
+   "latent_image": [
+    "691",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Hit 4"
+  }
+ },
+ "693": {
+  "class_type": "VAEDecodeAudio",
+  "inputs": {
+   "samples": [
+    "692",
+    0
+   ],
+   "vae": [
+    "630",
+    2
+   ]
+  },
+  "_meta": {
+   "title": "Hit 4 decode"
+  }
+ },
+ "694": {
+  "class_type": "AudioAdjustVolume",
+  "inputs": {
+   "audio": [
+    "693",
+    0
+   ],
+   "volume": 0
+  },
+  "_meta": {
+   "title": "Hit 4 gain"
+  }
+ },
+ "698": {
+  "class_type": "AudioFadeOut",
+  "inputs": {
+   "audio": [
+    "694",
+    0
+   ],
+   "duration_seconds": 0.3
+  },
+  "_meta": {
+   "title": "Hit 4 tail"
+  }
+ },
+ "695": {
+  "class_type": "EmptyAudio",
+  "inputs": {
+   "duration": 7,
+   "sample_rate": 44100,
+   "channels": 2
+  },
+  "_meta": {
+   "title": "Silence before hit 4"
+  }
+ },
+ "696": {
+  "class_type": "AudioConcat",
+  "inputs": {
+   "audio1": [
+    "695",
+    0
+   ],
+   "audio2": [
+    "698",
+    0
+   ],
+   "direction": "after"
+  },
+  "_meta": {
+   "title": "Hit 4 at its time"
+  }
+ },
+ "697": {
+  "class_type": "AudioMerge",
+  "inputs": {
+   "audio1": [
+    "687",
+    0
+   ],
+   "audio2": [
+    "696",
+    0
+   ],
+   "merge_method": "add"
+  },
+  "_meta": {
+   "title": "Sound with hit 4"
+  }
+ },
+ "700": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "text": "One single heavy cinematic impact hit, a deep sub bass boom with a sharp punch at the very start and a long low rumbling tail that fades out. Trailer hit, no music, no voice.",
+   "clip": [
+    "631",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Hit 5 prompt"
+  }
+ },
+ "701": {
+  "class_type": "EmptyLatentAudio",
+  "inputs": {
+   "seconds": 2,
+   "batch_size": 1
+  },
+  "_meta": {
+   "title": "Hit 5 length"
+  }
+ },
+ "702": {
+  "class_type": "KSampler",
+  "inputs": {
+   "seed": 0,
+   "steps": 8,
+   "cfg": 1,
+   "sampler_name": "lcm",
+   "scheduler": "simple",
+   "denoise": 1,
+   "model": [
+    "630",
+    0
+   ],
+   "positive": [
+    "700",
+    0
+   ],
+   "negative": [
+    "633",
+    0
+   ],
+   "latent_image": [
+    "701",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Hit 5"
+  }
+ },
+ "703": {
+  "class_type": "VAEDecodeAudio",
+  "inputs": {
+   "samples": [
+    "702",
+    0
+   ],
+   "vae": [
+    "630",
+    2
+   ]
+  },
+  "_meta": {
+   "title": "Hit 5 decode"
+  }
+ },
+ "704": {
+  "class_type": "AudioAdjustVolume",
+  "inputs": {
+   "audio": [
+    "703",
+    0
+   ],
+   "volume": 0
+  },
+  "_meta": {
+   "title": "Hit 5 gain"
+  }
+ },
+ "705": {
+  "class_type": "EmptyAudio",
+  "inputs": {
+   "duration": 7,
+   "sample_rate": 44100,
+   "channels": 2
+  },
+  "_meta": {
+   "title": "Silence before hit 5"
+  }
+ },
+ "706": {
+  "class_type": "AudioConcat",
+  "inputs": {
+   "audio1": [
+    "705",
+    0
+   ],
+   "audio2": [
+    "708",
+    0
+   ],
+   "direction": "after"
+  },
+  "_meta": {
+   "title": "Hit 5 at its time"
+  }
+ },
+ "707": {
+  "class_type": "AudioMerge",
+  "inputs": {
+   "audio1": [
+    "697",
+    0
+   ],
+   "audio2": [
+    "706",
+    0
+   ],
+   "merge_method": "add"
+  },
+  "_meta": {
+   "title": "Sound with hit 5"
+  }
+ },
+ "708": {
+  "class_type": "AudioFadeOut",
+  "inputs": {
+   "audio": [
+    "704",
+    0
+   ],
+   "duration_seconds": 0.3
+  },
+  "_meta": {
+   "title": "Hit 5 tail"
+  }
+ },
+ "710": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "text": "One single heavy cinematic impact hit, a deep sub bass boom with a sharp punch at the very start and a long low rumbling tail that fades out. Trailer hit, no music, no voice.",
+   "clip": [
+    "631",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Hit 6 prompt"
+  }
+ },
+ "711": {
+  "class_type": "EmptyLatentAudio",
+  "inputs": {
+   "seconds": 2,
+   "batch_size": 1
+  },
+  "_meta": {
+   "title": "Hit 6 length"
+  }
+ },
+ "712": {
+  "class_type": "KSampler",
+  "inputs": {
+   "seed": 0,
+   "steps": 8,
+   "cfg": 1,
+   "sampler_name": "lcm",
+   "scheduler": "simple",
+   "denoise": 1,
+   "model": [
+    "630",
+    0
+   ],
+   "positive": [
+    "710",
+    0
+   ],
+   "negative": [
+    "633",
+    0
+   ],
+   "latent_image": [
+    "711",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Hit 6"
+  }
+ },
+ "713": {
+  "class_type": "VAEDecodeAudio",
+  "inputs": {
+   "samples": [
+    "712",
+    0
+   ],
+   "vae": [
+    "630",
+    2
+   ]
+  },
+  "_meta": {
+   "title": "Hit 6 decode"
+  }
+ },
+ "714": {
+  "class_type": "AudioAdjustVolume",
+  "inputs": {
+   "audio": [
+    "713",
+    0
+   ],
+   "volume": 0
+  },
+  "_meta": {
+   "title": "Hit 6 gain"
+  }
+ },
+ "715": {
+  "class_type": "EmptyAudio",
+  "inputs": {
+   "duration": 7,
+   "sample_rate": 44100,
+   "channels": 2
+  },
+  "_meta": {
+   "title": "Silence before hit 6"
+  }
+ },
+ "716": {
+  "class_type": "AudioConcat",
+  "inputs": {
+   "audio1": [
+    "715",
+    0
+   ],
+   "audio2": [
+    "718",
+    0
+   ],
+   "direction": "after"
+  },
+  "_meta": {
+   "title": "Hit 6 at its time"
+  }
+ },
+ "717": {
+  "class_type": "AudioMerge",
+  "inputs": {
+   "audio1": [
+    "707",
+    0
+   ],
+   "audio2": [
+    "716",
+    0
+   ],
+   "merge_method": "add"
+  },
+  "_meta": {
+   "title": "Sound with hit 6"
+  }
+ },
+ "718": {
+  "class_type": "AudioFadeOut",
+  "inputs": {
+   "audio": [
+    "714",
+    0
+   ],
+   "duration_seconds": 0.3
+  },
+  "_meta": {
+   "title": "Hit 6 tail"
+  }
+ }
+}

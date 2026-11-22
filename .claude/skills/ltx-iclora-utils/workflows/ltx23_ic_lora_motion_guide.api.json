@@ -1,0 +1,571 @@
+{
+ "127": {
+  "class_type": "CheckpointLoaderSimple",
+  "inputs": {
+   "ckpt_name": "ltx-2.3-22b-distilled-fp8.safetensors"
+  },
+  "_meta": {
+   "title": "LTX 2.3"
+  }
+ },
+ "126": {
+  "class_type": "LTXVAudioVAELoader",
+  "inputs": {
+   "ckpt_name": "ltx-2.3-22b-distilled-fp8.safetensors"
+  },
+  "_meta": {
+   "title": "LTXVAudioVAELoader"
+  }
+ },
+ "103": {
+  "class_type": "LTXAVTextEncoderLoader",
+  "inputs": {
+   "text_encoder": "gemma_3_12B_it_fp4_mixed.safetensors",
+   "ckpt_name": "ltx-2.3-22b-distilled-fp8.safetensors",
+   "device": "default"
+  },
+  "_meta": {
+   "title": "LTXAVTextEncoderLoader"
+  }
+ },
+ "195": {
+  "class_type": "LoraLoaderModelOnly",
+  "inputs": {
+   "model": [
+    "127",
+    0
+   ],
+   "lora_name": "ltx-2.3-22b-ic-lora-union-control-ref0.5.safetensors",
+   "strength_model": 1
+  },
+  "_meta": {
+   "title": "Union control IC-LoRA"
+  }
+ },
+ "196": {
+  "class_type": "GetICLoRAParameters",
+  "inputs": {
+   "iclora_model": [
+    "195",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "GetICLoRAParameters"
+  }
+ },
+ "200": {
+  "class_type": "LoadImage",
+  "inputs": {
+   "image": "photo.png"
+  },
+  "_meta": {
+   "title": "Photo"
+  }
+ },
+ "199": {
+  "class_type": "LoadVideo",
+  "inputs": {
+   "file": "clip.mp4"
+  },
+  "_meta": {
+   "title": "Guide video"
+  }
+ },
+ "702": {
+  "class_type": "PrimitiveInt",
+  "inputs": {
+   "value": 704
+  },
+  "_meta": {
+   "title": "Short side"
+  }
+ },
+ "900": {
+  "class_type": "StringConcatenate",
+  "inputs": {
+   "string_a": "The same person from the opening frame keeps the same face, hair, clothes and skin in every shot.",
+   "string_b": "",
+   "delimiter": " "
+  },
+  "_meta": {
+   "title": "Motion and scene"
+  }
+ },
+ "692": {
+  "class_type": "Video Slice",
+  "inputs": {
+   "video": [
+    "199",
+    0
+   ],
+   "start_time": 0,
+   "duration": 10,
+   "strict_duration": false
+  },
+  "_meta": {
+   "title": "Guide, first 10 seconds"
+  }
+ },
+ "706": {
+  "class_type": "GetVideoComponents",
+  "inputs": {
+   "video": [
+    "692",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "GetVideoComponents"
+  }
+ },
+ "713": {
+  "class_type": "GetImageSize",
+  "inputs": {
+   "image": [
+    "706",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Guide frames"
+  }
+ },
+ "714": {
+  "class_type": "ComfyMathExpression",
+  "inputs": {
+   "values.a": [
+    "713",
+    2
+   ],
+   "expression": "a - 1"
+  },
+  "_meta": {
+   "title": "Last frame index"
+  }
+ },
+ "715": {
+  "class_type": "ComfyMathExpression",
+  "inputs": {
+   "values.a": [
+    "713",
+    2
+   ],
+   "expression": "8 - (a - 1) % 8"
+  },
+  "_meta": {
+   "title": "Frames to add"
+  }
+ },
+ "716": {
+  "class_type": "ComfyMathExpression",
+  "inputs": {
+   "values.a": [
+    "713",
+    2
+   ],
+   "expression": "a + 8 - (a - 1) % 8"
+  },
+  "_meta": {
+   "title": "Frames to render, 8 n + 1"
+  }
+ },
+ "717": {
+  "class_type": "ImageFromBatch",
+  "inputs": {
+   "image": [
+    "706",
+    0
+   ],
+   "batch_index": [
+    "714",
+    1
+   ],
+   "length": 1
+  },
+  "_meta": {
+   "title": "Last guide frame"
+  }
+ },
+ "718": {
+  "class_type": "RepeatImageBatch",
+  "inputs": {
+   "image": [
+    "717",
+    0
+   ],
+   "amount": [
+    "715",
+    1
+   ]
+  },
+  "_meta": {
+   "title": "RepeatImageBatch"
+  }
+ },
+ "719": {
+  "class_type": "ImageBatch",
+  "inputs": {
+   "image1": [
+    "706",
+    0
+   ],
+   "image2": [
+    "718",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Depth guide, 8 n + 1 frames"
+  }
+ },
+ "721": {
+  "class_type": "GetImageSize",
+  "inputs": {
+   "image": [
+    "200",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Photo size"
+  }
+ },
+ "722": {
+  "class_type": "ComfyMathExpression",
+  "inputs": {
+   "values.a": [
+    "721",
+    0
+   ],
+   "values.b": [
+    "721",
+    1
+   ],
+   "values.c": [
+    "702",
+    0
+   ],
+   "expression": "round(a * c / min(a, b) / 64) * 64"
+  },
+  "_meta": {
+   "title": "Width"
+  }
+ },
+ "723": {
+  "class_type": "ComfyMathExpression",
+  "inputs": {
+   "values.a": [
+    "721",
+    0
+   ],
+   "values.b": [
+    "721",
+    1
+   ],
+   "values.c": [
+    "702",
+    0
+   ],
+   "expression": "round(b * c / min(a, b) / 64) * 64"
+  },
+  "_meta": {
+   "title": "Height"
+  }
+ },
+ "128": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "103",
+    0
+   ],
+   "text": [
+    "900",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Positive"
+  }
+ },
+ "112": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "103",
+    0
+   ],
+   "text": "blurry, out of focus, overexposed, underexposed, low contrast, washed out colors, excessive noise, flickering, distorted proportions, deformed facial features, extra limbs, disfigured hands, wrong hand count, camera shake, jittery movement, cartoonish rendering, AI artifacts"
+  },
+  "_meta": {
+   "title": "Negative"
+  }
+ },
+ "109": {
+  "class_type": "LTXVConditioning",
+  "inputs": {
+   "positive": [
+    "128",
+    0
+   ],
+   "negative": [
+    "112",
+    0
+   ],
+   "frame_rate": [
+    "706",
+    2
+   ]
+  },
+  "_meta": {
+   "title": "LTXVConditioning"
+  }
+ },
+ "108": {
+  "class_type": "EmptyLTXVLatentVideo",
+  "inputs": {
+   "width": [
+    "722",
+    1
+   ],
+   "height": [
+    "723",
+    1
+   ],
+   "length": [
+    "716",
+    1
+   ],
+   "batch_size": 1
+  },
+  "_meta": {
+   "title": "EmptyLTXVLatentVideo"
+  }
+ },
+ "198": {
+  "class_type": "LTXVImgToVideoInplace",
+  "inputs": {
+   "vae": [
+    "127",
+    2
+   ],
+   "image": [
+    "200",
+    0
+   ],
+   "latent": [
+    "108",
+    0
+   ],
+   "strength": 1,
+   "bypass": false
+  },
+  "_meta": {
+   "title": "Photo as the first frame"
+  }
+ },
+ "115": {
+  "class_type": "LTXVAddGuide",
+  "inputs": {
+   "positive": [
+    "109",
+    0
+   ],
+   "negative": [
+    "109",
+    1
+   ],
+   "vae": [
+    "127",
+    2
+   ],
+   "latent": [
+    "198",
+    0
+   ],
+   "image": [
+    "719",
+    0
+   ],
+   "iclora_parameters": [
+    "196",
+    0
+   ],
+   "frame_idx": 0,
+   "strength": 1
+  },
+  "_meta": {
+   "title": "Depth guide through the IC-LoRA"
+  }
+ },
+ "101": {
+  "class_type": "LTXVEmptyLatentAudio",
+  "inputs": {
+   "audio_vae": [
+    "126",
+    0
+   ],
+   "frames_number": [
+    "716",
+    1
+   ],
+   "frame_rate": [
+    "706",
+    2
+   ],
+   "batch_size": 1
+  },
+  "_meta": {
+   "title": "LTXVEmptyLatentAudio"
+  }
+ },
+ "119": {
+  "class_type": "LTXVConcatAVLatent",
+  "inputs": {
+   "video_latent": [
+    "115",
+    2
+   ],
+   "audio_latent": [
+    "101",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "LTXVConcatAVLatent"
+  }
+ },
+ "704": {
+  "class_type": "KSampler",
+  "inputs": {
+   "model": [
+    "195",
+    0
+   ],
+   "positive": [
+    "115",
+    0
+   ],
+   "negative": [
+    "115",
+    1
+   ],
+   "latent_image": [
+    "119",
+    0
+   ],
+   "seed": 0,
+   "steps": 8,
+   "cfg": 1,
+   "sampler_name": "euler_ancestral",
+   "scheduler": "linear_quadratic",
+   "denoise": 1
+  },
+  "_meta": {
+   "title": "KSampler"
+  }
+ },
+ "121": {
+  "class_type": "LTXVSeparateAVLatent",
+  "inputs": {
+   "av_latent": [
+    "704",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "LTXVSeparateAVLatent"
+  }
+ },
+ "106": {
+  "class_type": "LTXVCropGuides",
+  "inputs": {
+   "positive": [
+    "115",
+    0
+   ],
+   "negative": [
+    "115",
+    1
+   ],
+   "latent": [
+    "121",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "LTXVCropGuides"
+  }
+ },
+ "105": {
+  "class_type": "VAEDecodeTiled",
+  "inputs": {
+   "samples": [
+    "106",
+    2
+   ],
+   "vae": [
+    "127",
+    2
+   ],
+   "tile_size": 768,
+   "overlap": 64,
+   "temporal_size": 4096,
+   "temporal_overlap": 64
+  },
+  "_meta": {
+   "title": "VAEDecodeTiled"
+  }
+ },
+ "724": {
+  "class_type": "ImageFromBatch",
+  "inputs": {
+   "image": [
+    "105",
+    0
+   ],
+   "batch_index": 1,
+   "length": [
+    "713",
+    2
+   ]
+  },
+  "_meta": {
+   "title": "Guide length, from the first generated frame"
+  }
+ },
+ "122": {
+  "class_type": "CreateVideo",
+  "inputs": {
+   "images": [
+    "724",
+    0
+   ],
+   "fps": [
+    "706",
+    2
+   ],
+   "bit_depth": 8,
+   "color_space": "sRGB"
+  },
+  "_meta": {
+   "title": "Video at the guide's frame rate"
+  }
+ },
+ "68": {
+  "class_type": "SaveVideo",
+  "inputs": {
+   "video": [
+    "122",
+    0
+   ],
+   "filename_prefix": "video/rosesfield-motion-guide",
+   "format": "mp4",
+   "format.codec": "h264"
+  },
+  "_meta": {
+   "title": "SaveVideo"
+  }
+ }
+}

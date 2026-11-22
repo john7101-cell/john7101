@@ -1,0 +1,341 @@
+{
+ "schema_version": "1.0",
+ "created": "2026-10-30T14:40:00",
+ "id": "lighthouse-short",
+ "brief": {
+  "prompt": "make me a video about a lighthouse keeper who finds a message in a bottle",
+  "kind": "story",
+  "length_s": 30,
+  "aspect": "16:9",
+  "fps": 24,
+  "style": "painterly 35mm film still, muted teal and amber, soft dusk light, shallow depth of field",
+  "audio": {
+   "narration": true,
+   "music": true,
+   "sfx": true,
+   "lip_sync": false,
+   "music_file": null,
+   "language": "en"
+  },
+  "captions": "sidecar",
+  "deliverables": [
+   "16:9",
+   "9:16"
+  ],
+  "commercial_use": false,
+  "defaults_used": [
+   "aspect 16:9",
+   "fps 24",
+   "captions sidecar",
+   "narration + music + sfx"
+  ]
+ },
+ "target": {
+  "kind": "google_colab",
+  "url": "https://<tunnel>.trycloudflare.com",
+  "gpu": "L4",
+  "vram_gb": 24,
+  "budget": {
+   "max_gpu_minutes": 60,
+   "max_credits": null,
+   "credit_unit": "Google Colab compute units",
+   "deadline_minutes": 120
+  }
+ },
+ "tier": "standard",
+ "tier_reason": "24 GB rules out max (needs 40); standard est fits 60 GPU-min",
+ "caps": {
+  "still_retries": 2,
+  "still_variants": 1,
+  "video_retries": 1,
+  "continuity_regens": 1,
+  "max_renders": 40,
+  "max_gpu_minutes": 60,
+  "pass_mean": 3.5,
+  "pass_min": 3
+ },
+ "gates": {
+  "bible": "auto",
+  "plan": "human",
+  "spend": "auto",
+  "final": "auto"
+ },
+ "stages": {
+  "intake": "done",
+  "preflight": "pending",
+  "bible": "pending",
+  "plan": "pending",
+  "stills": "pending",
+  "video": "pending",
+  "continuity": "pending",
+  "audio": "pending",
+  "post": "pending",
+  "assembly": "pending",
+  "critique": "pending"
+ },
+ "bible": {
+  "path": "lighthouse-short/bible.md",
+  "logline": "A lonely keeper finds a bottle that was written to her.",
+  "cast": [
+   {
+    "id": "mara",
+    "descriptor": "Mara, a 30-year-old lighthouse keeper, wiry build, weathered olive skin, short salt-and-pepper hair, deep-set grey eyes, navy wool peacoat over a cream cable-knit sweater, brass compass on a cord",
+    "ref_image": null,
+    "seed": null
+   }
+  ],
+  "style": "painterly 35mm, teal/amber dusk",
+  "lut": "nature_doc.cube",
+  "voice": "warm low female narrator, calm"
+ },
+ "shots": [
+  {
+   "id": "s01",
+   "beat": "1 isolation",
+   "start_s": 0.0,
+   "duration_s": 5,
+   "type": "establishing",
+   "framing": "extreme wide",
+   "camera": "static locked-off",
+   "cast": [],
+   "location": "cliff",
+   "narration": "Every night for eleven years, Mara kept the light.",
+   "sfx": null,
+   "chain_from": null,
+   "transition_in": "cut",
+   "still": {
+    "route": "still.klein",
+    "status": "pending",
+    "prompt": "Painterly 35mm film still. Extreme wide shot at dusk: a white lighthouse stands on a black basalt cliff at frame right, beam unlit, rough teal sea filling the lower half, amber sky band on the horizon, a single lit window. Muted teal and amber palette, soft haze, shallow depth of field.",
+    "seed": null
+   },
+   "video": {
+    "route": "video.i2v",
+    "status": "pending",
+    "prompt": "Static camera. Waves roll in slow and heavy below the cliff; the lantern room flickers on and the beam begins one slow sweep from right to left.",
+    "seed": null
+   },
+   "status": "pending"
+  },
+  {
+   "id": "s02",
+   "beat": "1 isolation",
+   "start_s": 5.0,
+   "duration_s": 5,
+   "type": "character",
+   "framing": "medium",
+   "camera": "slow push-in",
+   "cast": [
+    "mara"
+   ],
+   "location": "lamp room",
+   "narration": null,
+   "sfx": null,
+   "chain_from": null,
+   "transition_in": "cut",
+   "still": {
+    "route": "still.klein",
+    "status": "pending",
+    "prompt": "Painterly 35mm film still. Medium shot inside a brass lamp room at dusk: Mara, a 30-year-old lighthouse keeper, wiry build, weathered olive skin, short salt-and-pepper hair, deep-set grey eyes, navy wool peacoat over a cream cable-knit sweater, brass compass on a cord, standing at frame left polishing the great lens with a cloth, warm amber lamp glow on her face, cold teal window light behind her. Shallow depth of field.",
+    "seed": null
+   },
+   "video": {
+    "route": "video.i2v",
+    "status": "pending",
+    "prompt": "Slow push-in. She polishes in small circles, pauses, and glances out of the window toward the sea.",
+    "seed": null
+   },
+   "status": "pending"
+  },
+  {
+   "id": "s03",
+   "beat": "2 discovery",
+   "start_s": 10.0,
+   "duration_s": 5,
+   "type": "action",
+   "framing": "wide",
+   "camera": "handheld drift",
+   "cast": [
+    "mara"
+   ],
+   "location": "beach",
+   "narration": null,
+   "sfx": "pebbles shifting, small wave wash",
+   "chain_from": null,
+   "transition_in": "cut",
+   "still": {
+    "route": "still.klein",
+    "status": "pending",
+    "prompt": "Painterly 35mm film still. Wide shot on a pebble beach at low tide: Mara, a 30-year-old lighthouse keeper, wiry build, weathered olive skin, short salt-and-pepper hair, deep-set grey eyes, navy wool peacoat over a cream cable-knit sweater, brass compass on a cord, crouching at frame center over a green glass bottle half-buried in wet pebbles, lighthouse small in the background at frame right, amber dusk light. Shallow depth of field.",
+    "seed": null
+   },
+   "video": {
+    "route": "video.i2v",
+    "status": "pending",
+    "prompt": "Gentle handheld drift. She brushes pebbles away and lifts the bottle; foam slides around her boots.",
+    "seed": null
+   },
+   "status": "pending"
+  },
+  {
+   "id": "s04",
+   "beat": "2 discovery",
+   "start_s": 15.0,
+   "duration_s": 5,
+   "type": "insert",
+   "framing": "close-up",
+   "camera": "static locked-off",
+   "cast": [
+    "mara"
+   ],
+   "location": "beach",
+   "narration": "Inside was a letter. It had her name on it.",
+   "sfx": null,
+   "chain_from": "s03",
+   "transition_in": "cut",
+   "still": {
+    "route": "still.klein",
+    "status": "pending",
+    "prompt": "Painterly 35mm film still. Close-up of weathered hands unrolling a yellowed paper letter, handwritten ink line reading \"Mara\" visible at frame center, green glass bottle in soft focus at frame left, amber light grazing the paper.",
+    "seed": null
+   },
+   "video": {
+    "route": "video.i2v",
+    "status": "pending",
+    "prompt": "Static camera. The paper uncurls in the wind; a fingertip traces the name.",
+    "seed": null
+   },
+   "status": "pending"
+  },
+  {
+   "id": "s05",
+   "beat": "3 turn",
+   "start_s": 20.0,
+   "duration_s": 5,
+   "type": "character",
+   "framing": "close-up",
+   "camera": "slow push-in",
+   "cast": [
+    "mara"
+   ],
+   "location": "beach",
+   "narration": null,
+   "sfx": null,
+   "chain_from": null,
+   "transition_in": "cut",
+   "still": {
+    "route": "still.klein",
+    "status": "pending",
+    "prompt": "Painterly 35mm film still. Close-up portrait of Mara, a 30-year-old lighthouse keeper, wiry build, weathered olive skin, short salt-and-pepper hair, deep-set grey eyes, navy wool peacoat over a cream cable-knit sweater, brass compass on a cord, eyes wet, reading, wind lifting her hair, lighthouse beam passing behind her head, teal and amber rim light. Shallow depth of field.",
+    "seed": null
+   },
+   "video": {
+    "route": "video.i2v",
+    "status": "pending",
+    "prompt": "Slow push-in on her face. She exhales, half-smiles; the beam sweeps behind her.",
+    "seed": null
+   },
+   "status": "pending"
+  },
+  {
+   "id": "s06",
+   "beat": "3 turn",
+   "start_s": 25.0,
+   "duration_s": 5,
+   "type": "establishing",
+   "framing": "extreme wide",
+   "camera": "slow crane up",
+   "cast": [
+    "mara"
+   ],
+   "location": "cliff",
+   "narration": "Someone out there had been watching the light, too.",
+   "sfx": "distant foghorn",
+   "chain_from": null,
+   "transition_in": "cut",
+   "still": {
+    "route": "still.klein",
+    "status": "pending",
+    "prompt": "Painterly 35mm film still. Extreme wide shot: the lighthouse beam fully lit sweeping across a dark sea, a tiny distant boat light answering on the horizon at frame left, first stars, muted teal and amber.",
+    "seed": null
+   },
+   "video": {
+    "route": "video.i2v_se",
+    "status": "pending",
+    "prompt": "Slow crane up and back. The beam sweeps; far out, the small boat light blinks twice.",
+    "seed": null
+   },
+   "status": "pending"
+  }
+ ],
+ "audio": {
+  "voiceover": {
+   "route": "audio.voice",
+   "status": "pending",
+   "params": {},
+   "seed": 7
+  },
+  "music": {
+   "route": "audio.music",
+   "status": "pending",
+   "params": {
+    "tags": "sparse solo piano and cello, 70 bpm, melancholic then hopeful, no vocals",
+    "lyrics": "[instrumental]"
+   }
+  },
+  "sfx": [
+   {
+    "route": "audio.sfx",
+    "status": "pending",
+    "params": {
+     "prompt": "pebbles shifting under boots, small wave wash on a stony beach",
+     "seconds": 5
+    }
+   },
+   {
+    "route": "audio.sfx",
+    "status": "pending",
+    "params": {
+     "prompt": "distant foghorn over open sea, long reverb",
+     "seconds": 5
+    }
+   }
+  ]
+ },
+ "post": [
+  {
+   "route": "post.grade",
+   "status": "pending",
+   "params": {
+    "shot": "s01"
+   }
+  }
+ ],
+ "assembly": {
+  "status": "pending",
+  "xfade": 0.3,
+  "beats_file": null,
+  "captions": "sidecar",
+  "exports": [
+   {
+    "aspect": "16:9",
+    "method": "crop",
+    "file": null
+   },
+   {
+    "aspect": "9:16",
+    "method": "crop",
+    "file": null
+   }
+  ],
+  "output": null
+ },
+ "cost": {
+  "renders": 0,
+  "estimate_gpu_minutes": null,
+  "actual_gpu_minutes": 0,
+  "rates_s_per_render": {},
+  "rates_note": "default rates in direct.py are unverified assumptions"
+ },
+ "log": []
+}

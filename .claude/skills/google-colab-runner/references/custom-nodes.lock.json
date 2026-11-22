@@ -1,0 +1,34 @@
+{
+ "v": 1,
+ "read": "2026-10-30",
+ "note": "Pinned commits (git ls-remote HEAD on 2026-10-30). The notebook clones each pack and checks out this commit.",
+ "comfyui": {
+  "repo": "https://github.com/comfyanonymous/ComfyUI",
+  "commit": "b5a432157de6b8884f81104cd02926adf4d597e4"
+ },
+ "packs": {
+  "https://github.com/BetaDoggo/comfyui-image-resize-plus": "e9ed2c0a69da0cee1f72bfa55c83ea0b8c37f143",
+  "https://github.com/Carasibana/ComfyUI-H3-FaceRefine": "d8521d14fe0d721d80cd9417fff5a559cbc21aba",
+  "https://github.com/ComfyAssets/ComfyUI-KikoTools": "6a4b9513d05c57452dcc626ae529a487c835bba5",
+  "https://github.com/Fannovel16/comfyui_controlnet_aux": "a587a4c1594524c1d2de5cd1a86cd868ff448e1c",
+  "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite": "4d907bee61e92c2e65af3bd6383a4e4d356126d1",
+  "https://github.com/LeonQ8/ComfyUI-Dynamic-Lora-Scheduler": "b5a796bb8c6995129283c3e216aae7fc5e889f2a",
+  "https://github.com/Lightricks/ComfyUI-LTXVideo": "220e1d45aa0469f518e982102fca4dca92a61862",
+  "https://github.com/alisson-anjos/ComfyUI-BFSNodes": "1e76045b19a99882f1331c9d322a26fac60ae9b8",
+  "https://github.com/christian-byrne/audio-separation-nodes-comfyui": "ac339561973f0c1e56db2f9d40f11b0fddda6763",
+  "https://github.com/city96/ComfyUI-GGUF": "6ea2651e7df66d7585f6ffee804b20e92fb38b8a",
+  "https://github.com/doubletwisted/ComfyUI-Deadline-Plugin": "db9c87d546da4df1ebe49518619646e039fc4d0e",
+  "https://github.com/ethanfel/ComfyUI-MiniMaxH3-Context-Loop": "43afeffcc570beb5f7382593e79e4b211c7e02f6",
+  "https://github.com/filliptm/ComfyUI_FL-Path-Animator": "fac588f86f7b27eac0c2dce1521b62eaa2b9e170",
+  "https://github.com/filliptm/ComfyUI_Fill-ChatterBox": "f7d7a16187430abcaf91a3039b9c83aa9960816a",
+  "https://github.com/kael558/ComfyUI-GGUF-FantasyTalking": "48dd427c5cf28cc849467dc97e54515286df0aa0",
+  "https://github.com/kijai/ComfyUI-KJNodes": "ab72eda7ffad6280422d71ab7d54d3fb87c0ba18",
+  "https://github.com/kijai/ComfyUI-MelBandRoFormer": "92c86854e6654f4aacc97484471af95c98ea16d4",
+  "https://github.com/kijai/ComfyUI-WanVideoWrapper": "088128b224242e110d3906c6750e9a3a348a659b",
+  "https://github.com/komikndr/raylight": "74f5defa8a4d0e6e62cf0ea5e717ea6b4305bb13",
+  "https://github.com/ltdrdata/ComfyUI-Impact-Pack": "cc015e3223b2172fb4a83510275ed3454f7e34de",
+  "https://github.com/robertvoy/ComfyUI-Distributed": "9df1531b7830d3db70df45bceb2fe55ce18b0530",
+  "https://github.com/yolain/ComfyUI-Easy-Use": "b0b47ca1372117fce575d9e744655344ebff6bef",
+  "https://github.com/cubiq/ComfyUI_essentials": "9d9f4bedfc9f0321c19faf71855e228c93bd0dc9"
+ }
+}

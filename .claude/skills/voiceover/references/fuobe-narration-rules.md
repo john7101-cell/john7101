@@ -1,0 +1,37 @@
+<!-- Copied from workingprototype/Fuobe skills/narration/SKILL.md (MIT); vendor frontmatter removed. Rows naming closed/hosted models do not apply: use open-weights options only. -->
+
+
+# Narration
+
+## Mode A — text + voice → narration takes
+1. **Script.** Use the user's text verbatim. If they gave a topic instead, write the script first
+   (`generate` with op `write`) and show it. Fix only obvious typos. Spell out numbers, symbols and
+   abbreviations the way they should be spoken ("$4.99" → "four ninety-nine").
+2. **Length.** If the user needs a fixed length (a 30-second spot), estimate ~150 words per minute
+   at a normal pace and trim or extend the script to fit before generating. Say the estimate.
+3. **Voice.** Ask which voice only if the user cares (gender, age, accent, energy). Otherwise:
+   cloud `elevenlabs-v4` (natural, many voices — pass `voice`), `minimax-speech-2-8` for
+   emotion/speed control; open `oss-chatterbox` or `oss-indextts2`. To clone the user's voice,
+   pass their recording as `voice_audio` (models that list voiceClone).
+4. **Blocks.** For long scripts (>1 minute), split at paragraph breaks into blocks of ~20–40 s
+   and make one `tts` job per block in a single `generate` call — same model, same voice, same
+   settings — so a bad take can be redone alone. For one continuous read, a single job.
+5. Offer 2 takes of the opening line when the read's tone matters.
+
+## Mode B — video + photo → on-screen narrator
+1. Voice the narration as in Mode A (or use the video's own speech: op `transcribe`, then `tts`).
+2. Make the presenter talk: op `avatar` with the photo in `images` and the narration as `audio`
+   (cloud `kling-avatar-2` / `omnihuman-2`, open `oss-infinitetalk`).
+3. Tell the user the presenter clip is ready to place over or beside their video in an editor;
+   Fuobe joins clips end to end (op `concat`) but doesn't composite picture-in-picture.
+
+## Checks
+Listen-for list in the follow-up: pronunciation of names, pacing at commas, the last word not
+cut off. Offer a slower or more energetic take.
+
+## Using Fuobe from an agent
+Outside Fuobe Assist (Claude Code, Codex, Cursor…), connect Fuobe's MCP server (`fuobe mcp` prints
+the command) and call the same tools: `generate` with op `tts` (one job per block) or op `avatar`
+for an on-screen presenter. Price a run with `estimate_cost` (or `estimate_job` for a studio tool)
+and confirm it with the user first. Files go in as URLs: `fuobe upload <file>` prints one. Without
+MCP, the `fuobe` CLI runs the same jobs (`fuobe generate`, `fuobe tool <name>`).

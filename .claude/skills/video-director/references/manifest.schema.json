@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "video-director/manifest.schema.json",
+  "title": "video-director production manifest",
+  "description": "Single resumable source of truth for one production. Every step reads and writes this file; a step whose status is 'done' is skipped on resume.",
+  "type": "object",
+  "required": ["schema_version", "id", "brief", "target", "tier", "caps", "gates", "stages", "shots", "audio", "assembly", "cost", "log"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"type": "string", "enum": ["1.0"]},
+    "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+    "created": {"type": "string"},
+    "brief": {
+      "type": "object",
+      "required": ["prompt", "length_s", "aspect", "style", "audio"],
+      "additionalProperties": false,
+      "properties": {
+        "prompt": {"type": "string"},
+        "kind": {"type": "string", "enum": ["story", "product", "music-video", "explainer", "ad", "other"]},
+        "length_s": {"type": "number", "minimum": 3, "maximum": 600},
+        "aspect": {"type": "string", "enum": ["16:9", "9:16", "1:1", "4:5"]},
+        "fps": {"type": "integer", "enum": [24, 25, 30]},
+        "style": {"type": "string"},
+        "audio": {
+          "type": "object", "additionalProperties": false,
+          "properties": {
+            "narration": {"type": "boolean"}, "music": {"type": "boolean"}, "sfx": {"type": "boolean"},
+            "lip_sync": {"type": "boolean"}, "music_file": {"type": ["string", "null"]}, "language": {"type": "string"}
+          }
+        },
+        "captions": {"type": "string", "enum": ["off", "sidecar", "burned", "both"]},
+        "deliverables": {"type": "array", "items": {"type": "string", "enum": ["16:9", "9:16", "1:1", "4:5"]}},
+        "commercial_use": {"type": "boolean"},
+        "defaults_used": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "target": {
+      "type": "object",
+      "required": ["kind", "url"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {"type": "string", "enum": ["local", "google_colab", "comfy_cloud", "other"]},
+        "url": {"type": "string"},
+        "gpu": {"type": "string"},
+        "vram_gb": {"type": ["number", "null"]},
+        "colab": {"type": "object", "description": "Google Colab session state written by google-colab-runner: gpu, cu_per_hour, cu_cap, estimate, session_started_epoch, cu_spent_estimate, cu_spent_prior, drops, session_url. No credentials."},
+        "budget": {
+          "type": "object", "additionalProperties": false,
+          "properties": {
+            "max_gpu_minutes": {"type": ["number", "null"], "minimum": 0},
+            "max_credits": {"type": ["number", "null"], "minimum": 0},
+            "credit_unit": {"type": "string"},
+            "deadline_minutes": {"type": ["number", "null"], "minimum": 0}
+          }
+        },
+        "preflight": {
+          "type": "object", "additionalProperties": false,
+          "properties": {
+            "ran": {"type": "boolean"},
+            "ready": {"type": "object", "additionalProperties": {"type": "boolean"}},
+            "missing_nodes": {"type": "array", "items": {"type": "string"}},
+            "missing_weights": {"type": "array", "items": {"type": "string"}}
+          }
+        }
+      }
+    },
+    "tier": {"type": "string", "enum": ["draft", "standard", "max"]},
+    "tier_reason": {"type": "string"},
+    "caps": {
+      "type": "object",
+      "required": ["still_retries", "video_retries", "continuity_regens", "max_renders"],
+      "additionalProperties": false,
+      "properties": {
+        "still_retries": {"type": "integer", "minimum": 0, "maximum": 5},
+        "still_variants": {"type": "integer", "minimum": 1, "maximum": 4},
+        "video_retries": {"type": "integer", "minimum": 0, "maximum": 3},
+        "continuity_regens": {"type": "integer", "minimum": 0, "maximum": 3},
+        "max_renders": {"type": "integer", "minimum": 1},
+        "max_gpu_minutes": {"type": ["number", "null"], "minimum": 0},
+        "pass_mean": {"type": "number", "minimum": 1, "maximum": 5},
+        "pass_min": {"type": "number", "minimum": 1, "maximum": 5}
+      }
+    },
+    "gates": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "bible": {"$ref": "#/$defs/gate"}, "plan": {"$ref": "#/$defs/gate"},
+        "spend": {"$ref": "#/$defs/gate"}, "final": {"$ref": "#/$defs/gate"}
+      }
+    },
+    "stages": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "intake": {"$ref": "#/$defs/status"}, "preflight": {"$ref": "#/$defs/status"},
+        "bible": {"$ref": "#/$defs/status"}, "plan": {"$ref": "#/$defs/status"},
+        "stills": {"$ref": "#/$defs/status"}, "video": {"$ref": "#/$defs/status"},
+        "continuity": {"$ref": "#/$defs/status"}, "audio": {"$ref": "#/$defs/status"},
+        "post": {"$ref": "#/$defs/status"}, "assembly": {"$ref": "#/$defs/status"},
+        "critique": {"$ref": "#/$defs/status"}
+      }
+    },
+    "bible": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "path": {"type": "string"}, "logline": {"type": "string"},
+        "cast": {"type": "array", "items": {"type": "object", "required": ["id", "descriptor"], "properties": {"id": {"type": "string"}, "descriptor": {"type": "string"}, "ref_image": {"type": ["string", "null"]}, "seed": {"type": ["integer", "null"]}}}},
+        "style": {"type": "string"}, "lut": {"type": ["string", "null"]}, "voice": {"type": ["string", "null"]}
+      }
+    },
+    "shots": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/shot"}},
+    "audio": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "voiceover": {"$ref": "#/$defs/job"}, "music": {"$ref": "#/$defs/job"},
+        "sfx": {"type": "array", "items": {"$ref": "#/$defs/job"}}
+      }
+    },
+    "post": {"type": "array", "items": {"$ref": "#/$defs/job"}},
+    "assembly": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "status": {"$ref": "#/$defs/status"}, "xfade": {"type": "number", "minimum": 0},
+        "beats_file": {"type": ["string", "null"]}, "captions": {"type": "string", "enum": ["off", "sidecar", "burned", "both"]},
+        "exports": {"type": "array", "items": {"type": "object", "properties": {"aspect": {"type": "string"}, "method": {"type": "string", "enum": ["crop", "reframe"]}, "file": {"type": ["string", "null"]}}}},
+        "output": {"type": ["string", "null"]}
+      }
+    },
+    "critique": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "scores": {"type": "object", "additionalProperties": {"type": "number"}},
+        "notes": {"type": "array", "items": {"type": "string"}},
+        "fixes_applied": {"type": "array", "items": {"type": "string"}},
+        "report": {"type": ["string", "null"]}
+      }
+    },
+    "cost": {
+      "type": "object", "required": ["renders"], "additionalProperties": false,
+      "properties": {
+        "renders": {"type": "integer", "minimum": 0},
+        "estimate_gpu_minutes": {"type": ["number", "null"]},
+        "actual_gpu_minutes": {"type": ["number", "null"]},
+        "rates_s_per_render": {"type": "object", "additionalProperties": {"type": "number"}},
+        "rates_note": {"type": "string"}
+      }
+    },
+    "log": {"type": "array", "items": {"type": "object", "required": ["t", "event"], "properties": {"t": {"type": "string"}, "event": {"type": "string"}, "detail": {}}}}
+  },
+  "$defs": {
+    "status": {"type": "string", "enum": ["pending", "running", "done", "failed", "blocked", "skipped", "awaiting_approval"]},
+    "gate": {"type": "string", "enum": ["auto", "human", "approved", "rejected"]},
+    "attempt": {
+      "type": "object", "required": ["n", "seed"], "additionalProperties": false,
+      "properties": {
+        "n": {"type": "integer", "minimum": 1}, "route": {"type": "string"}, "seed": {"type": "integer"},
+        "prompt": {"type": "string"}, "ref": {"type": ["string", "null"]}, "prompt_id": {"type": ["string", "null"]},
+        "file": {"type": ["string", "null"]}, "scores": {"type": "object", "additionalProperties": {"type": "number"}},
+        "verdict": {"type": "string", "enum": ["pass", "retry", "unparsed", "error", "pending"]}, "fix": {"type": ["string", "null"]}
+      }
+    },
+    "job": {
+      "type": "object", "required": ["route", "status"], "additionalProperties": false,
+      "properties": {
+        "route": {"type": "string"}, "status": {"$ref": "#/$defs/status"},
+        "params": {"type": "object"}, "seed": {"type": ["integer", "null"]},
+        "attempts": {"type": "array", "items": {"$ref": "#/$defs/attempt"}}, "file": {"type": ["string", "null"]}
+      }
+    },
+    "shot": {
+      "type": "object",
+      "required": ["id", "beat", "start_s", "duration_s", "type", "still", "video", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "pattern": "^s[0-9]{2,3}[a-z]?$"},
+        "beat": {"type": "string"},
+        "start_s": {"type": "number", "minimum": 0},
+        "duration_s": {"type": "number", "minimum": 0.5, "maximum": 20},
+        "type": {"type": "string", "enum": ["establishing", "character", "action", "dialogue", "product", "insert", "broll", "performance", "vfx", "title", "transition"]},
+        "framing": {"type": "string"}, "camera": {"type": "string"},
+        "cast": {"type": "array", "items": {"type": "string"}}, "location": {"type": "string"},
+        "narration": {"type": ["string", "null"]}, "sfx": {"type": ["string", "null"]},
+        "chain_from": {"type": ["string", "null"]},
+        "transition_in": {"type": "string", "enum": ["cut", "xfade", "flf"]},
+        "still": {"$ref": "#/$defs/stage_job"},
+        "video": {"$ref": "#/$defs/stage_job"},
+        "extra": {"type": "array", "items": {"$ref": "#/$defs/job"}},
+        "continuity": {"type": "object", "properties": {"status": {"$ref": "#/$defs/status"}, "regens": {"type": "integer", "minimum": 0}, "findings": {"type": "array"}}},
+        "status": {"$ref": "#/$defs/status"}
+      }
+    },
+    "stage_job": {
+      "type": "object", "required": ["route", "status"], "additionalProperties": false,
+      "properties": {
+        "route": {"type": "string"}, "status": {"$ref": "#/$defs/status"},
+        "prompt": {"type": "string"}, "seed": {"type": ["integer", "null"]},
+        "width": {"type": "integer", "minimum": 64}, "height": {"type": "integer", "minimum": 64},
+        "frames": {"type": "integer", "minimum": 1}, "fps": {"type": "integer"},
+        "strength1": {"type": "number", "minimum": 0, "maximum": 1}, "strength2": {"type": "number", "minimum": 0, "maximum": 1},
+        "ref": {"type": ["string", "null"]}, "params": {"type": "object"},
+        "attempts": {"type": "array", "items": {"$ref": "#/$defs/attempt"}},
+        "approved": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

@@ -1,0 +1,135 @@
+{
+ "3": {
+  "class_type": "CLIPLoader",
+  "inputs": {
+   "clip_name": "minimax_music3_text_encoder_pruned_int8_convrot.safetensors",
+   "type": "minimax",
+   "device": "default"
+  },
+  "_meta": {
+   "title": "Text encoder"
+  }
+ },
+ "6": {
+  "class_type": "UNETLoader",
+  "inputs": {
+   "unet_name": "minimax_music3_dit_fp16.safetensors",
+   "weight_dtype": "default"
+  },
+  "_meta": {
+   "title": "MiniMax-Music3"
+  }
+ },
+ "7": {
+  "class_type": "VAELoader",
+  "inputs": {
+   "vae_name": "minimax_music3_dav.safetensors"
+  },
+  "_meta": {
+   "title": "Audio VAE"
+  }
+ },
+ "9": {
+  "class_type": "KSampler",
+  "inputs": {
+   "seed": 0,
+   "steps": 30,
+   "cfg": 1.7,
+   "sampler_name": "euler",
+   "scheduler": "simple",
+   "denoise": 1,
+   "model": [
+    "6",
+    0
+   ],
+   "positive": [
+    "13",
+    0
+   ],
+   "negative": [
+    "10",
+    0
+   ],
+   "latent_image": [
+    "15",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Sampler"
+  }
+ },
+ "10": {
+  "class_type": "ConditioningZeroOut",
+  "inputs": {
+   "conditioning": [
+    "13",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Negative"
+  }
+ },
+ "12": {
+  "class_type": "VAEDecodeAudio",
+  "inputs": {
+   "samples": [
+    "9",
+    0
+   ],
+   "vae": [
+    "7",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Decode"
+  }
+ },
+ "13": {
+  "class_type": "MiniMaxMusic3TextEncode",
+  "inputs": {
+   "caption": "",
+   "lyrics": "",
+   "seed": 0,
+   "max_duration": 30,
+   "cfg_scale": 1.7,
+   "top_k": 50,
+   "clip": [
+    "3",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Description and lyrics"
+  }
+ },
+ "15": {
+  "class_type": "EmptyMiniMaxMusic3LatentAudio",
+  "inputs": {
+   "batch_size": 1,
+   "seconds": [
+    "13",
+    1
+   ]
+  },
+  "_meta": {
+   "title": "Song length"
+  }
+ },
+ "35": {
+  "class_type": "SaveAudioMP3",
+  "inputs": {
+   "filename_prefix": "audio/rosesfield-music",
+   "quality": "V0",
+   "audio": [
+    "12",
+    0
+   ]
+  },
+  "_meta": {
+   "title": "Audio"
+  }
+ }
+}
