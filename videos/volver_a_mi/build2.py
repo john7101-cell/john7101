@@ -10,7 +10,7 @@ END = 8.5
 # id, in, out, chip, face-y anchor, zoom levels cycled per "camera" shot
 segs = [
     ("acac8a52", 0.50, 15.95, None,                  0.30, [1.0, 1.24, 1.08, 1.30]),
-    ("9a820ff3", 0.00, 17.00, "Apego emocional",     0.28, [1.0, 1.30, 1.12, 1.38]),
+    ("9a820ff3", 2.60, 17.00, "Apego emocional",     0.28, [1.0, 1.30, 1.12, 1.38]),
     ("31162a4f", 1.62, 11.80, "Creencias y heridas", 0.08, [1.0, 1.12, 1.04, 1.15]),
     ("a38847f4", 0.00, 11.30, "Límites e identidad", 0.30, [1.0, 1.22, 1.08, 1.26]),
     ("95c690a6", 0.00, 15.60, None,                  0.30, [1.0, 1.20, 1.06, 1.26]),
