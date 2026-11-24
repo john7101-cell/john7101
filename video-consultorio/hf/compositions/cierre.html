@@ -1,0 +1,41 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    #cierre-stage { position: absolute; inset: 0; }
+    #cierre-glass {
+      position: absolute; inset: 0;
+      backdrop-filter: blur(26px) saturate(1.15);
+      background: repeating-linear-gradient(90deg, rgba(246,233,240,0.10) 0px, rgba(246,233,240,0.02) 9px, rgba(28,16,24,0.10) 18px, rgba(246,233,240,0.10) 30px);
+    }
+    #cierre-copy { position: absolute; left: 0; right: 0; top: 640px; text-align: center; }
+    #cierre-l1 { font-family: "Playfair Display", serif; font-weight: 700; font-size: 88px; color: #f6e9f0; }
+    #cierre-l2 { margin-top: 8px; font-family: "Playfair Display", serif; font-style: italic; font-size: 80px; color: #e0679a; }
+    #cierre-web { margin-top: 40px; font-size: 32px; font-weight: 500; color: #f0b6d2; letter-spacing: 0.04em; }
+    #cierre-legal { position: absolute; left: 0; right: 0; top: 985px; text-align: center; font-size: 28px; color: #b99aad; }
+    #cierre-black { position: absolute; inset: 0; background: #1c1018; }
+  </style>
+  <div id="root" data-composition-id="cierre" data-width="1920" data-height="1080">
+    <div id="cierre-stage" class="clip" data-start="0" data-duration="7.7" data-layout-allow-overlap>
+      <div id="cierre-glass"></div>
+      <div id="cierre-copy">
+        <div id="cierre-l1"><span class="w">Comprende</span> <span class="w">tu</span> <span class="w">historia.</span></div>
+        <div id="cierre-l2"><span class="w">Construye</span> <span class="w">nuevas</span> <span class="w">posibilidades.</span></div>
+        <div id="cierre-web">paolavelasquez.com · @terapeutacristianapaola</div>
+      </div>
+      <div id="cierre-legal">Los programas y mentorías no sustituyen un proceso psicoterapéutico ni garantizan resultados específicos.</div>
+      <div id="cierre-black"></div>
+    </div>
+  </div>
+  <script>
+    const S = 74.8, at = (g) => +(g - S).toFixed(3);
+    const tl = gsap.timeline({ paused: true });
+    // el vidrio de la primera escena regresa y se aclara: ahora se ve con claridad
+    tl.fromTo("#cierre-glass", { opacity: 1 }, { opacity: 0, duration: 1.4, ease: "power2.inOut" }, at(75.2));
+    tl.fromTo("#cierre-l1 .w", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power4.out", stagger: 0.22 }, at(75.0));
+    tl.fromTo("#cierre-l2 .w", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power4.out", stagger: 0.3 }, at(76.5));
+    tl.fromTo("#cierre-web", { opacity: 0 }, { opacity: 1, duration: 0.5 }, at(77.9));
+    tl.fromTo("#cierre-legal", { opacity: 0 }, { opacity: 1, duration: 0.5 }, at(77.7));
+    tl.fromTo("#cierre-black", { opacity: 0 }, { opacity: 1, duration: 1.1, ease: "power2.in" }, at(81.3));
+    window.__timelines["cierre"] = tl;
+  </script>
+</template>

@@ -1,0 +1,44 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    #paola-stage { position: absolute; inset: 0; }
+    #paola-col { position: absolute; left: 820px; top: 300px; width: 1000px; }
+    #paola-name { margin-top: 22px; font-size: 112px; }
+    #paola-sub { margin-top: 24px; font-size: 36px; color: #f0b6d2; font-weight: 500; }
+    #paola-row { position: absolute; left: 820px; top: 720px; display: flex; align-items: center; gap: 28px; }
+    #paola-entender { font-size: 46px; color: #c7aabb; font-weight: 400; }
+    #paola-arrow { width: 210px; height: 40px; }
+    #paola-transformar { font-family: "Playfair Display", serif; font-style: italic; font-size: 76px; color: #e0679a; }
+  </style>
+  <div id="root" data-composition-id="paola" data-width="1920" data-height="1080">
+    <div id="paola-stage" class="clip" data-start="0" data-duration="6.85">
+      <div id="paola-col">
+        <div id="paola-eyebrow" class="eyebrow">Consultorio virtual</div>
+        <div id="paola-name" class="title"><span class="w">Paola</span> <span class="w">Velásquez</span></div>
+        <div id="paola-sub"><span class="w">Psicóloga</span> <span class="w">·</span> <span class="w">Terapeuta</span> <span class="w">cristiana</span></div>
+      </div>
+      <div id="paola-row">
+        <div id="paola-entender">Entender</div>
+        <svg id="paola-arrow" viewBox="0 0 210 40" aria-label="Flecha">
+          <path id="paola-arrow-line" d="M4 20 H 190" stroke="#e0679a" stroke-width="5" stroke-linecap="round" fill="none" />
+          <path id="paola-arrow-head" d="M176 6 L 200 20 L 176 34" stroke="#e0679a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+        </svg>
+        <div id="paola-transformar">Transformar</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const S = 4.25, at = (g) => +(g - S).toFixed(3);
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#paola-eyebrow", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, at(4.4));
+    tl.fromTo("#paola-name .w", { opacity: 0, filter: "blur(12px)", y: 18 }, { opacity: 1, filter: "blur(0px)", y: 0, duration: 0.55, ease: "expo.out", stagger: 0.28 }, at(4.6));
+    tl.fromTo("#paola-sub .w", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out", stagger: 0.3 }, at(5.9));
+    tl.fromTo("#paola-entender", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power4.out" }, at(9.15));
+    tl.fromTo("#paola-arrow-line", { strokeDasharray: 190, strokeDashoffset: 190 }, { strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut" }, at(9.5));
+    tl.fromTo("#paola-arrow-head", { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.2, ease: "power3.out" }, at(10.0));
+    tl.fromTo("#paola-transformar", { opacity: 0, x: -30, filter: "blur(10px)", color: "#c7aabb" }, { opacity: 1, x: 0, filter: "blur(0px)", color: "#e0679a", duration: 0.5, ease: "expo.out" }, at(10.15));
+    // salida: barrido hacia la izquierda
+    tl.to("#paola-col, #paola-row", { x: -160, opacity: 0, filter: "blur(8px)", duration: 0.32, ease: "power3.in" }, at(10.75));
+    window.__timelines["paola"] = tl;
+  </script>
+</template>

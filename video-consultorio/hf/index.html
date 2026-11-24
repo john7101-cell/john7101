@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="assets/lib/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #1c1018; }
+      body {
+        font-family: "Poppins", sans-serif;
+        color: #f6e9f0;
+        --bg: #1c1018;
+        --pink: #e0679a;
+        --mauve: #c98bbf;
+        --light: #f0b6d2;
+        --ink: #f6e9f0;
+        --muted: #c7aabb;
+        --plum: #2a1924;
+        --line: #43283a;
+      }
+      .eyebrow { font-family: "Poppins", sans-serif; font-weight: 600; font-size: 30px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--pink); }
+      .title { font-family: "Playfair Display", serif; font-weight: 700; font-size: 92px; line-height: 1.02; color: var(--ink); }
+      .title em { font-style: italic; font-weight: 400; color: var(--light); }
+      .lead { font-family: "Poppins", sans-serif; font-weight: 400; font-size: 34px; line-height: 1.4; color: var(--muted); }
+      .w { display: inline-block; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="82.5" data-width="1920" data-height="1080">
+      <div id="world" data-composition-id="world" data-composition-src="compositions/world.html" data-start="0" data-duration="82.5" data-track-index="0" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index: 1"></div>
+
+      <div id="hook" data-composition-id="hook" data-composition-src="compositions/hook.html" data-start="0" data-duration="4.25" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index: 2"></div>
+      <div id="paola" data-composition-id="paola" data-composition-src="compositions/paola.html" data-start="4.25" data-duration="6.85" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index: 2"></div>
+      <div id="enfoque" data-composition-id="enfoque" data-composition-src="compositions/enfoque.html" data-start="11.1" data-duration="8.25" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index: 2"></div>
+      <div id="mujeres" data-composition-id="mujeres" data-composition-src="compositions/mujeres.html" data-start="19.35" data-duration="8.8" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index: 2"></div>
+      <div id="parejas" data-composition-id="parejas" data-composition-src="compositions/parejas.html" data-start="28.15" data-duration="9.25" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index: 2"></div>
+      <div id="hombres" data-composition-id="hombres" data-composition-src="compositions/hombres.html" data-start="37.4" data-duration="11.15" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index: 2"></div>
+      <div id="padres" data-composition-id="padres" data-composition-src="compositions/padres.html" data-start="48.55" data-duration="8.95" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index: 2"></div>
+      <div id="objetivo" data-composition-id="objetivo" data-composition-src="compositions/objetivo.html" data-start="57.5" data-duration="9.4" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index: 2"></div>
+      <div id="empezar" data-composition-id="empezar" data-composition-src="compositions/empezar.html" data-start="66.9" data-duration="7.9" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index: 2"></div>
+      <div id="cierre" data-composition-id="cierre" data-composition-src="compositions/cierre.html" data-start="74.8" data-duration="7.7" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index: 2"></div>
+
+      <audio id="voz" src="voz.mp3" data-start="0" data-duration="78.99" data-track-index="5" data-volume="1"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>
