@@ -1,0 +1,246 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Sub,Lato Black,66,&H00FFFFFF,&H00FFFFFF,&H40000000,&H90000000,0,0,0,0,100,100,1,0,1,3,4,2,90,90,520,1
+Style: Chip,Lato Bold,42,&H00FFFFFF,&H00FFFFFF,&H00000000,&H60000000,0,0,0,0,100,100,6,0,1,0,3,5,40,40,0,1
+Style: Step,EB Garamond 12,64,&H006DB8E8,&H00FFFFFF,&H00000000,&H60000000,0,1,0,0,100,100,0,0,1,0,3,5,40,40,0,1
+Style: ChipLine,Lato Bold,40,&H006DB8E8,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,5,0,0,0,1
+Style: T3D,Lato Black,200,&H00A0D9F2,&H00FFFFFF,&H003A6E8C,&H00000000,0,0,0,0,100,100,6,0,1,3,0,5,20,20,0,1
+Style: Title,EB Garamond 12,140,&H00FFFFFF,&H00FFFFFF,&H00000000,&H70000000,0,1,0,0,100,100,0,0,1,0,5,5,40,40,0,1
+Style: TitleBig,EB Garamond 12,165,&H00FFFFFF,&H00FFFFFF,&H00000000,&H70000000,0,1,0,0,100,100,0,0,1,0,4,5,40,40,0,1
+Style: Kicker,Lato Bold,42,&H006DB8E8,&H00FFFFFF,&H00000000,&H60000000,0,0,0,0,100,100,4,0,1,0,3,5,40,40,0,1
+Style: Quote,EB Garamond 12,62,&H00F0F0F0,&H00FFFFFF,&H00000000,&H60000000,0,1,0,0,100,100,0,0,1,0,3,5,60,60,0,1
+Style: Info,Lato Bold,40,&H00FFFFFF,&H00FFFFFF,&H00000000,&H70000000,0,0,0,0,100,100,4,0,1,0,3,5,40,40,0,1
+Style: Price,Lato Regular,46,&H00D8D8D8,&H00FFFFFF,&H00000000,&H70000000,0,0,0,0,100,100,1,0,1,0,3,5,40,40,0,1
+Style: PriceBig,Lato Black,70,&H006DB8E8,&H00FFFFFF,&H00000000,&H70000000,0,0,0,0,100,100,1,0,1,0,4,5,40,40,0,1
+Style: Small,Lato Regular,36,&H00E6E6E6,&H00FFFFFF,&H00000000,&H70000000,0,1,0,0,100,100,0,0,1,0,3,5,60,60,0,1
+Style: Url,Lato Bold,44,&H00FFFFFF,&H00FFFFFF,&H00000000,&H70000000,0,0,0,0,100,100,1,0,1,0,3,5,40,40,0,1
+Style: CTA,Lato Black,54,&H002A1F1C,&H00FFFFFF,&H006DB8E8,&H00000000,0,0,0,0,100,100,5,0,3,28,0,5,60,60,0,1
+Style: Brand,Lato Bold,28,&H50FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,5,0,1,0,2,8,40,40,150,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 3,0:00:00.15,0:00:03.05,Kicker,,0,0,0,,{\fad(300,300)\move(540,600,540,640,0,700)}T A L L E R
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs205\c&H0B1222&\bord0\shad0\an5\org(540,820)\pos(554.4,840.8)\fscx40\fscy40\frx75\alpha&HFF&\t(150,230,\alpha&H00&)\t(150,800,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}VOLVER
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs205\c&H0C1425&\bord0\shad0\an5\org(540,820)\pos(553.5,839.5)\fscx40\fscy40\frx75\alpha&HFF&\t(150,230,\alpha&H00&)\t(150,800,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}VOLVER
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs205\c&H0D1628&\bord0\shad0\an5\org(540,820)\pos(552.6,838.2)\fscx40\fscy40\frx75\alpha&HFF&\t(150,230,\alpha&H00&)\t(150,800,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}VOLVER
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs205\c&H0E172B&\bord0\shad0\an5\org(540,820)\pos(551.7,836.9)\fscx40\fscy40\frx75\alpha&HFF&\t(150,230,\alpha&H00&)\t(150,800,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}VOLVER
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs205\c&H0F192E&\bord0\shad0\an5\org(540,820)\pos(550.8,835.6)\fscx40\fscy40\frx75\alpha&HFF&\t(150,230,\alpha&H00&)\t(150,800,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}VOLVER
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs205\c&H101A31&\bord0\shad0\an5\org(540,820)\pos(549.9,834.3)\fscx40\fscy40\frx75\alpha&HFF&\t(150,230,\alpha&H00&)\t(150,800,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}VOLVER
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs205\c&H111C34&\bord0\shad0\an5\org(540,820)\pos(549.0,833.0)\fscx40\fscy40\frx75\alpha&HFF&\t(150,230,\alpha&H00&)\t(150,800,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}VOLVER
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs205\c&H121E37&\bord0\shad0\an5\org(540,820)\pos(548.1,831.7)\fscx40\fscy40\frx75\alpha&HFF&\t(150,230,\alpha&H00&)\t(150,800,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}VOLVER
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs205\c&H131F3A&\bord0\shad0\an5\org(540,820)\pos(547.2,830.4)\fscx40\fscy40\frx75\alpha&HFF&\t(150,230,\alpha&H00&)\t(150,800,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}VOLVER
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs205\c&H14213D&\bord0\shad0\an5\org(540,820)\pos(546.3,829.1)\fscx40\fscy40\frx75\alpha&HFF&\t(150,230,\alpha&H00&)\t(150,800,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}VOLVER
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs205\c&H152340&\bord0\shad0\an5\org(540,820)\pos(545.4,827.8)\fscx40\fscy40\frx75\alpha&HFF&\t(150,230,\alpha&H00&)\t(150,800,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}VOLVER
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs205\c&H162443&\bord0\shad0\an5\org(540,820)\pos(544.5,826.5)\fscx40\fscy40\frx75\alpha&HFF&\t(150,230,\alpha&H00&)\t(150,800,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}VOLVER
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs205\c&H172646&\bord0\shad0\an5\org(540,820)\pos(543.6,825.2)\fscx40\fscy40\frx75\alpha&HFF&\t(150,230,\alpha&H00&)\t(150,800,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}VOLVER
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs205\c&H182849&\bord0\shad0\an5\org(540,820)\pos(542.7,823.9)\fscx40\fscy40\frx75\alpha&HFF&\t(150,230,\alpha&H00&)\t(150,800,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}VOLVER
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs205\c&H19294C&\bord0\shad0\an5\org(540,820)\pos(541.8,822.6)\fscx40\fscy40\frx75\alpha&HFF&\t(150,230,\alpha&H00&)\t(150,800,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}VOLVER
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs205\c&H1A2B4F&\bord0\shad0\an5\org(540,820)\pos(540.9,821.3)\fscx40\fscy40\frx75\alpha&HFF&\t(150,230,\alpha&H00&)\t(150,800,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}VOLVER
+Dialogue: 5,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs205\an5\org(540,820)\pos(540,820)\fscx40\fscy40\frx75\blur6\alpha&HFF&\t(150,230,\alpha&H00&)\t(150,800,0.6,\fscx100\fscy100\frx0\fry0\blur0.6)\t(850,1250,\3c&HFFFFFF&)\t(1250,1650,\3c&H3A6E8C&)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}VOLVER
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs260\c&H0B1222&\bord0\shad0\an5\org(540,1060)\pos(554.4,1080.8)\fscx40\fscy40\fry-85\alpha&HFF&\t(450,530,\alpha&H00&)\t(450,1100,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}A MÍ
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs260\c&H0C1425&\bord0\shad0\an5\org(540,1060)\pos(553.5,1079.5)\fscx40\fscy40\fry-85\alpha&HFF&\t(450,530,\alpha&H00&)\t(450,1100,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}A MÍ
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs260\c&H0D1628&\bord0\shad0\an5\org(540,1060)\pos(552.6,1078.2)\fscx40\fscy40\fry-85\alpha&HFF&\t(450,530,\alpha&H00&)\t(450,1100,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}A MÍ
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs260\c&H0E172B&\bord0\shad0\an5\org(540,1060)\pos(551.7,1076.9)\fscx40\fscy40\fry-85\alpha&HFF&\t(450,530,\alpha&H00&)\t(450,1100,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}A MÍ
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs260\c&H0F192E&\bord0\shad0\an5\org(540,1060)\pos(550.8,1075.6)\fscx40\fscy40\fry-85\alpha&HFF&\t(450,530,\alpha&H00&)\t(450,1100,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}A MÍ
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs260\c&H101A31&\bord0\shad0\an5\org(540,1060)\pos(549.9,1074.3)\fscx40\fscy40\fry-85\alpha&HFF&\t(450,530,\alpha&H00&)\t(450,1100,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}A MÍ
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs260\c&H111C34&\bord0\shad0\an5\org(540,1060)\pos(549.0,1073.0)\fscx40\fscy40\fry-85\alpha&HFF&\t(450,530,\alpha&H00&)\t(450,1100,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}A MÍ
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs260\c&H121E37&\bord0\shad0\an5\org(540,1060)\pos(548.1,1071.7)\fscx40\fscy40\fry-85\alpha&HFF&\t(450,530,\alpha&H00&)\t(450,1100,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}A MÍ
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs260\c&H131F3A&\bord0\shad0\an5\org(540,1060)\pos(547.2,1070.4)\fscx40\fscy40\fry-85\alpha&HFF&\t(450,530,\alpha&H00&)\t(450,1100,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}A MÍ
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs260\c&H14213D&\bord0\shad0\an5\org(540,1060)\pos(546.3,1069.1)\fscx40\fscy40\fry-85\alpha&HFF&\t(450,530,\alpha&H00&)\t(450,1100,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}A MÍ
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs260\c&H152340&\bord0\shad0\an5\org(540,1060)\pos(545.4,1067.8)\fscx40\fscy40\fry-85\alpha&HFF&\t(450,530,\alpha&H00&)\t(450,1100,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}A MÍ
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs260\c&H162443&\bord0\shad0\an5\org(540,1060)\pos(544.5,1066.5)\fscx40\fscy40\fry-85\alpha&HFF&\t(450,530,\alpha&H00&)\t(450,1100,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}A MÍ
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs260\c&H172646&\bord0\shad0\an5\org(540,1060)\pos(543.6,1065.2)\fscx40\fscy40\fry-85\alpha&HFF&\t(450,530,\alpha&H00&)\t(450,1100,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}A MÍ
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs260\c&H182849&\bord0\shad0\an5\org(540,1060)\pos(542.7,1063.9)\fscx40\fscy40\fry-85\alpha&HFF&\t(450,530,\alpha&H00&)\t(450,1100,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}A MÍ
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs260\c&H19294C&\bord0\shad0\an5\org(540,1060)\pos(541.8,1062.6)\fscx40\fscy40\fry-85\alpha&HFF&\t(450,530,\alpha&H00&)\t(450,1100,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}A MÍ
+Dialogue: 4,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs260\c&H1A2B4F&\bord0\shad0\an5\org(540,1060)\pos(540.9,1061.3)\fscx40\fscy40\fry-85\alpha&HFF&\t(450,530,\alpha&H00&)\t(450,1100,0.6,\fscx100\fscy100\frx0\fry0)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}A MÍ
+Dialogue: 5,0:00:00.00,0:00:03.05,T3D,,0,0,0,,{\fs260\an5\org(540,1060)\pos(540,1060)\fscx40\fscy40\fry-85\blur6\alpha&HFF&\t(450,530,\alpha&H00&)\t(450,1100,0.6,\fscx100\fscy100\frx0\fry0\blur0.6)\t(1150,1550,\3c&HFFFFFF&)\t(1550,1950,\3c&H3A6E8C&)\t(2600,3050,\fscx135\fscy135\alpha&HFF&)}A MÍ
+Dialogue: 3,0:00:01.00,0:00:03.05,Info,,0,0,0,,{\fad(400,300)\move(540,1300,540,1270,0,500)}TALITA KUM  ·  LAURELES, MEDELLÍN
+Dialogue: 1,0:00:03.06,0:00:03.54,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}TE{\c&HFFFFFF&\fscx100\fscy100} HA PASADO QUE
+Dialogue: 1,0:00:03.54,0:00:03.68,Sub,,0,0,0,,TE {\c&H6DB8E8&\fscx112\fscy112}HA{\c&HFFFFFF&\fscx100\fscy100} PASADO QUE
+Dialogue: 1,0:00:03.68,0:00:04.12,Sub,,0,0,0,,TE HA {\c&H6DB8E8&\fscx112\fscy112}PASADO{\c&HFFFFFF&\fscx100\fscy100} QUE
+Dialogue: 1,0:00:04.12,0:00:04.42,Sub,,0,0,0,,TE HA PASADO {\c&H6DB8E8&\fscx112\fscy112}QUE{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:04.42,0:00:04.58,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}ERES{\c&HFFFFFF&\fscx100\fscy100} UNA MUJER FUERTE,
+Dialogue: 1,0:00:04.58,0:00:04.74,Sub,,0,0,0,,ERES {\c&H6DB8E8&\fscx112\fscy112}UNA{\c&HFFFFFF&\fscx100\fscy100} MUJER FUERTE,
+Dialogue: 1,0:00:04.74,0:00:04.96,Sub,,0,0,0,,ERES UNA {\c&H6DB8E8&\fscx112\fscy112}MUJER{\c&HFFFFFF&\fscx100\fscy100} FUERTE,
+Dialogue: 1,0:00:04.96,0:00:05.82,Sub,,0,0,0,,ERES UNA MUJER {\c&H6DB8E8&\fscx112\fscy112}FUERTE,{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:05.82,0:00:06.78,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}INDEPENDIENTE,{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:06.78,0:00:07.00,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}CAPAZ{\c&HFFFFFF&\fscx100\fscy100} DE LOGRAR MUCHAS
+Dialogue: 1,0:00:07.00,0:00:07.22,Sub,,0,0,0,,CAPAZ {\c&H6DB8E8&\fscx112\fscy112}DE{\c&HFFFFFF&\fscx100\fscy100} LOGRAR MUCHAS
+Dialogue: 1,0:00:07.22,0:00:07.56,Sub,,0,0,0,,CAPAZ DE {\c&H6DB8E8&\fscx112\fscy112}LOGRAR{\c&HFFFFFF&\fscx100\fscy100} MUCHAS
+Dialogue: 1,0:00:07.56,0:00:07.72,Sub,,0,0,0,,CAPAZ DE LOGRAR {\c&H6DB8E8&\fscx112\fscy112}MUCHAS{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:07.72,0:00:08.51,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}COSAS,{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:08.74,0:00:08.90,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}PERO{\c&HFFFFFF&\fscx100\fscy100} EN TUS RELACIONES
+Dialogue: 1,0:00:08.90,0:00:09.00,Sub,,0,0,0,,PERO {\c&H6DB8E8&\fscx112\fscy112}EN{\c&HFFFFFF&\fscx100\fscy100} TUS RELACIONES
+Dialogue: 1,0:00:09.00,0:00:09.10,Sub,,0,0,0,,PERO EN {\c&H6DB8E8&\fscx112\fscy112}TUS{\c&HFFFFFF&\fscx100\fscy100} RELACIONES
+Dialogue: 1,0:00:09.10,0:00:09.58,Sub,,0,0,0,,PERO EN TUS {\c&H6DB8E8&\fscx112\fscy112}RELACIONES{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:09.58,0:00:10.18,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}TERMINA{\c&HFFFFFF&\fscx100\fscy100} SINTIENDO QUE NECESITAS
+Dialogue: 1,0:00:10.18,0:00:10.74,Sub,,0,0,0,,TERMINA {\c&H6DB8E8&\fscx112\fscy112}SINTIENDO{\c&HFFFFFF&\fscx100\fscy100} QUE NECESITAS
+Dialogue: 1,0:00:10.74,0:00:11.16,Sub,,0,0,0,,TERMINA SINTIENDO {\c&H6DB8E8&\fscx112\fscy112}QUE{\c&HFFFFFF&\fscx100\fscy100} NECESITAS
+Dialogue: 1,0:00:11.16,0:00:12.04,Sub,,0,0,0,,TERMINA SINTIENDO QUE {\c&H6DB8E8&\fscx112\fscy112}NECESITAS{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:12.04,0:00:12.94,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}CONSTANTEMENTE{\c&HFFFFFF&\fscx100\fscy100} LA APROBACIÓN DE
+Dialogue: 1,0:00:12.94,0:00:13.06,Sub,,0,0,0,,CONSTANTEMENTE {\c&H6DB8E8&\fscx112\fscy112}LA{\c&HFFFFFF&\fscx100\fscy100} APROBACIÓN DE
+Dialogue: 1,0:00:13.06,0:00:13.54,Sub,,0,0,0,,CONSTANTEMENTE LA {\c&H6DB8E8&\fscx112\fscy112}APROBACIÓN{\c&HFFFFFF&\fscx100\fscy100} DE
+Dialogue: 1,0:00:13.54,0:00:13.76,Sub,,0,0,0,,CONSTANTEMENTE LA APROBACIÓN {\c&H6DB8E8&\fscx112\fscy112}DE{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:13.76,0:00:14.02,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}ALGUIEN{\c&HFFFFFF&\fscx100\fscy100} MÁS.
+Dialogue: 1,0:00:14.02,0:00:14.63,Sub,,0,0,0,,ALGUIEN {\c&H6DB8E8&\fscx112\fscy112}MÁS.{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:14.84,0:00:15.00,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}EN{\c&HFFFFFF&\fscx100\fscy100} VOLVER A MÍ,
+Dialogue: 1,0:00:15.00,0:00:15.24,Sub,,0,0,0,,EN {\c&H6DB8E8&\fscx112\fscy112}VOLVER{\c&HFFFFFF&\fscx100\fscy100} A MÍ,
+Dialogue: 1,0:00:15.24,0:00:15.48,Sub,,0,0,0,,EN VOLVER {\c&H6DB8E8&\fscx112\fscy112}A{\c&HFFFFFF&\fscx100\fscy100} MÍ,
+Dialogue: 1,0:00:15.48,0:00:15.87,Sub,,0,0,0,,EN VOLVER A {\c&H6DB8E8&\fscx112\fscy112}MÍ,{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:15.94,0:00:16.12,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}VAMOS{\c&HFFFFFF&\fscx100\fscy100} A RECONOCER ESOS
+Dialogue: 1,0:00:16.12,0:00:16.34,Sub,,0,0,0,,VAMOS {\c&H6DB8E8&\fscx112\fscy112}A{\c&HFFFFFF&\fscx100\fscy100} RECONOCER ESOS
+Dialogue: 1,0:00:16.34,0:00:16.88,Sub,,0,0,0,,VAMOS A {\c&H6DB8E8&\fscx112\fscy112}RECONOCER{\c&HFFFFFF&\fscx100\fscy100} ESOS
+Dialogue: 1,0:00:16.88,0:00:17.06,Sub,,0,0,0,,VAMOS A RECONOCER {\c&H6DB8E8&\fscx112\fscy112}ESOS{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:17.06,0:00:17.99,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}PATRONES.{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:17.85,0:00:18.83,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}EL{\c&HFFFFFF&\fscx100\fscy100} APEGO EMOCIONAL,
+Dialogue: 1,0:00:18.83,0:00:19.41,Sub,,0,0,0,,EL {\c&H6DB8E8&\fscx112\fscy112}APEGO{\c&HFFFFFF&\fscx100\fscy100} EMOCIONAL,
+Dialogue: 1,0:00:19.41,0:00:20.60,Sub,,0,0,0,,EL APEGO {\c&H6DB8E8&\fscx112\fscy112}EMOCIONAL,{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:20.71,0:00:20.97,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}VAMOS{\c&HFFFFFF&\fscx100\fscy100} A COMPRENDER CÓMO
+Dialogue: 1,0:00:20.97,0:00:21.19,Sub,,0,0,0,,VAMOS {\c&H6DB8E8&\fscx112\fscy112}A{\c&HFFFFFF&\fscx100\fscy100} COMPRENDER CÓMO
+Dialogue: 1,0:00:21.19,0:00:21.79,Sub,,0,0,0,,VAMOS A {\c&H6DB8E8&\fscx112\fscy112}COMPRENDER{\c&HFFFFFF&\fscx100\fscy100} CÓMO
+Dialogue: 1,0:00:21.79,0:00:22.47,Sub,,0,0,0,,VAMOS A COMPRENDER {\c&H6DB8E8&\fscx112\fscy112}CÓMO{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:22.47,0:00:22.63,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}SE{\c&HFFFFFF&\fscx100\fscy100} CONSTITUYEN ESTOS VÍNCULOS
+Dialogue: 1,0:00:22.63,0:00:23.39,Sub,,0,0,0,,SE {\c&H6DB8E8&\fscx112\fscy112}CONSTITUYEN{\c&HFFFFFF&\fscx100\fscy100} ESTOS VÍNCULOS
+Dialogue: 1,0:00:23.39,0:00:23.75,Sub,,0,0,0,,SE CONSTITUYEN {\c&H6DB8E8&\fscx112\fscy112}ESTOS{\c&HFFFFFF&\fscx100\fscy100} VÍNCULOS
+Dialogue: 1,0:00:23.75,0:00:24.29,Sub,,0,0,0,,SE CONSTITUYEN ESTOS {\c&H6DB8E8&\fscx112\fscy112}VÍNCULOS{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:24.29,0:00:25.34,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}AFECTIVOS,{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:25.35,0:00:25.79,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}QUE{\c&HFFFFFF&\fscx100\fscy100} HAY DETRÁS,
+Dialogue: 1,0:00:25.79,0:00:25.99,Sub,,0,0,0,,QUE {\c&H6DB8E8&\fscx112\fscy112}HAY{\c&HFFFFFF&\fscx100\fscy100} DETRÁS,
+Dialogue: 1,0:00:25.99,0:00:26.76,Sub,,0,0,0,,QUE HAY {\c&H6DB8E8&\fscx112\fscy112}DETRÁS,{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:26.83,0:00:27.74,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}MIEDO,{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:28.05,0:00:28.83,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}ABANDONO{\c&HFFFFFF&\fscx100\fscy100} Y PORQUE A
+Dialogue: 1,0:00:28.83,0:00:29.13,Sub,,0,0,0,,ABANDONO {\c&H6DB8E8&\fscx112\fscy112}Y{\c&HFFFFFF&\fscx100\fscy100} PORQUE A
+Dialogue: 1,0:00:29.13,0:00:29.41,Sub,,0,0,0,,ABANDONO Y {\c&H6DB8E8&\fscx112\fscy112}PORQUE{\c&HFFFFFF&\fscx100\fscy100} A
+Dialogue: 1,0:00:29.41,0:00:29.53,Sub,,0,0,0,,ABANDONO Y PORQUE {\c&H6DB8E8&\fscx112\fscy112}A{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:29.53,0:00:29.67,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}VECES{\c&HFFFFFF&\fscx100\fscy100} NOS CUESTA SOLTAR
+Dialogue: 1,0:00:29.67,0:00:29.87,Sub,,0,0,0,,VECES {\c&H6DB8E8&\fscx112\fscy112}NOS{\c&HFFFFFF&\fscx100\fscy100} CUESTA SOLTAR
+Dialogue: 1,0:00:29.87,0:00:30.31,Sub,,0,0,0,,VECES NOS {\c&H6DB8E8&\fscx112\fscy112}CUESTA{\c&HFFFFFF&\fscx100\fscy100} SOLTAR
+Dialogue: 1,0:00:30.31,0:00:30.85,Sub,,0,0,0,,VECES NOS CUESTA {\c&H6DB8E8&\fscx112\fscy112}SOLTAR{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:30.85,0:00:31.49,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}UNA{\c&HFFFFFF&\fscx100\fscy100} RELACIÓN QUE NOS
+Dialogue: 1,0:00:31.49,0:00:32.05,Sub,,0,0,0,,UNA {\c&H6DB8E8&\fscx112\fscy112}RELACIÓN{\c&HFFFFFF&\fscx100\fscy100} QUE NOS
+Dialogue: 1,0:00:32.05,0:00:32.69,Sub,,0,0,0,,UNA RELACIÓN {\c&H6DB8E8&\fscx112\fscy112}QUE{\c&HFFFFFF&\fscx100\fscy100} NOS
+Dialogue: 1,0:00:32.69,0:00:32.83,Sub,,0,0,0,,UNA RELACIÓN QUE {\c&H6DB8E8&\fscx112\fscy112}NOS{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:32.83,0:00:33.51,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}GENERA{\c&HFFFFFF&\fscx100\fscy100} TANTO DAÑO.
+Dialogue: 1,0:00:33.51,0:00:33.89,Sub,,0,0,0,,GENERA {\c&H6DB8E8&\fscx112\fscy112}TANTO{\c&HFFFFFF&\fscx100\fscy100} DAÑO.
+Dialogue: 1,0:00:33.89,0:00:34.62,Sub,,0,0,0,,GENERA TANTO {\c&H6DB8E8&\fscx112\fscy112}DAÑO.{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 2,0:00:18.30,0:00:22.50,Chip,,0,0,0,,{\fad(250,400)\move(380,320,540,320,0,350)\t(0,350,\alpha&H00&)}APEGO EMOCIONAL
+Dialogue: 2,0:00:18.50,0:00:22.50,ChipLine,,0,0,0,,{\fad(200,400)\pos(540,372)\an5\fscx0\t(0,450,\fscx100)\p1}m 0 0 l 160 0 160 5 0 5{\p0}
+Dialogue: 2,0:00:18.30,0:00:22.50,Step,,0,0,0,,{\fad(250,400)\pos(540,255)\fscx50\fscy50\t(0,300,\fscx100\fscy100)}01
+Dialogue: 1,0:00:34.57,0:00:34.77,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}TAMBIÉN{\c&HFFFFFF&\fscx100\fscy100} VAMOS A EXPLORAR
+Dialogue: 1,0:00:34.77,0:00:35.01,Sub,,0,0,0,,TAMBIÉN {\c&H6DB8E8&\fscx112\fscy112}VAMOS{\c&HFFFFFF&\fscx100\fscy100} A EXPLORAR
+Dialogue: 1,0:00:35.01,0:00:35.15,Sub,,0,0,0,,TAMBIÉN VAMOS {\c&H6DB8E8&\fscx112\fscy112}A{\c&HFFFFFF&\fscx100\fscy100} EXPLORAR
+Dialogue: 1,0:00:35.15,0:00:35.69,Sub,,0,0,0,,TAMBIÉN VAMOS A {\c&H6DB8E8&\fscx112\fscy112}EXPLORAR{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:35.69,0:00:35.95,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}ESAS{\c&HFFFFFF&\fscx100\fscy100} CREENCIAS,
+Dialogue: 1,0:00:35.95,0:00:36.94,Sub,,0,0,0,,ESAS {\c&H6DB8E8&\fscx112\fscy112}CREENCIAS,{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:36.99,0:00:37.48,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}HERIDAS{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:37.91,0:00:38.39,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}EMOCIONALES{\c&HFFFFFF&\fscx100\fscy100} Y PENSAMIENTOS QUE
+Dialogue: 1,0:00:38.39,0:00:38.53,Sub,,0,0,0,,EMOCIONALES {\c&H6DB8E8&\fscx112\fscy112}Y{\c&HFFFFFF&\fscx100\fscy100} PENSAMIENTOS QUE
+Dialogue: 1,0:00:38.53,0:00:39.25,Sub,,0,0,0,,EMOCIONALES Y {\c&H6DB8E8&\fscx112\fscy112}PENSAMIENTOS{\c&HFFFFFF&\fscx100\fscy100} QUE
+Dialogue: 1,0:00:39.25,0:00:39.49,Sub,,0,0,0,,EMOCIONALES Y PENSAMIENTOS {\c&H6DB8E8&\fscx112\fscy112}QUE{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:39.49,0:00:39.89,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}INFLUYEN{\c&HFFFFFF&\fscx100\fscy100} EN LA MANERA
+Dialogue: 1,0:00:39.89,0:00:40.01,Sub,,0,0,0,,INFLUYEN {\c&H6DB8E8&\fscx112\fscy112}EN{\c&HFFFFFF&\fscx100\fscy100} LA MANERA
+Dialogue: 1,0:00:40.01,0:00:40.11,Sub,,0,0,0,,INFLUYEN EN {\c&H6DB8E8&\fscx112\fscy112}LA{\c&HFFFFFF&\fscx100\fscy100} MANERA
+Dialogue: 1,0:00:40.11,0:00:40.43,Sub,,0,0,0,,INFLUYEN EN LA {\c&H6DB8E8&\fscx112\fscy112}MANERA{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:40.43,0:00:40.63,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}DE{\c&HFFFFFF&\fscx100\fscy100} RELACIONARNOS Y EN
+Dialogue: 1,0:00:40.63,0:00:41.45,Sub,,0,0,0,,DE {\c&H6DB8E8&\fscx112\fscy112}RELACIONARNOS{\c&HFFFFFF&\fscx100\fscy100} Y EN
+Dialogue: 1,0:00:41.45,0:00:41.93,Sub,,0,0,0,,DE RELACIONARNOS {\c&H6DB8E8&\fscx112\fscy112}Y{\c&HFFFFFF&\fscx100\fscy100} EN
+Dialogue: 1,0:00:41.93,0:00:42.01,Sub,,0,0,0,,DE RELACIONARNOS Y {\c&H6DB8E8&\fscx112\fscy112}EN{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:42.01,0:00:42.13,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}LAS{\c&HFFFFFF&\fscx100\fscy100} DECISIONES QUE TOMAMOS
+Dialogue: 1,0:00:42.13,0:00:42.67,Sub,,0,0,0,,LAS {\c&H6DB8E8&\fscx112\fscy112}DECISIONES{\c&HFFFFFF&\fscx100\fscy100} QUE TOMAMOS
+Dialogue: 1,0:00:42.67,0:00:42.79,Sub,,0,0,0,,LAS DECISIONES {\c&H6DB8E8&\fscx112\fscy112}QUE{\c&HFFFFFF&\fscx100\fscy100} TOMAMOS
+Dialogue: 1,0:00:42.79,0:00:43.25,Sub,,0,0,0,,LAS DECISIONES QUE {\c&H6DB8E8&\fscx112\fscy112}TOMAMOS{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:43.25,0:00:43.53,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}A{\c&HFFFFFF&\fscx100\fscy100} LA HORA DE
+Dialogue: 1,0:00:43.53,0:00:43.61,Sub,,0,0,0,,A {\c&H6DB8E8&\fscx112\fscy112}LA{\c&HFFFFFF&\fscx100\fscy100} HORA DE
+Dialogue: 1,0:00:43.61,0:00:43.83,Sub,,0,0,0,,A LA {\c&H6DB8E8&\fscx112\fscy112}HORA{\c&HFFFFFF&\fscx100\fscy100} DE
+Dialogue: 1,0:00:43.83,0:00:43.99,Sub,,0,0,0,,A LA HORA {\c&H6DB8E8&\fscx112\fscy112}DE{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:43.99,0:00:44.44,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}AMAR.{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 2,0:00:34.90,0:00:39.10,Chip,,0,0,0,,{\fad(250,400)\move(380,320,540,320,0,350)\t(0,350,\alpha&H00&)}CREENCIAS Y HERIDAS
+Dialogue: 2,0:00:35.10,0:00:39.10,ChipLine,,0,0,0,,{\fad(200,400)\pos(540,372)\an5\fscx0\t(0,450,\fscx100)\p1}m 0 0 l 160 0 160 5 0 5{\p0}
+Dialogue: 2,0:00:34.90,0:00:39.10,Step,,0,0,0,,{\fad(250,400)\pos(540,255)\fscx50\fscy50\t(0,300,\fscx100\fscy100)}02
+Dialogue: 1,0:00:44.23,0:00:45.15,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}Y{\c&HFFFFFF&\fscx100\fscy100} APRENDEREMOS A ESTABLECER
+Dialogue: 1,0:00:45.15,0:00:45.97,Sub,,0,0,0,,Y {\c&H6DB8E8&\fscx112\fscy112}APRENDEREMOS{\c&HFFFFFF&\fscx100\fscy100} A ESTABLECER
+Dialogue: 1,0:00:45.97,0:00:46.39,Sub,,0,0,0,,Y APRENDEREMOS {\c&H6DB8E8&\fscx112\fscy112}A{\c&HFFFFFF&\fscx100\fscy100} ESTABLECER
+Dialogue: 1,0:00:46.39,0:00:46.83,Sub,,0,0,0,,Y APRENDEREMOS A {\c&H6DB8E8&\fscx112\fscy112}ESTABLECER{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:46.83,0:00:47.23,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}LÍMITES{\c&HFFFFFF&\fscx100\fscy100} SALUDABLES,
+Dialogue: 1,0:00:47.23,0:00:47.95,Sub,,0,0,0,,LÍMITES {\c&H6DB8E8&\fscx112\fscy112}SALUDABLES,{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:47.95,0:00:48.45,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}FORTALECER{\c&HFFFFFF&\fscx100\fscy100} NUESTRA IDENTIDAD Y
+Dialogue: 1,0:00:48.45,0:00:48.67,Sub,,0,0,0,,FORTALECER {\c&H6DB8E8&\fscx112\fscy112}NUESTRA{\c&HFFFFFF&\fscx100\fscy100} IDENTIDAD Y
+Dialogue: 1,0:00:48.67,0:00:49.51,Sub,,0,0,0,,FORTALECER NUESTRA {\c&H6DB8E8&\fscx112\fscy112}IDENTIDAD{\c&HFFFFFF&\fscx100\fscy100} Y
+Dialogue: 1,0:00:49.51,0:00:49.99,Sub,,0,0,0,,FORTALECER NUESTRA IDENTIDAD {\c&H6DB8E8&\fscx112\fscy112}Y{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:49.99,0:00:50.37,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}CONSTRUIR{\c&HFFFFFF&\fscx100\fscy100} RELACIONES DESDE UNA
+Dialogue: 1,0:00:50.37,0:00:51.05,Sub,,0,0,0,,CONSTRUIR {\c&H6DB8E8&\fscx112\fscy112}RELACIONES{\c&HFFFFFF&\fscx100\fscy100} DESDE UNA
+Dialogue: 1,0:00:51.05,0:00:51.61,Sub,,0,0,0,,CONSTRUIR RELACIONES {\c&H6DB8E8&\fscx112\fscy112}DESDE{\c&HFFFFFF&\fscx100\fscy100} UNA
+Dialogue: 1,0:00:51.61,0:00:52.07,Sub,,0,0,0,,CONSTRUIR RELACIONES DESDE {\c&H6DB8E8&\fscx112\fscy112}UNA{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:52.07,0:00:52.37,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}ELECCIÓN{\c&HFFFFFF&\fscx100\fscy100} MÁS CONSCIENTE,
+Dialogue: 1,0:00:52.37,0:00:52.55,Sub,,0,0,0,,ELECCIÓN {\c&H6DB8E8&\fscx112\fscy112}MÁS{\c&HFFFFFF&\fscx100\fscy100} CONSCIENTE,
+Dialogue: 1,0:00:52.55,0:00:53.46,Sub,,0,0,0,,ELECCIÓN MÁS {\c&H6DB8E8&\fscx112\fscy112}CONSCIENTE,{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:53.49,0:00:53.61,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}NO{\c&HFFFFFF&\fscx100\fscy100} DESDE EL MIEDO
+Dialogue: 1,0:00:53.61,0:00:53.91,Sub,,0,0,0,,NO {\c&H6DB8E8&\fscx112\fscy112}DESDE{\c&HFFFFFF&\fscx100\fscy100} EL MIEDO
+Dialogue: 1,0:00:53.91,0:00:54.05,Sub,,0,0,0,,NO DESDE {\c&H6DB8E8&\fscx112\fscy112}EL{\c&HFFFFFF&\fscx100\fscy100} MIEDO
+Dialogue: 1,0:00:54.05,0:00:54.19,Sub,,0,0,0,,NO DESDE EL {\c&H6DB8E8&\fscx112\fscy112}MIEDO{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:54.19,0:00:54.37,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}A{\c&HFFFFFF&\fscx100\fscy100} ESTAR SOLOS.
+Dialogue: 1,0:00:54.37,0:00:54.53,Sub,,0,0,0,,A {\c&H6DB8E8&\fscx112\fscy112}ESTAR{\c&HFFFFFF&\fscx100\fscy100} SOLOS.
+Dialogue: 1,0:00:54.53,0:00:55.24,Sub,,0,0,0,,A ESTAR {\c&H6DB8E8&\fscx112\fscy112}SOLOS.{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 2,0:00:44.68,0:00:48.88,Chip,,0,0,0,,{\fad(250,400)\move(380,320,540,320,0,350)\t(0,350,\alpha&H00&)}LÍMITES E IDENTIDAD
+Dialogue: 2,0:00:44.88,0:00:48.88,ChipLine,,0,0,0,,{\fad(200,400)\pos(540,372)\an5\fscx0\t(0,450,\fscx100)\p1}m 0 0 l 160 0 160 5 0 5{\p0}
+Dialogue: 2,0:00:44.68,0:00:48.88,Step,,0,0,0,,{\fad(250,400)\pos(540,255)\fscx50\fscy50\t(0,300,\fscx100\fscy100)}03
+Dialogue: 1,0:00:55.13,0:00:56.17,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}ASÍ{\c&HFFFFFF&\fscx100\fscy100} QUE HOY QUEREMOS
+Dialogue: 1,0:00:56.17,0:00:56.35,Sub,,0,0,0,,ASÍ {\c&H6DB8E8&\fscx112\fscy112}QUE{\c&HFFFFFF&\fscx100\fscy100} HOY QUEREMOS
+Dialogue: 1,0:00:56.35,0:00:56.55,Sub,,0,0,0,,ASÍ QUE {\c&H6DB8E8&\fscx112\fscy112}HOY{\c&HFFFFFF&\fscx100\fscy100} QUEREMOS
+Dialogue: 1,0:00:56.55,0:00:56.83,Sub,,0,0,0,,ASÍ QUE HOY {\c&H6DB8E8&\fscx112\fscy112}QUEREMOS{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:56.83,0:00:57.55,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}INVITARTE{\c&HFFFFFF&\fscx100\fscy100} A QUE DEJES
+Dialogue: 1,0:00:57.55,0:00:57.99,Sub,,0,0,0,,INVITARTE {\c&H6DB8E8&\fscx112\fscy112}A{\c&HFFFFFF&\fscx100\fscy100} QUE DEJES
+Dialogue: 1,0:00:57.99,0:00:58.11,Sub,,0,0,0,,INVITARTE A {\c&H6DB8E8&\fscx112\fscy112}QUE{\c&HFFFFFF&\fscx100\fscy100} DEJES
+Dialogue: 1,0:00:58.11,0:00:58.39,Sub,,0,0,0,,INVITARTE A QUE {\c&H6DB8E8&\fscx112\fscy112}DEJES{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:58.39,0:00:58.51,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}DE{\c&HFFFFFF&\fscx100\fscy100} REPETIR HISTORIAS DE
+Dialogue: 1,0:00:58.51,0:00:58.89,Sub,,0,0,0,,DE {\c&H6DB8E8&\fscx112\fscy112}REPETIR{\c&HFFFFFF&\fscx100\fscy100} HISTORIAS DE
+Dialogue: 1,0:00:58.89,0:00:59.29,Sub,,0,0,0,,DE REPETIR {\c&H6DB8E8&\fscx112\fscy112}HISTORIAS{\c&HFFFFFF&\fscx100\fscy100} DE
+Dialogue: 1,0:00:59.29,0:00:59.45,Sub,,0,0,0,,DE REPETIR HISTORIAS {\c&H6DB8E8&\fscx112\fscy112}DE{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:00:59.45,0:00:59.77,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}DOLOR{\c&HFFFFFF&\fscx100\fscy100} Y CONSTRUYAS RELACIONES
+Dialogue: 1,0:00:59.77,0:01:00.21,Sub,,0,0,0,,DOLOR {\c&H6DB8E8&\fscx112\fscy112}Y{\c&HFFFFFF&\fscx100\fscy100} CONSTRUYAS RELACIONES
+Dialogue: 1,0:01:00.21,0:01:00.67,Sub,,0,0,0,,DOLOR Y {\c&H6DB8E8&\fscx112\fscy112}CONSTRUYAS{\c&HFFFFFF&\fscx100\fscy100} RELACIONES
+Dialogue: 1,0:01:00.67,0:01:01.31,Sub,,0,0,0,,DOLOR Y CONSTRUYAS {\c&H6DB8E8&\fscx112\fscy112}RELACIONES{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:01:01.31,0:01:01.57,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}DESDE{\c&HFFFFFF&\fscx100\fscy100} LA SEGURIDAD,
+Dialogue: 1,0:01:01.57,0:01:01.79,Sub,,0,0,0,,DESDE {\c&H6DB8E8&\fscx112\fscy112}LA{\c&HFFFFFF&\fscx100\fscy100} SEGURIDAD,
+Dialogue: 1,0:01:01.79,0:01:02.56,Sub,,0,0,0,,DESDE LA {\c&H6DB8E8&\fscx112\fscy112}SEGURIDAD,{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:01:02.77,0:01:03.17,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}DESDE{\c&HFFFFFF&\fscx100\fscy100} EL AMOR Y
+Dialogue: 1,0:01:03.17,0:01:03.41,Sub,,0,0,0,,DESDE {\c&H6DB8E8&\fscx112\fscy112}EL{\c&HFFFFFF&\fscx100\fscy100} AMOR Y
+Dialogue: 1,0:01:03.41,0:01:03.69,Sub,,0,0,0,,DESDE EL {\c&H6DB8E8&\fscx112\fscy112}AMOR{\c&HFFFFFF&\fscx100\fscy100} Y
+Dialogue: 1,0:01:03.69,0:01:03.93,Sub,,0,0,0,,DESDE EL AMOR {\c&H6DB8E8&\fscx112\fscy112}Y{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:01:03.93,0:01:04.07,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}DESDE{\c&HFFFFFF&\fscx100\fscy100} LA CONCIENCIA.
+Dialogue: 1,0:01:04.07,0:01:04.27,Sub,,0,0,0,,DESDE {\c&H6DB8E8&\fscx112\fscy112}LA{\c&HFFFFFF&\fscx100\fscy100} CONCIENCIA.
+Dialogue: 1,0:01:04.27,0:01:05.46,Sub,,0,0,0,,DESDE LA {\c&H6DB8E8&\fscx112\fscy112}CONCIENCIA.{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:01:05.67,0:01:05.81,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}PORQUE{\c&HFFFFFF&\fscx100\fscy100} VOLVER A TI
+Dialogue: 1,0:01:05.81,0:01:06.11,Sub,,0,0,0,,PORQUE {\c&H6DB8E8&\fscx112\fscy112}VOLVER{\c&HFFFFFF&\fscx100\fscy100} A TI
+Dialogue: 1,0:01:06.11,0:01:06.35,Sub,,0,0,0,,PORQUE VOLVER {\c&H6DB8E8&\fscx112\fscy112}A{\c&HFFFFFF&\fscx100\fscy100} TI
+Dialogue: 1,0:01:06.35,0:01:06.53,Sub,,0,0,0,,PORQUE VOLVER A {\c&H6DB8E8&\fscx112\fscy112}TI{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:01:06.53,0:01:06.85,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}ES{\c&HFFFFFF&\fscx100\fscy100} VOLVERTE A ELEGIR
+Dialogue: 1,0:01:06.85,0:01:07.45,Sub,,0,0,0,,ES {\c&H6DB8E8&\fscx112\fscy112}VOLVERTE{\c&HFFFFFF&\fscx100\fscy100} A ELEGIR
+Dialogue: 1,0:01:07.45,0:01:07.65,Sub,,0,0,0,,ES VOLVERTE {\c&H6DB8E8&\fscx112\fscy112}A{\c&HFFFFFF&\fscx100\fscy100} ELEGIR
+Dialogue: 1,0:01:07.65,0:01:07.97,Sub,,0,0,0,,ES VOLVERTE A {\c&H6DB8E8&\fscx112\fscy112}ELEGIR{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:01:07.97,0:01:08.05,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}DE{\c&HFFFFFF&\fscx100\fscy100} NUEVO.
+Dialogue: 1,0:01:08.05,0:01:08.56,Sub,,0,0,0,,DE {\c&H6DB8E8&\fscx112\fscy112}NUEVO.{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 1,0:01:08.73,0:01:09.35,Sub,,0,0,0,,{\fscx70\fscy70\alpha&H80&\t(0,120,\fscx106\fscy106\alpha&H00&)\t(120,200,\fscx100\fscy100)}{\c&H6DB8E8&\fscx112\fscy112}INSCRIPCIONES{\c&HFFFFFF&\fscx100\fscy100} ABIERTAS.
+Dialogue: 1,0:01:09.35,0:01:10.38,Sub,,0,0,0,,INSCRIPCIONES {\c&H6DB8E8&\fscx112\fscy112}ABIERTAS.{\c&HFFFFFF&\fscx100\fscy100}
+Dialogue: 3,0:00:14.75,0:00:17.85,Title,,0,0,0,,{\fad(400,400)\blur1\fscx80\fscy80\t(0,500,\fscx100\fscy100)\move(540,330,540,300,0,600)}Volver a mí
+Dialogue: 3,0:00:15.05,0:00:17.85,Kicker,,0,0,0,,{\fad(400,400)\pos(540,180)}T A L L E R
+Dialogue: 0,0:00:17.85,0:01:10.33,Brand,,0,0,0,,{\fad(600,300)}VOLVER A MÍ  ·  TALLER
+Dialogue: 3,0:01:10.53,0:01:18.83,Kicker,,0,0,0,,{\fad(450,0)\move(540,340,540,300,0,450)}T A L L E R
+Dialogue: 4,0:01:10.63,0:01:18.83,TitleBig,,0,0,0,,{\fad(500,0)\fscx70\fscy70\t(0,600,0.6,\fscx100\fscy100)\pos(540,430)}Volver a mí
+Dialogue: 3,0:01:11.13,0:01:18.83,Quote,,0,0,0,,{\fad(450,0)\move(540,585,540,545,0,450)}Volver a ti es volverte a elegir
+Dialogue: 3,0:01:11.33,0:01:18.83,ChipLine,,0,0,0,,{\pos(540,630)\an5\fscx0\t(0,500,\fscx100)\p1}m 0 0 l 180 0 180 5 0 5{\p0}
+Dialogue: 3,0:01:11.43,0:01:18.83,Info,,0,0,0,,{\fad(450,0)\move(540,760,540,720,0,450)}TALITA KUM  ·  LAURELES, MEDELLÍN
+Dialogue: 3,0:01:11.63,0:01:18.83,Info,,0,0,0,,{\fad(450,0)\move(540,830,540,790,0,450)}10 A 12 PM
+Dialogue: 3,0:01:11.93,0:01:18.83,Price,,0,0,0,,{\fad(450,0)\move(540,950,540,910,0,450)}Valor $120.000
+Dialogue: 3,0:01:12.18,0:01:18.83,PriceBig,,0,0,0,,{\fad(450,0)\move(540,1045,540,1005,0,450)}Pronto pago $90.000
+Dialogue: 3,0:01:12.43,0:01:18.83,Small,,0,0,0,,{\fad(450,0)\move(540,1140,540,1100,0,450)}Recibe material de trabajo, refrigerio y obsequio
+Dialogue: 4,0:01:12.83,0:01:18.83,CTA,,0,0,0,,{\fad(300,0)\pos(540,1270)\fscx60\fscy60\t(0,350,\fscx100\fscy100)\t(900,1250,\fscx107\fscy107)\t(1250,1600,\fscx100\fscy100)\t(2000,2350,\fscx107\fscy107)\t(2350,2700,\fscx100\fscy100)\t(3100,3450,\fscx107\fscy107)\t(3450,3800,\fscx100\fscy100)\t(4200,4550,\fscx107\fscy107)\t(4550,4900,\fscx100\fscy100)\t(5300,5650,\fscx107\fscy107)\t(5650,6000,\fscx100\fscy100)}INSCRÍBETE AQUÍ
+Dialogue: 3,0:01:13.13,0:01:18.83,Url,,0,0,0,,{\fad(450,0)\move(540,1415,540,1375,0,450)}volver-a-mi-taller.vercel.app
+Dialogue: 3,0:01:13.43,0:01:18.83,Small,,0,0,0,,{\fad(450,0)\move(540,1480,540,1440,0,450)}Inscripciones abiertas
