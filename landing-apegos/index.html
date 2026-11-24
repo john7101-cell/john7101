@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Volver a mí · Taller sobre apegos emocionales con la Terapeuta Paola Velasquez</title>
-<meta name="description" content="Volver a mí: taller terapéutico sobre apegos emocionales, autonomía y relaciones saludables. Reserva tu lugar.">
+<meta name="description" content="Volver a mí: taller terapéutico presencial · sábado 5 de diciembre, 10 a. m. · Talita Kum, Laureles, Medellín. Apegos emocionales, autonomía y relaciones saludables. Reserva tu lugar.">
 <meta property="og:title" content="Volver a mí · Taller sobre apegos emocionales">
 <meta property="og:description" content="¿Por qué amamos como amamos? Un taller para comprender tus heridas de apego y aprender a amar sin perderte.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,7 +52,14 @@
   .hero h1{font-size:clamp(3.4rem,10vw,7.4rem);line-height:.92}
   .meta{display:flex;flex-wrap:wrap;gap:10px 22px;color:var(--mist);font-size:.95rem}
   .meta span{display:inline-flex;align-items:center;gap:8px}
-  .meta svg{width:18px;height:18px;stroke:var(--petal)}
+  .meta svg{width:18px;height:18px;stroke:var(--petal);flex:none}
+  .meta a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+  .event{display:grid;gap:12px;padding:20px 22px;border-radius:18px;background:rgba(246,239,236,.08);border:1px solid rgba(240,182,210,.25);color:var(--blush);font-size:1rem}
+  .event div{display:flex;gap:12px;align-items:flex-start}
+  .event svg{width:20px;height:20px;stroke:var(--petal);flex:none;margin-top:3px}
+  .event b{display:block}
+  .event small{color:var(--mist)}
+  .event a{color:var(--petal)}
   .byline{letter-spacing:.2em;text-transform:uppercase;font-size:.8rem;color:var(--mist)}
 
   /* Question */
@@ -207,7 +214,12 @@
       <h1>Volver<br>a mí</h1>
       <hr class="rule">
       <p class="lead">Autonomía y relaciones saludables. Comprende tus heridas de apego y aprende a amar sin perderte.</p>
-      <div><a class="btn" href="#registro">Quiero asistir →</a></div>
+      <div class="meta">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Sábado 5 de diciembre</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>10:00 a. m. – 12:00 m.</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Talita Kum · Laureles, Medellín</span>
+      </div>
+      <div><a class="btn" href="#inversion">Quiero asistir →</a></div>
       <p class="byline">Con la Terapeuta Paola Velasquez</p>
     </div>
   </div>
@@ -317,7 +329,7 @@
       </div>
       <p class="pr-note" id="pr-note">Paga antes del 25 de noviembre y ahorra $30.000. Desde el 25 de noviembre el valor es $120.000.</p>
       <p class="pr-left" id="pr-left"></p>
-      <div class="pr-incl"><span>Taller presencial «Volver a mí»</span><span>Refrigerio y material de trabajo</span><span>Regalo sorpresa</span></div>
+      <div class="pr-incl"><span>Taller presencial «Volver a mí» · sábado 5 de diciembre, 10:00 a. m. – 12:00 m.</span><span>Refrigerio y material de trabajo</span><span>Regalo sorpresa</span></div>
       <a class="btn btn-pay" id="pr-btn" href="https://checkout.bold.co/payment/LNK_YTBF945JWB" target="_blank" rel="noopener">Pagar $90.000</a>
       <p class="pr-secure">El pago se realiza en la plataforma segura de Bold.</p>
     </div>
@@ -332,6 +344,10 @@
       <p class="eyebrow" style="color:var(--petal)">Reserva tu lugar</p>
       <h2>Da el primer paso para volver a ti.</h2>
       <p class="lead">Completa tus datos para confirmar tu cupo. Si ya pagaste en Bold, este es el último paso.</p>
+      <div class="event">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span><b>Sábado 5 de diciembre de 2026</b><small>10:00 a. m. a 12:00 m.</small></span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span><b>Talita Kum</b><small>Calle 48 # 77-34, Laureles, Medellín · <a href="https://www.google.com/maps/search/?api=1&amp;query=Calle+48+%2377-34%2C+Laureles%2C+Medell%C3%ADn" target="_blank" rel="noopener">Ver en el mapa</a></small></span></div>
+      </div>
     </div>
 
     <div class="card reveal" id="card">
@@ -517,7 +533,7 @@ function done(nombre, pago) {
   document.getElementById("who").textContent = (nombre || "").trim().split(" ")[0];
   const paid = /^Sí/.test(pago || "");
   document.getElementById("success-text").textContent = paid
-    ? "Recibimos tu registro. Verificaremos tu pago en Bold y te enviaremos la confirmación de tu cupo y los detalles del taller."
+    ? "Recibimos tu registro. Verificaremos tu pago en Bold y te enviaremos la confirmación de tu cupo. Te esperamos el sábado 5 de diciembre a las 10:00 a. m. en Talita Kum (Calle 48 # 77-34, Laureles, Medellín)."
     : "Tu registro quedó guardado. Para asegurar tu cupo, completa el pago:";
   document.getElementById("pay-after").style.display = paid ? "none" : "";
   document.getElementById("card").classList.add("done");
