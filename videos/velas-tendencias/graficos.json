@@ -1,0 +1,18 @@
+{
+  "graphics": [
+    {"image": "titulo_tendencias.png", "x": 0, "y": 160,
+     "start": {"phrase": "cinco tendencias", "offset": -0.1}, "end": {"phrase": "casi nadie la usa", "offset": 0.4}},
+    {"image": "n1_velas_con_forma.png", "x": 0, "y": 160,
+     "start": {"phrase": "numero uno", "offset": -0.1}, "end": {"phrase": "pura decoracion", "offset": 0.3}},
+    {"image": "n2_mecha_de_madera.png", "x": 0, "y": 160,
+     "start": {"phrase": "numero dos", "offset": -0.1}, "end": {"phrase": "en tu mesa", "offset": 0.3}},
+    {"image": "n3_mezclar_aromas.png", "x": 0, "y": 160,
+     "start": {"phrase": "y la tres", "offset": -0.1}, "end": {"phrase": "huele a ti", "offset": 0.3}},
+    {"image": "n4_envases_reutilizables.png", "x": 0, "y": 160,
+     "start": {"phrase": "numero cuatro", "offset": -0.1}, "end": {"phrase": "una maceta", "offset": 0.3}},
+    {"image": "n5_colores_tierra.png", "x": 0, "y": 160,
+     "start": {"phrase": "y la cinco", "offset": -0.1}, "end": {"phrase": "verde oliva", "offset": 0.3}},
+    {"image": "cta_la_tres.png", "x": 0, "y": 1400,
+     "start": {"phrase": "guardalo", "offset": -0.1}, "end": "video_end"}
+  ]
+}
