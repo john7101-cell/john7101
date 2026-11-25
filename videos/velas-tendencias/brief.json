@@ -10,7 +10,11 @@
   "voz": "generada",
   "genero_neutro": false,
   "datos_confirmados": [],
-  "en_pantalla": ["#1 Velas con forma", "#2 Mecha de madera", "#3 Mezclar aromas", "#4 Envases reutilizables", "#5 Colores tierra"],
-  "prohibido": ["garantizado", "la mejor del mercado", "científicamente"],
-  "notas": "Avatar IA hablando a cámara. Sin cifras ni estadísticas de ventas. Las tendencias se presentan como opinión de deco, no como datos."
+  "en_pantalla": [],
+  "prohibido": [
+    "garantizado",
+    "la mejor del mercado",
+    "científicamente"
+  ],
+  "notas": "Avatar IA hablando a cámara. Sin cifras ni estadísticas de ventas. Las tendencias se presentan como opinión de deco, no como datos. Los textos en pantalla se agregan en edición."
 }
